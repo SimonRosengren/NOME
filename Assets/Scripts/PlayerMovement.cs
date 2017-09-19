@@ -79,17 +79,22 @@ public class PlayerMovement : MonoBehaviour
         transform.Rotate(0, currentH * rotationSpeed * Time.deltaTime, 0);
     }
 
+
+    /*The method, which is triggered by entering a climbTrigger, will cast Rays higher and higher and stop 
+    when it no longer is hitting a climbable object. When the last ray misses I know that the last one hit the edge of the object. 
+    I then move the player to this position. We need to play some kind of animation here, rather then just teleporting him to the new
+    spot. */
     void Climb()
     {
         RaycastHit hitObj;
         Vector3 rayOriginOffset = new Vector3(0, 0.2f, 0);
-        float rayCastAngle = 0;
         Ray ray = new Ray(transform.position + rayOriginOffset, Vector3.forward);
         Physics.Raycast(ray, out hitObj, 1000);
-        Debug.DrawRay(ray.origin, ray.direction, Color.blue, 20f);
+
+        //Debug.DrawRay(ray.origin, ray.direction, Color.blue, 20f)
 
         Vector3 lastRayHitPoint = transform.position;
-
+        Physics.Raycast(ray, out hitObj, 1000);
         if (hitObj.collider != null)
         {
             for (int i = 0; i < 12; i++)
@@ -97,32 +102,21 @@ public class PlayerMovement : MonoBehaviour
                 rayOriginOffset.y += 0.1f;
                 Ray rayTest = new Ray(transform.position + rayOriginOffset, Vector3.forward);
                 Physics.Raycast(rayTest, out hitObj, 1000);
-                Debug.DrawRay(rayTest.origin, rayTest.direction, Color.blue, 20f);
-
+                //Debug.DrawRay(rayTest.origin, rayTest.direction, Color.blue, 20f)
                 /*Vi får error här pga att vi kollar hittobj.collider även om null. Vet ej lösning*/
                 if (hitObj.collider.tag != "climbableObject")
                 {
-                    Debug.Log("We are over");
                     break;
                 }
                 Debug.Log(lastRayHitPoint);
                 lastRayHitPoint = hitObj.point;
                 transform.position = lastRayHitPoint;
-
             }
-            transform.position = lastRayHitPoint;
+
         }
-
-
-
-        //while (hitObj.collider.tag == "climbTrigger")
-        //{
-        //    Physics.Raycast(transform.position, new Vector3(Vector3.forward.x, Vector3.forward.y + rayCastAngle, Vector3.forward.z), out hitObj, 50);
-        //    Debug.DrawRay(transform.position, new Vector3(Vector3.forward.x, Vector3.forward.y + rayCastAngle, Vector3.forward.z), Color.red);
-        //    rayCastAngle += 2;
-        //}
-
     }
+
+
 
 }
 
