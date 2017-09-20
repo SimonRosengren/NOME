@@ -92,11 +92,11 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    void OnAnimatorIK()
-    {
-        animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
-        animator.SetIKPosition(AvatarIKGoal.RightHand, hangingPos);
-    }
+    //void OnAnimatorIK()
+    //{
+    //    animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
+    //    animator.SetIKPosition(AvatarIKGoal.RightHand, hangingPos);
+    //}
 
 
     /*The method, which is triggered by entering a climbTrigger, will cast Rays higher and higher and stop 
@@ -131,13 +131,13 @@ public class PlayerMovement : MonoBehaviour
                 Debug.Log(lastRayHitPoint);
                 lastRayHitPoint = hitObj.point;
                 playerRb.constraints = RigidbodyConstraints.FreezeAll;
-                transform.position = lastRayHitPoint - new Vector3(0, 0.6f, 0) - (transform.forward * 0.2f);
+                transform.position = lastRayHitPoint - new Vector3(0, 0.5f, 0) - (transform.forward * 0.2f);
                 IsHanging = true;
                 animator.SetBool("IsHanging", true);
                 hangingPos = lastRayHitPoint;
             }
             playerRb.constraints = RigidbodyConstraints.FreezeAll;
-            transform.position = lastRayHitPoint - new Vector3(0, 0.2f, 0) - (transform.forward * 10);
+            transform.position = lastRayHitPoint - new Vector3(0, 0.5f, 0) - (transform.forward * 10);
             animator.SetBool("IsHanging", true);
         }
     }
