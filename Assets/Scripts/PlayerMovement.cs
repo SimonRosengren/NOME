@@ -88,21 +88,21 @@ public class PlayerMovement : MonoBehaviour
     {
         RaycastHit hitObj;
         Vector3 rayOriginOffset = new Vector3(0, 0.2f, 0);
-        Ray ray = new Ray(transform.position + rayOriginOffset, Vector3.forward);
-        Physics.Raycast(ray, out hitObj, 1000);
+        Ray ray = new Ray(transform.position + rayOriginOffset, transform.forward);
+        Physics.Raycast(ray, out hitObj, 1);
 
-        //Debug.DrawRay(ray.origin, ray.direction, Color.blue, 20f)
+        Debug.DrawRay(ray.origin, ray.direction, Color.blue, 20f);
 
         Vector3 lastRayHitPoint = transform.position;
-        Physics.Raycast(ray, out hitObj, 1000);
+        Physics.Raycast(ray, out hitObj, 1);
         if (hitObj.collider != null)
         {
             for (int i = 0; i < 12; i++)
             {
                 rayOriginOffset.y += 0.1f;
-                Ray rayTest = new Ray(transform.position + rayOriginOffset, Vector3.forward);
-                Physics.Raycast(rayTest, out hitObj, 1000);
-                //Debug.DrawRay(rayTest.origin, rayTest.direction, Color.blue, 20f)
+                Ray rayTest = new Ray(transform.position + rayOriginOffset, transform.forward);
+                Physics.Raycast(rayTest, out hitObj, 1);
+                Debug.DrawRay(rayTest.origin, rayTest.direction, Color.blue, 20f);
                 /*Vi får error här pga att vi kollar hittobj.collider även om null. Vet ej lösning*/
                 if (hitObj.collider.tag != "climbableObject")
                 {
@@ -110,8 +110,8 @@ public class PlayerMovement : MonoBehaviour
                 }
                 Debug.Log(lastRayHitPoint);
                 lastRayHitPoint = hitObj.point;
-                transform.position = lastRayHitPoint;
             }
+            transform.position = lastRayHitPoint;
 
         }
     }
