@@ -222,10 +222,6 @@ Prefab:
       propertyPath: m_Name
       value: climbingCube (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 4421493015501426, guid: eaa9a60033ecf0542ab4796b9ff0f23f, type: 2}
-      propertyPath: m_LocalScale.y
-      value: 2.9147365
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eaa9a60033ecf0542ab4796b9ff0f23f, type: 2}
   m_IsPrefabParent: 0
@@ -307,7 +303,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4421493015501426, guid: eaa9a60033ecf0542ab4796b9ff0f23f, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.688
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 4421493015501426, guid: eaa9a60033ecf0542ab4796b9ff0f23f, type: 2}
       propertyPath: m_LocalPosition.z
@@ -539,6 +535,38 @@ Prefab:
       propertyPath: m_Layer
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114229494972817246, guid: 9c90e7b5e04bc5d4eaa5a0124e786777,
+        type: 2}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1924005903}
+    - target: {fileID: 54604634499513378, guid: 9c90e7b5e04bc5d4eaa5a0124e786777,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9c90e7b5e04bc5d4eaa5a0124e786777, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1924005899 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1284107030257158, guid: 9c90e7b5e04bc5d4eaa5a0124e786777,
+    type: 2}
+  m_PrefabInternal: {fileID: 1738913840}
+--- !u!95 &1924005903
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1924005899}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: 45d480461bbdc704587e117329ce8e69, type: 3}
+  m_Controller: {fileID: 9100000, guid: f297797635a2b7445ad2ea55cec7353b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1

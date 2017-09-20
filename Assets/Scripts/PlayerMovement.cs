@@ -8,6 +8,8 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private Animator animator;
 
+    Vector3 hangingPos;
+
     /*Player movement*/
     public float speed = 6f;
     public float rotationSpeed = 200f;
@@ -16,6 +18,8 @@ public class PlayerMovement : MonoBehaviour
     /*Movement vector*/
     float currentV;
     float currentH;
+
+    public bool IsHanging = false;
 
 
 
@@ -62,15 +66,36 @@ public class PlayerMovement : MonoBehaviour
 
     void Move(float h, float v)
     {
-        currentH = Mathf.Lerp(currentH, h, Time.deltaTime * speed);
-        currentV = Mathf.Lerp(currentV, v, Time.deltaTime * speed);
+        if (!IsHanging)
+        {
+            currentH = Mathf.Lerp(currentH, h, Time.deltaTime * speed);
+            currentV = Mathf.Lerp(currentV, v, Time.deltaTime * speed);
 
-        transform.position += transform.forward * currentV * speed * Time.deltaTime;
-        transform.Rotate(0, currentH * rotationSpeed * Time.deltaTime, 0);
+            transform.position += transform.forward * currentV * speed * Time.deltaTime;
+            transform.Rotate(0, currentH * rotationSpeed * Time.deltaTime, 0);
 
-        animator.SetFloat("MoveSpeed", currentV);
+            animator.SetFloat("MoveSpeed", currentV);
 
-        Debug.Log(currentV);
+            Debug.Log(currentV);
+        }
+        else
+        {
+            if (Input.GetButton("Jump"))
+            {
+                playerRb.constraints = RigidbodyConstraints.None;
+                playerRb.constraints = RigidbodyConstraints.FreezeRotation;
+                playerRb.AddForce(Vector3.up * 6, ForceMode.Impulse);
+                animator.SetBool("IsHanging", false);
+                IsHanging = false;
+            }
+        }
+
+    }
+
+    void OnAnimatorIK()
+    {
+        animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
+        animator.SetIKPosition(AvatarIKGoal.RightHand, hangingPos);
     }
 
 
@@ -105,9 +130,15 @@ public class PlayerMovement : MonoBehaviour
                 }
                 Debug.Log(lastRayHitPoint);
                 lastRayHitPoint = hitObj.point;
-                transform.position = lastRayHitPoint;
+                playerRb.constraints = RigidbodyConstraints.FreezeAll;
+                transform.position = lastRayHitPoint - new Vector3(0, 0.2f, 0);
+                IsHanging = true;
+                animator.SetBool("IsHanging", true);
+                hangingPos = lastRayHitPoint;
             }
-            transform.position = lastRayHitPoint;
+            playerRb.constraints = RigidbodyConstraints.FreezeAll;
+            transform.position = lastRayHitPoint - new Vector3(0, 0.2f, 0);
+            animator.SetBool("IsHanging", true);
         }
     }
 
