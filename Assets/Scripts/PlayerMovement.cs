@@ -6,15 +6,20 @@ public class PlayerMovement : MonoBehaviour
 {
     Rigidbody playerRb;
 
+    [SerializeField] private Animator animator;
+
+    Vector3 hangingPos;
+
     /*Player movement*/
     public float speed = 6f;
     public float rotationSpeed = 200f;
     public float jumpForce = 10f;
+
     /*Movement vector*/
     float currentV;
     float currentH;
 
-    bool isGrounded;
+    public bool IsHanging = false;
 
 
 
@@ -35,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
         float v = Input.GetAxisRaw("Vertical");
         Move(h, v);
 
-        if (isGrounded && Input.GetButton("Jump"))
+        if (IsGrounded() && Input.GetButton("Jump"))
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
@@ -44,22 +49,11 @@ public class PlayerMovement : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
 
-        /*Check so that what we have collided with has its normal pointing up; then we are grounded*/
-        ContactPoint[] contactPoints = collision.contacts;
-        for (int i = 0; i < contactPoints.Length; i++)
-        {
-            if (Vector3.Dot(contactPoints[i].normal, Vector3.up) > 0.5f)
-            {
-                isGrounded = true;
-            }
-        }
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        /*RISK FOR BUGS*/
-        /*Need to check what collision we just exited!!*/
-        isGrounded = false;
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -72,12 +66,37 @@ public class PlayerMovement : MonoBehaviour
 
     void Move(float h, float v)
     {
-        currentH = Mathf.Lerp(currentH, h, Time.deltaTime * speed);
-        currentV = Mathf.Lerp(currentV, v, Time.deltaTime * speed);
+        if (!IsHanging)
+        {
+            currentH = Mathf.Lerp(currentH, h, Time.deltaTime * speed);
+            currentV = Mathf.Lerp(currentV, v, Time.deltaTime * speed);
 
-        transform.position += transform.forward * currentV * speed * Time.deltaTime;
-        transform.Rotate(0, currentH * rotationSpeed * Time.deltaTime, 0);
+            transform.position += transform.forward * currentV * speed * Time.deltaTime;
+            transform.Rotate(0, currentH * rotationSpeed * Time.deltaTime, 0);
+
+            animator.SetFloat("MoveSpeed", currentV);
+
+            Debug.Log(currentV);
+        }
+        else
+        {
+            if (Input.GetButton("Jump"))
+            {
+                playerRb.constraints = RigidbodyConstraints.None;
+                playerRb.constraints = RigidbodyConstraints.FreezeRotation;
+                playerRb.AddForce(Vector3.up * 6, ForceMode.Impulse);
+                animator.SetBool("IsHanging", false);
+                IsHanging = false;
+            }
+        }
+
     }
+
+    //void OnAnimatorIK()
+    //{
+    //    animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
+    //    animator.SetIKPosition(AvatarIKGoal.RightHand, hangingPos);
+    //}
 
 
     /*The method, which is triggered by entering a climbTrigger, will cast Rays higher and higher and stop 
@@ -106,14 +125,26 @@ public class PlayerMovement : MonoBehaviour
                 /*Vi får error här pga att vi kollar hittobj.collider även om null. Vet ej lösning*/
                 if (hitObj.collider.tag != "climbableObject")
                 {
+                    //If this never happens we cannot reach ledge
                     break;
                 }
                 Debug.Log(lastRayHitPoint);
                 lastRayHitPoint = hitObj.point;
+                playerRb.constraints = RigidbodyConstraints.FreezeAll;
+                transform.position = lastRayHitPoint - new Vector3(0, 0.5f, 0) - (transform.forward * 0.2f);
+                IsHanging = true;
+                animator.SetBool("IsHanging", true);
+                hangingPos = lastRayHitPoint;
             }
-            transform.position = lastRayHitPoint;
-
+            playerRb.constraints = RigidbodyConstraints.FreezeAll;
+            transform.position = lastRayHitPoint - new Vector3(0, 0.5f, 0) - (transform.forward * 10);
+            animator.SetBool("IsHanging", true);
         }
+    }
+
+    bool IsGrounded()
+    {
+        return Physics.Raycast(transform.position + new Vector3(0, 0.2f, 0), -transform.up, 0.3f);
     }
 
 
