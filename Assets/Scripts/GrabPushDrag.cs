@@ -2,28 +2,37 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GrabPushDrag : MonoBehaviour {
+public class GrabPushDrag : MonoBehaviour
+{
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    // Use this for initialization
+    public float distance = 1f;
+    public LayerMask PushObjectMask;
 
-    GameObject getInteractiveObject(float range)
+    GameObject pushableObject;
+    RaycastHit hitObject;
+
+
+    // Update is called once per frame
+    void Update()
     {
-        Vector3 positon = gameObject.transform.position + new Vector3(0, 0.5f);
-        RaycastHit raycastHit;
-        Vector3 target = Camera.main.transform.forward + new Vector3(0, 0.5f) * range;
-        Debug.DrawRay(positon, target, Color.red);
-        if(Physics.Linecast(positon, target, out raycastHit))
+        Ray hit = new Ray(transform.position + (Vector3.up / 2), transform.forward + (Vector3.up / 2));
+        Physics.Raycast(hit, out hitObject, 1);
+
+        if(hitObject.collider.tag == "pushable" && Input.GetKey(KeyCode.E))
         {
-            return raycastHit.collider.gameObject;
+            pushableObject = hitObject.transform.gameObject;
+
+            pushableObject.GetComponent<Rigidbody>().AddForce(this.GetComponent<PlayerMovement>().velocityAxis.normalized * this.GetComponent<PlayerMovement>().acceleration);
+            //Move the object 
         }
-        return null;
-    }
-	// Update is called once per frame
-	void Update () {
-        Debug.Log(getInteractiveObject(0.5f));
+     
         
-	}
+    }
+
+    void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawLine(transform.position + (Vector3.up / 2), transform.position + transform.forward + (Vector3.up/2) * distance);
+    }
 }
