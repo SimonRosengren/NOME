@@ -11,8 +11,10 @@ public class PlayerMovement : MonoBehaviour
     Vector3 hangingPos;
 
     /*Player movement*/
-    public float speed = 6f;
-    public float rotationSpeed = 200f;
+    //public float speed = 6f;
+    //public float rotationSpeed = 200f;
+    public float acceleration=10f;
+    public float maxspeed = 10f;
     public float jumpForce = 10f;
 
     /*Movement vector*/
@@ -36,14 +38,28 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
 
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
-        Move(h, v);
+        float xspeed = Input.GetAxisRaw("Horizontal");
+        float zspeed = Input.GetAxisRaw("Vertical");
+
+        Vector3 velocityAxis = new Vector3(xspeed, 0, zspeed);
+
+        velocityAxis = Quaternion.AngleAxis(Camera.main.transform.eulerAngles.y, Vector3.up) * velocityAxis;
+
+        Move(velocityAxis);
+
+        if (velocityAxis.magnitude > 0)
+        {
+            transform.rotation = Quaternion.LookRotation(velocityAxis);
+        }
 
         if (IsGrounded() && Input.GetButton("Jump"))
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
+        
+        Limitvelocity();
+
+        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -64,19 +80,20 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    void Move(float h, float v)
+    void Move(Vector3 velocityAxis)
     {
         if (!IsHanging)
         {
-            currentH = Mathf.Lerp(currentH, h, Time.deltaTime * speed);
-            currentV = Mathf.Lerp(currentV, v, Time.deltaTime * speed);
+            playerRb.AddForce(velocityAxis.normalized * acceleration);
+            //currentH = Mathf.Lerp(currentH, h, Time.deltaTime * speed);
+            //currentV = Mathf.Lerp(currentV, v, Time.deltaTime * speed);
 
-            transform.position += transform.forward * currentV * speed * Time.deltaTime;
-            transform.Rotate(0, currentH * rotationSpeed * Time.deltaTime, 0);
+            //transform.position += transform.forward * currentV * speed * Time.deltaTime;
+            //transform.Rotate(0, currentH * rotationSpeed * Time.deltaTime, 0);
 
-            animator.SetFloat("MoveSpeed", currentV);
+            //animator.SetFloat("MoveSpeed", currentV);
 
-            Debug.Log(currentV);
+            //Debug.Log(currentV);
         }
         else
         {
@@ -91,6 +108,16 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
+    void Limitvelocity()
+    {
+        Vector2 xzVel = new Vector2(playerRb.velocity.x, playerRb.velocity.z);
+        if (xzVel.magnitude > maxspeed)
+        {
+            xzVel = xzVel.normalized * maxspeed;
+            playerRb.velocity = new Vector3(xzVel.x, playerRb.velocity.y, xzVel.y);
+        }
+    }
+
 
     //void OnAnimatorIK()
     //{
