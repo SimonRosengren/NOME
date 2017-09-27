@@ -171,7 +171,7 @@ public class PlayerMovementForce : MonoBehaviour {
 
     bool IsGrounded()
     {
-        return Physics.Raycast(transform.position + new Vector3(0, 0.2f, 0), -transform.up, 0.3f);
+        return Physics.Raycast(transform.position + new Vector3(0, 0.1f, 0), -transform.up, 0.5f);
     }
 
 
