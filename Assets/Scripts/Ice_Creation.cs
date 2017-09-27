@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ice : MonoBehaviour {
-
+public class Ice_Creation : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -12,6 +11,14 @@ public class Ice : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        if (Input.GetButton("Fire1"))
+        {
+
+        }
 	}
+
+    void CreateIce()
+    {
+        Instantiate(Ice,)
+    }
 }
