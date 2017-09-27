@@ -133,7 +133,7 @@ public class PlayerMovementForce : MonoBehaviour {
     void Climb()
     {
         RaycastHit hitObj;
-        Vector3 rayOriginOffset = new Vector3(0, 0.2f, 0);
+        Vector3 rayOriginOffset = new Vector3(0, -0.2f, 0);
         Ray ray = new Ray(transform.position + rayOriginOffset, transform.forward);
         Physics.Raycast(ray, out hitObj, 1);
 
@@ -158,13 +158,13 @@ public class PlayerMovementForce : MonoBehaviour {
                 Debug.Log(lastRayHitPoint);
                 lastRayHitPoint = hitObj.point;
                 playerRb.constraints = RigidbodyConstraints.FreezeAll;
-                transform.position = lastRayHitPoint - new Vector3(0, 0.5f, 0) - (transform.forward * 0.2f);
+                transform.position = lastRayHitPoint - new Vector3(0, 0.0f, 0) - (transform.forward * 0.2f);
                 IsHanging = true;
                 animator.SetBool("IsHanging", true);
                 hangingPos = lastRayHitPoint;
             }
             playerRb.constraints = RigidbodyConstraints.FreezeAll;
-            transform.position = lastRayHitPoint - new Vector3(0, 0.5f, 0) - (transform.forward * 10);
+            transform.position = lastRayHitPoint - new Vector3(0, 0.0f, 0) - (transform.forward * 10);
             animator.SetBool("IsHanging", true);
         }
     }
