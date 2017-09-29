@@ -21,14 +21,14 @@ public class CameraRail : MonoBehaviour
 	void Update ()
     {
 
-        /*ONLY FOR DEBUGGING*/
-        if (nodeCount > 1)
-        {
-            for (int i = 0; i < nodeCount ; i++)
-            {
-                Debug.DrawLine(nodes[i], nodes[i + 1], Color.green);
-            }
-        }
+        ///*ONLY FOR DEBUGGING*/
+        //if (nodeCount > 1)
+        //{
+        //    for (int i = 0; i < nodeCount ; i++)
+        //    {
+        //        Debug.DrawLine(nodes[i], nodes[i + 1], Color.green);
+        //    }
+        //}
 	}
 
     public Vector3 ProjectPositionOnRail(Vector3 pos)
