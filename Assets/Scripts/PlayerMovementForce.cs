@@ -5,26 +5,18 @@ using UnityEngine;
 public class PlayerMovementForce : MonoBehaviour {
 
     Rigidbody playerRb;
-
-    [SerializeField]
-    private Animator animator;
-
     Vector3 hangingPos;
-
-    /*Player movement*/
-    //public float speed = 6f;
-    //public float rotationSpeed = 200f;
-    public float acceleration = 10f;
-    public float maxspeed = 10f;
-    public float jumpForce = 10f;
 
     /*Movement vector*/
     float currentV;
     float currentH;
 
-    public bool IsHanging = false;
 
-
+    [SerializeField] private Animator animator;
+    [SerializeField] private float acceleration = 10f;
+    [SerializeField] private float maxspeed = 10f;
+    [SerializeField] private float jumpForce = 10f;
+    [SerializeField] private bool IsHanging = false;
 
     void Start()
     {
