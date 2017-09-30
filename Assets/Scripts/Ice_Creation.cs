@@ -19,6 +19,11 @@ public class Ice_Creation : MonoBehaviour {
 
     void CreateIce()
     {
-        Instantiate(Ice,)
+        
+    }
+
+    void FindContactPointGround()
+    {
+
     }
 }
