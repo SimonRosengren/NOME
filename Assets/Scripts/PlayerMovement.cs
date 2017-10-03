@@ -54,7 +54,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (IsGrounded() && Input.GetButtonDown("Jump"))
         {
-            Debug.LogWarning("varning");
+            
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
         
