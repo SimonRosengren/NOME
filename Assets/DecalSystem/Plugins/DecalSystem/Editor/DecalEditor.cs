@@ -11,7 +11,7 @@ namespace _Decal {
         private string[] materialPaths;
         private Vector3 oldScale;
         private GameObject[] affectedObjects;
-
+        private GameObject Player;
 
         void OnEnable() {
             materialPaths = AssetDatabase.FindAssets( "decal t:Material" ).Select( GUID => AssetDatabase.GUIDToAssetPath( GUID ) ).ToArray();
@@ -74,38 +74,93 @@ namespace _Decal {
             string path = AssetDatabase.GetAssetPath( texture );
             return cachedSprites = AssetDatabase.LoadAllAssetsAtPath( path ).Select( i => i as Sprite ).Where( i => i != null ).ToArray();
         }
-        
-        
-        void OnSceneGUI() {
-            Decal decal = (Decal) target;
 
-            if (Event.current.control) {
-                HandleUtility.AddDefaultControl( GUIUtility.GetControlID( FocusType.Passive ) );
+
+        //void OnSceneGUI() {
+        //    Decal decal = (Decal) target;
+
+        //    if (Event.current.control) {
+        //        HandleUtility.AddDefaultControl( GUIUtility.GetControlID( FocusType.Passive ) );
+        //    }
+
+        //    if (Event.current.control && Event.current.type == EventType.MouseDown) {
+        //        Ray ray = HandleUtility.GUIPointToWorldRay( Event.current.mousePosition );
+        //        RaycastHit hit = new RaycastHit();
+        //        if (Physics.Raycast( ray, out hit, 50 )) {
+        //            decal.transform.position = hit.point;
+        //            decal.transform.forward = -hit.normal;
+        //        }
+        //    }
+
+
+        //    Vector3 scale = decal.transform.localScale;
+        //    Sprite sprite = decal.sprite;
+        //    if (sprite != null) {
+        //        float ratio = sprite.rect.width / sprite.rect.height;
+
+        //        if (!Mathf.Approximately( oldScale.x, scale.x )) {
+        //            scale.y = scale.x / ratio;
+        //        }
+        //        if (!Mathf.Approximately( oldScale.y, scale.y )) {
+        //            scale.x = scale.y * ratio;
+        //        }
+
+        //        if (!Mathf.Approximately( scale.x / scale.y, ratio )) {
+        //            scale.x = scale.y * ratio;
+        //        }
+        //    }
+        //    decal.transform.localScale = scale;
+        //    oldScale = scale;
+
+
+        //    if (decal.transform.hasChanged) {
+        //        decal.transform.hasChanged = false;
+        //        affectedObjects = DecalBuilder.BuildAndSetDirty( decal );
+        //    }
+        //}
+
+            
+
+        void OnSceneGUI()
+        {
+            Decal decal = (Decal)target;
+
+            Player = GameObject.Find("Player");
+
+            if (Event.current.control)
+            {
+                HandleUtility.AddDefaultControl(GUIUtility.GetControlID(FocusType.Passive));
             }
 
-            if (Event.current.control && Event.current.type == EventType.MouseDown) {
-                Ray ray = HandleUtility.GUIPointToWorldRay( Event.current.mousePosition );
+            //if (Event.current.control && Event.current.type == EventType.MouseDown)
+            //{
+                Ray ray = new Ray(Player.transform.position,Vector3.down);
                 RaycastHit hit = new RaycastHit();
-                if (Physics.Raycast( ray, out hit, 50 )) {
+                if (Physics.Raycast(ray, out hit, 50))
+                {
                     decal.transform.position = hit.point;
                     decal.transform.forward = -hit.normal;
                 }
-            }
+            //}
 
 
             Vector3 scale = decal.transform.localScale;
             Sprite sprite = decal.sprite;
-            if (sprite != null) {
+            if (sprite != null)
+            {
                 float ratio = sprite.rect.width / sprite.rect.height;
 
-                if (!Mathf.Approximately( oldScale.x, scale.x )) {
+                if (!Mathf.Approximately(oldScale.x, scale.x))
+                {
                     scale.y = scale.x / ratio;
                 }
-                if (!Mathf.Approximately( oldScale.y, scale.y )) {
+                if (!Mathf.Approximately(oldScale.y, scale.y))
+                {
                     scale.x = scale.y * ratio;
                 }
 
-                if (!Mathf.Approximately( scale.x / scale.y, ratio )) {
+                if (!Mathf.Approximately(scale.x / scale.y, ratio))
+                {
                     scale.x = scale.y * ratio;
                 }
             }
@@ -113,12 +168,12 @@ namespace _Decal {
             oldScale = scale;
 
 
-            if (decal.transform.hasChanged) {
+            if (decal.transform.hasChanged)
+            {
                 decal.transform.hasChanged = false;
-                affectedObjects = DecalBuilder.BuildAndSetDirty( decal );
+                affectedObjects = DecalBuilder.BuildAndSetDirty(decal);
             }
         }
-
 
 
     }

@@ -4,22 +4,23 @@ using UnityEngine;
 
 public class Ice_Creation : MonoBehaviour {
 
+    public GameObject ice;
 	// Use this for initialization
 	void Start () {
-		
+        
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButtonDown("Fire1"))
         {
-
+            CreateIce();
         }
 	}
 
     void CreateIce()
     {
-        
+        Instantiate(ice);
     }
 
     void FindContactPointGround()

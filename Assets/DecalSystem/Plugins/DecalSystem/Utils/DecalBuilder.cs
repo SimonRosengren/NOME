@@ -67,6 +67,8 @@ namespace _Decal {
             Vector3[] vertices = mesh.vertices;
             int[] triangles = mesh.triangles;
 
+            Debug.Log(@object);
+
             for (int i = 0; i < triangles.Length; i += 3) {
                 int i1 = triangles[i];
                 int i2 = triangles[i + 1];
@@ -78,6 +80,7 @@ namespace _Decal {
 
                 AddTriangle( builder, decal, v1, v2, v3 );
             }
+            
         }
 
 

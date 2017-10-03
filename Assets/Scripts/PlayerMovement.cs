@@ -14,9 +14,9 @@ public class PlayerMovement : MonoBehaviour
     //public float speed = 6f;
     //public float rotationSpeed = 200f;
     public float acceleration=10f;
-    public float maxspeed = 10f;
-    public float jumpForce = 10f;
-
+    public float maxspeed = 20f;
+    public float jumpForce = 70f;
+    public bool isGrounded = false;
     /*Movement vector*/
     float currentV;
     float currentH;
@@ -52,8 +52,9 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.LookRotation(velocityAxis);
         }
 
-        if (IsGrounded() && Input.GetButton("Jump"))
+        if (IsGrounded() && Input.GetButtonDown("Jump"))
         {
+            Debug.LogWarning("varning");
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
         
@@ -62,15 +63,7 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-
-    }
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -97,7 +90,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            if (Input.GetButton("Jump"))
+            if (Input.GetButtonDown("Jump"))
             {
                 playerRb.constraints = RigidbodyConstraints.None;
                 playerRb.constraints = RigidbodyConstraints.FreezeRotation;
@@ -171,6 +164,7 @@ public class PlayerMovement : MonoBehaviour
 
     bool IsGrounded()
     {
+        
         return Physics.Raycast(transform.position + new Vector3(0, 0.2f, 0), -transform.up, 0.3f);
     }
 

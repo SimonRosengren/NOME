@@ -24,7 +24,7 @@ namespace _Decal {
 
 
         void OnEnable() {
-            if (Application.isPlaying) enabled = false;
+            if (Application.isPlaying) enabled = true;
         }
 
         void Start() {
