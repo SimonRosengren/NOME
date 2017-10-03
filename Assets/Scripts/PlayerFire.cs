@@ -39,6 +39,7 @@ public class PlayerFire : MonoBehaviour {
                 matchLit = true;
                 newMatch = Instantiate(match, matchLocation.position, Quaternion.identity) as GameObject;
                 newMatch.transform.parent = matchLocation;
+                /*The fire should be dealt with in another way. Get top of match for transform instead of new empty object*/
                 ParticleSystem mPSystem = Instantiate(fireParticleSystem, firePosition.position, firePosition.rotation);
                 mPSystem.transform.parent = this.transform;
                 timer = 1;
