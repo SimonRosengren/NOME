@@ -11,6 +11,8 @@ public class PlayerMovementForce : MonoBehaviour {
     float currentV;
     float currentH;
 
+    bool pulling = false;
+
 
     [SerializeField] private Animator animator;
     [SerializeField] private float acceleration = 10f;
@@ -35,14 +37,22 @@ public class PlayerMovementForce : MonoBehaviour {
 
         Move(velocityAxis);
 
-        if (velocityAxis.magnitude > 0)
+        if (velocityAxis.magnitude > 0 && !pulling)
         {
             transform.rotation = Quaternion.LookRotation(velocityAxis);
         }
 
-        if (IsGrounded() && Input.GetButtonDown("Jump"))
+        if (IsGrounded() && Input.GetButtonDown("Jump") && !pulling)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+        if (Input.GetButtonDown("Grab") && !pulling)
+        {
+            TryGrab();
+        }
+        if (Input.GetKeyDown(KeyCode.K) && pulling)
+        {
+            TryLettingGo();
         }
         Limitvelocity();
 
@@ -129,5 +139,32 @@ public class PlayerMovementForce : MonoBehaviour {
     bool IsGrounded()
     {
         return Physics.Raycast(transform.position + new Vector3(0, 0.1f, 0), -transform.up, 0.5f);
+    }
+
+    void TryGrab()
+    {
+        RaycastHit hitObj;
+        Ray ray = new Ray(transform.position + new Vector3(0, 0.1f, 0), transform.forward);
+        Physics.Raycast(ray, out hitObj, 1);
+        
+        if (hitObj.transform.tag == "grabable")
+        {
+            pushableObject hitObjScript = hitObj.transform.GetComponent<pushableObject>();
+            hitObjScript.Grab(playerRb, hitObj.point);
+            pulling = true;
+        }
+    }
+    void TryLettingGo()
+    {
+        RaycastHit hitObj;
+        Ray ray = new Ray(transform.position + new Vector3(0, 0.1f, 0), transform.forward);
+        Physics.Raycast(ray, out hitObj, 1);
+
+        if (hitObj.transform.tag == "grabable")
+        {
+            pushableObject hitObjScript = hitObj.transform.GetComponent<pushableObject>();
+            hitObjScript.LetGo();
+            pulling = false;
+        }
     }
 }
