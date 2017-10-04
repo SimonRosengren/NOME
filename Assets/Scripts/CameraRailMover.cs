@@ -6,6 +6,7 @@ public class CameraRailMover : MonoBehaviour
 {
     public CameraRail rail;
     public Transform lookAt;
+    public Transform player;
 
     public bool smoothMove = true;
     public float moveSpeed = 5.0f;
@@ -24,12 +25,12 @@ public class CameraRailMover : MonoBehaviour
     {
         if (smoothMove)
         {
-            lastPosition = Vector3.Lerp(lastPosition, rail.ProjectPositionOnRail(lookAt.position), Time.deltaTime * moveSpeed);
+            lastPosition = Vector3.Lerp(lastPosition, rail.ProjectPositionOnRail(player.position), Time.deltaTime * moveSpeed);
             thisTransform.position = lastPosition;
         }
         else
         {
-            thisTransform.position = rail.ProjectPositionOnRail(lookAt.position);
+            thisTransform.position = rail.ProjectPositionOnRail(player.position);
         }
         thisTransform.LookAt(lookAt.position);
 

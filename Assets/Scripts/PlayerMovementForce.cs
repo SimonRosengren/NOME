@@ -10,7 +10,7 @@ public class PlayerMovementForce : MonoBehaviour {
     /*Movement vector*/
     float currentV;
     float currentH;
-
+    int multiplier = 15;
 
     [SerializeField] private Animator animator;
     [SerializeField] private float acceleration = 10f;
@@ -61,7 +61,7 @@ public class PlayerMovementForce : MonoBehaviour {
     {
         if (!IsHanging)
         {
-            playerRb.AddForce(velocityAxis.normalized * acceleration);
+            playerRb.AddForce(velocityAxis.normalized * acceleration * multiplier);
             animator.SetFloat("MoveSpeed", playerRb.velocity.magnitude);
         }
         else /*So we can jump while hanging. Will probably be switched to an animation*/
@@ -128,6 +128,6 @@ public class PlayerMovementForce : MonoBehaviour {
 
     bool IsGrounded()
     {
-        return Physics.Raycast(transform.position + new Vector3(0, 0.1f, 0), -transform.up, 0.5f);
+        return Physics.Raycast(transform.position + new Vector3(0, 0.3f, 0), -transform.up, 1);
     }
 }
