@@ -31,27 +31,27 @@ public class CameraRail : MonoBehaviour
         //}
 	}
 
-    public Vector3 ProjectPositionOnRail(Vector3 pos)
+    public Vector3 ProjectPositionOnRail(Vector3 player)
     {
-        int closestNodeIndex = GetClosestNode(pos);
+        int closestNodeIndex = GetClosestNode(player);
 
         if (closestNodeIndex == 0)
         {
-            return ProjectOnSegtment(nodes[0], nodes[1], pos);
+            return ProjectOnSegtment(nodes[0], nodes[1], player);
         }
         else if(closestNodeIndex == nodeCount - 1)
         {
-            return ProjectOnSegtment(nodes[nodeCount - 1], nodes[nodeCount - 2], pos);
+            return ProjectOnSegtment(nodes[nodeCount - 1], nodes[nodeCount - 2], player);
         }
         else
         {
-            Vector3 leftSeg = ProjectOnSegtment(nodes[closestNodeIndex - 1], nodes[closestNodeIndex], pos);
-            Vector3 rightSeg = ProjectOnSegtment(nodes[closestNodeIndex + 1], nodes[closestNodeIndex], pos);
+            Vector3 leftSeg = ProjectOnSegtment(nodes[closestNodeIndex - 1], nodes[closestNodeIndex], player);
+            Vector3 rightSeg = ProjectOnSegtment(nodes[closestNodeIndex + 1], nodes[closestNodeIndex], player);
 
-            Debug.DrawLine(pos, leftSeg, Color.red);
-            Debug.DrawLine(pos, rightSeg, Color.yellow);
+            Debug.DrawLine(player, leftSeg, Color.red);
+            Debug.DrawLine(player, rightSeg, Color.yellow);
 
-            if ((pos - leftSeg).sqrMagnitude <= (pos - rightSeg).sqrMagnitude)
+            if ((player - leftSeg).sqrMagnitude <= (player - rightSeg).sqrMagnitude)
             {
                 return leftSeg;
             }
