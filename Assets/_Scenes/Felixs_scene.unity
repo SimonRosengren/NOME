@@ -15,15 +15,15 @@ RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 8
   m_Fog: 1
-  m_FogColor: {r: 0.20225996, g: 0.31617647, b: 0.28317997, a: 1}
+  m_FogColor: {r: 0.18598615, g: 0.27134168, b: 0.29411763, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.02
+  m_FogDensity: 0.017
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_AmbientSkyColor: {r: 0.1397059, g: 0.09039793, b: 0.09039793, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 1
+  m_AmbientIntensity: 1.34
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: 8a36c6fd1e9342a4fbf7c95fcd8a752c, type: 2}
@@ -1211,6 +1211,7 @@ GameObject:
   - component: {fileID: 348527961}
   - component: {fileID: 348527962}
   - component: {fileID: 348527963}
+  - component: {fileID: 348527965}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -1372,7 +1373,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rail: {fileID: 969629068}
-  lookAt: {fileID: 1837411425}
+  lookAt: {fileID: 864110859}
   player: {fileID: 864110859}
   smoothMove: 1
   moveSpeed: 5
@@ -1456,6 +1457,27 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &348527965
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 348527955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32187365ced0c42219cde2b57c99b323, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  settings:
+    threshold: 0.9
+    softKnee: 0.927
+    radius: 5.69
+    intensity: 0.7
+    highQuality: 1
+    antiFlicker: 0
+    dirtTexture: {fileID: 2800000, guid: a2960ffde020f27409e070d92fb2e00b, type: 3}
+    dirtIntensity: 2.5
+  m_Shader: {fileID: 4800000, guid: e45d4f28262b04d10a075856ab5fdb5e, type: 3}
 --- !u!1001 &349157177
 Prefab:
   m_ObjectHideFlags: 0
@@ -6373,7 +6395,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 2
-  m_Color: {r: 0.04411763, g: 1, b: 0.9208925, a: 1}
+  m_Color: {r: 0.27595156, g: 0.85294116, b: 0.7242215, a: 1}
   m_Intensity: 0.51
   m_Range: 589.0544
   m_SpotAngle: 30
@@ -8507,19 +8529,19 @@ Prefab:
       objectReference: {fileID: 9100000, guid: 44a9e93b242188441b35a6a0b146b262, type: 2}
     - target: {fileID: 400062, guid: 89fb30a1a7a81274d8c3961311efd54b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.74420476
+      value: -0.7442048
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: 89fb30a1a7a81274d8c3961311efd54b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.16578424
+      value: 0.16578425
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: 89fb30a1a7a81274d8c3961311efd54b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.30434215
+      value: -0.30434218
       objectReference: {fileID: 0}
     - target: {fileID: 400062, guid: 89fb30a1a7a81274d8c3961311efd54b, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.5710085
+      value: 0.57100856
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 89fb30a1a7a81274d8c3961311efd54b, type: 3}
