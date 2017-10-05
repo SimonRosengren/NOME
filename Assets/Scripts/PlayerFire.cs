@@ -8,14 +8,14 @@ public class PlayerFire : MonoBehaviour {
     public ParticleSystem fireParticleSystem;
     private GameObject newMatch;
     public bool matchLit = false;
-    private Transform matchLocation;
+    public Transform matchLocation;
     private Transform firePosition;
     private float timer = 1;
     
 	// Use this for initialization
 	void Start () {
         
-        matchLocation = transform.Find("RightHand");
+        //matchLocation = transform.Find("RightHand");
         firePosition = transform.Find("FirePos");
 	}
 	

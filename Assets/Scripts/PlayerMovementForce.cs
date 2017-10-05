@@ -131,7 +131,7 @@ public class PlayerMovementForce : MonoBehaviour {
                 hangingPos = lastRayHitPoint;
             }
             playerRb.constraints = RigidbodyConstraints.FreezeAll;
-            transform.position = lastRayHitPoint - new Vector3(0, 0.0f, 0) - (transform.forward * 10);
+            transform.position = lastRayHitPoint - new Vector3(0, 0.0f, 0) - (transform.forward * 0.2f);
             animator.SetBool("IsHanging", true);
         }
     }
