@@ -32,6 +32,6 @@ public class pushableObject : MonoBehaviour {
     public void LetGo()
     {
         Destroy(hj);
-        mRigidBody.freezeRotation = false;
+        //mRigidBody.freezeRotation = false;
     }
 }
