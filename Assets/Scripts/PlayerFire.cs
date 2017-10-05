@@ -5,11 +5,9 @@ using UnityEngine;
 public class PlayerFire : MonoBehaviour {
 
     public GameObject match;
-    public ParticleSystem fireParticleSystem;
     private GameObject newMatch;
     public bool matchLit = false;
     [SerializeField] private Transform matchLocation;
-    [SerializeField] private Transform firePosition;
     private float timer = 1;
     
 	// Use this for initialization
