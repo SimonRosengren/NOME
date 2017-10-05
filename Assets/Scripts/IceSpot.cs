@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class IceSpot : MonoBehaviour {
     public PhysicMaterial mat;
+    public bool melting = false;
 	// Use this for initialization
 	void Start () {
         mat = (PhysicMaterial)Resources.Load("PhysicMaterial/NoFriction");
@@ -27,6 +28,18 @@ public class IceSpot : MonoBehaviour {
         if (other.tag == "Player")
         {
             other.material = null;
+        }
+    }
+    void SetFire()
+    {
+        melting = true;
+    }
+    void Melt()
+    {
+        gameObject.transform.localScale -= Vector3.one * Time.deltaTime * 1;
+        if (gameObject.transform.localScale.x < 0.1f)
+        {
+            Destroy(gameObject);
         }
     }
 }
