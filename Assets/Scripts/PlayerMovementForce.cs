@@ -19,21 +19,13 @@ public class PlayerMovementForce : MonoBehaviour
     float deathFadeSpeed = 2f;
     float timeToRespawn;
 
-    [SerializeField]
-    private Animator animator;
-    [SerializeField]
-    private float acceleration = 10f;
-    [SerializeField]
-    private float maxspeed = 10f;
-    [SerializeField]
-    private float jumpForce = 10f;
-    [SerializeField]
-    private bool IsHanging = false;
-    [SerializeField]
-    GameObject gameHandler;
-    [SerializeField]
-    Image deathImage;
-    [SerializeField]
+    [SerializeField] private Animator animator;
+    [SerializeField] private float acceleration = 10f;
+    [SerializeField] private float maxspeed = 10f;
+    [SerializeField] private float jumpForce = 10f;
+    [SerializeField] private bool IsHanging = false;
+    [SerializeField] GameObject gameHandler;
+    [SerializeField] Image deathImage;
     float deathTimer = 2f;
 
     GameLogic gameLogic;
