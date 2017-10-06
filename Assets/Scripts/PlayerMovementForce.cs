@@ -19,11 +19,14 @@ public class PlayerMovementForce : MonoBehaviour {
     [SerializeField] private float maxspeed = 10f;
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private bool IsHanging = false;
+    [SerializeField] GameObject gameHandler;
+    GameLogic gameLogic;
 
     void Awake()
     {
         playerRb = GetComponent<Rigidbody>();
         ledgegrabArea = GetComponentInChildren<LedgeCollsion>();
+        gameLogic = gameHandler.GetComponent<GameLogic>();
     }
 
     void FixedUpdate()
@@ -65,6 +68,14 @@ public class PlayerMovementForce : MonoBehaviour {
         {
             Climb();
         }
+        if (other.tag == "CheckPoint")
+        {
+            other.transform.GetComponent<CheckPoint>().SetAsLastCheckpoint();
+        }
+        if (other.tag == "DeathTrigger")
+        {
+            Die();
+        }
     }
 
 
@@ -96,6 +107,7 @@ public class PlayerMovementForce : MonoBehaviour {
             xzVel = xzVel.normalized * maxspeed;
             playerRb.velocity = new Vector3(xzVel.x, playerRb.velocity.y, xzVel.y);
         }
+        animator.SetFloat("MoveSpeed", xzVel.magnitude);
     }
 
     /*The method, which is triggered by entering a climbTrigger, will cast Rays higher and higher and stop 
@@ -135,6 +147,7 @@ public class PlayerMovementForce : MonoBehaviour {
         //    transform.position = lastRayHitPoint - new Vector3(0, 0.0f, 0) - (transform.forward * 0.2f);
         //    animator.SetBool("IsHanging", true);
         //}
+
     }
 
     bool IsGrounded()
@@ -167,5 +180,9 @@ public class PlayerMovementForce : MonoBehaviour {
             hitObjScript.LetGo();
             pulling = false;
         }
+    }
+    void Die()
+    {
+        transform.position = gameLogic.GetLastCheckPoint().position;
     }
 }
