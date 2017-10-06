@@ -8,7 +8,7 @@ public class FreezeGround : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
     {
-        ice = GameObject.Find("IceSpot");
+        //ice = GameObject.Find("IceSpot");
         timer = 1;
 	}
 	
@@ -22,7 +22,7 @@ public class FreezeGround : MonoBehaviour {
 
         if (Input.GetButton("Fire2") || Input.GetKey(KeyCode.V) && timer <= 0)
         {
-            Instantiate(ice, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.Euler(new Vector3(90, 0, 0)));
+            Instantiate(ice, new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z), Quaternion.Euler(new Vector3(90, 0, 0)));
             timer = 1;
         }
 		
