@@ -33,6 +33,8 @@ public class PlayerFire : MonoBehaviour {
                 Destroy(newMatch);
                 matchLit = false;
                 timer = 1;
+                fireParticleSystem.Stop();
+
             }
             else if(!matchLit)
             {
@@ -40,8 +42,9 @@ public class PlayerFire : MonoBehaviour {
                 newMatch = Instantiate(match, matchLocation.position, Quaternion.identity) as GameObject;
                 newMatch.transform.parent = matchLocation;
                 /*The fire should be dealt with in another way. Get top of match for transform instead of new empty object*/
-                ParticleSystem mPSystem = Instantiate(fireParticleSystem, firePosition.position, firePosition.rotation);
-                mPSystem.transform.parent = this.transform;
+                fireParticleSystem = Instantiate(fireParticleSystem, firePosition.position, firePosition.rotation);
+                //ParticleSystem mPSystem = Instantiate(fireParticleSystem, firePosition.position, firePosition.rotation);
+                fireParticleSystem.transform.parent = this.transform;
                 timer = 1;
             }
             
