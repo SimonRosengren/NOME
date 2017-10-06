@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CameraScript : MonoBehaviour {
+public class CameraScriptFree : MonoBehaviour {
 
     public GameObject Target;
     public Vector3 cameraOffset = new Vector3(0,10,-20);
