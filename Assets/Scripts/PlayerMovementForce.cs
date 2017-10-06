@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class PlayerMovementForce : MonoBehaviour {
@@ -12,7 +13,10 @@ public class PlayerMovementForce : MonoBehaviour {
     float currentH;
 
     bool pulling = false;
-
+    public bool isDead = false;
+    Color deathColor = new Color(1f, 1f, 1f, 1f);
+    float deathFadeSpeed = 2f;
+    float timeToRespawn;
 
     [SerializeField] private Animator animator;
     [SerializeField] private float acceleration = 10f;
@@ -20,6 +24,9 @@ public class PlayerMovementForce : MonoBehaviour {
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private bool IsHanging = false;
     [SerializeField] GameObject gameHandler;
+    [SerializeField] Image deathImage;
+    [SerializeField] float deathTimer = 2f;
+
     GameLogic gameLogic;
 
     void Awake()
@@ -59,6 +66,11 @@ public class PlayerMovementForce : MonoBehaviour {
         }
         Limitvelocity();
 
+        if (isDead)
+        {
+            handleDeath();
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -80,23 +92,25 @@ public class PlayerMovementForce : MonoBehaviour {
 
     void Move(Vector3 velocityAxis)
     {
-        if (!IsHanging)
+        if (!isDead)
         {
-            playerRb.AddForce(velocityAxis.normalized * acceleration);
-            animator.SetFloat("MoveSpeed", playerRb.velocity.magnitude);
-        }
-        else /*So we can jump while hanging. Will probably be switched to an animation*/
-        {
-            if (Input.GetButtonDown("Jump"))
+            if (!IsHanging)
             {
-                playerRb.constraints = RigidbodyConstraints.None;
-                playerRb.constraints = RigidbodyConstraints.FreezeRotation;
-                playerRb.AddForce(Vector3.up * 6, ForceMode.Impulse);
-                animator.SetBool("IsHanging", false);
-                IsHanging = false;
+                playerRb.AddForce(velocityAxis.normalized * acceleration);
+                animator.SetFloat("MoveSpeed", playerRb.velocity.magnitude);
+            }
+            else /*So we can jump while hanging. Will probably be switched to an animation*/
+            {
+                if (Input.GetButtonDown("Jump"))
+                {
+                    playerRb.constraints = RigidbodyConstraints.None;
+                    playerRb.constraints = RigidbodyConstraints.FreezeRotation;
+                    playerRb.AddForce(Vector3.up * 6, ForceMode.Impulse);
+                    animator.SetBool("IsHanging", false);
+                    IsHanging = false;
+                }
             }
         }
-
     }
     void Limitvelocity()
     {
@@ -181,6 +195,18 @@ public class PlayerMovementForce : MonoBehaviour {
     }
     void Die()
     {
-        transform.position = gameLogic.GetLastCheckPoint().position;
+        isDead = true;
+        timeToRespawn = deathTimer;
+    }
+    void handleDeath()
+    {
+        timeToRespawn -= Time.deltaTime;
+        deathImage.color = Color.Lerp(deathImage.color, Color.black, deathFadeSpeed * Time.deltaTime);
+        if (timeToRespawn <= 0)
+        {
+            isDead = false;
+            transform.position = gameLogic.GetLastCheckPoint().position;
+            deathImage.color = Color.clear;
+        }
     }
 }
