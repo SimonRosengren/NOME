@@ -5,15 +5,18 @@ using UnityEngine;
 public class PlayerFire : MonoBehaviour {
 
     public GameObject match;
+    public ParticleSystem fireParticleSystem;
     private GameObject newMatch;
     public bool matchLit = false;
-    [SerializeField] private Transform matchLocation;
+    public Transform matchLocation;
+    private Transform firePosition;
     private float timer = 1;
     
 	// Use this for initialization
 	void Start () {
         
         //matchLocation = transform.Find("RightHand");
+        firePosition = transform.Find("FirePos");
 	}
 	
 	// Update is called once per frame
@@ -30,12 +33,18 @@ public class PlayerFire : MonoBehaviour {
                 Destroy(newMatch);
                 matchLit = false;
                 timer = 1;
+                fireParticleSystem.Stop();
+
             }
             else if(!matchLit)
             {
                 matchLit = true;
                 newMatch = Instantiate(match, matchLocation.position, Quaternion.identity) as GameObject;
                 newMatch.transform.parent = matchLocation;
+                /*The fire should be dealt with in another way. Get top of match for transform instead of new empty object*/
+                fireParticleSystem = Instantiate(fireParticleSystem, firePosition.position, firePosition.rotation);
+                //ParticleSystem mPSystem = Instantiate(fireParticleSystem, firePosition.position, firePosition.rotation);
+                fireParticleSystem.transform.parent = this.transform;
                 timer = 1;
             }
             
