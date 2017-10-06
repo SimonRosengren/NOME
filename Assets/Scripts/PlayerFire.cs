@@ -54,9 +54,12 @@ public class PlayerFire : MonoBehaviour {
 	}
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "flammable" || other.tag == "ice")
+        if (matchLit)
         {
-            other.SendMessageUpwards("SetFire");
-        }
+                if (other.tag == "flammable" || other.tag == "ice")
+            {
+                other.SendMessageUpwards("SetFire");
+            }
+        }  
     }
 }
