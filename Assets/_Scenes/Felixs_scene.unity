@@ -216,6 +216,60 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 09bd65c7b7c8ef24d8788c5dd7cb36a2, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &16738350 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 100000, guid: 56c923671af93104b933809c9fa41ea7, type: 3}
+  m_PrefabInternal: {fileID: 2123718825}
+--- !u!136 &16738351
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 16738350}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.23880383
+  m_Height: 1.1677694
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.56, z: 0}
+--- !u!54 &16738352
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 16738350}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
+--- !u!95 &16738353 stripped
+Animator:
+  m_PrefabParentObject: {fileID: 9500000, guid: 56c923671af93104b933809c9fa41ea7,
+    type: 3}
+  m_PrefabInternal: {fileID: 2123718825}
+--- !u!114 &16738355
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 16738350}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f891cff1c43114ebe8edb5dc7f0e78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 16738353}
+  acceleration: 200
+  maxspeed: 5
+  jumpForce: 10
+  IsHanging: 0
+  gameHandler: {fileID: 463149764}
 --- !u!1001 &17661515
 Prefab:
   m_ObjectHideFlags: 0
@@ -270,34 +324,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &23385736
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100086, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 23385737}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_LeftShoulderEffector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &23385737
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400086, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 23385736}
-  m_LocalRotation: {x: 0.8268315, y: -0.562019, z: 0.02088306, w: 0.0069438973}
-  m_LocalPosition: {x: -0.098265655, y: 0.36833298, z: -0.019730559}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1271626465}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &24834100
 Prefab:
   m_ObjectHideFlags: 0
@@ -422,35 +448,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
   m_PrefabInternal: {fileID: 412160905}
---- !u!1 &39151751
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100170, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 39151752}
-  m_Layer: 0
-  m_Name: TomteRig_RightUpLeg
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &39151752
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400170, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 39151751}
-  m_LocalRotation: {x: 0.009142102, y: 0.037081566, z: -0.158868, w: 0.9865609}
-  m_LocalPosition: {x: -0.014118761, y: 0.003322655, z: -0.055451505}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 949363682}
-  m_Father: {fileID: 1411523084}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &44088366
 Prefab:
   m_ObjectHideFlags: 0
@@ -509,34 +506,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &63129748
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100026, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 63129749}
-  m_Layer: 0
-  m_Name: RightArm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &63129749
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400026, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 63129748}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.097733125, y: 0.36815855, z: -0.01899206}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 157565304}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &63684468 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 09bd65c7b7c8ef24d8788c5dd7cb36a2, type: 3}
@@ -665,34 +634,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
   m_PrefabInternal: {fileID: 30331758}
---- !u!1 &93810806
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100044, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 93810807}
-  m_Layer: 0
-  m_Name: Spine1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &93810807
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400044, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 93810806}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0005325317, y: 0.3009609, z: -0.0037788549}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 157565304}
-  m_RootOrder: 21
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &101380025
 Prefab:
   m_ObjectHideFlags: 0
@@ -837,35 +778,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 09bd65c7b7c8ef24d8788c5dd7cb36a2, type: 3}
   m_PrefabInternal: {fileID: 1552997772}
---- !u!1 &118996417
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100172, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 118996418}
-  m_Layer: 0
-  m_Name: TomteRig_Spine
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &118996418
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400172, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 118996417}
-  m_LocalRotation: {x: 0, y: 0, z: 0.022082714, w: 0.99975616}
-  m_LocalPosition: {x: -0.025019042, y: 0.000000021480188, z: -0.0000000036468342}
-  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
-  m_Children:
-  - {fileID: 289413302}
-  m_Father: {fileID: 1411523084}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &120288971 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
@@ -932,57 +844,77 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &157565303
+--- !u!1 &162864205
 GameObject:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100130, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 5
   m_Component:
-  - component: {fileID: 157565304}
+  - component: {fileID: 162864206}
+  - component: {fileID: 162864208}
+  - component: {fileID: 162864207}
   m_Layer: 0
-  m_Name: TomteRig_Guides
+  m_Name: Terrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
---- !u!4 &157565304
+--- !u!4 &162864206
 Transform:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400130, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 157565303}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.35430956, y: -0.6457357, z: 0.32368544}
-  m_LocalScale: {x: 3.662827, y: 3.6628263, z: 3.6628263}
-  m_Children:
-  - {fileID: 1287186876}
-  - {fileID: 1788720109}
-  - {fileID: 532700748}
-  - {fileID: 270184564}
-  - {fileID: 740377665}
-  - {fileID: 836275738}
-  - {fileID: 1184446867}
-  - {fileID: 930184898}
-  - {fileID: 774273099}
-  - {fileID: 926417362}
-  - {fileID: 639299686}
-  - {fileID: 732323075}
-  - {fileID: 63129749}
-  - {fileID: 667344546}
-  - {fileID: 1669187979}
-  - {fileID: 1326250023}
-  - {fileID: 1388233727}
-  - {fileID: 333112481}
-  - {fileID: 762328505}
-  - {fileID: 1100715666}
-  - {fileID: 1080047798}
-  - {fileID: 93810807}
-  - {fileID: 1483119671}
-  m_Father: {fileID: 864110859}
-  m_RootOrder: 2
+  m_GameObject: {fileID: 162864205}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1183168755}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!154 &162864207
+TerrainCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 162864205}
+  m_Material: {fileID: 0}
+  m_Enabled: 1
+  m_TerrainData: {fileID: 15600000, guid: 945edc63b23318e44aa2ddb3816dc22e, type: 2}
+  m_EnableTreeColliders: 1
+--- !u!218 &162864208
+Terrain:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 162864205}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_TerrainData: {fileID: 15600000, guid: 945edc63b23318e44aa2ddb3816dc22e, type: 2}
+  m_TreeDistance: 2000
+  m_TreeBillboardDistance: 50
+  m_TreeCrossFadeLength: 5
+  m_TreeMaximumFullLODCount: 50
+  m_DetailObjectDistance: 80
+  m_DetailObjectDensity: 1
+  m_HeightmapPixelError: 5
+  m_SplatMapDistance: 1000
+  m_HeightmapMaximumLOD: 0
+  m_CastShadows: 1
+  m_DrawHeightmap: 1
+  m_DrawTreesAndFoliage: 1
+  m_ReflectionProbeUsage: 1
+  m_MaterialType: 3
+  m_LegacySpecular:
+    serializedVersion: 2
+    rgba: 4286545791
+  m_LegacyShininess: 0.078125
+  m_MaterialTemplate: {fileID: 2100000, guid: f4a66d5c7bbc9cc4a90c0e5069b8bc97, type: 2}
+  m_BakeLightProbesForTrees: 0
+  m_ScaleInLightmap: 0.0512
+  m_LightmapParameters: {fileID: 15203, guid: 0000000000000000f000000000000000, type: 0}
 --- !u!1001 &164543285
 Prefab:
   m_ObjectHideFlags: 0
@@ -1090,7 +1022,7 @@ Transform:
   - {fileID: 1116797814}
   - {fileID: 1702468469}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 16.494001, z: 0}
 --- !u!1001 &200765410
 Prefab:
@@ -1197,36 +1129,8 @@ Transform:
   - {fileID: 714386865}
   - {fileID: 923083224}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: -68.638, z: 0}
---- !u!1 &212644915
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100054, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 212644916}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_ChestOriginEffector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &212644916
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400054, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 212644915}
-  m_LocalRotation: {x: 1.9081958e-16, y: -1.1089266e-16, z: -2.1668083e-16, w: 1}
-  m_LocalPosition: {x: -0, y: 0.2761626, z: -0.003309446}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1271626465}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &247312067 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
@@ -1235,148 +1139,6 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
   m_PrefabInternal: {fileID: 1604495796}
---- !u!1 &270184563
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100006, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 270184564}
-  m_Layer: 0
-  m_Name: LeftFoot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &270184564
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400006, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 270184563}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.051655382, y: 0.04443117, z: -0.0011411862}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 157565304}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &279235682
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100092, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 279235683}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_Neck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &279235683
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400092, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 279235682}
-  m_LocalRotation: {x: -0.02972486, y: 1.0784906e-16, z: -4.2686585e-16, w: 0.99955815}
-  m_LocalPosition: {x: -0, y: 0.08970486, z: 0.0027483725}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1828166058}
-  m_Father: {fileID: 1944082523}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &289413301
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100174, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 289413302}
-  m_Layer: 0
-  m_Name: TomteRig_Spine1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &289413302
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400174, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 289413301}
-  m_LocalRotation: {x: 0, y: -0, z: -0.19376169, w: 0.98104864}
-  m_LocalPosition: {x: -0.025001919, y: 0.0000000047858224, z: -0.0000000039068144}
-  m_LocalScale: {x: 1.0000002, y: 1.0000001, z: 1.0000001}
-  m_Children:
-  - {fileID: 1126239512}
-  m_Father: {fileID: 118996418}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &320808623
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100076, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 320808624}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_LeftHand
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &320808624
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400076, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 320808623}
-  m_LocalRotation: {x: -0.42539293, y: -0.0000007382432, z: -0.0000008530235, w: 0.90500873}
-  m_LocalPosition: {x: -0.105265826, y: 0, z: 2.220446e-18}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2143012165}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &323921824
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100112, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 323921825}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_RightKneeEffector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &323921825
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400112, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 323921824}
-  m_LocalRotation: {x: 0.019464746, y: 0.030376056, z: -0.009258914, w: 0.99930614}
-  m_LocalPosition: {x: 0.0525605, y: 0.11756148, z: 0.00092002645}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1271626465}
-  m_RootOrder: 15
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &330331280
 Prefab:
   m_ObjectHideFlags: 0
@@ -1439,34 +1201,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 0b50bbc94498d274d904f31d37fce435, type: 3}
   m_PrefabInternal: {fileID: 695706835}
---- !u!1 &333112480
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100036, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 333112481}
-  m_Layer: 0
-  m_Name: RightShoulder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &333112481
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400036, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 333112480}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.03356215, y: 0.36247924, z: -0.01899206}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 157565304}
-  m_RootOrder: 17
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &334166251
 Prefab:
   m_ObjectHideFlags: 0
@@ -1587,34 +1321,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &340485142
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100118, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 340485143}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_RightShoulderEffector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &340485143
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400118, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 340485142}
-  m_LocalRotation: {x: 0.019226706, y: -0.010786315, z: 0.91835666, w: 0.39513928}
-  m_LocalPosition: {x: 0.098265655, y: 0.36833298, z: -0.019730559}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1271626465}
-  m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &348527955
 GameObject:
   m_ObjectHideFlags: 0
@@ -1634,6 +1340,7 @@ GameObject:
   - component: {fileID: 348527963}
   - component: {fileID: 348527966}
   - component: {fileID: 348527967}
+  - component: {fileID: 348527968}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -1709,7 +1416,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -9.616, y: -35.248, z: -0.324}
 --- !u!114 &348527961
 MonoBehaviour:
@@ -1795,8 +1502,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rail: {fileID: 969629068}
-  lookAt: {fileID: 864110859}
-  player: {fileID: 864110859}
+  lookAt: {fileID: 0}
+  player: {fileID: 0}
   smoothMove: 1
   moveSpeed: 5
 --- !u!82 &348527964
@@ -2073,6 +1780,22 @@ MonoBehaviour:
     type: 3}
   _frameBlendingShader: {fileID: 4800000, guid: 83da3aecb8b462f498946f5198cbd58e,
     type: 3}
+--- !u!114 &348527968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 348527955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 559330cb062747c4d828e9209d3f484f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rail: {fileID: 0}
+  lookAt: {fileID: 0}
+  player: {fileID: 0}
+  smoothMove: 1
+  moveSpeed: 5
 --- !u!1001 &349157177
 Prefab:
   m_ObjectHideFlags: 0
@@ -2127,34 +1850,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 35a75646ead3f4c4fbf37062e146f018, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &354560083
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100080, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 354560084}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_LeftKneeEffector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &354560084
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400080, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 354560083}
-  m_LocalRotation: {x: 0.019773668, y: -0.06337388, z: 0.008731088, w: 0.99775577}
-  m_LocalPosition: {x: -0.05257816, y: 0.11756128, z: 0.00092090905}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1271626465}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &363267058 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 0b50bbc94498d274d904f31d37fce435, type: 3}
@@ -2275,53 +1970,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &392994624
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100048, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 392994626}
-  - component: {fileID: 392994625}
-  m_Layer: 0
-  m_Name: TestGnomeTextured
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!95 &392994625
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 9500000, guid: 1c7263e8ff6cb4041b14941c3e03fd34,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 392994624}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!4 &392994626
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400048, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 392994624}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 89.34376, y: 0, z: 80.40051}
-  m_LocalScale: {x: 5.640304, y: 5.640304, z: 5.640304}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &395104869 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
@@ -2438,152 +2086,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &414216515
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100110, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 414216516}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_RightHipEffector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &414216516
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400110, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 414216515}
-  m_LocalRotation: {x: -0.0028918718, y: 0.0015939983, z: -0.009788747, w: 0.99994665}
-  m_LocalPosition: {x: 0.055451438, y: 0.26527625, z: 0.000058546066}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1271626465}
-  m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &429928351
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100084, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 429928352}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_LeftShoulder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &429928352
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400084, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 429928351}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.03409468, y: 0.036545638, z: -0.014005301}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 793850316}
-  m_Father: {fileID: 1944082523}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &432851219 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
   m_PrefabInternal: {fileID: 770186113}
---- !u!1 &440764138
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100096, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 440764139}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_RightAnkleEffector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &440764139
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400096, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 440764138}
-  m_LocalRotation: {x: 0.9317851, y: 0.035227668, z: -0.039338786, w: 0.35914904}
-  m_LocalPosition: {x: 0.068870984, y: 0.147505, z: -0.150954}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1271626465}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &441348621
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100070, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 441348622}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_LeftFoot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &441348622
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400070, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 441348621}
-  m_LocalRotation: {x: -0.018583741, y: -0.038621895, z: -0.044361167, w: 0.99809575}
-  m_LocalPosition: {x: -0, y: -0.07302386, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1987801468}
-  m_Father: {fileID: 535601099}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &442556797
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100142, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 442556798}
-  m_Layer: 0
-  m_Name: TomteRig_LeftHand
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &442556798
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400142, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 442556797}
-  m_LocalRotation: {x: -0.42539293, y: -0.0000009986255, z: 0.0000008052202, w: 0.90500873}
-  m_LocalPosition: {x: -0.10526583, y: -0.00000002896533, z: -0.000000020384295}
-  m_LocalScale: {x: 1.0000005, y: 1.0000004, z: 1.0000002}
-  m_Children: []
-  m_Father: {fileID: 1975844601}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &450773384
 Prefab:
   m_ObjectHideFlags: 0
@@ -2754,6 +2260,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 35a75646ead3f4c4fbf37062e146f018, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &463149764 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1510603244645596, guid: df37d197beb2e9f499b80db6993d8869,
+    type: 2}
+  m_PrefabInternal: {fileID: 1647924202}
 --- !u!1001 &476394191
 Prefab:
   m_ObjectHideFlags: 0
@@ -2816,152 +2327,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 35a75646ead3f4c4fbf37062e146f018, type: 3}
   m_PrefabInternal: {fileID: 349157177}
---- !u!1 &499006701
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100102, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 499006702}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_RightFoot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &499006702
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400102, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 499006701}
-  m_LocalRotation: {x: -0.019406078, y: 0.01932813, z: 0.026975622, w: 0.99926084}
-  m_LocalPosition: {x: -0, y: -0.07302386, z: 1.3877787e-19}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1827507107}
-  m_Father: {fileID: 1311338952}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &510828567
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100060, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 510828568}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_Hips
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &510828568
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400060, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 510828567}
-  m_LocalRotation: {x: 3.6368307e-16, y: 1.6653345e-16, z: 5.551115e-17, w: 1}
-  m_LocalPosition: {x: -0, y: 0.25114378, z: -0.003205309}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 858779553}
-  - {fileID: 1984644236}
-  - {fileID: 1948884592}
-  m_Father: {fileID: 1271626465}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &532700747
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100004, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 532700748}
-  m_Layer: 0
-  m_Name: LeftArm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &532700748
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400004, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 532700747}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.098798186, y: 0.36815855, z: -0.01899206}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 157565304}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &535601098
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100082, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 535601099}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_LeftLeg
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &535601099
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400082, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 535601098}
-  m_LocalRotation: {x: 0.022091553, y: -0.0579675, z: -0.0012827325, w: 0.9980732}
-  m_LocalPosition: {x: 8.881784e-18, y: -0.14774527, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 441348622}
-  m_Father: {fileID: 858779553}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &542745319
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100166, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 542745320}
-  m_Layer: 0
-  m_Name: TomteRig_RightShoulder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &542745320
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400166, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 542745319}
-  m_LocalRotation: {x: 0.46940893, y: 0.5288244, z: -0.51420134, w: 0.48538333}
-  m_LocalPosition: {x: -0.036099587, y: -0.015117889, z: -0.034094702}
-  m_LocalScale: {x: 0.99999994, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1173385419}
-  m_Father: {fileID: 1126239512}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &575180886 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 7b7037ced12d7cb42b816d19eda4d4ef, type: 3}
@@ -3036,35 +2401,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7b7037ced12d7cb42b816d19eda4d4ef, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &607665797
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100152, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 607665798}
-  m_Layer: 0
-  m_Name: TomteRig_Neck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &607665798
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400152, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 607665797}
-  m_LocalRotation: {x: 0, y: -0, z: -0.038629394, w: 0.99925363}
-  m_LocalPosition: {x: -0.08974697, y: -0.000000022341563, z: -0.000000013531057}
-  m_LocalScale: {x: 1.0000002, y: 1.0000001, z: 1.0000001}
-  m_Children:
-  - {fileID: 1092239812}
-  m_Father: {fileID: 1126239512}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &625402963
 GameObject:
   m_ObjectHideFlags: 0
@@ -3093,7 +2429,7 @@ Transform:
   m_LocalScale: {x: 17.52776, y: 17.527767, z: 17.527767}
   m_Children: []
   m_Father: {fileID: 1183168755}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!199 &625402965
 ParticleSystemRenderer:
@@ -6545,34 +5881,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b50bbc94498d274d904f31d37fce435, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &639299685
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100020, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 639299686}
-  m_Layer: 0
-  m_Name: Neck
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &639299686
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400020, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 639299685}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0005325317, y: 0.41563845, z: -0.002238388}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 157565304}
-  m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &643775919 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
@@ -6635,34 +5943,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
   m_PrefabInternal: {fileID: 44088366}
---- !u!1 &667344545
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100028, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 667344546}
-  m_Layer: 0
-  m_Name: RightFoot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &667344546
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400028, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 667344545}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.050590318, y: 0.04443117, z: -0.0011411862}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 157565304}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &680124740 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 0b50bbc94498d274d904f31d37fce435, type: 3}
@@ -6779,35 +6059,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0b50bbc94498d274d904f31d37fce435, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &696386516
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100158, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 696386517}
-  m_Layer: 0
-  m_Name: TomteRig_RightFoot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &696386517
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400158, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 696386516}
-  m_LocalRotation: {x: -0.02015627, y: -0.062174864, z: 0.2811621, w: 0.9574319}
-  m_LocalPosition: {x: 0.07302383, y: -8.4785845e-11, z: 0.0000000067194676}
-  m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
-  m_Children:
-  - {fileID: 1644229431}
-  m_Father: {fileID: 949363682}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &710604328
 Prefab:
   m_ObjectHideFlags: 0
@@ -6874,90 +6125,6 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 35a75646ead3f4c4fbf37062e146f018, type: 3}
   m_PrefabInternal: {fileID: 1934715784}
---- !u!1 &732323074
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100024, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 732323075}
-  m_Layer: 0
-  m_Name: Reference
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &732323075
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400024, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 732323074}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0005325317, y: -0.00017442703, z: 0.0007384968}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 157565304}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &740377664
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100008, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 740377665}
-  m_Layer: 0
-  m_Name: LeftForeArm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &740377665
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400008, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 740377664}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.14864276, y: 0.32825992, z: -0.021624446}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 157565304}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &762328504
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100038, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 762328505}
-  m_Layer: 0
-  m_Name: RightToeBase
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &762328505
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400038, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 762328504}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.05765847, y: 0.020691294, z: 0.061171487}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 157565304}
-  m_RootOrder: 18
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &770186113
 Prefab:
   m_ObjectHideFlags: 0
@@ -7020,105 +6187,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 35a75646ead3f4c4fbf37062e146f018, type: 3}
   m_PrefabInternal: {fileID: 686712589}
---- !u!1 &774162505
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100022, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 774162506}
-  - component: {fileID: 774162508}
-  - component: {fileID: 774162507}
-  m_Layer: 0
-  m_Name: pCube1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &774162506
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400022, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 774162505}
-  m_LocalRotation: {x: -0.0041811178, y: 0, z: -0, w: 0.9999913}
-  m_LocalPosition: {x: 0.0005325317, y: 0.073763505, z: -0.090285435}
-  m_LocalScale: {x: 17.62912, y: 22.856283, z: 6.0928073}
-  m_Children: []
-  m_Father: {fileID: 1831695070}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &774162507
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 2300000, guid: 1c7263e8ff6cb4041b14941c3e03fd34,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 774162505}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: 9438cb5a4675e65409f019ff4d53e9cc, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
---- !u!33 &774162508
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 3300000, guid: 1c7263e8ff6cb4041b14941c3e03fd34,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 774162505}
-  m_Mesh: {fileID: 4300002, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
---- !u!1 &774273098
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100016, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 774273099}
-  m_Layer: 0
-  m_Name: LeftToeBase
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &774273099
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400016, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 774273098}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.066288434, y: 0.020691294, z: 0.061171487}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 157565304}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &783854681 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 7b7037ced12d7cb42b816d19eda4d4ef, type: 3}
@@ -7189,35 +6257,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 09bd65c7b7c8ef24d8788c5dd7cb36a2, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &793850315
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100066, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 793850316}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_LeftArm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &793850316
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400066, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 793850315}
-  m_LocalRotation: {x: 0.01372401, y: -0.017203841, z: 0.24215272, w: 0.9699885}
-  m_LocalPosition: {x: -0.06417097, y: 0.005679321, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 2143012165}
-  m_Father: {fileID: 429928352}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &805612421 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 09bd65c7b7c8ef24d8788c5dd7cb36a2, type: 3}
@@ -7276,62 +6315,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb689a9b11b6e98498c23188fdbd7b8d, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &836275737
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100010, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 836275738}
-  m_Layer: 0
-  m_Name: LeftHand
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &836275738
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400010, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 836275737}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.22920516, y: 0.2607609, z: -0.015753033}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 157565304}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &836856917
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100162, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 836856918}
-  m_Layer: 0
-  m_Name: TomteRig_RightHand
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &836856918
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400162, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 836856917}
-  m_LocalRotation: {x: -0.45678058, y: -0.00000033374053, z: 0.00000064995913, w: 0.8895794}
-  m_LocalPosition: {x: 0.105265886, y: 0.000000014441142, z: -0.000000048676693}
-  m_LocalScale: {x: 1.0000004, y: 1.0000001, z: 1.0000001}
-  m_Children: []
-  m_Father: {fileID: 1459042191}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &839466964
 Prefab:
   m_ObjectHideFlags: 0
@@ -7444,320 +6427,8 @@ Transform:
   - {fileID: 120288971}
   - {fileID: 1559895754}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: -153.82901, z: 0}
---- !u!1 &858779552
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100090, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 858779553}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_LeftUpLeg
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &858779553
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400090, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 858779552}
-  m_LocalRotation: {x: -0.0028938123, y: -0.0056326217, z: 0.009740322, w: 0.9999325}
-  m_LocalPosition: {x: -0.055451438, y: 0.0141324615, z: 0.003263855}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 535601099}
-  m_Father: {fileID: 510828568}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &863282858
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100136, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 863282859}
-  m_Layer: 0
-  m_Name: TomteRig_LeftArm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &863282859
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400136, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 863282858}
-  m_LocalRotation: {x: 0.68789446, y: 0.18959802, z: 0.213049, w: 0.6674309}
-  m_LocalPosition: {x: -0.064421825, y: 0.000000054572773, z: -0.000000009763167}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1975844601}
-  m_Father: {fileID: 1591174330}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &863302875
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100104, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 863302876}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_RightFootEffector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &863302876
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400104, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 863302875}
-  m_LocalRotation: {x: 0.0010561101, y: 0.04932292, z: 0.01867053, w: 0.9986078}
-  m_LocalPosition: {x: 0.05819101, y: 0.02086568, z: 0.06043304}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1271626465}
-  m_RootOrder: 13
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &864110854
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100022, guid: 89fb30a1a7a81274d8c3961311efd54b, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 864110859}
-  - component: {fileID: 864110858}
-  - component: {fileID: 864110857}
-  - component: {fileID: 864110856}
-  - component: {fileID: 864110861}
-  - component: {fileID: 864110855}
-  - component: {fileID: 864110860}
-  m_Layer: 0
-  m_Name: TomteMEsh:TomteParts4
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &864110855
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 864110854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38f891cff1c43114ebe8edb5dc7f0e78, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 864110858}
-  acceleration: 400
-  maxspeed: 5
-  jumpForce: 30
-  IsHanging: 0
---- !u!136 &864110856
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 864110854}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2.071922
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.9, z: 0}
---- !u!54 &864110857
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 864110854}
-  serializedVersion: 2
-  m_Mass: 3
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
---- !u!95 &864110858
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 9500000, guid: 89fb30a1a7a81274d8c3961311efd54b,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 864110854}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 89fb30a1a7a81274d8c3961311efd54b, type: 3}
-  m_Controller: {fileID: 9100000, guid: 44a9e93b242188441b35a6a0b146b262, type: 2}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
---- !u!4 &864110859
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400022, guid: 89fb30a1a7a81274d8c3961311efd54b, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 864110854}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 89.88935, y: 0.9943539, z: 79.90208}
-  m_LocalScale: {x: 1.5398774, y: 1.5398777, z: 1.5398777}
-  m_Children:
-  - {fileID: 1734339068}
-  - {fileID: 1271626465}
-  - {fileID: 157565304}
-  - {fileID: 1847454949}
-  - {fileID: 2094228572}
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &864110860
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 864110854}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 981a9915f481a89429e9046386af1fcd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  match: {fileID: 1740234115685786, guid: 22c07456e9bff8848b12af1413f75088, type: 2}
-  fireParticleSystem: {fileID: 198157072754648184, guid: d322ed52aed0f014cbdcb90f0ab5883f,
-    type: 2}
-  matchLit: 0
-  matchLocation: {fileID: 0}
---- !u!82 &864110861
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 864110854}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 243133872783481902, guid: 4a1f461290c1aa04b9dabca0cdc7f49c,
-    type: 2}
-  m_audioClip: {fileID: 8300000, guid: 6effdfe6380ecd04da00d3db1847df53, type: 3}
-  m_PlayOnAwake: 1
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 1
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1.76
-  MinDistance: 3.1349564
-  MaxDistance: 5.905487
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    - serializedVersion: 2
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 0.119444445
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 2
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 0
---- !u!1 &866371471
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100108, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 866371472}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_RightHand
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &866371472
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400108, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 866371471}
-  m_LocalRotation: {x: -0.4567806, y: 0.00000055932975, z: 0.00000036493034, w: 0.88957936}
-  m_LocalPosition: {x: 0.105265826, y: -0.000000038146972, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1326868259}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &869029629
 Prefab:
   m_ObjectHideFlags: 0
@@ -8021,95 +6692,10 @@ Light:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 09bd65c7b7c8ef24d8788c5dd7cb36a2, type: 3}
   m_PrefabInternal: {fileID: 1995131773}
---- !u!1 &926417361
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100018, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 926417362}
-  m_Layer: 0
-  m_Name: LeftUpLeg
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &926417362
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400018, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 926417361}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.05598397, y: 0.26510182, z: 0.00079704286}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 157565304}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &930184897
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100014, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 930184898}
-  m_Layer: 0
-  m_Name: LeftShoulder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &930184898
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400014, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 930184897}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.034627214, y: 0.36247924, z: -0.01899206}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 157565304}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &941212210 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
   m_PrefabInternal: {fileID: 127749629}
---- !u!1 &949363681
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100164, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 949363682}
-  m_Layer: 0
-  m_Name: TomteRig_RightLeg
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &949363682
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400164, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 949363681}
-  m_LocalRotation: {x: 0.024527805, y: -0.016784929, z: -0.564551, w: 0.8248629}
-  m_LocalPosition: {x: 0.14774533, y: 0.0000015613997, z: 0.000000012792584}
-  m_LocalScale: {x: 1, y: 0.99999994, z: 1}
-  m_Children:
-  - {fileID: 696386517}
-  m_Father: {fileID: 39151752}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &969629067
 GameObject:
   m_ObjectHideFlags: 0
@@ -8148,7 +6734,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &970025344 stripped
 Transform:
@@ -8426,62 +7012,6 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 0b50bbc94498d274d904f31d37fce435, type: 3}
   m_PrefabInternal: {fileID: 101380025}
---- !u!1 &1077020905
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100052, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1077020906}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_ChestEndEffector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1077020906
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400052, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1077020905}
-  m_LocalRotation: {x: 0.54130524, y: 0.8234923, z: -0.12633061, w: 0.11353262}
-  m_LocalPosition: {x: -0, y: 0.36265364, z: -0.019730559}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1271626465}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1080047797
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100042, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1080047798}
-  m_Layer: 0
-  m_Name: Spine
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1080047798
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400042, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1080047797}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0005325317, y: 0.27598816, z: -0.002570949}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 157565304}
-  m_RootOrder: 20
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1082505762 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
@@ -8515,92 +7045,7 @@ Transform:
   - {fileID: 919342343}
   - {fileID: 1952248550}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1092239811
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100132, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1092239812}
-  m_Layer: 0
-  m_Name: TomteRig_Head
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1092239812
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400132, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1092239811}
-  m_LocalRotation: {x: 0, y: -0, z: -0.021002384, w: 0.99977946}
-  m_LocalPosition: {x: -0.16019726, y: 0.000000047109626, z: -0.000000023466631}
-  m_LocalScale: {x: 1.0000001, y: 1.0000001, z: 1.0000001}
-  m_Children: []
-  m_Father: {fileID: 607665798}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1095086513
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100116, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1095086514}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_RightShoulder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1095086514
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400116, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1095086513}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.03409468, y: 0.036545638, z: -0.014005301}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1207474186}
-  m_Father: {fileID: 1944082523}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1100715665
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100040, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1100715666}
-  m_Layer: 0
-  m_Name: RightUpLeg
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1100715666
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400040, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1100715665}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.054918908, y: 0.26510182, z: 0.00079704286}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 157565304}
-  m_RootOrder: 19
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1108735319 stripped
 Transform:
@@ -8726,37 +7171,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &1126239511
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100176, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1126239512}
-  m_Layer: 0
-  m_Name: TomteRig_Spine2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1126239512
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400176, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1126239511}
-  m_LocalRotation: {x: 0, y: 0, z: 0.026281634, w: 0.9996546}
-  m_LocalPosition: {x: -0.025001895, y: -0.0000000028429068, z: -0.000000003712376}
-  m_LocalScale: {x: 1, y: 1, z: 0.9999999}
-  m_Children:
-  - {fileID: 1591174330}
-  - {fileID: 607665798}
-  - {fileID: 542745320}
-  m_Father: {fileID: 289413302}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1133030057 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 0b50bbc94498d274d904f31d37fce435, type: 3}
@@ -8819,35 +7233,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 09bd65c7b7c8ef24d8788c5dd7cb36a2, type: 3}
   m_PrefabInternal: {fileID: 989156313}
---- !u!1 &1173385418
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100156, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1173385419}
-  m_Layer: 0
-  m_Name: TomteRig_RightArm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1173385419
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400156, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1173385418}
-  m_LocalRotation: {x: 0.68497187, y: 0.19855258, z: 0.22232877, w: 0.664801}
-  m_LocalPosition: {x: 0.06442187, y: -0.000000039534378, z: 0.000000002903641}
-  m_LocalScale: {x: 0.99999976, y: 0.9999998, z: 0.9999998}
-  m_Children:
-  - {fileID: 1459042191}
-  m_Father: {fileID: 542745320}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1183168752
 GameObject:
   m_ObjectHideFlags: 0
@@ -8885,7 +7270,7 @@ Terrain:
   m_GameObject: {fileID: 1183168752}
   m_Enabled: 1
   serializedVersion: 3
-  m_TerrainData: {fileID: 15600000, guid: 70386f4870ca7b54e80fd75d571a6d1e, type: 2}
+  m_TerrainData: {fileID: 0}
   m_TreeDistance: 2000
   m_TreeBillboardDistance: 50
   m_TreeCrossFadeLength: 5
@@ -8918,6 +7303,7 @@ Transform:
   m_LocalPosition: {x: -2.296, y: 0, z: -1.613}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 162864206}
   - {fileID: 625402964}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -8953,67 +7339,10 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!1 &1184446866
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100012, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1184446867}
-  m_Layer: 0
-  m_Name: LeftLeg
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1184446867
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400012, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1184446866}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.05307809, y: 0.11738762, z: 0.0016542434}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 157565304}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1202515818 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
   m_PrefabInternal: {fileID: 710604328}
---- !u!1 &1207474185
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100098, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1207474186}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_RightArm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1207474186
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400098, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1207474185}
-  m_LocalRotation: {x: 0.01350699, y: 0.017423317, z: -0.2552068, w: 0.9666351}
-  m_LocalPosition: {x: 0.06417097, y: 0.005679321, z: 2.220446e-18}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1326868259}
-  m_Father: {fileID: 1095086514}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1210074019 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
@@ -9084,51 +7413,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &1271626464
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100094, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1271626465}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_Reference
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1271626465
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400094, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1271626464}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.35626164, y: -0.6463746, z: 0.32639062}
-  m_LocalScale: {x: 3.662827, y: 3.6628263, z: 3.6628263}
-  m_Children:
-  - {fileID: 1077020906}
-  - {fileID: 212644916}
-  - {fileID: 2009425871}
-  - {fileID: 510828568}
-  - {fileID: 1831695070}
-  - {fileID: 2125487927}
-  - {fileID: 2052362400}
-  - {fileID: 1571015990}
-  - {fileID: 1810330742}
-  - {fileID: 354560084}
-  - {fileID: 23385737}
-  - {fileID: 440764139}
-  - {fileID: 2094026104}
-  - {fileID: 863302876}
-  - {fileID: 414216516}
-  - {fileID: 323921825}
-  - {fileID: 340485143}
-  m_Father: {fileID: 864110859}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1274027355 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 09bd65c7b7c8ef24d8788c5dd7cb36a2, type: 3}
@@ -9199,34 +7483,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &1287186875
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100000, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1287186876}
-  m_Layer: 0
-  m_Name: Head
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1287186876
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400000, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1287186875}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0005325317, y: 0.57359695, z: 0.024447998}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 157565304}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1299583134
 Prefab:
   m_ObjectHideFlags: 0
@@ -9351,35 +7607,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 0b50bbc94498d274d904f31d37fce435, type: 3}
   m_PrefabInternal: {fileID: 111135385}
---- !u!1 &1311338951
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100114, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1311338952}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_RightLeg
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1311338952
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400114, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1311338951}
-  m_LocalRotation: {x: 0.022070985, y: 0.028998852, z: 0.00064240745, w: 0.9993356}
-  m_LocalPosition: {x: 0.000000009536743, y: -0.14774527, z: 0.0000014453381}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 499006702}
-  m_Father: {fileID: 1984644236}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1316635789
 Prefab:
   m_ObjectHideFlags: 0
@@ -9492,63 +7719,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 35a75646ead3f4c4fbf37062e146f018, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &1326250022
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100032, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1326250023}
-  m_Layer: 0
-  m_Name: RightHand
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1326250023
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400032, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1326250022}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.2281401, y: 0.2607609, z: -0.015753033}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 157565304}
-  m_RootOrder: 15
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1326868258
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100106, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1326868259}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_RightForeArm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1326868259
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400106, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1326868258}
-  m_LocalRotation: {x: 0.000011799295, y: -0.049837515, z: 0.00023187975, w: 0.9987573}
-  m_LocalPosition: {x: 0.06390078, y: -7.105427e-17, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 866371472}
-  m_Father: {fileID: 1207474186}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1334685349
 Prefab:
   m_ObjectHideFlags: 0
@@ -9669,35 +7839,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7b7037ced12d7cb42b816d19eda4d4ef, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &1380983431
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100126, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1380983432}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_Spine1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1380983432
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400126, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1380983431}
-  m_LocalRotation: {x: 0.19376156, y: 7.582683e-17, z: -1.207689e-16, w: 0.98104864}
-  m_LocalPosition: {x: -0, y: 0.024972724, z: -0.0012079057}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1944082523}
-  m_Father: {fileID: 1948884592}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1383590997
 Prefab:
   m_ObjectHideFlags: 0
@@ -9764,69 +7905,10 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
   m_PrefabInternal: {fileID: 476394191}
---- !u!1 &1388233726
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100034, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1388233727}
-  m_Layer: 0
-  m_Name: RightLeg
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1388233727
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400034, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1388233726}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.052013025, y: 0.11738762, z: 0.0016542434}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 157565304}
-  m_RootOrder: 16
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1391916634 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
   m_PrefabInternal: {fileID: 1117142108}
---- !u!1 &1411523083
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100134, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1411523084}
-  m_Layer: 0
-  m_Name: TomteRig_Hips
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1411523084
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400134, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1411523083}
-  m_LocalRotation: {x: -0.5576884, y: 0.43138742, z: 0.5584378, w: -0.43707648}
-  m_LocalPosition: {x: 0.00003468521, y: 0.2440158, z: -0.0066321013}
-  m_LocalScale: {x: 1.0000001, y: 1, z: 1.0000001}
-  m_Children:
-  - {fileID: 2117366536}
-  - {fileID: 39151752}
-  - {fileID: 118996418}
-  m_Father: {fileID: 1847454949}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1416140130 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 09bd65c7b7c8ef24d8788c5dd7cb36a2, type: 3}
@@ -9881,70 +7963,12 @@ Transform:
   - {fileID: 912672265}
   - {fileID: 941212210}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: -241.969, z: 0}
---- !u!1 &1459042190
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100160, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1459042191}
-  m_Layer: 0
-  m_Name: TomteRig_RightForeArm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1459042191
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400160, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1459042190}
-  m_LocalRotation: {x: 0.000012028885, y: -0.00023198282, z: -0.049839515, w: 0.99875724}
-  m_LocalPosition: {x: 0.063900806, y: -0.00000023681281, z: -0.0000000043534922}
-  m_LocalScale: {x: 1.0000002, y: 1.0000001, z: 1.0000001}
-  m_Children:
-  - {fileID: 836856918}
-  m_Father: {fileID: 1173385419}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1467103514 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 09bd65c7b7c8ef24d8788c5dd7cb36a2, type: 3}
   m_PrefabInternal: {fileID: 978135189}
---- !u!1 &1468807201
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100144, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1468807202}
-  m_Layer: 0
-  m_Name: TomteRig_LeftLeg
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1468807202
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400144, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1468807201}
-  m_LocalRotation: {x: -0.022833746, y: 0.00041377955, z: -0.018113704, w: 0.9995751}
-  m_LocalPosition: {x: -0.14774533, y: -0.0000000109474865, z: -0.000000010751616}
-  m_LocalScale: {x: 1.0000002, y: 1, z: 1.0000001}
-  m_Children:
-  - {fileID: 1586266427}
-  m_Father: {fileID: 2117366536}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1469318645
 Prefab:
   m_ObjectHideFlags: 0
@@ -10023,34 +8047,6 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 35a75646ead3f4c4fbf37062e146f018, type: 3}
   m_PrefabInternal: {fileID: 1542144692}
---- !u!1 &1483119670
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100046, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1483119671}
-  m_Layer: 0
-  m_Name: Spine2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1483119671
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400046, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1483119670}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0005325317, y: 0.3259336, z: -0.0049867607}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 157565304}
-  m_RootOrder: 22
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1526149736
 Prefab:
   m_ObjectHideFlags: 0
@@ -10419,34 +8415,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &1571015989
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100072, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1571015990}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_LeftFootEffector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1571015990
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400072, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1571015989}
-  m_LocalRotation: {x: -0.3679828, y: -0.07970257, z: -0.07258616, w: 0.9235624}
-  m_LocalPosition: {x: -0.06575591, y: 0.020865738, z: 0.060433015}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1271626465}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1574551845
 Prefab:
   m_ObjectHideFlags: 0
@@ -10505,64 +8473,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &1586266426
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100138, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1586266427}
-  m_Layer: 0
-  m_Name: TomteRig_LeftFoot
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1586266427
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400138, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1586266426}
-  m_LocalRotation: {x: 0.04513217, y: 0.09129742, z: 0.63825095, w: 0.76306206}
-  m_LocalPosition: {x: -0.073023975, y: 0.0000000045635713, z: -0.00000004419567}
-  m_LocalScale: {x: 1, y: 0.99999994, z: 1}
-  m_Children:
-  - {fileID: 1739174585}
-  m_Father: {fileID: 1468807202}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1591174329
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100146, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1591174330}
-  m_Layer: 0
-  m_Name: TomteRig_LeftShoulder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1591174330
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400146, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1591174329}
-  m_LocalRotation: {x: -0.5288244, y: 0.46940896, z: 0.4853833, w: 0.51420134}
-  m_LocalPosition: {x: -0.03609959, y: -0.0151178865, z: 0.0340947}
-  m_LocalScale: {x: 1.0000004, y: 1.0000002, z: 1.0000002}
-  m_Children:
-  - {fileID: 863282859}
-  m_Father: {fileID: 1126239512}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1593020868 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: fb689a9b11b6e98498c23188fdbd7b8d, type: 3}
@@ -10796,7 +8706,7 @@ Transform:
   m_Children:
   - {fileID: 1865986927}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &1617331655
 AudioSource:
@@ -11026,7 +8936,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1627274821}
-  m_LocalRotation: {x: -0.53694904, y: 0.062227756, z: 0.77713966, w: -0.3222844}
+  m_LocalRotation: {x: -0.5369491, y: 0.062227763, z: 0.7771398, w: -0.32228443}
   m_LocalPosition: {x: 72.8, y: 4.297206, z: 77.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -11095,62 +9005,48 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &1644229430
-GameObject:
+--- !u!1001 &1647924202
+Prefab:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100168, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1644229431}
-  m_Layer: 0
-  m_Name: TomteRig_RightToeBase
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1644229431
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400168, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1644229430}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.06705531, y: -0.0000000011476482, z: -0.000000008125661}
-  m_LocalScale: {x: 1.0000001, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 696386517}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1669187978
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100030, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1669187979}
-  m_Layer: 0
-  m_Name: RightForeArm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1669187979
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400030, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1669187978}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.1475777, y: 0.32825992, z: -0.021624446}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 157565304}
-  m_RootOrder: 14
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4742831435717842, guid: df37d197beb2e9f499b80db6993d8869, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 118.20804
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742831435717842, guid: df37d197beb2e9f499b80db6993d8869, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -20.076195
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742831435717842, guid: df37d197beb2e9f499b80db6993d8869, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 104.818054
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742831435717842, guid: df37d197beb2e9f499b80db6993d8869, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742831435717842, guid: df37d197beb2e9f499b80db6993d8869, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742831435717842, guid: df37d197beb2e9f499b80db6993d8869, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742831435717842, guid: df37d197beb2e9f499b80db6993d8869, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4742831435717842, guid: df37d197beb2e9f499b80db6993d8869, type: 2}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: df37d197beb2e9f499b80db6993d8869, type: 2}
+  m_IsPrefabParent: 0
 --- !u!4 &1674264421 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 35a75646ead3f4c4fbf37062e146f018, type: 3}
@@ -11221,62 +9117,6 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
   m_PrefabInternal: {fileID: 1117430693}
---- !u!1 &1734339067
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1734339068}
-  m_Layer: 0
-  m_Name: FirePos
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1734339068
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1734339067}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.4211375, y: 1.8749337, z: -1.3001522}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 864110859}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1739174584
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100148, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1739174585}
-  m_Layer: 0
-  m_Name: TomteRig_LeftToeBase
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1739174585
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400148, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1739174584}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.06826848, y: 0.00000002844729, z: 0.000000036467654}
-  m_LocalScale: {x: 1, y: 0.99999994, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1586266427}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1741919552
 GameObject:
   m_ObjectHideFlags: 0
@@ -11395,66 +9235,10 @@ Transform:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
   m_PrefabInternal: {fileID: 1859872315}
---- !u!1 &1788720108
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100002, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1788720109}
-  m_Layer: 0
-  m_Name: Hips
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1788720109
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400002, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1788720108}
-  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.0005325317, y: 0.25096938, z: -0.002466812}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 157565304}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1798680972 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 875255bf10c27164696e20c5284ee754, type: 3}
   m_PrefabInternal: {fileID: 870822600}
---- !u!1 &1810330741
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100078, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1810330742}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_LeftHipEffector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1810330742
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400078, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1810330741}
-  m_LocalRotation: {x: -0.006536895, y: -0.0068766475, z: 0.011423611, w: 0.99988973}
-  m_LocalPosition: {x: -0.055451438, y: 0.26527625, z: 0.000058546066}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1271626465}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1816278638
 Prefab:
   m_ObjectHideFlags: 0
@@ -11513,91 +9297,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 0b50bbc94498d274d904f31d37fce435, type: 3}
   m_PrefabInternal: {fileID: 1306101234}
---- !u!1 &1827507106
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100120, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1827507107}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_RightToeBase
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1827507107
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400120, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1827507106}
-  m_LocalRotation: {x: 2.2365468e-32, y: -0, z: -1.2246469e-16, w: 1}
-  m_LocalPosition: {x: 0.0000052547452, y: -0.023739874, z: 0.06271227}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 499006702}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1828166057
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100056, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1828166058}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_Head
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1828166058
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400056, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1828166057}
-  m_LocalRotation: {x: 0.021002384, y: 2.3260861e-16, z: -5.949491e-18, w: 0.99977946}
-  m_LocalPosition: {x: -0, y: 0.15795852, z: 0.026686387}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 279235683}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1831695069
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100062, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1831695070}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_HipsEffector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1831695070
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400062, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1831695069}
-  m_LocalRotation: {x: 0.12589599, y: 0.003224386, z: 0.0024630479, w: 0.99203515}
-  m_LocalPosition: {x: -0, y: 0.2568849, z: 0.000058546066}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 774162506}
-  m_Father: {fileID: 1271626465}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1837411424
 GameObject:
   m_ObjectHideFlags: 0
@@ -11624,41 +9323,12 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1838261072 stripped
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: 0b50bbc94498d274d904f31d37fce435, type: 3}
   m_PrefabInternal: {fileID: 80824866}
---- !u!1 &1847454948
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100154, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1847454949}
-  m_Layer: 0
-  m_Name: TomteRig_Reference
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1847454949
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400154, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1847454948}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.35626164, y: -0.6463746, z: 0.32639062}
-  m_LocalScale: {x: 3.662827, y: 3.6628263, z: 3.6628263}
-  m_Children:
-  - {fileID: 1411523084}
-  m_Father: {fileID: 864110859}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1859872315
 Prefab:
   m_ObjectHideFlags: 0
@@ -11977,66 +9647,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 35a75646ead3f4c4fbf37062e146f018, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &1944082522
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100128, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1944082523}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_Spine2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1944082523
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400128, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1944082522}
-  m_LocalRotation: {x: -0.06571711, y: 1.949784e-16, z: -8.5389795e-17, w: 0.9978383}
-  m_LocalPosition: {x: -0, y: 0.024972705, z: -0.0012079057}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 429928352}
-  - {fileID: 279235683}
-  - {fileID: 1095086514}
-  m_Father: {fileID: 1380983432}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1948884591
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100124, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1948884592}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_Spine
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1948884592
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400124, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1948884591}
-  m_LocalRotation: {x: 1.5959456e-16, y: 1.797484e-16, z: 4.714139e-17, w: 1}
-  m_LocalPosition: {x: -6.938894e-20, y: 0.025018806, z: -0.00010413706}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1380983432}
-  m_Father: {fileID: 510828568}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1952139859
 Prefab:
   m_ObjectHideFlags: 0
@@ -12222,92 +9832,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb689a9b11b6e98498c23188fdbd7b8d, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &1975844600
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100140, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1975844601}
-  m_Layer: 0
-  m_Name: TomteRig_LeftForeArm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1975844601
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400140, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1975844600}
-  m_LocalRotation: {x: 0.000011446487, y: -0.00021884918, z: -0.049801763, w: 0.9987591}
-  m_LocalPosition: {x: -0.06390076, y: 0.00000011642287, z: 0.000000048985505}
-  m_LocalScale: {x: 1.0000001, y: 1, z: 0.99999994}
-  m_Children:
-  - {fileID: 442556798}
-  m_Father: {fileID: 863282859}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1984644235
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100122, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1984644236}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_RightUpLeg
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1984644236
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400122, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1984644235}
-  m_LocalRotation: {x: -0.002891872, y: 0.0015939985, z: -0.009788748, w: 0.99994665}
-  m_LocalPosition: {x: 0.055451438, y: 0.0141324615, z: 0.003263855}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 1311338952}
-  m_Father: {fileID: 510828568}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1987801467
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100088, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 1987801468}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_LeftToeBase
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1987801468
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400088, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1987801467}
-  m_LocalRotation: {x: 2.2365468e-32, y: -0, z: -1.2246469e-16, w: 1}
-  m_LocalPosition: {x: -0.000000042915342, y: -0.023739874, z: 0.064007774}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 441348622}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1991361339
 Prefab:
   m_ObjectHideFlags: 0
@@ -12432,34 +9956,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 09bd65c7b7c8ef24d8788c5dd7cb36a2, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &2009425870
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100058, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 2009425871}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_HeadEffector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2009425871
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400058, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2009425870}
-  m_LocalRotation: {x: 2.5266077e-16, y: 7.332054e-32, z: -2.220446e-16, w: 1}
-  m_LocalPosition: {x: -0.14934702, y: 0.5821807, z: -0.008951565}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1271626465}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2022134929
 Prefab:
   m_ObjectHideFlags: 0
@@ -12716,34 +10212,6 @@ Prefab:
 Transform:
   m_PrefabParentObject: {fileID: 400000, guid: fb689a9b11b6e98498c23188fdbd7b8d, type: 3}
   m_PrefabInternal: {fileID: 1970943270}
---- !u!1 &2052362399
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100068, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 2052362400}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_LeftElbowEffector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2052362400
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400068, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2052362399}
-  m_LocalRotation: {x: -0.004868294, y: 0.028409228, z: 0.33752665, w: 0.9408746}
-  m_LocalPosition: {x: -0.14756139, y: 0.3277648, z: -0.022464879}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1271626465}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2059186425
 Prefab:
   m_ObjectHideFlags: 0
@@ -12926,220 +10394,61 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 35a75646ead3f4c4fbf37062e146f018, type: 3}
   m_IsPrefabParent: 0
---- !u!1 &2094026103
-GameObject:
+--- !u!1001 &2123718825
+Prefab:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100100, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 2094026104}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_RightElbowEffector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2094026104
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400100, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2094026103}
-  m_LocalRotation: {x: -0.0048679337, y: -0.028406406, z: -0.33752638, w: 0.94087476}
-  m_LocalPosition: {x: 0.1475613, y: 0.32776472, z: -0.022464283}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1271626465}
-  m_RootOrder: 12
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2094228571
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100050, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 2094228572}
-  - component: {fileID: 2094228573}
-  m_Layer: 0
-  m_Name: Tomte
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2094228572
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400050, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2094228571}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.35430956, y: 0.06355096, z: 0.32368544}
-  m_LocalScale: {x: 3.662827, y: 3.6628263, z: 3.6628263}
-  m_Children: []
-  m_Father: {fileID: 864110859}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!137 &2094228573
-SkinnedMeshRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 13700000, guid: 1c7263e8ff6cb4041b14941c3e03fd34,
-    type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2094228571}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_Materials:
-  - {fileID: 2100000, guid: a465236150c6a7148a39198eaa708e9e, type: 2}
-  - {fileID: 2100000, guid: c6c2b55e7d61cc241a380a74670100a3, type: 2}
-  - {fileID: 2100000, guid: 64d1f3d6fdd728d42917986b1f35463f, type: 2}
-  - {fileID: 2100000, guid: 2233075dcd411b149a73bd0988f177ae, type: 2}
-  - {fileID: 2100000, guid: f61f1957ec9f1cf41999ac5e62b1ca4c, type: 2}
-  - {fileID: 2100000, guid: 21b0d5f3f21d23545b2b5be36c4670af, type: 2}
-  - {fileID: 2100000, guid: d4452fc20d12848478dbd10f430dc685, type: 2}
-  - {fileID: 2100000, guid: a832fa1b1bce08d44ae48f1fc3e8faa0, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
   serializedVersion: 2
-  m_Quality: 0
-  m_UpdateWhenOffscreen: 0
-  m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: 4300000, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_Bones:
-  - {fileID: 1411523084}
-  - {fileID: 2117366536}
-  - {fileID: 1468807202}
-  - {fileID: 1586266427}
-  - {fileID: 1739174585}
-  - {fileID: 39151752}
-  - {fileID: 949363682}
-  - {fileID: 696386517}
-  - {fileID: 1644229431}
-  - {fileID: 118996418}
-  - {fileID: 289413302}
-  - {fileID: 1126239512}
-  - {fileID: 1591174330}
-  - {fileID: 863282859}
-  - {fileID: 1975844601}
-  - {fileID: 442556798}
-  - {fileID: 542745320}
-  - {fileID: 1173385419}
-  - {fileID: 1459042191}
-  - {fileID: 836856918}
-  - {fileID: 607665798}
-  - {fileID: 1092239812}
-  m_BlendShapeWeights: []
-  m_RootBone: {fileID: 1411523084}
-  m_AABB:
-    m_Center: {x: -0.14892955, y: 0.036533788, z: 0.004127115}
-    m_Extent: {x: 0.42546678, y: 0.26961744, z: 0.32804832}
-  m_DirtyAABB: 0
---- !u!1 &2117366535
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100150, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 2117366536}
-  m_Layer: 0
-  m_Name: TomteRig_LeftUpLeg
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2117366536
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400150, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2117366535}
-  m_LocalRotation: {x: 0.009015904, y: -0.009440212, z: 0.8941306, w: -0.44761604}
-  m_LocalPosition: {x: -0.0141187655, y: 0.0033226549, z: 0.05545147}
-  m_LocalScale: {x: 1, y: 1, z: 0.9999999}
-  m_Children:
-  - {fileID: 1468807202}
-  m_Father: {fileID: 1411523084}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2125487926
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100064, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 2125487927}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_LeftAnkleEffector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2125487927
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400064, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2125487926}
-  m_LocalRotation: {x: -0.39330804, y: -0.07767077, z: -0.0747564, w: 0.9130649}
-  m_LocalPosition: {x: -0.051122844, y: 0.044605594, z: 0.1676462}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1271626465}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &2143012164
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 100074, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 2143012165}
-  m_Layer: 0
-  m_Name: TomteRig_Ctrl_LeftForeArm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2143012165
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 400074, guid: 1c7263e8ff6cb4041b14941c3e03fd34, type: 3}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2143012164}
-  m_LocalRotation: {x: 0.000011432886, y: 0.049800847, z: -0.00021895341, w: 0.99875915}
-  m_LocalPosition: {x: -0.06390078, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 320808624}
-  m_Father: {fileID: 793850316}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 56c923671af93104b933809c9fa41ea7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 92.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 56c923671af93104b933809c9fa41ea7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 56c923671af93104b933809c9fa41ea7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 76.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 56c923671af93104b933809c9fa41ea7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 56c923671af93104b933809c9fa41ea7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 56c923671af93104b933809c9fa41ea7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 56c923671af93104b933809c9fa41ea7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 56c923671af93104b933809c9fa41ea7, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 56c923671af93104b933809c9fa41ea7, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2.8799124
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 56c923671af93104b933809c9fa41ea7, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.8799107
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 56c923671af93104b933809c9fa41ea7, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.8799107
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 56c923671af93104b933809c9fa41ea7, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 44a1a6ff6b30e8e4897d9148dbfbca99, type: 2}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 56c923671af93104b933809c9fa41ea7, type: 3}
+  m_IsPrefabParent: 0
