@@ -6,7 +6,7 @@ public class PlayerMovementForce : MonoBehaviour {
 
     Rigidbody playerRb;
     Vector3 hangingPos;
-
+    LedgeCollsion ledgegrabArea;
     /*Movement vector*/
     float currentV;
     float currentH;
@@ -25,6 +25,7 @@ public class PlayerMovementForce : MonoBehaviour {
     void Awake()
     {
         playerRb = GetComponent<Rigidbody>();
+        ledgegrabArea = GetComponentInChildren<LedgeCollsion>();
         gameLogic = gameHandler.GetComponent<GameLogic>();
     }
 
@@ -80,7 +81,7 @@ public class PlayerMovementForce : MonoBehaviour {
 
     void Move(Vector3 velocityAxis)
     {
-        if (!IsHanging)
+        if (!ledgegrabArea.hanging)
         {
             playerRb.AddForce(velocityAxis.normalized * acceleration);
             animator.SetFloat("MoveSpeed", playerRb.velocity.magnitude);
@@ -115,37 +116,38 @@ public class PlayerMovementForce : MonoBehaviour {
     spot. */
     void Climb()
     {
-        RaycastHit hitObj;
-        Vector3 rayOriginOffset = new Vector3(0, -0.2f, 0);
-        Ray ray = new Ray(transform.position + rayOriginOffset, transform.forward);
-        Physics.Raycast(ray, out hitObj, 1);
+        //RaycastHit hitObj;
+        //Vector3 rayOriginOffset = new Vector3(0, -0.2f, 0);
+        //Ray ray = new Ray(transform.position + rayOriginOffset, transform.forward);
+        //Physics.Raycast(ray, out hitObj, 1);
 
-        Vector3 lastRayHitPoint = transform.position;
-        Physics.Raycast(ray, out hitObj, 1);
-        if (hitObj.collider != null)
-        {
-            for (int i = 0; i < 12; i++)
-            {
-                rayOriginOffset.y += 0.1f;
-                Ray rayTest = new Ray(transform.position + rayOriginOffset, transform.forward);
-                Physics.Raycast(rayTest, out hitObj, 1);
-                /*Vi får error här pga att vi kollar hittobj.collider även om null. Vet ej lösning*/
-                if (hitObj.collider.tag != "climbableObject")
-                {
-                    //If this never happens we cannot reach ledge
-                    break;
-                }
-                lastRayHitPoint = hitObj.point;
-                playerRb.constraints = RigidbodyConstraints.FreezeAll;
-                transform.position = lastRayHitPoint - new Vector3(0, 0.0f, 0) - (transform.forward * 0.2f);
-                IsHanging = true;
-                animator.SetBool("IsHanging", true);
-                hangingPos = lastRayHitPoint;
-            }
-            playerRb.constraints = RigidbodyConstraints.FreezeAll;
-            transform.position = lastRayHitPoint - new Vector3(0, 0.0f, 0) - (transform.forward * 0.2f);
-            animator.SetBool("IsHanging", true);
-        }
+        //Vector3 lastRayHitPoint = transform.position;
+        //Physics.Raycast(ray, out hitObj, 1);
+        //if (hitObj.collider != null)
+        //{
+        //    for (int i = 0; i < 12; i++)
+        //    {
+        //        rayOriginOffset.y += 0.1f;
+        //        Ray rayTest = new Ray(transform.position + rayOriginOffset, transform.forward);
+        //        Physics.Raycast(rayTest, out hitObj, 1);
+        //        /*Vi får error här pga att vi kollar hittobj.collider även om null. Vet ej lösning*/
+        //        if (hitObj.collider.tag != "climbableObject")
+        //        {
+        //            //If this never happens we cannot reach ledge
+        //            break;
+        //        }
+        //        lastRayHitPoint = hitObj.point;
+        //        playerRb.constraints = RigidbodyConstraints.FreezeAll;
+        //        transform.position = lastRayHitPoint - new Vector3(0, 0.0f, 0) - (transform.forward * 0.2f);
+        //        IsHanging = true;
+        //        animator.SetBool("IsHanging", true);
+        //        hangingPos = lastRayHitPoint;
+        //    }
+        //    playerRb.constraints = RigidbodyConstraints.FreezeAll;
+        //    transform.position = lastRayHitPoint - new Vector3(0, 0.0f, 0) - (transform.forward * 0.2f);
+        //    animator.SetBool("IsHanging", true);
+        //}
+
     }
 
     bool IsGrounded()
