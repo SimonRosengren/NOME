@@ -62,6 +62,10 @@ public class PlayerMovement : MonoBehaviour
         {
             Climb();
         }
+        if (other.tag == "CheckPoint")
+        {
+            other.transform.GetComponent<CheckPoint>().SetAsLastCheckpoint();
+        }
     }
 
     void Move(float h, float v)
