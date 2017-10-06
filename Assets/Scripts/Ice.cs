@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerIce : MonoBehaviour {
-    CapsuleCollider coll;
+public class Ice : MonoBehaviour {
+
+
 	// Use this for initialization
 	void Start () {
-        coll = gameObject.GetComponent<CapsuleCollider>();	
+		
 	}
 	
 	// Update is called once per frame
-	void Update () 
-    {
-        
+	void Update () {
+		
 	}
 }
