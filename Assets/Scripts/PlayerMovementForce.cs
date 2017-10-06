@@ -154,7 +154,6 @@ public class PlayerMovementForce : MonoBehaviour
         RaycastHit hitObj;
         Ray ray = new Ray(transform.position + new Vector3(0, 0.1f, 0), transform.forward);
         Physics.Raycast(ray, out hitObj, 1);
-
         if (hitObj.transform.tag == "grabable")
         {
             pushableObject hitObjScript = hitObj.transform.GetComponent<pushableObject>();
