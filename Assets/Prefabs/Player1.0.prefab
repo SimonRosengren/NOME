@@ -2288,7 +2288,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1406253873586098}
-  m_LocalRotation: {x: -0.7442048, y: 0.16578425, z: -0.30434218, w: 0.57100856}
+  m_LocalRotation: {x: -0.74420476, y: 0.16578424, z: -0.30434215, w: 0.5710085}
   m_LocalPosition: {x: -0.15234645, y: 0.8460604, z: -0.26574504}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2643,9 +2643,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 981a9915f481a89429e9046386af1fcd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  match: {fileID: 0}
-  fireParticleSystem: {fileID: 0}
+  match: {fileID: 1740234115685786, guid: 22c07456e9bff8848b12af1413f75088, type: 2}
   matchLit: 0
+  matchLocation: {fileID: 0}
 --- !u!114 &114810623447410258
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2662,6 +2662,7 @@ MonoBehaviour:
   maxspeed: 10
   jumpForce: 7
   IsHanging: 0
+  gameHandler: {fileID: 0}
 --- !u!136 &136436835390229722
 CapsuleCollider:
   m_ObjectHideFlags: 1
