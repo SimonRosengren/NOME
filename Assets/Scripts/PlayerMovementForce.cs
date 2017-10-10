@@ -7,6 +7,7 @@ public class PlayerMovementForce : MonoBehaviour
 {
 
     Rigidbody playerRb;
+    AudioSource runSound;
     Vector3 hangingPos;
     LedgeCollsion ledgegrabArea;
     /*Movement vector*/
@@ -35,6 +36,8 @@ public class PlayerMovementForce : MonoBehaviour
         playerRb = GetComponent<Rigidbody>();
         ledgegrabArea = GetComponentInChildren<LedgeCollsion>();
         gameLogic = gameHandler.GetComponent<GameLogic>();
+        runSound = GetComponent<AudioSource>();
+        runSound.Play();
     }
 
     void FixedUpdate()
@@ -52,11 +55,16 @@ public class PlayerMovementForce : MonoBehaviour
         if (velocityAxis.magnitude > 0 && !pulling)
         {
             transform.rotation = Quaternion.LookRotation(velocityAxis);
+            runSound.UnPause();
+
         }
+        else
+            runSound.Pause();
 
         if (IsGrounded() && Input.GetButtonDown("Jump") && !pulling)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            animator.SetTrigger("isJumping");
         }
         if (Input.GetButtonDown("Grab") && !pulling)
         {
