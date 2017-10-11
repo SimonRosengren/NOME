@@ -51,6 +51,8 @@ public class PlayerMovementForce : MonoBehaviour
         velocityAxis = Quaternion.AngleAxis(Camera.main.transform.eulerAngles.y, Vector3.up) * velocityAxis;
 
         Move(velocityAxis);
+        animator.SetBool("isGrounded", IsGrounded());
+
 
         if (velocityAxis.magnitude > 0 && !pulling)
         {
