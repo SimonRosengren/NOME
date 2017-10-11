@@ -113,6 +113,7 @@ public class PlayerMovementForce : MonoBehaviour
             {
                 if (!IsHanging)
                 {
+                    IsHanging = true;
                     playerRb.AddForce(velocityAxis.normalized * acceleration);
                     animator.SetFloat("MoveSpeed", playerRb.velocity.magnitude);
                 }
@@ -122,7 +123,7 @@ public class PlayerMovementForce : MonoBehaviour
                     {
                         playerRb.constraints = RigidbodyConstraints.None;
                         playerRb.constraints = RigidbodyConstraints.FreezeRotation;
-                        playerRb.AddForce(Vector3.up * 6, ForceMode.Impulse);
+                        playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                         animator.SetBool("IsHanging", false);
                         IsHanging = false;
                     }
