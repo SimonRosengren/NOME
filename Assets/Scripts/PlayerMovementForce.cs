@@ -70,7 +70,7 @@ public class PlayerMovementForce : MonoBehaviour
         {
             TryGrab();
         }
-        if (Input.GetKeyDown(KeyCode.K) && pulling)
+        else if (Input.GetButtonDown("Grab") && pulling)
         {
             TryLettingGo();
         }
