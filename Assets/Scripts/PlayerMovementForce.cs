@@ -72,7 +72,7 @@ public class PlayerMovementForce : MonoBehaviour
         {
             TryGrab();
         }
-        if (Input.GetKeyDown(KeyCode.K) && pulling)
+        else if (Input.GetButtonDown("Grab") && pulling)
         {
             TryLettingGo();
         }
@@ -115,6 +115,7 @@ public class PlayerMovementForce : MonoBehaviour
             {
                 if (!IsHanging)
                 {
+                    IsHanging = true;
                     playerRb.AddForce(velocityAxis.normalized * acceleration);
                     animator.SetFloat("MoveSpeed", playerRb.velocity.magnitude);
                 }
@@ -124,7 +125,7 @@ public class PlayerMovementForce : MonoBehaviour
                     {
                         playerRb.constraints = RigidbodyConstraints.None;
                         playerRb.constraints = RigidbodyConstraints.FreezeRotation;
-                        playerRb.AddForce(Vector3.up * 6, ForceMode.Impulse);
+                        playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                         animator.SetBool("IsHanging", false);
                         IsHanging = false;
                     }
