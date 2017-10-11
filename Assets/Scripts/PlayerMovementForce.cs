@@ -195,6 +195,7 @@ public class PlayerMovementForce : MonoBehaviour
         {
             isDead = false;
             transform.position = gameLogic.GetLastCheckPoint().position;
+            transform.rotation = gameLogic.GetLastCheckPoint().rotation;
             deathImage.color = Color.clear;
         }
     }
