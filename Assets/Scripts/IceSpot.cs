@@ -32,9 +32,9 @@ public class IceSpot : MonoBehaviour {
     
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" || other.tag == ("grabable"))
         {
-            other.material = null;
+            other.material = null; //Can we make it go back to original?
         }
     }
     void SetFire()
