@@ -10,67 +10,60 @@ public class FadeObjectsBetween : MonoBehaviour {
 
     Vector3 playerV;
     Vector3 cameraV;
+    RaycastHit[] hits;
+    Vector3 direction;
 
     List<RaycastHit> transObjects;
     // Use this for initialization
     void Start () {
         transObjects = new List<RaycastHit>();
+        
 	}
 	
 	// Update is called once per frame
 	void Update () {
         playerV = Player.transform.position;
         cameraV = Camera.transform.position;
-        Vector3 direction = playerV-cameraV;
+        direction = playerV - cameraV;
 
-        RaycastHit[] hits;
 
-        AddAlpha();
 
+        Debug.DrawRay(transform.position, direction);
         if (Physics.Linecast(cameraV, playerV))
         {
-            hits = Physics.RaycastAll(transform.position, direction, Vector3.Distance(cameraV, playerV));
-            Debug.DrawRay(transform.position, direction);
-            
-            
-                for(int i = 0; i < hits.Length; i++)
-                {
-                    if (hits[i].transform.gameObject!=Player)
-                    {
-                        Renderer rend = hits[i].transform.GetComponent<Renderer>();
+            DecreaseAlpha();
+        }
+        AddAlpha();
+        
+	}
 
+    void DecreaseAlpha()
+    {
 
+        hits = Physics.RaycastAll(transform.position, direction, Vector3.Distance(cameraV, playerV));
+        for (int i = 0; i < hits.Length; i++)
+        {
+            Renderer rend = hits[i].transform.GetComponent<Renderer>();
 
-                        // Change the material of all hit colliders
-                        // to use a transparent shader.
-
-                        rend.material.shader = Shader.Find("Transparent/Diffuse");
-                        Color tempColor = rend.material.color;
-                        tempColor.a = 0.3F;
+            if (rend.material.shader!=Shader.Find("Transparent/Diffuse"))
+            {
                 
-                        rend.material.color=Color.Lerp(rend.material.color, tempColor, 10f *Time.deltaTime);
-                
+                Debug.Log("add");
+                transObjects.Add(hits[i]);
 
-                
+            }
+            rend.material.shader = Shader.Find("Transparent/Diffuse");
+            Color tempColor = rend.material.color;
 
-                        for (int c = 0; c < transObjects.Count; c++)         
-                        {
-                            if (transObjects[c].Equals(hits[i]))
-                            {
-                                break;
-                            }
-                        }
+            tempColor.a = 0.3F;
+            rend.material.color = Color.Lerp(rend.material.color, tempColor, 10f * Time.deltaTime);
 
-                        transObjects.Add(hits[i]);
-
-                    }
-                    
-                }
-
-            
 
         }
-	}
+
+
+
+    }
 
     void AddAlpha()
     {
@@ -78,13 +71,37 @@ public class FadeObjectsBetween : MonoBehaviour {
         {
             for (int i = 0; i < transObjects.Count; i++)
             {
-            
-                Renderer rend = transObjects[i].transform.GetComponent<Renderer>();
 
-                rend.material.shader = Shader.Find("Standard");
+                for (int c = 0; c < hits.Length; c++)
+                {
+                    if (hits[c].transform.gameObject == transObjects[i].transform.gameObject)
+                    {
+                        i++;
+                        c = 0;
+                    }
+                }
+                
+                    Renderer rend = transObjects[i].transform.GetComponent<Renderer>();
+
+                    Color tempColor = rend.material.color;
+
+                    tempColor.a = 1F;
+
+
+               
+
+
+                    rend.material.color = Color.Lerp(rend.material.color, tempColor, 20f * Time.deltaTime);
+
+
+                    if (rend.material.color.a>=1)
+                    {
+                        rend.material.shader = Shader.Find("Standard");
+                        transObjects.Remove(transObjects[i]);
+                    }
 
                 
-                transObjects.Remove(transObjects[i]);
+                
                
                 
             
