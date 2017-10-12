@@ -25,7 +25,7 @@ public class FadeObjectsBetween : MonoBehaviour {
 
         RaycastHit[] hits;
 
-        AddAlpha();
+        //AddAlpha();
 
         if (Physics.Linecast(cameraV, playerV))
         {
@@ -73,7 +73,7 @@ public class FadeObjectsBetween : MonoBehaviour {
             
                         Renderer rend = transObjects[i].transform.GetComponent<Renderer>();
                         Color tempColor = rend.material.color;
-                tempColor.a = 1f;
+                        tempColor.a += 0.01F;
                         rend.material.color = tempColor;
 
                         if (rend.material.color.a > 0)
