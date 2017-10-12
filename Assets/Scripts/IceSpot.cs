@@ -24,7 +24,7 @@ public class IceSpot : MonoBehaviour {
 	}
     void OnTriggerStay(Collider other)
     {
-        if (other.tag == ("Player") && other.material.name != "NoFriction")
+        if (other.tag == ("Player") || other.tag == ("grabable") && other.material.name != "NoFriction")
         {
             other.material = mat;
         }

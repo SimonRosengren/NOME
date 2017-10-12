@@ -31,5 +31,9 @@ public class TableWithRobot : MonoBehaviour {
         {
             robotHandler.Deactivate();
         }
+        if (other.tag == "grabable")
+        {
+            robotHandler.isDead = true;
+        }
     }
 }
