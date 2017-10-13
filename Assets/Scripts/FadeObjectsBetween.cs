@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FadeObjectsBetween : MonoBehaviour {
 
-    public Camera Camera;
+    public GameObject Camera;
 
     public GameObject Player;
 
@@ -27,13 +27,13 @@ public class FadeObjectsBetween : MonoBehaviour {
         direction = playerV - cameraV;
 
 
+        AddNewShader();
 
         Debug.DrawRay(transform.position, direction);
         if (Physics.Linecast(cameraV, playerV))
         {
             DecreaseAlpha();
         }
-        AddAlpha();
         
 	}
 
@@ -55,58 +55,26 @@ public class FadeObjectsBetween : MonoBehaviour {
             rend.material.shader = Shader.Find("Transparent/Diffuse");
             Color tempColor = rend.material.color;
 
-            tempColor.a = 0.3F;
-            rend.material.color = Color.Lerp(rend.material.color, tempColor, 10f * Time.deltaTime);
+            tempColor.a = 0.2F;
+            rend.material.color = Color.Lerp(rend.material.color, tempColor, 3f * Time.deltaTime);
 
-
+            Debug.Log(hits.Length);
         }
 
 
 
     }
-
-    void AddAlpha()
+    
+    void AddNewShader()
     {
         if(transObjects.Count != 0)
         {
             for (int i = 0; i < transObjects.Count; i++)
             {
-
-                for (int c = 0; c < hits.Length; c++)
-                {
-                    if (hits[c].transform.gameObject == transObjects[i].transform.gameObject)
-                    {
-                        i++;
-                        c = 0;
-                    }
-                }
-                
-                    Renderer rend = transObjects[i].transform.GetComponent<Renderer>();
-
-                    Color tempColor = rend.material.color;
-
-                    tempColor.a = 1F;
-
-
-               
-
-
-                    rend.material.color = Color.Lerp(rend.material.color, tempColor, 20f * Time.deltaTime);
-
-
-                    if (rend.material.color.a>=1)
-                    {
-                        rend.material.shader = Shader.Find("Standard");
-                        transObjects.Remove(transObjects[i]);
-                    }
-
-                
-                
-               
-                
-            
+                Renderer rend = transObjects[i].transform.GetComponent<Renderer>();
+                rend.material.shader = Shader.Find("Standard");
+                transObjects.Remove(transObjects[i]);
             }
-
         }
     }
 }
