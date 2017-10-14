@@ -26,7 +26,7 @@ public class PlayerFire : MonoBehaviour {
             timer -= Time.deltaTime;
         }
         /*Change to button*/
-        if (Input.GetKey(KeyCode.F) || Input.GetButtonDown("LightUp") && timer <= 0)
+        if (Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("LightUp") && timer <= 0)
         {
             if (matchLit)
             {
