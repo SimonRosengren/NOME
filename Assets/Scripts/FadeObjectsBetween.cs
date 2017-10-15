@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class FadeObjectsBetween : MonoBehaviour {
 
@@ -12,12 +13,13 @@ public class FadeObjectsBetween : MonoBehaviour {
     Vector3 cameraV;
     RaycastHit[] hits;
     Vector3 direction;
-
-    List<RaycastHit> transObjects;
+    
+    List<GameObject> hitslist;
+    List<GameObject> transObjects;
     // Use this for initialization
     void Start () {
-        transObjects = new List<RaycastHit>();
-        
+        transObjects = new List<GameObject>();
+        hitslist = new List<GameObject>();
 	}
 	
 	// Update is called once per frame
@@ -27,7 +29,7 @@ public class FadeObjectsBetween : MonoBehaviour {
         direction = playerV - cameraV;
 
 
-        AddNewShader();
+        
 
         Debug.DrawRay(transform.position, direction);
         if (Physics.Linecast(cameraV, playerV))
@@ -35,6 +37,13 @@ public class FadeObjectsBetween : MonoBehaviour {
             DecreaseAlpha();
         }
         
+        //compare old rays against new and see which objects are missing
+        List<GameObject> results = transObjects.Except(hitslist).ToList();
+
+        Debug.Log(results.Count);
+        
+        AddNewShader(results);
+
 	}
 
     void DecreaseAlpha()
@@ -45,36 +54,67 @@ public class FadeObjectsBetween : MonoBehaviour {
         {
             Renderer rend = hits[i].transform.GetComponent<Renderer>();
 
+            
             if (rend.material.shader!=Shader.Find("Transparent/Diffuse"))
             {
                 
                 Debug.Log("add");
-                transObjects.Add(hits[i]);
+                transObjects.Add(hits[i].transform.gameObject);
 
             }
-            rend.material.shader = Shader.Find("Transparent/Diffuse");
-            Color tempColor = rend.material.color;
+            hitslist.Add(hits[i].transform.gameObject);
 
+            rend.material.shader = Shader.Find("Transparent/Diffuse");
+
+            Color tempColor = rend.material.color;
             tempColor.a = 0.2F;
             rend.material.color = Color.Lerp(rend.material.color, tempColor, 3f * Time.deltaTime);
-
-            Debug.Log(hits.Length);
+           
+            
         }
-
+        
 
 
     }
-    
-    void AddNewShader()
+
+
+
+
+    void AddNewShader(List<GameObject> results)
     {
-        if(transObjects.Count != 0)
+
+
+        if (results.Count > 0)
         {
-            for (int i = 0; i < transObjects.Count; i++)
+
+            for (int i = 0; i < results.Count; i++)
             {
-                Renderer rend = transObjects[i].transform.GetComponent<Renderer>();
+                
+                   
+                
+                Renderer rend = results[i].transform.GetComponent<Renderer>();
+                Color tempColor = rend.material.color;
+                tempColor.a = 1f;
+
+                rend.material.color = tempColor;
+               
                 rend.material.shader = Shader.Find("Standard");
-                transObjects.Remove(transObjects[i]);
+     
+                
+                
+                transObjects.Remove(results[i]);
+
+                
+    
             }
+            
+            
         }
+        // empty the list for next frames arrays
+        hitslist.Clear();
+        
     }
+
+
+   
 }
