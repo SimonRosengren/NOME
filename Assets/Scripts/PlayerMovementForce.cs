@@ -54,7 +54,7 @@ public class PlayerMovementForce : MonoBehaviour
         animator.SetBool("isGrounded", IsGrounded());
 
 
-        if (velocityAxis.magnitude > 0 && !pulling)
+        if (velocityAxis.magnitude > 0 && !pulling && !ledgegrabArea.hanging)
         {
             transform.rotation = Quaternion.LookRotation(velocityAxis);
             runSound.UnPause();
