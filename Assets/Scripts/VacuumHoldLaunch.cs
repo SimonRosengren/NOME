@@ -7,7 +7,7 @@ public class VacuumHoldLaunch : MonoBehaviour {
     public Vector3 launchV;
     public float launchF;
     private float timer;
-     bool HoldOn=true;
+    bool holdOn =true;
 	// Use this for initialization
 	void Start () {
         gP = GetComponentInParent<GravitationalPull>();
@@ -21,22 +21,28 @@ public class VacuumHoldLaunch : MonoBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
-        if (HoldOn)
+        //Debug.Log(holdOn);
+        if (holdOn)
         {
+            gP.rbTarget.isKinematic = true;
             if (other.gameObject == gP.target)
             {
-                gP.PullOn = false;
+                gP.pullOn = false;
                 timer -= Time.deltaTime;
-                Debug.Log(timer);
+                //Debug.Log(timer);
                 if (timer>0)
                 {
                     Hold();
                 }
                 else
                 {
-                    HoldOn = false;
+                    holdOn = false;
+                    gP.rbTarget.isKinematic = false;
                     Launch();
                     timer = 3;
+                    Debug.Log(holdOn);
+                    Debug.Log(gP.pullOn);
+                    Debug.Log(timer);
                 }
             }
         }
@@ -45,7 +51,7 @@ public class VacuumHoldLaunch : MonoBehaviour {
 
     private void OnTriggerExit(Collider other)
     {
-        HoldOn = true;
+        holdOn = true;
     }
 
     private void Hold()
@@ -55,7 +61,10 @@ public class VacuumHoldLaunch : MonoBehaviour {
 
     private void Launch()
     {
-        gP.rbTarget.AddForce(launchV * launchF);
+        
+        gP.rbTarget.AddForce(launchV * launchF, ForceMode.Impulse);
+        
+        
     }
 
    
