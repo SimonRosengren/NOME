@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FreezeGround : MonoBehaviour {
     public GameObject ice;
-    public float timer;
+    private float timer;
 	// Use this for initialization
 	void Start () 
     {
