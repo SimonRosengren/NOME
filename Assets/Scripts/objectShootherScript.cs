@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class objectShootherScript : MonoBehaviour {
 
+    [SerializeField] Transform player;
+
+    public bool targetPlayer;
     public GameObject shootObj;
     projectileScript projectile;
     public float rateOfFire = 2;
@@ -26,14 +29,29 @@ public class objectShootherScript : MonoBehaviour {
 	void Update () {
         timer += Time.deltaTime;
 
+
         if (timer >= rateOfFire)
         {
-            timer = 0;
-            GameObject test = Instantiate(shootObj, transform.position, Random.rotation);
-            Vector3 target = targets[(int)Random.Range(0, transform.childCount)];
-            Vector3 dir = Vector3.Normalize(target - transform.position);
+            if (!targetPlayer)
+            {
+                timer = 0;
+                GameObject test = Instantiate(shootObj, transform.position, Random.rotation);
+                Vector3 target = targets[(int)Random.Range(0, transform.childCount)];
+                Vector3 dir = Vector3.Normalize(target - transform.position);
 
-            test.GetComponent<Rigidbody>().AddForce(dir * Random.Range(minForce, maxForce), ForceMode.VelocityChange);
+                test.GetComponent<Rigidbody>().AddForce(dir * Random.Range(minForce, maxForce), ForceMode.VelocityChange);
+            }
+
+            else
+            {
+                timer = 0;
+                GameObject test = Instantiate(shootObj, transform.position, Random.rotation);
+                Vector3 target = player.position;
+                Vector3 dir = Vector3.Normalize(target - transform.position);
+
+                test.GetComponent<Rigidbody>().AddForce(dir * Random.Range(minForce, maxForce), ForceMode.VelocityChange);
+            }
+
 
         }
 	}
