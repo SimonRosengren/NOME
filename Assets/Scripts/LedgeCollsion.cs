@@ -22,7 +22,6 @@ public class LedgeCollsion : MonoBehaviour {
             playerRb.AddForce(Vector3.up * 6, ForceMode.Impulse);
 
             hanging = false;
-            Debug.Log("jump");
         }
     }
 
