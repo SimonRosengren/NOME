@@ -5,17 +5,17 @@ using UnityEngine;
 public class PlayerFire : MonoBehaviour {
 
     public GameObject match;
-    public ParticleSystem fireParticleSystem;
+    //public ParticleSystem fireParticleSystem;
     private GameObject newMatch;
     public bool matchLit = false;
-    private Transform matchLocation;
+    public Transform matchLocation;
     private Transform firePosition;
     private float timer = 1;
     
 	// Use this for initialization
 	void Start () {
         
-        matchLocation = transform.Find("RightHand");
+        //matchLocation = transform.Find("RightHand");
         firePosition = transform.Find("FirePos");
 	}
 	
@@ -26,22 +26,26 @@ public class PlayerFire : MonoBehaviour {
             timer -= Time.deltaTime;
         }
         /*Change to button*/
-        if (Input.GetKey(KeyCode.F) && timer <= 0)
+        if (Input.GetKeyDown(KeyCode.F) || Input.GetButtonDown("LightUp") && timer <= 0)
         {
             if (matchLit)
             {
                 Destroy(newMatch);
                 matchLit = false;
                 timer = 1;
+                //fireParticleSystem.Stop();
+
             }
             else if(!matchLit)
             {
-                matchLit = true;
+                matchLit = true;    
                 newMatch = Instantiate(match, matchLocation.position, Quaternion.identity) as GameObject;
                 newMatch.transform.parent = matchLocation;
+
                 /*The fire should be dealt with in another way. Get top of match for transform instead of new empty object*/
-                ParticleSystem mPSystem = Instantiate(fireParticleSystem, firePosition.position, firePosition.rotation);
-                mPSystem.transform.parent = this.transform;
+                //fireParticleSystem = Instantiate(fireParticleSystem, firePosition.position, firePosition.rotation);
+                //ParticleSystem mPSystem = Instantiate(fireParticleSystem, firePosition.position, firePosition.rotation);
+                //fireParticleSystem.transform.parent = this.transform;
                 timer = 1;
             }
             
@@ -51,9 +55,12 @@ public class PlayerFire : MonoBehaviour {
 	}
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "flammable" || other.tag == "ice")
+        if (matchLit)
         {
-            other.SendMessageUpwards("SetFire");
-        }
+            if (other.tag == "flammable" || other.tag == "ice")
+            {
+                other.SendMessageUpwards("SetFire");
+            }
+        }  
     }
 }

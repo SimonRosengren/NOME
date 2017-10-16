@@ -11,10 +11,12 @@ public class PlayerMovement : MonoBehaviour
     Vector3 hangingPos;
 
     /*Player movement*/
-    public float speed = 6f;
-    public float rotationSpeed = 200f;
-    public float jumpForce = 10f;
-
+    //public float speed = 6f;
+    //public float rotationSpeed = 200f;
+    public float acceleration=10f;
+    public float maxspeed = 20f;
+    public float jumpForce = 70f;
+    public bool isGrounded = false;
     /*Movement vector*/
     float currentV;
     float currentH;
@@ -36,25 +38,32 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
 
-        float h = Input.GetAxisRaw("Horizontal");
-        float v = Input.GetAxisRaw("Vertical");
-        Move(h, v);
+        float xspeed = Input.GetAxisRaw("Horizontal");
+        float zspeed = Input.GetAxisRaw("Vertical");
 
-        if (IsGrounded() && Input.GetButton("Jump"))
+        Vector3 velocityAxis = new Vector3(xspeed, 0, zspeed);
+
+        velocityAxis = Quaternion.AngleAxis(Camera.main.transform.eulerAngles.y, Vector3.up) * velocityAxis;
+
+        Move(velocityAxis);
+
+        if (velocityAxis.magnitude > 0)
         {
+            transform.rotation = Quaternion.LookRotation(velocityAxis);
+        }
+
+        if (IsGrounded() && Input.GetButtonDown("Jump"))
+        {
+            
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
+        
+        Limitvelocity();
+
+        
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-
-    }
-
-    private void OnCollisionExit(Collision collision)
-    {
-
-    }
+    
 
     private void OnTriggerEnter(Collider other)
     {
@@ -62,25 +71,30 @@ public class PlayerMovement : MonoBehaviour
         {
             Climb();
         }
+        if (other.tag == "CheckPoint")
+        {
+            other.transform.GetComponent<CheckPoint>().SetAsLastCheckpoint();
+        }
     }
 
-    void Move(float h, float v)
+    void Move(Vector3 velocityAxis)
     {
         if (!IsHanging)
         {
-            currentH = Mathf.Lerp(currentH, h, Time.deltaTime * speed);
-            currentV = Mathf.Lerp(currentV, v, Time.deltaTime * speed);
+            playerRb.AddForce(velocityAxis.normalized * acceleration);
+            //currentH = Mathf.Lerp(currentH, h, Time.deltaTime * speed);
+            //currentV = Mathf.Lerp(currentV, v, Time.deltaTime * speed);
 
-            transform.position += transform.forward * currentV * speed * Time.deltaTime;
-            transform.Rotate(0, currentH * rotationSpeed * Time.deltaTime, 0);
+            //transform.position += transform.forward * currentV * speed * Time.deltaTime;
+            //transform.Rotate(0, currentH * rotationSpeed * Time.deltaTime, 0);
 
-            animator.SetFloat("MoveSpeed", currentV);
+            //animator.SetFloat("MoveSpeed", currentV);
 
-            Debug.Log(currentV);
+            //Debug.Log(currentV);
         }
         else
         {
-            if (Input.GetButton("Jump"))
+            if (Input.GetButtonDown("Jump"))
             {
                 playerRb.constraints = RigidbodyConstraints.None;
                 playerRb.constraints = RigidbodyConstraints.FreezeRotation;
@@ -91,6 +105,16 @@ public class PlayerMovement : MonoBehaviour
         }
 
     }
+    void Limitvelocity()
+    {
+        Vector2 xzVel = new Vector2(playerRb.velocity.x, playerRb.velocity.z);
+        if (xzVel.magnitude > maxspeed)
+        {
+            xzVel = xzVel.normalized * maxspeed;
+            playerRb.velocity = new Vector3(xzVel.x, playerRb.velocity.y, xzVel.y);
+        }
+    }
+
 
     //void OnAnimatorIK()
     //{
@@ -144,6 +168,7 @@ public class PlayerMovement : MonoBehaviour
 
     bool IsGrounded()
     {
+        
         return Physics.Raycast(transform.position + new Vector3(0, 0.2f, 0), -transform.up, 0.3f);
     }
 
