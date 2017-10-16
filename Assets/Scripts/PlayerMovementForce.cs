@@ -14,6 +14,8 @@ public class PlayerMovementForce : MonoBehaviour
     float currentV;
     float currentH;
 
+
+
     bool pulling = false;
     public bool isDead = false;
     Color deathColor = new Color(1f, 1f, 1f, 1f);
