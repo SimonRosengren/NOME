@@ -40,7 +40,7 @@ public class FadeObjectsBetween : MonoBehaviour {
         //compare old rays against new and see which objects are missing
         List<GameObject> results = transObjects.Except(hitslist).ToList();
 
-        Debug.Log(results.Count);
+
         
         AddNewShader(results);
 
