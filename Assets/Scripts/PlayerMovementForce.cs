@@ -27,7 +27,10 @@ public class PlayerMovementForce : MonoBehaviour
     [SerializeField] private bool IsHanging = false;
     [SerializeField] GameObject gameHandler;
     [SerializeField] Image deathImage;
+    [SerializeField] float minimumKillVelocityMagnitude = 10f;
     float deathTimer = 2f;
+
+    public int inReachOfBook = 0;
 
     GameLogic gameLogic;
 
@@ -99,6 +102,18 @@ public class PlayerMovementForce : MonoBehaviour
         {
             Die();
         }
+        if (other.tag == "Book")
+        {
+            inReachOfBook = other.GetComponent<Book>().ID;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Book")
+        {
+            inReachOfBook = 0;
+        }
     }
 
 
@@ -125,7 +140,7 @@ public class PlayerMovementForce : MonoBehaviour
                     {
                         playerRb.constraints = RigidbodyConstraints.None;
                         playerRb.constraints = RigidbodyConstraints.FreezeRotation;
-                        playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                        playerRb.AddForce(Vector3.up * 1, ForceMode.Impulse);
                         animator.SetBool("IsHanging", false);
                         IsHanging = false;
                     }
@@ -153,6 +168,15 @@ public class PlayerMovementForce : MonoBehaviour
     {
 
 
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        /*Since we dont check for tags here, everything that moves quickly will kill us*/
+        if (collision.relativeVelocity.magnitude > minimumKillVelocityMagnitude)
+        {
+            Die();
+        }
     }
 
     bool IsGrounded()
