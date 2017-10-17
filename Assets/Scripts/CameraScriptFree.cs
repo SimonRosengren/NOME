@@ -34,7 +34,7 @@ public class CameraScriptFree : MonoBehaviour {
             targetAngle = Mathf.LerpAngle(cameraAngle, targetAngle, cameraSpeed * Time.deltaTime);
             offset = Quaternion.Euler(0, targetAngle, 0) * offset;
 
-            if (Input.GetKey(KeyCode.J))
+            if (Input.GetKey(KeyCode.J) || Input.GetButton("CameraFocus"))
             {
                 camera.transform.position = Vector3.Lerp(camera.transform.position, target.position-target.forward + offset, cameraSpeed * 10 * Time.deltaTime);
                 
