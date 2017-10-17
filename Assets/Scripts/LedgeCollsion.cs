@@ -25,6 +25,7 @@ public class LedgeCollsion : MonoBehaviour {
             hanging = false;
             Debug.Log("jump");
             playerAnimator.SetBool("isHanging", false);
+
         }
     }
 
