@@ -1,18 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
 
-public class PlayerMovementForce : MonoBehaviour {
+public class PlayerMovementForce : MonoBehaviour
+{
 
     Rigidbody playerRb;
+    AudioSource runSound;
     Vector3 hangingPos;
     LedgeCollsion ledgegrabArea;
     /*Movement vector*/
     float currentV;
     float currentH;
 
-    bool pulling = false;
 
+
+    bool pulling = false;
+    public bool isDead = false;
+    Color deathColor = new Color(1f, 1f, 1f, 1f);
+    float deathFadeSpeed = 2f;
+    float timeToRespawn;
 
     [SerializeField] private Animator animator;
     [SerializeField] private float acceleration = 10f;
@@ -20,6 +28,12 @@ public class PlayerMovementForce : MonoBehaviour {
     [SerializeField] private float jumpForce = 10f;
     [SerializeField] private bool IsHanging = false;
     [SerializeField] GameObject gameHandler;
+    [SerializeField] Image deathImage;
+    [SerializeField] float minimumKillVelocityMagnitude = 10f;
+    float deathTimer = 2f;
+
+    public int inReachOfBook = 0;
+
     GameLogic gameLogic;
 
     void Awake()
@@ -27,6 +41,8 @@ public class PlayerMovementForce : MonoBehaviour {
         playerRb = GetComponent<Rigidbody>();
         ledgegrabArea = GetComponentInChildren<LedgeCollsion>();
         gameLogic = gameHandler.GetComponent<GameLogic>();
+        runSound = GetComponent<AudioSource>();
+        runSound.Play();
     }
 
     void FixedUpdate()
@@ -40,25 +56,37 @@ public class PlayerMovementForce : MonoBehaviour {
         velocityAxis = Quaternion.AngleAxis(Camera.main.transform.eulerAngles.y, Vector3.up) * velocityAxis;
 
         Move(velocityAxis);
+        animator.SetBool("isGrounded", IsGrounded());
 
-        if (velocityAxis.magnitude > 0 && !pulling)
+
+        if (velocityAxis.magnitude > 0 && !pulling && !ledgegrabArea.hanging)
         {
             transform.rotation = Quaternion.LookRotation(velocityAxis);
+            runSound.UnPause();
+
         }
+        else
+            runSound.Pause();
 
         if (IsGrounded() && Input.GetButtonDown("Jump") && !pulling)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            animator.SetTrigger("isJumping");
         }
         if (Input.GetButtonDown("Grab") && !pulling)
         {
             TryGrab();
         }
-        if (Input.GetKeyDown(KeyCode.K) && pulling)
+        else if (Input.GetButtonDown("Grab") && pulling)
         {
             TryLettingGo();
         }
         Limitvelocity();
+
+        if (isDead)
+        {
+            handleDeath();
+        }
 
     }
 
@@ -76,28 +104,52 @@ public class PlayerMovementForce : MonoBehaviour {
         {
             Die();
         }
+        if (other.tag == "Book")
+        {
+            inReachOfBook = other.GetComponent<Book>().ID;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Book")
+        {
+            inReachOfBook = 0;
+        }
     }
 
 
     void Move(Vector3 velocityAxis)
     {
-        if (!ledgegrabArea.hanging)
+        if (!isDead)
         {
-            playerRb.AddForce(velocityAxis.normalized * acceleration);
-            animator.SetFloat("MoveSpeed", playerRb.velocity.magnitude);
-        }
-        else /*So we can jump while hanging. Will probably be switched to an animation*/
-        {
-            if (Input.GetButtonDown("Jump"))
+            if (!ledgegrabArea.hanging)
             {
-                playerRb.constraints = RigidbodyConstraints.None;
-                playerRb.constraints = RigidbodyConstraints.FreezeRotation;
-                playerRb.AddForce(Vector3.up * 6, ForceMode.Impulse);
-                animator.SetBool("IsHanging", false);
-                IsHanging = false;
+                playerRb.AddForce(velocityAxis.normalized * acceleration);
+                animator.SetFloat("MoveSpeed", playerRb.velocity.magnitude);
             }
-        }
+            else /*So we can jump while hanging. Will probably be switched to an animation*/
+            {
+                if (!IsHanging)
+                {
+                    IsHanging = true;
+                    playerRb.AddForce(velocityAxis.normalized * acceleration);
+                    animator.SetFloat("MoveSpeed", playerRb.velocity.magnitude);
+                }
+                else /*So we can jump while hanging. Will probably be switched to an animation*/
+                {
+                    if (Input.GetButtonDown("Jump"))
+                    {
+                        playerRb.constraints = RigidbodyConstraints.None;
+                        playerRb.constraints = RigidbodyConstraints.FreezeRotation;
+                        playerRb.AddForce(Vector3.up * 1, ForceMode.Impulse);
+                        animator.SetBool("IsHanging", false);
+                        IsHanging = false;
+                    }
+                }
+            }
 
+        }
     }
     void Limitvelocity()
     {
@@ -116,38 +168,17 @@ public class PlayerMovementForce : MonoBehaviour {
     spot. */
     void Climb()
     {
-        //RaycastHit hitObj;
-        //Vector3 rayOriginOffset = new Vector3(0, -0.2f, 0);
-        //Ray ray = new Ray(transform.position + rayOriginOffset, transform.forward);
-        //Physics.Raycast(ray, out hitObj, 1);
 
-        //Vector3 lastRayHitPoint = transform.position;
-        //Physics.Raycast(ray, out hitObj, 1);
-        //if (hitObj.collider != null)
-        //{
-        //    for (int i = 0; i < 12; i++)
-        //    {
-        //        rayOriginOffset.y += 0.1f;
-        //        Ray rayTest = new Ray(transform.position + rayOriginOffset, transform.forward);
-        //        Physics.Raycast(rayTest, out hitObj, 1);
-        //        /*Vi får error här pga att vi kollar hittobj.collider även om null. Vet ej lösning*/
-        //        if (hitObj.collider.tag != "climbableObject")
-        //        {
-        //            //If this never happens we cannot reach ledge
-        //            break;
-        //        }
-        //        lastRayHitPoint = hitObj.point;
-        //        playerRb.constraints = RigidbodyConstraints.FreezeAll;
-        //        transform.position = lastRayHitPoint - new Vector3(0, 0.0f, 0) - (transform.forward * 0.2f);
-        //        IsHanging = true;
-        //        animator.SetBool("IsHanging", true);
-        //        hangingPos = lastRayHitPoint;
-        //    }
-        //    playerRb.constraints = RigidbodyConstraints.FreezeAll;
-        //    transform.position = lastRayHitPoint - new Vector3(0, 0.0f, 0) - (transform.forward * 0.2f);
-        //    animator.SetBool("IsHanging", true);
-        //}
 
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        /*Since we dont check for tags here, everything that moves quickly will kill us*/
+        if (collision.relativeVelocity.magnitude > minimumKillVelocityMagnitude)
+        {
+            Die();
+        }
     }
 
     bool IsGrounded()
@@ -160,7 +191,6 @@ public class PlayerMovementForce : MonoBehaviour {
         RaycastHit hitObj;
         Ray ray = new Ray(transform.position + new Vector3(0, 0.1f, 0), transform.forward);
         Physics.Raycast(ray, out hitObj, 1);
-        
         if (hitObj.transform.tag == "grabable")
         {
             pushableObject hitObjScript = hitObj.transform.GetComponent<pushableObject>();
@@ -183,6 +213,19 @@ public class PlayerMovementForce : MonoBehaviour {
     }
     void Die()
     {
-        transform.position = gameLogic.GetLastCheckPoint().position;
+        isDead = true;
+        timeToRespawn = deathTimer;
+    }
+    void handleDeath()
+    {
+        timeToRespawn -= Time.deltaTime;
+        deathImage.color = Color.Lerp(deathImage.color, Color.black, deathFadeSpeed * Time.deltaTime);
+        if (timeToRespawn <= 0)
+        {
+            isDead = false;
+            transform.position = gameLogic.GetLastCheckPoint().position;
+            transform.rotation = gameLogic.GetLastCheckPoint().rotation;
+            deathImage.color = Color.clear;
+        }
     }
 }
