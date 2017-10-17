@@ -5,6 +5,7 @@ using UnityEngine;
 public class LedgeCollsion : MonoBehaviour {
 
     public bool hanging=false;
+    public RuntimeAnimatorController controller;
     public Animator playerAnimator;
     Rigidbody playerRb;
 
@@ -25,6 +26,7 @@ public class LedgeCollsion : MonoBehaviour {
             hanging = false;
             Debug.Log("jump");
             playerAnimator.SetBool("isHanging", false);
+            
 
         }
     }
