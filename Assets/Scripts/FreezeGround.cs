@@ -21,9 +21,25 @@ public class FreezeGround : MonoBehaviour {
         
 
         if (Input.GetButton("Fire2") || Input.GetKey(KeyCode.V) && timer <= 0)
-        {
-            Instantiate(ice, new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z), Quaternion.Euler(new Vector3(90, 0, 0)));
-            timer = 1;
+        {           
+            Collider[] col = Physics.OverlapSphere(gameObject.transform.position, 1);
+            bool frozen = false;
+            int i = 0;
+            while (i < col.Length)
+            {
+                if (col[i].tag == "Freezable")
+                {
+                    col[i].SendMessageUpwards("Freeze");
+                    frozen = true;
+                }
+                i++;
+            }
+            if (!frozen)
+            {
+                Instantiate(ice, new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z), Quaternion.Euler(new Vector3(90, 0, 0)));
+                timer = 1;
+            }
+            
         }
 		
 	}
