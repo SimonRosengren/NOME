@@ -52,27 +52,31 @@ public class FadeObjectsBetween : MonoBehaviour {
         hits = Physics.RaycastAll(transform.position, direction, Vector3.Distance(cameraV, playerV));
         for (int i = 0; i < hits.Length; i++)
         {
-            Renderer rend = hits[i].transform.GetComponent<Renderer>();
-
-            
-            if (rend.material.shader!=Shader.Find("Transparent/Diffuse"))
+            if (hits[i].transform.GetComponent<Renderer>() != null)
             {
-                
-                Debug.Log("add");
-                transObjects.Add(hits[i].transform.gameObject);
+
+
+                Renderer rend = hits[i].transform.GetComponent<Renderer>();
+
+
+                if (rend.material.shader != Shader.Find("Transparent/Diffuse"))
+                {
+
+                    Debug.Log("add");
+                    transObjects.Add(hits[i].transform.gameObject);
+
+                }
+                hitslist.Add(hits[i].transform.gameObject);
+
+                rend.material.shader = Shader.Find("Transparent/Diffuse");
+
+                Color tempColor = rend.material.color;
+                tempColor.a = 0.2F;
+                rend.material.color = Color.Lerp(rend.material.color, tempColor, 3f * Time.deltaTime);
+
 
             }
-            hitslist.Add(hits[i].transform.gameObject);
-
-            rend.material.shader = Shader.Find("Transparent/Diffuse");
-
-            Color tempColor = rend.material.color;
-            tempColor.a = 0.2F;
-            rend.material.color = Color.Lerp(rend.material.color, tempColor, 3f * Time.deltaTime);
-           
-            
         }
-        
 
 
     }
