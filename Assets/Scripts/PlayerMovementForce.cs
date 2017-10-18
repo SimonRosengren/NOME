@@ -70,6 +70,9 @@ public class PlayerMovementForce : MonoBehaviour
 
         if (IsGrounded() && Input.GetButtonDown("Jump") && !pulling)
         {
+            Vector3 newVel = playerRb.velocity;
+            newVel.y = 0;
+            playerRb.velocity = newVel;
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             animator.SetTrigger("isJumping");
         }
@@ -142,7 +145,10 @@ public class PlayerMovementForce : MonoBehaviour
                     {
                         playerRb.constraints = RigidbodyConstraints.None;
                         playerRb.constraints = RigidbodyConstraints.FreezeRotation;
-                        playerRb.AddForce(Vector3.up * 1, ForceMode.Impulse);
+                        Vector3 newVel = playerRb.velocity;
+                        newVel.y = 0;
+                        playerRb.velocity = newVel;
+                        playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
                         animator.SetBool("IsHanging", false);
                         IsHanging = false;
                     }
