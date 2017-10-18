@@ -148,7 +148,7 @@ public class PlayerMovementForce : MonoBehaviour
                         Vector3 newVel = playerRb.velocity;
                         newVel.y = 0;
                         playerRb.velocity = newVel;
-                        playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                        playerRb.AddForce(Vector3.up * 1, ForceMode.Impulse);
                         animator.SetBool("IsHanging", false);
                         IsHanging = false;
                     }
