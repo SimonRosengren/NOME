@@ -18,7 +18,7 @@ public class PickUp : MonoBehaviour {
 
     public string Collect()
     {
-        Destroy(gameObject, 1);
+        Destroy(gameObject, 0.5f);
         return name;
     }
 }

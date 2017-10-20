@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class Menu : MonoBehaviour {
     public Canvas mainCanvas;
     private bool delayLoad = false;
-    private float timer = 0;
+    //private float timer = 0;
     private Fading fading;
 
     void Awake()
