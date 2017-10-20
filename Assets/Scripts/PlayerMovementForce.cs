@@ -13,6 +13,7 @@ public class PlayerMovementForce : MonoBehaviour
     /*Movement vector*/
     float currentV;
     float currentH;
+    Animator anim;
 
     bool pulling = false;
     public bool isDead = false;
@@ -37,6 +38,7 @@ public class PlayerMovementForce : MonoBehaviour
         ledgegrabArea = GetComponentInChildren<LedgeCollsion>();
         gameLogic = gameHandler.GetComponent<GameLogic>();
         runSound = GetComponent<AudioSource>();
+        anim = GetComponent<Animator>();
         runSound.Play();
     }
 
@@ -71,6 +73,7 @@ public class PlayerMovementForce : MonoBehaviour
 
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             animator.SetTrigger("isJumping");
+            runSound.Pause();
         }
         if (Input.GetButtonDown("Grab") && !pulling)
         {
@@ -142,6 +145,7 @@ public class PlayerMovementForce : MonoBehaviour
             }
 
         }
+        Debug.Log(playerRb.velocity.magnitude);
     }
     void Limitvelocity()
     {
@@ -166,7 +170,8 @@ public class PlayerMovementForce : MonoBehaviour
 
     bool IsGrounded()
     {
-        return Physics.Raycast(transform.position + new Vector3(0, 0.1f, 0), -transform.up, 0.5f);
+        Debug.DrawRay(transform.position + new Vector3(0, 0.2f, 0), -transform.up, Color.red);
+        return Physics.Raycast(transform.position + new Vector3(0, 0.2f, 0), -transform.up, 0.5f);
     }
 
     void TryGrab()
@@ -176,9 +181,11 @@ public class PlayerMovementForce : MonoBehaviour
         Physics.Raycast(ray, out hitObj, 1);
         if (hitObj.transform.tag == "grabable")
         {
+            anim.SetBool("grabbingObj", true);
             pushableObject hitObjScript = hitObj.transform.GetComponent<pushableObject>();
             hitObjScript.Grab(playerRb, hitObj.point);
             pulling = true;
+            
         }
     }
     void TryLettingGo()
@@ -189,9 +196,12 @@ public class PlayerMovementForce : MonoBehaviour
 
         if (hitObj.transform.tag == "grabable")
         {
+
+            anim.SetBool("grabbingObj", false);
             pushableObject hitObjScript = hitObj.transform.GetComponent<pushableObject>();
             hitObjScript.LetGo();
             pulling = false;
+
         }
     }
     void Die()
