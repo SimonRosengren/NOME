@@ -14,14 +14,12 @@ public class PlayerMovementForce : MonoBehaviour
     float currentV;
     float currentH;
 
-
-
     bool pulling = false;
     public bool isDead = false;
     Color deathColor = new Color(1f, 1f, 1f, 1f);
     float deathFadeSpeed = 2f;
     float timeToRespawn;
-
+    public int inReachOfBook = 0;
     [SerializeField] private Animator animator;
     [SerializeField] private float acceleration = 10f;
     [SerializeField] private float maxspeed = 10f;
@@ -29,10 +27,7 @@ public class PlayerMovementForce : MonoBehaviour
     [SerializeField] private bool IsHanging = false;
     [SerializeField] GameObject gameHandler;
     [SerializeField] Image deathImage;
-    [SerializeField] float minimumKillVelocityMagnitude = 10f;
     float deathTimer = 2f;
-
-    public int inReachOfBook = 0;
 
     GameLogic gameLogic;
 
@@ -73,6 +68,7 @@ public class PlayerMovementForce : MonoBehaviour
             Vector3 newVel = playerRb.velocity;
             newVel.y = 0;
             playerRb.velocity = newVel;
+
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             animator.SetTrigger("isJumping");
         }
@@ -107,18 +103,6 @@ public class PlayerMovementForce : MonoBehaviour
         {
             Die();
         }
-        if (other.tag == "Book")
-        {
-            inReachOfBook = other.GetComponent<Book>().ID;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.tag == "Book")
-        {
-            inReachOfBook = 0;
-        }
     }
 
 
@@ -145,10 +129,12 @@ public class PlayerMovementForce : MonoBehaviour
                     {
                         playerRb.constraints = RigidbodyConstraints.None;
                         playerRb.constraints = RigidbodyConstraints.FreezeRotation;
+
                         Vector3 newVel = playerRb.velocity;
                         newVel.y = 0;
                         playerRb.velocity = newVel;
                         playerRb.AddForce(Vector3.up * 1, ForceMode.Impulse);
+
                         animator.SetBool("IsHanging", false);
                         IsHanging = false;
                     }
@@ -176,15 +162,6 @@ public class PlayerMovementForce : MonoBehaviour
     {
 
 
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        /*Since we dont check for tags here, everything that moves quickly will kill us*/
-        if (collision.relativeVelocity.magnitude > minimumKillVelocityMagnitude)
-        {
-            Die();
-        }
     }
 
     bool IsGrounded()
