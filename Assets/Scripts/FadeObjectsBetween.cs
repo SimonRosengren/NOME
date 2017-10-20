@@ -57,6 +57,7 @@ public class FadeObjectsBetween : MonoBehaviour {
         hits = Physics.RaycastAll(transform.position, direction, Vector3.Distance(cameraV, playerV));
         for (int i = 0; i < hits.Length; i++)
         {
+
             if (hits[i].transform.GetComponent<Renderer>()!=null)
             {
                 Renderer rend = hits[i].transform.GetComponent<Renderer>();
@@ -84,7 +85,6 @@ public class FadeObjectsBetween : MonoBehaviour {
             }
             
         }
-        
 
 
     }
