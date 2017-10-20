@@ -16,10 +16,15 @@ public class FadeObjectsBetween : MonoBehaviour {
     
     List<GameObject> hitslist;
     List<GameObject> transObjects;
+    
+    List<GameObject> Difference;
+    List<ChangedObject> changedObj;
     // Use this for initialization
     void Start () {
         transObjects = new List<GameObject>();
         hitslist = new List<GameObject>();
+        changedObj = new List<ChangedObject>();
+        
 	}
 	
 	// Update is called once per frame
@@ -36,13 +41,13 @@ public class FadeObjectsBetween : MonoBehaviour {
         {
             DecreaseAlpha();
         }
-        
+
         //compare old rays against new and see which objects are missing
-        List<GameObject> results = transObjects.Except(hitslist).ToList();
 
 
         
-        AddNewShader(results);
+        
+        AddNewShader(FindDifferences(transObjects,hitslist));
 
 	}
 
@@ -52,24 +57,31 @@ public class FadeObjectsBetween : MonoBehaviour {
         hits = Physics.RaycastAll(transform.position, direction, Vector3.Distance(cameraV, playerV));
         for (int i = 0; i < hits.Length; i++)
         {
-            Renderer rend = hits[i].transform.GetComponent<Renderer>();
-
-            
-            if (rend.material.shader!=Shader.Find("Transparent/Diffuse"))
+            if (hits[i].transform.GetComponent<Renderer>()!=null)
             {
+                Renderer rend = hits[i].transform.GetComponent<Renderer>();
+
+
+                if (rend.material.shader != Shader.Find("Transparent/Diffuse"))
+                {
+
+                    Debug.Log("add");
+                    transObjects.Add(hits[i].transform.gameObject);
+                    ChangedObject cO = new ChangedObject(rend.material.shader, hits[i].transform.gameObject,rend.material.color.a);
+                    changedObj.Add(cO);
                 
-                Debug.Log("add");
-                transObjects.Add(hits[i].transform.gameObject);
+
+                }
+                hitslist.Add(hits[i].transform.gameObject);
+
+                rend.material.shader = Shader.Find("Transparent/Diffuse");
+
+                Color tempColor = rend.material.color;
+                tempColor.a = 0.2F;
+                rend.material.color = Color.Lerp(rend.material.color, tempColor, 3f * Time.deltaTime);
+           
 
             }
-            hitslist.Add(hits[i].transform.gameObject);
-
-            rend.material.shader = Shader.Find("Transparent/Diffuse");
-
-            Color tempColor = rend.material.color;
-            tempColor.a = 0.2F;
-            rend.material.color = Color.Lerp(rend.material.color, tempColor, 3f * Time.deltaTime);
-           
             
         }
         
@@ -77,7 +89,10 @@ public class FadeObjectsBetween : MonoBehaviour {
 
     }
 
-
+    List<GameObject> FindDifferences(List<GameObject>trans, List<GameObject> hits)
+    {
+        return trans.Except(hits).ToList();
+    }
 
 
     void AddNewShader(List<GameObject> results)
@@ -94,11 +109,20 @@ public class FadeObjectsBetween : MonoBehaviour {
                 
                 Renderer rend = results[i].transform.GetComponent<Renderer>();
                 Color tempColor = rend.material.color;
-                tempColor.a = 1f;
+                
 
+                for (int c = 0; c < changedObj.Count; c++)
+                {
+                    if (results[i] == changedObj[c].GO)
+                    {
+                        rend.material.shader = changedObj[c].shader;
+                        tempColor.a = changedObj[c].a;
+                        changedObj.Remove(changedObj[c]);
+                        break;
+                    }
+                }
                 rend.material.color = tempColor;
-               
-                rend.material.shader = Shader.Find("Standard");
+
      
                 
                 
@@ -117,4 +141,17 @@ public class FadeObjectsBetween : MonoBehaviour {
 
 
    
+}
+
+class ChangedObject
+{
+    public Shader shader;
+    public GameObject GO;
+    public float a;
+    public ChangedObject(Shader shader,GameObject GO,float alpha)
+    {
+        this.shader = shader;
+        this.GO = GO;
+        this.a = alpha;
+    }
 }
