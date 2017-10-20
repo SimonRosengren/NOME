@@ -67,7 +67,7 @@ public class FadeObjectsBetween : MonoBehaviour {
 
                     Debug.Log("add");
                     transObjects.Add(hits[i].transform.gameObject);
-                    ChangedObject cO = new ChangedObject(rend.material.shader, hits[i].transform.gameObject);
+                    ChangedObject cO = new ChangedObject(rend.material.shader, hits[i].transform.gameObject,rend.material.color.a);
                     changedObj.Add(cO);
                 
 
@@ -109,19 +109,19 @@ public class FadeObjectsBetween : MonoBehaviour {
                 
                 Renderer rend = results[i].transform.GetComponent<Renderer>();
                 Color tempColor = rend.material.color;
-                tempColor.a = 1f;
                 
-                rend.material.color = tempColor;
 
                 for (int c = 0; c < changedObj.Count; c++)
                 {
                     if (results[i] == changedObj[c].GO)
                     {
                         rend.material.shader = changedObj[c].shader;
+                        tempColor.a = changedObj[c].a;
                         changedObj.Remove(changedObj[c]);
                         break;
                     }
                 }
+                rend.material.color = tempColor;
 
      
                 
@@ -147,9 +147,11 @@ class ChangedObject
 {
     public Shader shader;
     public GameObject GO;
-    public ChangedObject(Shader shader,GameObject GO)
+    public float a;
+    public ChangedObject(Shader shader,GameObject GO,float alpha)
     {
         this.shader = shader;
         this.GO = GO;
+        this.a = alpha;
     }
 }

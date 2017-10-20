@@ -19,7 +19,7 @@ public class PlayerMovementForce : MonoBehaviour
     Color deathColor = new Color(1f, 1f, 1f, 1f);
     float deathFadeSpeed = 2f;
     float timeToRespawn;
-
+    public int inReachOfBook = 0;
     [SerializeField] private Animator animator;
     [SerializeField] private float acceleration = 10f;
     [SerializeField] private float maxspeed = 10f;
