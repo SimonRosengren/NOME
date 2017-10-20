@@ -3,25 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
 
-public class CustomAnalyticTool : MonoBehaviour {
+public class CustomAnalyticToolRecord : MonoBehaviour {
 
     //Player goes here if you want to track player movement
-    [SerializeField] Transform objectToTrack;
+    [SerializeField]
+    Transform objectToTrack;
 
     //Path to text file
     string path = @"CustomAnalyticsTool\Movement.txt";
 
     float timer = 0;
 
-    public float saveRate = 3f;
+    public float saveRate = 0.1f;
 
 
-    void Start ()
+    void Start()
     {
-		
-	}
 
-	void Update ()
+    }
+
+    void Update()
     {
         SaveToFile();
     }
@@ -32,8 +33,13 @@ public class CustomAnalyticTool : MonoBehaviour {
 
         if (timer >= saveRate)
         {
-            File.WriteAllText(path, "Test");
+            using (System.IO.StreamWriter file =
+                new System.IO.StreamWriter(path, true))
+            {
+                file.WriteLine(objectToTrack.position + "\n");
+            }
             timer = 0;
         }
     }
 }
+
