@@ -22,6 +22,7 @@ public class FreezableObject : MonoBehaviour {
     {
         bc.isTrigger = false;
         mesh.material = freezeMat;
+        gameObject.GetComponent<BoxCollider>().material = (PhysicMaterial)(Resources.Load("PhysicMaterial/NoFriction"));
         
     }
     void SetFire()
@@ -29,4 +30,18 @@ public class FreezableObject : MonoBehaviour {
         bc.isTrigger = true;
         mesh.material = waterMat;
     }
+    //void OnCollisionEnter(Collider other)
+    //{
+    //    if (other.material.name != "NoFriction (Instance)")
+    //    {
+    //        other.material = (PhysicMaterial)(Resources.Load("PhysicMaterial/NoFriction"));
+    //    }
+    //}
+    //void OnCollisionExit(Collider other)
+    //{
+    //    if (other.material.name == "NoFriction (Instance)")
+    //    {
+    //        other.material = null;
+    //    }
+    //}
 }

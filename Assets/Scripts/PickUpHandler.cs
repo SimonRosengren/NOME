@@ -1,14 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PickUpHandler : MonoBehaviour {
 
     //Should probably not be public
     public bool kitchenKey = false;
-    public bool barnKey = false;
-    public bool windowKey = false;
-
+    public bool paperclip = false;
+    public bool rope = false;
+    public GameObject inventory;
 
 	// Use this for initialization
 	void Start () {
@@ -38,12 +39,17 @@ public class PickUpHandler : MonoBehaviour {
         {
             case "KitchenKey":
                 kitchenKey = true;
+                inventory.transform.Find("Key").GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Images/key_found");
                 break;
-            case "BarnKey":
-                barnKey = true;
+            case "Paperclip":
+                paperclip = true;
+                inventory.transform.Find("Paperclip").GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Images/paperclip_found");
+
                 break;
-            case "WindowKey":
-                windowKey = true;
+            case "Rope":
+                rope = true;
+                inventory.transform.Find("Rope").GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Images/rope_found");
+
                 break;
             default:
                 break;
