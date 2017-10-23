@@ -18,9 +18,9 @@ public class FreezeGround : MonoBehaviour {
         {
             timer -= Time.deltaTime;   
         }
-        
 
-        if (Input.GetButton("Fire2") || Input.GetKey(KeyCode.V) && timer <= 0)
+
+        if (Input.GetButton("Fire2") && timer <= 0 || Input.GetKey(KeyCode.V) && timer <= 0)
         {           
             Collider[] col = Physics.OverlapSphere(gameObject.transform.position, 1);
             bool frozen = false;
@@ -36,8 +36,11 @@ public class FreezeGround : MonoBehaviour {
             }
             if (!frozen)
             {
-                Instantiate(ice, new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z), Quaternion.Euler(new Vector3(90, 0, 0)));
-                timer = 1;
+                if (gameObject.GetComponent<CapsuleCollider>().material.name != "NoFriction (Instance)")
+                {
+                    Instantiate(ice, new Vector3(transform.position.x, transform.position.y + 0.2f, transform.position.z), Quaternion.Euler(new Vector3(90, 0, 0)));
+                    timer = 1;    
+                }               
             }
             
         }

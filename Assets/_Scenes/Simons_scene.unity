@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.41170365, g: 0.41897252, b: 0.41138086, a: 1}
+  m_IndirectSpecularColor: {r: 0.43598577, g: 0.44372934, b: 0.4358419, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -474,6 +474,7 @@ MonoBehaviour:
   Target: {fileID: 260280273}
   cameraOffset: {x: 0, y: 5, z: -10}
   cameraSpeed: 10
+  lookLock: 0
 --- !u!1 &202031240
 GameObject:
   m_ObjectHideFlags: 0
@@ -743,6 +744,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isDead: 0
+  inReachOfBook: 0
   animator: {fileID: 260280279}
   acceleration: 50
   maxspeed: 3
@@ -750,8 +752,6 @@ MonoBehaviour:
   IsHanging: 0
   gameHandler: {fileID: 496678450}
   deathImage: {fileID: 140222659}
-  minimumKillVelocityMagnitude: 10
-  inReachOfBook: 0
 --- !u!114 &260280275
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -767,6 +767,7 @@ MonoBehaviour:
   match: {fileID: 1728404979686068, guid: 49fea90514b2b4b458860fd81c6d4fd8, type: 2}
   matchLit: 0
   matchLocation: {fileID: 1401682119}
+  anim: {fileID: 0}
 --- !u!82 &260280276
 AudioSource:
   m_ObjectHideFlags: 0
@@ -908,7 +909,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ice: {fileID: 1086853278249972, guid: 1330110810ca2ee4989f757061e98105, type: 2}
-  timer: 1
 --- !u!114 &260280281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1548,6 +1548,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hanging: 0
+  controller: {fileID: 0}
+  playerAnimator: {fileID: 0}
 --- !u!65 &654220108
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2315,7 +2317,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 958571418}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 131.81248, y: 5.181, z: 268.707}
+  m_LocalPosition: {x: 144.07, y: 5.181, z: 268.707}
   m_LocalScale: {x: 0.34219554, y: 0.34219554, z: 0.34219554}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2449,7 +2451,7 @@ Transform:
     type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1037413025}
-  m_LocalRotation: {x: 0.31369328, y: 0.6391339, z: -0.63708705, w: 0.2953382}
+  m_LocalRotation: {x: 0.31369326, y: 0.6391338, z: -0.637087, w: 0.29533818}
   m_LocalPosition: {x: 0.0515247, y: -0.018972583, z: -0.057321437}
   m_LocalScale: {x: 1.0000002, y: 1, z: 0.99999994}
   m_Children:
@@ -2583,6 +2585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   onFire: 0
+  fire: {fileID: 0}
 --- !u!1001 &1169835116
 Prefab:
   m_ObjectHideFlags: 0
@@ -3359,7 +3362,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1654627405}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 126.29, y: 5.181, z: 268.707}
+  m_LocalPosition: {x: 141.21, y: 5.181, z: 268.707}
   m_LocalScale: {x: 0.34219554, y: 0.34219554, z: 0.34219554}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3698,8 +3701,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1826412597}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 254.8334, y: -328.29276, z: -1765.2474}
+  m_LocalRotation: {x: 0.27636468, y: 0.09408331, z: 0.027196823, w: -0.9560498}
+  m_LocalPosition: {x: 136.96384, y: -1.6542053, z: 257.6251}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3983,7 +3986,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 30.9, y: -40.3}
+  m_AnchoredPosition: {x: 30.900024, y: -40.300003}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1899995427
