@@ -21,6 +21,7 @@ public class PlayerMovementForce : MonoBehaviour
     float deathFadeSpeed = 2f;
     float timeToRespawn;
     public int inReachOfBook = 0;
+    float moveSpeedVec;
     [SerializeField] private Animator animator;
     [SerializeField] private float acceleration = 10f;
     [SerializeField] private float maxspeed = 10f;
@@ -111,12 +112,14 @@ public class PlayerMovementForce : MonoBehaviour
 
     void Move(Vector3 velocityAxis)
     {
+        animator.SetFloat("MoveSpeed", playerRb.velocity.magnitude);
+
         if (!isDead)
         {
             if (!ledgegrabArea.hanging)
             {
                 playerRb.AddForce(velocityAxis.normalized * acceleration);
-                animator.SetFloat("MoveSpeed", playerRb.velocity.magnitude);
+               
             }
             else /*So we can jump while hanging. Will probably be switched to an animation*/
             {
@@ -124,7 +127,7 @@ public class PlayerMovementForce : MonoBehaviour
                 {
                     IsHanging = true;
                     playerRb.AddForce(velocityAxis.normalized * acceleration);
-                    animator.SetFloat("MoveSpeed", playerRb.velocity.magnitude);
+                       
                 }
                 else /*So we can jump while hanging. Will probably be switched to an animation*/
                 {
