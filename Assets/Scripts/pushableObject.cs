@@ -10,8 +10,10 @@ public class pushableObject : MonoBehaviour {
 	void Start ()
     {
         mRigidBody = GetComponent<Rigidbody>();
-       
-	}
+        mRigidBody.constraints = RigidbodyConstraints.FreezeAll;
+        
+
+    }
 	
 
 	void Update ()

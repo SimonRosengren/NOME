@@ -66,7 +66,7 @@ public class FadeObjectsBetween : MonoBehaviour {
                 if (rend.material.shader != Shader.Find("Transparent/Diffuse"))
                 {
 
-                    Debug.Log("add");
+
                     transObjects.Add(hits[i].transform.gameObject);
                     ChangedObject cO = new ChangedObject(rend.material.shader, hits[i].transform.gameObject,rend.material.color.a);
                     changedObj.Add(cO);

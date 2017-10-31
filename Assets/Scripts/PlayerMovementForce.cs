@@ -10,6 +10,7 @@ public class PlayerMovementForce : MonoBehaviour
     AudioSource runSound;
     Vector3 hangingPos;
     LedgeCollsion ledgegrabArea;
+    RaycastHit ObjectGrabbed;
     /*Movement vector*/
     float currentV;
     float currentH;
@@ -171,25 +172,26 @@ public class PlayerMovementForce : MonoBehaviour
 
     void TryGrab()
     {
-        RaycastHit hitObj;
-        Ray ray = new Ray(transform.position + new Vector3(0, 0.1f, 0), transform.forward);
-        Physics.Raycast(ray, out hitObj, 1);
-        if (hitObj.transform.tag == "grabable")
+        Ray ray = new Ray(transform.position + new Vector3(0, 0.5f, 0), transform.forward);
+        
+        Physics.Raycast(ray, out ObjectGrabbed, 1);
+        Debug.Log("try grab");
+        if (ObjectGrabbed.transform.tag == "grabable")
         {
-            pushableObject hitObjScript = hitObj.transform.GetComponent<pushableObject>();
-            hitObjScript.Grab(playerRb, hitObj.point);
+            Debug.Log("grabbed");
+            pushableObject hitObjScript = ObjectGrabbed.transform.GetComponent<pushableObject>();
+            hitObjScript.Grab(playerRb, ObjectGrabbed.point);
             pulling = true;
         }
     }
     void TryLettingGo()
     {
-        RaycastHit hitObj;
-        Ray ray = new Ray(transform.position + new Vector3(0, 0.1f, 0), transform.forward);
-        Physics.Raycast(ray, out hitObj, 1);
+        
+       
 
-        if (hitObj.transform.tag == "grabable")
+        if (pulling==true)
         {
-            pushableObject hitObjScript = hitObj.transform.GetComponent<pushableObject>();
+            pushableObject hitObjScript = ObjectGrabbed.transform.GetComponent<pushableObject>();
             hitObjScript.LetGo();
             pulling = false;
         }
