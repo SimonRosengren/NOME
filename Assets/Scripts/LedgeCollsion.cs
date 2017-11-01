@@ -8,10 +8,12 @@ public class LedgeCollsion : MonoBehaviour {
     public RuntimeAnimatorController controller;
     public Animator playerAnimator;
     Rigidbody playerRb;
+    GameObject Player;
+    Collider hangobject;
 
     private void Awake()
     {
-        
+        Player = GameObject.FindGameObjectWithTag("Player");
         playerRb = transform.parent.GetComponent<Rigidbody>();
     }
 
@@ -19,14 +21,22 @@ public class LedgeCollsion : MonoBehaviour {
     {
         if (Input.GetButtonDown("Jump") && hanging==true)
         {
+            Player.transform.parent = null;
             playerRb.constraints = RigidbodyConstraints.None|RigidbodyConstraints.FreezeRotation;
             
             playerRb.AddForce(Vector3.up * 6, ForceMode.Impulse);
-
             hanging = false;
             Debug.Log("jump");
             playerAnimator.SetBool("isHanging", false);
             
+
+        }
+    }
+    private void LateUpdate()
+    {
+        if (hanging == true)
+        {
+           // Player.transform.position = hangobject.transform.position;
 
         }
     }
@@ -35,9 +45,11 @@ public class LedgeCollsion : MonoBehaviour {
     {
         if (other.tag=="climbTrigger")
         {
+            //hangobject = other;
             playerRb.constraints = RigidbodyConstraints.FreezeAll;
             hanging = true;
             playerAnimator.SetBool("isHanging", true);
+
            //playerAnimator.SetTrigger("isHangingTrigger");
 
         }

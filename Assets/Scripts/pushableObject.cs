@@ -6,7 +6,7 @@ public class pushableObject : MonoBehaviour {
 
     HingeJoint hj;
     Rigidbody mRigidBody;
-    public bool x, z;
+    public bool x, z, y;
 	void Start ()
     {
         mRigidBody = GetComponent<Rigidbody>();
@@ -51,6 +51,11 @@ public class pushableObject : MonoBehaviour {
         if (z == true)
         {
             mRigidBody.constraints &= ~(RigidbodyConstraints.FreezePositionZ);
+        }
+
+        if (y == true)
+        {
+            mRigidBody.constraints &= ~(RigidbodyConstraints.FreezePositionY);
         }
     }
     

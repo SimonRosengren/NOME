@@ -11,6 +11,7 @@ public class PlayerMovementForce : MonoBehaviour
     Vector3 hangingPos;
     LedgeCollsion ledgegrabArea;
     RaycastHit ObjectGrabbed;
+    
     /*Movement vector*/
     float currentV;
     float currentH;
@@ -34,6 +35,7 @@ public class PlayerMovementForce : MonoBehaviour
 
     void Awake()
     {
+        
         playerRb = GetComponent<Rigidbody>();
         ledgegrabArea = GetComponentInChildren<LedgeCollsion>();
         gameLogic = gameHandler.GetComponent<GameLogic>();
@@ -128,9 +130,9 @@ public class PlayerMovementForce : MonoBehaviour
                 {
                     if (Input.GetButtonDown("Jump"))
                     {
+                        
                         playerRb.constraints = RigidbodyConstraints.None;
                         playerRb.constraints = RigidbodyConstraints.FreezeRotation;
-
                         Vector3 newVel = playerRb.velocity;
                         newVel.y = 0;
                         playerRb.velocity = newVel;
