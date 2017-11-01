@@ -42,6 +42,10 @@ public class ChasingRobot : MonoBehaviour {
                 i++;
             }
         }
+        if (isDead)
+        {
+            rb.constraints = RigidbodyConstraints.None;
+        }
     }
     void FixedUpdate()
     {
@@ -49,6 +53,7 @@ public class ChasingRobot : MonoBehaviour {
         {
             nav.enabled = false;
             rb.AddForce(direction * moveSpeed * Time.deltaTime, ForceMode.Impulse);
+            transform.rotation = Quaternion.LookRotation(rb.velocity);
         }
 
     }
