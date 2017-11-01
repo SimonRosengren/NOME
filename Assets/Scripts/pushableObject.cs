@@ -6,10 +6,14 @@ public class pushableObject : MonoBehaviour {
 
     HingeJoint hj;
     Rigidbody mRigidBody;
+    public bool x, z, y;
 	void Start ()
     {
         mRigidBody = GetComponent<Rigidbody>();
-	}
+        mRigidBody.constraints = RigidbodyConstraints.FreezeAll;
+        
+
+    }
 	
 
 	void Update ()
@@ -20,6 +24,7 @@ public class pushableObject : MonoBehaviour {
     /*Takes the players rigid body and point where ray cast hit the object as argument*/
     public void Grab(Rigidbody otherRb, Vector3 anchorPoint)
     {
+        UnlockDirections();
         gameObject.AddComponent<HingeJoint>();
         hj = GetComponent<HingeJoint>();
 
@@ -31,7 +36,27 @@ public class pushableObject : MonoBehaviour {
 
     public void LetGo()
     {
+        mRigidBody.constraints = RigidbodyConstraints.FreezeAll;
         Destroy(hj);
         //mRigidBody.freezeRotation = false;
     }
+
+    void UnlockDirections()
+    {
+        if (x == true)
+        {
+            mRigidBody.constraints &= ~(RigidbodyConstraints.FreezePositionX);
+
+        }
+        if (z == true)
+        {
+            mRigidBody.constraints &= ~(RigidbodyConstraints.FreezePositionZ);
+        }
+
+        if (y == true)
+        {
+            mRigidBody.constraints &= ~(RigidbodyConstraints.FreezePositionY);
+        }
+    }
+    
 }
