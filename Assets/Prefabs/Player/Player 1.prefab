@@ -1298,12 +1298,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f891cff1c43114ebe8edb5dc7f0e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDead: 0
+  inReachOfBook: 0
   animator: {fileID: 95169790407133046}
   acceleration: 20
   maxspeed: 10
   jumpForce: 7
   IsHanging: 0
   gameHandler: {fileID: 0}
+  deathImage: {fileID: 0}
 --- !u!114 &114166826952204174
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1316,6 +1319,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hanging: 0
+  controller: {fileID: 0}
+  playerAnimator: {fileID: 0}
 --- !u!136 &136549919993278726
 CapsuleCollider:
   m_ObjectHideFlags: 1
