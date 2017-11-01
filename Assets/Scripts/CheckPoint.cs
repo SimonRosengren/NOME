@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class CheckPoint : MonoBehaviour {
 
+    public readonly int ID;
+
     [SerializeField] Transform startPoint;
 
     [SerializeField] GameObject gameHandler;
 
-	void Start () {
+    [SerializeField] CustomAnalyticToolRecord analyticTool;
+
+    void Start () {
 		
 	}
 	
@@ -21,6 +25,7 @@ public class CheckPoint : MonoBehaviour {
     {
         GameLogic gameLogic = gameHandler.transform.GetComponent<GameLogic>();
         gameLogic.setNewCheckpoint(startPoint);
+        analyticTool.SaveCheckpointTime();
     }
 
     public Transform GetPos()
