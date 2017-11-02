@@ -31,6 +31,7 @@ public class ChasingRobot : MonoBehaviour {
         {
             nav.enabled = true;
             nav.CalculatePath(player.position, navPath);
+            
             int i = 1;
             while (i < navPath.corners.Length)
             {
@@ -53,6 +54,7 @@ public class ChasingRobot : MonoBehaviour {
         {
             nav.enabled = false;
             rb.AddForce(direction * moveSpeed * Time.deltaTime, ForceMode.Impulse);
+            //rb.AddForce(Vector3.Normalize(player.position - transform.position) * moveSpeed * Time.deltaTime, ForceMode.Impulse);
             transform.rotation = Quaternion.LookRotation(rb.velocity);
         }
 
