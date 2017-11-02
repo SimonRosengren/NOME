@@ -7,12 +7,11 @@ public class LedgeCollsion : MonoBehaviour {
     public bool hanging=false;
     public RuntimeAnimatorController controller;
     public Animator playerAnimator;
-    Rigidbody playerRb;
+    public Rigidbody playerRb;
 
     private void Awake()
     {
-        
-        playerRb = transform.parent.GetComponent<Rigidbody>();
+
     }
 
     private void FixedUpdate()

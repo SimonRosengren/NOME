@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class PlayerMovementForce : MonoBehaviour
 {
-
+    RaycastHit hitObj;
     Rigidbody playerRb;
     AudioSource runSound;
     Vector3 hangingPos;
+    Vector3 velocityAxis;
     LedgeCollsion ledgegrabArea;
     /*Movement vector*/
     float currentV;
     float currentH;
-    Animator anim;
 
     bool pulling = false;
     public bool isDead = false;
@@ -21,14 +21,21 @@ public class PlayerMovementForce : MonoBehaviour
     float deathFadeSpeed = 2f;
     float timeToRespawn;
     public int inReachOfBook = 0;
-    float moveSpeedVec;
-    [SerializeField] private Animator animator;
-    [SerializeField] private float acceleration = 10f;
-    [SerializeField] private float maxspeed = 10f;
-    [SerializeField] private float jumpForce = 10f;
-    [SerializeField] private bool IsHanging = false;
-    [SerializeField] GameObject gameHandler;
-    [SerializeField] Image deathImage;
+    float moveSpeed;
+    [SerializeField]
+    private Animator animator;
+    [SerializeField]
+    private float acceleration = 10f;
+    [SerializeField]
+    private float maxspeed = 10f;
+    [SerializeField]
+    private float jumpForce = 10f;
+    [SerializeField]
+    private bool IsHanging = false;
+    [SerializeField]
+    GameObject gameHandler;
+    [SerializeField]
+    Image deathImage;
     float deathTimer = 2f;
 
     GameLogic gameLogic;
@@ -39,22 +46,31 @@ public class PlayerMovementForce : MonoBehaviour
         ledgegrabArea = GetComponentInChildren<LedgeCollsion>();
         gameLogic = gameHandler.GetComponent<GameLogic>();
         runSound = GetComponent<AudioSource>();
-        anim = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
         runSound.Play();
     }
 
     void FixedUpdate()
     {
 
-        float xspeed = Input.GetAxisRaw("Horizontal");
-        float zspeed = Input.GetAxisRaw("Vertical");
+        float xspeed = 0;
+        xspeed = Input.GetAxisRaw("Horizontal");
+        float zspeed = 0;
+        zspeed = Input.GetAxisRaw("Vertical");
 
-        Vector3 velocityAxis = new Vector3(xspeed, 0, zspeed);
+
+
+
+        velocityAxis = new Vector3(xspeed, 0, zspeed);
 
         velocityAxis = Quaternion.AngleAxis(Camera.main.transform.eulerAngles.y, Vector3.up) * velocityAxis;
 
+
+
         Move(velocityAxis);
         animator.SetBool("isGrounded", IsGrounded());
+
+
 
 
         if (velocityAxis.magnitude > 0 && !pulling && !ledgegrabArea.hanging)
@@ -84,8 +100,10 @@ public class PlayerMovementForce : MonoBehaviour
         {
             TryLettingGo();
         }
+        //Constant updates of animation floats.------------------------
         Limitvelocity();
 
+        //------------------------------------------------------------
         if (isDead)
         {
             handleDeath();
@@ -112,14 +130,14 @@ public class PlayerMovementForce : MonoBehaviour
 
     void Move(Vector3 velocityAxis)
     {
-        animator.SetFloat("MoveSpeed", playerRb.velocity.magnitude);
-
+        Debug.Log(velocityAxis.magnitude);
         if (!isDead)
         {
             if (!ledgegrabArea.hanging)
             {
                 playerRb.AddForce(velocityAxis.normalized * acceleration);
-               
+                moveSpeed = playerRb.velocity.magnitude;
+                animator.SetFloat("MoveSpeed", velocityAxis.magnitude);
             }
             else /*So we can jump while hanging. Will probably be switched to an animation*/
             {
@@ -127,8 +145,11 @@ public class PlayerMovementForce : MonoBehaviour
                 {
                     IsHanging = true;
                     playerRb.AddForce(velocityAxis.normalized * acceleration);
-                       
+                    moveSpeed = playerRb.velocity.magnitude;
+                    animator.SetFloat("MoveSpeed", velocityAxis.magnitude);
                 }
+
+
                 else /*So we can jump while hanging. Will probably be switched to an animation*/
                 {
                     if (Input.GetButtonDown("Jump"))
@@ -148,7 +169,8 @@ public class PlayerMovementForce : MonoBehaviour
             }
 
         }
-        Debug.Log(playerRb.velocity.magnitude);
+
+
     }
     void Limitvelocity()
     {
@@ -158,7 +180,7 @@ public class PlayerMovementForce : MonoBehaviour
             xzVel = xzVel.normalized * maxspeed;
             playerRb.velocity = new Vector3(xzVel.x, playerRb.velocity.y, xzVel.y);
         }
-        animator.SetFloat("MoveSpeed", xzVel.magnitude);
+        // animator.SetFloat("MoveSpeed", xzVel.magnitude);
     }
 
     /*The method, which is triggered by entering a climbTrigger, will cast Rays higher and higher and stop 
@@ -179,28 +201,36 @@ public class PlayerMovementForce : MonoBehaviour
 
     void TryGrab()
     {
-        RaycastHit hitObj;
+
         Ray ray = new Ray(transform.position + new Vector3(0, 0.1f, 0), transform.forward);
         Physics.Raycast(ray, out hitObj, 1);
         if (hitObj.transform.tag == "grabable")
         {
-            anim.SetBool("grabbingObj", true);
+            animator.SetBool("grabbingObj", true);
             pushableObject hitObjScript = hitObj.transform.GetComponent<pushableObject>();
             hitObjScript.Grab(playerRb, hitObj.point);
             pulling = true;
-            
+
+
         }
     }
+
+    void OnAnimatorIK()
+    {
+        if (pulling)
+        {
+            animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 0.5f);
+            animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 0.5f);
+            animator.SetIKPosition(AvatarIKGoal.RightHand, hitObj.transform.position);
+            animator.SetIKPosition(AvatarIKGoal.LeftHand, hitObj.transform.position);
+        }
+    }
+
     void TryLettingGo()
     {
-        RaycastHit hitObj;
-        Ray ray = new Ray(transform.position + new Vector3(0, 0.1f, 0), transform.forward);
-        Physics.Raycast(ray, out hitObj, 1);
-
         if (hitObj.transform.tag == "grabable")
         {
-
-            anim.SetBool("grabbingObj", false);
+            animator.SetBool("grabbingObj", false);
             pushableObject hitObjScript = hitObj.transform.GetComponent<pushableObject>();
             hitObjScript.LetGo();
             pulling = false;
