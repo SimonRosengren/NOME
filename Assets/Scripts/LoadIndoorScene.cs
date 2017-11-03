@@ -21,6 +21,6 @@ public class LoadIndoorScene : MonoBehaviour {
     {
         anim.SetBool("FadeOut", true);
         yield return new WaitForSecondsRealtime(fadeTimer);
-        SceneManager.LoadScene(scene);
+        SceneManager.LoadScene(scene, LoadSceneMode.Single);
     }
 }
