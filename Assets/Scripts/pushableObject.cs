@@ -13,6 +13,10 @@ public class pushableObject : MonoBehaviour {
         mRigidBody.constraints = RigidbodyConstraints.FreezeAll;
         
 
+        if (y == true)
+        {
+            mRigidBody.constraints &= ~(RigidbodyConstraints.FreezePositionY);
+        }
     }
 	
 
@@ -53,10 +57,6 @@ public class pushableObject : MonoBehaviour {
             mRigidBody.constraints &= ~(RigidbodyConstraints.FreezePositionZ);
         }
 
-        if (y == true)
-        {
-            mRigidBody.constraints &= ~(RigidbodyConstraints.FreezePositionY);
-        }
     }
     
 }
