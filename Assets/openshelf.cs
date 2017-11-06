@@ -5,10 +5,12 @@ using UnityEngine;
 public class openshelf : MonoBehaviour {
     bool open;
     Animator shelf;
+    
 	// Use this for initialization
 	void Start () {
         open = false;
-        shelf = GameObject.Find("KitchenShelf").GetComponent<Animator>();
+        shelf = GameObject.Find("Kitchen_Shelf").GetComponent<Animator>();
+        
 	}
 	
 	// Update is called once per frame
@@ -18,11 +20,12 @@ public class openshelf : MonoBehaviour {
     {
         if(other.name== "LedgeGrabBox" && open==false)
         {
-
-            shelf.Play("shelfopening");
+            
+            shelf.Play("Shelf Opening");
             Debug.Log("Open");
         }
     }
 
+    
 
 }
