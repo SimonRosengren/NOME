@@ -22,6 +22,17 @@ public class GrabObject : MonoBehaviour {
 		
 	}
 
+    void OnAnimatorIK()
+    {
+        if (isGrabbing)
+        {
+            animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 0.5f);
+            animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 0.5f);
+            animator.SetIKPosition(AvatarIKGoal.RightHand, grabbedObject.transform.position);
+            animator.SetIKPosition(AvatarIKGoal.LeftHand, grabbedObject.transform.position);
+        }
+    }
+
     public void Grab()
     {
         if (!isGrabbing)

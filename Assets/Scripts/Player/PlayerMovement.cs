@@ -32,11 +32,11 @@ public class PlayerMovement : MonoBehaviour
         isDead = false;
         jumpForce = 5;
         maxMoveSpeed = 5;
+        runSound.Play();
     }
 
     void Update()
     {
-        runSound.UnPause();
         HandleInput();
         animator.SetBool("isGrounded", IsGrounded());
     }
@@ -44,20 +44,28 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         Move();
-        Limitvelocity();
     }
 
     void Move()
     {
+        Limitvelocity();
         if (!isDead && !ledgeGrabArea.hanging)
         {
             playerRb.AddForce(velocityAxis.normalized * acceleration);
             animator.SetFloat("MoveSpeed", velocityAxis.magnitude);
         }
-        if (!isGrabbing() && !isHanging())
+        if (velocityAxis.magnitude > 0 && !isGrabbing() && !isHanging())
         {
             transform.rotation = Quaternion.LookRotation(velocityAxis);
         }
+
+        if (velocityAxis.magnitude > 0 && IsGrounded())
+        {
+            runSound.UnPause();
+        }
+        else
+            runSound.Play();
+
     }
 
     void Jump()
@@ -82,6 +90,7 @@ public class PlayerMovement : MonoBehaviour
         velocityAxis = Quaternion.AngleAxis(
             Camera.main.transform.eulerAngles.y,
             Vector3.up) * new Vector3(xspeed, 0, zspeed);
+
 
         if (Input.GetButtonDown("Jump"))
             Jump();
