@@ -25,6 +25,7 @@ public class BookHandler : MonoBehaviour {
 	}
 
     /*This really should be using a database*/
+    /*This is called from GameLogic*/
     public void ShowBook(int bookId)
     {
         isActive = true;

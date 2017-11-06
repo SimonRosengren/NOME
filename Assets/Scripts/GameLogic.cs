@@ -20,6 +20,7 @@ public class GameLogic : MonoBehaviour {
     {
         if (Input.GetButtonDown("Grab") && player.inReachOfBook != 0)
         {
+            Debug.Log("TRYING TO READ");
             if (!bookHandler.isActive)
             {
                 bookHandler.ShowBook(player.inReachOfBook);

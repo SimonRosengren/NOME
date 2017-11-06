@@ -133,7 +133,7 @@ public class PlayerMovementForce : MonoBehaviour
 
     void Move(Vector3 velocityAxis)
     {
-        Debug.Log(velocityAxis.magnitude);
+        //Debug.Log(velocityAxis.magnitude);
         if (!isDead)
         {
             if (!ledgegrabArea.hanging)
