@@ -39,14 +39,7 @@ public class LedgeCollsion : MonoBehaviour {
 
         
     }
-    private void LateUpdate()
-    {
-        if (hanging)
-        {
-            //Player.transform.position = target.transform.position + p_offset;
-            
-        }
-    }
+    
 
     private void OnTriggerEnter(Collider other)
     {

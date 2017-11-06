@@ -173,7 +173,7 @@ public class PlayerMovementForce : MonoBehaviour
             }
 
         }
-
+        Limitvelocity();
 
     }
     void Limitvelocity()
