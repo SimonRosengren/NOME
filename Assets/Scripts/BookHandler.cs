@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class BookHandler : MonoBehaviour {
 
-    string a = "This text is just for testing. First of all, it's faaar too long. Second of all, it is stored in a f*ck#ng string...\n Anyhow, it's super important test number is 1";
+    string a = "Midvinternattens köld är hård\n stjärnorna gnistra och glimma.\nAlla sova i enslig gård\ndjupt under midnattstimma.\nMånen vandrar sin tysta ban\nsnön lyser vit på fur och gran,\nsnön lyser vit på taken.\nEndast tomten är vaken.\n";
     string b = "This text is just for testing. First of all, it's faaar too long. Second of all, it is stored in a f*ck#ng string...\n Anyhow, it's super important test number is 2";
 
     [SerializeField] Image bookImage;
