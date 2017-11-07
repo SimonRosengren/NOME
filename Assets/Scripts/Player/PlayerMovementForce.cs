@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerMovementForce : MonoBehaviour
 {
-    RaycastHit hitObj;
+    
     Rigidbody playerRb;
     AudioSource runSound;
     Vector3 hangingPos;
@@ -87,6 +87,7 @@ public class PlayerMovementForce : MonoBehaviour
 
         if (IsGrounded() && Input.GetButtonDown("Jump") && !pulling)
         {
+            Debug.Log("jump");
             Vector3 newVel = playerRb.velocity;
             newVel.y = 0;
             playerRb.velocity = newVel;
@@ -157,7 +158,7 @@ public class PlayerMovementForce : MonoBehaviour
                 {
                     if (Input.GetButtonDown("Jump"))
                     {
-                        
+                        Debug.Log("jump");
                         playerRb.constraints = RigidbodyConstraints.None;
                         playerRb.constraints = RigidbodyConstraints.FreezeRotation;
                         Vector3 newVel = playerRb.velocity;
@@ -172,7 +173,7 @@ public class PlayerMovementForce : MonoBehaviour
             }
 
         }
-
+        Limitvelocity();
 
     }
     void Limitvelocity()
@@ -204,13 +205,13 @@ public class PlayerMovementForce : MonoBehaviour
 
     void TryGrab()
     {
-        Ray ray = new Ray(transform.position + new Vector3(0, 0.1f, 0), transform.forward);
-        Physics.Raycast(ray, out hitObj, 1);
-        if (hitObj.transform.tag == "grabable")
+        Ray ray = new Ray(transform.position + new Vector3(0, 0.3f, 0), transform.forward);
+        Physics.Raycast(ray, out ObjectGrabbed, 1);
+        if (ObjectGrabbed.transform.tag == "grabable")
         {
             animator.SetBool("grabbingObj", true);
-            pushableObject hitObjScript = hitObj.transform.GetComponent<pushableObject>();
-            hitObjScript.Grab(playerRb, hitObj.point);
+            pushableObject hitObjScript = ObjectGrabbed.transform.GetComponent<pushableObject>();
+            hitObjScript.Grab(playerRb, ObjectGrabbed.point);
             pulling = true;
 
 
@@ -223,8 +224,8 @@ public class PlayerMovementForce : MonoBehaviour
         {
             animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 0.5f);
             animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 0.5f);
-            animator.SetIKPosition(AvatarIKGoal.RightHand, hitObj.transform.position);
-            animator.SetIKPosition(AvatarIKGoal.LeftHand, hitObj.transform.position);
+            animator.SetIKPosition(AvatarIKGoal.RightHand, ObjectGrabbed.transform.position);
+            animator.SetIKPosition(AvatarIKGoal.LeftHand, ObjectGrabbed.transform.position);
         }
     }
 
