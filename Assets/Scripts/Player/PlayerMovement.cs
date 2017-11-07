@@ -90,7 +90,6 @@ public class PlayerMovement : MonoBehaviour
             Camera.main.transform.eulerAngles.y,
             Vector3.up) * new Vector3(xspeed, 0, zspeed);
 
-
         if (Input.GetButtonDown("Jump"))
             Jump();
 

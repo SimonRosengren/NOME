@@ -7,30 +7,29 @@ public class VacuumHoldLaunch : MonoBehaviour {
     public Vector3 launchV;
     public float launchF;
     private float stuckTimer,suckTimer;
-    bool holdOn =false;
-    bool sucktimerOn;
+    bool holdOn = false;
+    bool suckTimerOn;
+
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         gP = GetComponentInParent<GravitationalPull>();
         stuckTimer = 3;
         suckTimer = 3;
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
-
+	void Update ()
+    {		
         if (stuckTimer < 0)
         {
-
             holdOn = false;
             
             Launch();
             Debug.Log(holdOn);
             Debug.Log(gP.pullOn);
             Debug.Log(stuckTimer);
-            stuckTimer = 3;
-        
+            stuckTimer = 3;        
         }
 
         if (holdOn)
@@ -39,22 +38,16 @@ public class VacuumHoldLaunch : MonoBehaviour {
             stuckTimer -= Time.deltaTime;
             Hold();
         }
-
-        Sucking();
-        
+        Sucking();       
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log(holdOn);
         if (stuckTimer>0)
         {
             holdOn = true;
-
         }
-    }
-
-    
+    }   
 
     private void Hold()
     {
@@ -62,14 +55,13 @@ public class VacuumHoldLaunch : MonoBehaviour {
         {
             gP.target.transform.position = transform.position;
         }
-
         gP.target.transform.parent = transform;
         gP.rbTarget.isKinematic = true;
     }
 
     void Sucking()
     {
-        if (sucktimerOn)
+        if (suckTimerOn)
         {
             suckTimer = -Time.deltaTime;
         }
@@ -78,7 +70,7 @@ public class VacuumHoldLaunch : MonoBehaviour {
         {
             gP.pullOn = true;
             suckTimer = 3;
-            sucktimerOn = false;
+            suckTimerOn = false;
         }
     }
 
@@ -87,10 +79,6 @@ public class VacuumHoldLaunch : MonoBehaviour {
         gP.target.transform.parent = null;
         gP.rbTarget.isKinematic = false;
         gP.rbTarget.AddForce(launchV * launchF, ForceMode.Impulse);
-        sucktimerOn = true;
-        
-        
-    }
-
-   
+        suckTimerOn = true;                
+    }  
 }

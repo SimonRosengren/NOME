@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class leverAnimScript : MonoBehaviour
 {
-
     public Animator animLever;
     public Animator animLogKeeper;
-    public GameObject[] logkeeper;
+    public GameObject[] logKeeper;
+
     void Start()
     {
         animLever = GetComponent<Animator>();
-
-
     }
+
     void OnTriggerEnter(Collider collider)
     {
         if (collider.tag == "Player")
@@ -24,13 +23,10 @@ public class leverAnimScript : MonoBehaviour
 
     void OnTriggerExit(Collider collider)
     {
-        foreach (GameObject g in logkeeper)
+        foreach (GameObject g in logKeeper)
         {
             animLogKeeper = g.GetComponent<Animator>();
             animLogKeeper.Play("LogKeeper_Open");
-
         }
     }
-
-
 }

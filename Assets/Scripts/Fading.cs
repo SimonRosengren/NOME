@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class Fading : MonoBehaviour {
+
     public Texture2D fadeOutTexture;
     public float fadeSpeed = 0.1f;
     private int drawDepth = -1000;
     public float alpha = 1.0f;
     private int fadeDir = -1;
-
 
     void OnGUI()
     {
@@ -25,27 +25,19 @@ public class Fading : MonoBehaviour {
         fadeDir = direction;
         return (fadeSpeed);
     }
+
     public void FadeIn()
     {
         BeginFade(-1);
     }
+
     public void FadeOut()
     {
         BeginFade(1);
     }
+
     void OnLevelWasLoaded()
     {
         BeginFade(-1);
-    }
-	// Use this for initialization
-	
-    void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
+    }	
 }

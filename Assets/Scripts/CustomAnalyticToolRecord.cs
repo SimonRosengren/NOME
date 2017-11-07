@@ -21,7 +21,6 @@ public class CustomAnalyticToolRecord : MonoBehaviour
 
     float timer = 0;
 
-
     void Start()
     {
         CreateSessionID();
@@ -40,6 +39,7 @@ public class CustomAnalyticToolRecord : MonoBehaviour
         }
 
     }
+
     public void savePositions()
     {
         timer += Time.deltaTime;
@@ -54,6 +54,7 @@ public class CustomAnalyticToolRecord : MonoBehaviour
             timer = 0;
         }
     }
+
     public void SaveCheckpointTime()
     {
         using (System.IO.StreamWriter file = new System.IO.StreamWriter(checkPointPath, true))

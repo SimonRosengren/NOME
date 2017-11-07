@@ -12,7 +12,6 @@ public class GameLogic : MonoBehaviour {
 	void Start ()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
-
     }
 	
 
@@ -27,13 +26,10 @@ public class GameLogic : MonoBehaviour {
         //    }
         //    else
         //        bookHandler.CloseBook();
-
-        //}
-        
-
+        //}        
     }
 
-    public void setNewCheckpoint(Transform pos)
+    public void SetNewCheckpoint(Transform pos)
     {
         lastCheckpointPosition = pos;
     }
