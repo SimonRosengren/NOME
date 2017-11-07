@@ -75,7 +75,7 @@ public class PlayerMovementForce : MonoBehaviour
 
 
 
-
+        /*Do I NEED THIS!!?=*/
         if (velocityAxis.magnitude > 0 && !pulling && !ledgegrabArea.hanging)
         {
             transform.rotation = Quaternion.LookRotation(velocityAxis);
@@ -133,7 +133,7 @@ public class PlayerMovementForce : MonoBehaviour
 
     void Move(Vector3 velocityAxis)
     {
-        Debug.Log(velocityAxis.magnitude);
+        //Debug.Log(velocityAxis.magnitude);
         if (!isDead)
         {
             if (!ledgegrabArea.hanging)

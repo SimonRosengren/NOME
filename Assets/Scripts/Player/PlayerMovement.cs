@@ -5,174 +5,141 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody playerRb;
+    Vector3 velocityAxis;
+    LedgeCollsion ledgeGrabArea;
+    GrabObject grabObj;
+    Animator animator;
+    RaycastHit grabbedObj;
+    BookHandler bookHandler;
 
-    [SerializeField] private Animator animator;
+    bool isDead;
 
-    Vector3 hangingPos;
+    [SerializeField] AudioSource runSound;
+    [SerializeField] float acceleration;
+    [SerializeField] float jumpForce;
+    [SerializeField] float maxMoveSpeed;
 
-    /*Player movement*/
-    //public float speed = 6f;
-    //public float rotationSpeed = 200f;
-    public float acceleration=10f;
-    public float maxspeed = 20f;
-    public float jumpForce = 70f;
-    public bool isGrounded = false;
-    /*Movement vector*/
-    float currentV;
-    float currentH;
+    public int inReachOfBook = 0;
 
-    public bool IsHanging = false;
-
-
-
-    void Start()
-    {
-
-    }
 
     void Awake()
     {
         playerRb = GetComponent<Rigidbody>();
+        ledgeGrabArea = GetComponentInChildren<LedgeCollsion>();
+        grabObj = GetComponent<GrabObject>();
+        animator = GetComponent<Animator>();
+        bookHandler = GetComponent<BookHandler>();
+        isDead = false;
+        jumpForce = 5;
+        maxMoveSpeed = 5;
+        runSound.Play();
+    }
+
+    void Update()
+    {
+        HandleInput();
+        animator.SetBool("isGrounded", IsGrounded());
     }
 
     void FixedUpdate()
     {
+        Move();
+    }
 
-        float xspeed = Input.GetAxisRaw("Horizontal");
-        float zspeed = Input.GetAxisRaw("Vertical");
-
-        Vector3 velocityAxis = new Vector3(xspeed, 0, zspeed);
-
-        velocityAxis = Quaternion.AngleAxis(Camera.main.transform.eulerAngles.y, Vector3.up) * velocityAxis;
-
-        Move(velocityAxis);
-
-        if (velocityAxis.magnitude > 0)
+    void Move()
+    {
+        Limitvelocity();
+        if (!isDead && !ledgeGrabArea.hanging)
+        {
+            playerRb.AddForce(velocityAxis.normalized * acceleration);
+            animator.SetFloat("MoveSpeed", velocityAxis.magnitude);
+        }
+        if (velocityAxis.magnitude > 0 && !isGrabbing() && !isHanging())
         {
             transform.rotation = Quaternion.LookRotation(velocityAxis);
         }
 
-        if (IsGrounded() && Input.GetButtonDown("Jump"))
+        if (velocityAxis.magnitude > 0 && IsGrounded())
         {
-            
-            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        }
-        
-        Limitvelocity();
-
-        
-    }
-
-    
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "climbTrigger")
-        {
-            Climb();
-        }
-        if (other.tag == "CheckPoint")
-        {
-            other.transform.GetComponent<CheckPoint>().SetAsLastCheckpoint();
-        }
-    }
-
-    void Move(Vector3 velocityAxis)
-    {
-        if (!IsHanging)
-        {
-            playerRb.AddForce(velocityAxis.normalized * acceleration);
-            //currentH = Mathf.Lerp(currentH, h, Time.deltaTime * speed);
-            //currentV = Mathf.Lerp(currentV, v, Time.deltaTime * speed);
-
-            //transform.position += transform.forward * currentV * speed * Time.deltaTime;
-            //transform.Rotate(0, currentH * rotationSpeed * Time.deltaTime, 0);
-
-            //animator.SetFloat("MoveSpeed", currentV);
-
-            //Debug.Log(currentV);
+            runSound.UnPause();
         }
         else
-        {
-            if (Input.GetButtonDown("Jump"))
-            {
-                playerRb.constraints = RigidbodyConstraints.None;
-                playerRb.constraints = RigidbodyConstraints.FreezeRotation;
-                playerRb.AddForce(Vector3.up * 6, ForceMode.Impulse);
-                animator.SetBool("IsHanging", false);
-                IsHanging = false;
-            }
-        }
+            runSound.Play();
 
     }
+
+    void Jump()
+    {
+        if (IsGrounded() && !isHanging() && !isGrabbing())
+        {
+            //Set y-velocity to zero to prevent "super jumps"
+            Vector3 newVel = playerRb.velocity;
+            newVel.y = 0;
+            playerRb.velocity = newVel;
+
+            playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            animator.SetTrigger("isJumping");
+            runSound.Pause();
+        }
+    }
+
+    void HandleInput()
+    {
+        float xspeed = Input.GetAxisRaw("Horizontal");
+        float zspeed = Input.GetAxisRaw("Vertical");
+        velocityAxis = Quaternion.AngleAxis(
+            Camera.main.transform.eulerAngles.y,
+            Vector3.up) * new Vector3(xspeed, 0, zspeed);
+
+
+        if (Input.GetButtonDown("Jump"))
+            Jump();
+
+        if (Input.GetButtonDown("MainAction"))
+        {
+            Grab();
+            ReadBook();
+        }      
+    }
+
+    void ReadBook()
+    {
+        if (!bookHandler.isActive && !isGrabbing() && inReachOfBook != 0)
+        {
+            bookHandler.ShowBook(inReachOfBook);
+        }
+        else
+            bookHandler.CloseBook();
+    }
+
+    void Grab()
+    {
+        grabObj.Grab();
+    }
+
     void Limitvelocity()
     {
         Vector2 xzVel = new Vector2(playerRb.velocity.x, playerRb.velocity.z);
-        if (xzVel.magnitude > maxspeed)
+        if (xzVel.magnitude > maxMoveSpeed)
         {
-            xzVel = xzVel.normalized * maxspeed;
+            xzVel = xzVel.normalized * maxMoveSpeed;
             playerRb.velocity = new Vector3(xzVel.x, playerRb.velocity.y, xzVel.y);
-        }
-    }
-
-
-    //void OnAnimatorIK()
-    //{
-    //    animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 1);
-    //    animator.SetIKPosition(AvatarIKGoal.RightHand, hangingPos);
-    //}
-
-
-    /*The method, which is triggered by entering a climbTrigger, will cast Rays higher and higher and stop 
-    when it no longer is hitting a climbable object. When the last ray misses I know that the last one hit the edge of the object. 
-    I then move the player to this position. We need to play some kind of animation here, rather then just teleporting him to the new
-    spot. */
-    void Climb()
-    {
-        RaycastHit hitObj;
-        Vector3 rayOriginOffset = new Vector3(0, 0.2f, 0);
-        Ray ray = new Ray(transform.position + rayOriginOffset, transform.forward);
-        Physics.Raycast(ray, out hitObj, 1);
-
-        Debug.DrawRay(ray.origin, ray.direction, Color.blue, 20f);
-
-        Vector3 lastRayHitPoint = transform.position;
-        Physics.Raycast(ray, out hitObj, 1);
-        if (hitObj.collider != null)
-        {
-            for (int i = 0; i < 12; i++)
-            {
-                rayOriginOffset.y += 0.1f;
-                Ray rayTest = new Ray(transform.position + rayOriginOffset, transform.forward);
-                Physics.Raycast(rayTest, out hitObj, 1);
-                Debug.DrawRay(rayTest.origin, rayTest.direction, Color.blue, 20f);
-                /*Vi får error här pga att vi kollar hittobj.collider även om null. Vet ej lösning*/
-                if (hitObj.collider.tag != "climbableObject")
-                {
-                    //If this never happens we cannot reach ledge
-                    break;
-                }
-                Debug.Log(lastRayHitPoint);
-                lastRayHitPoint = hitObj.point;
-                playerRb.constraints = RigidbodyConstraints.FreezeAll;
-                transform.position = lastRayHitPoint - new Vector3(0, 0.5f, 0) - (transform.forward * 0.2f);
-                IsHanging = true;
-                animator.SetBool("IsHanging", true);
-                hangingPos = lastRayHitPoint;
-            }
-            playerRb.constraints = RigidbodyConstraints.FreezeAll;
-            transform.position = lastRayHitPoint - new Vector3(0, 0.5f, 0) - (transform.forward * 10);
-            animator.SetBool("IsHanging", true);
         }
     }
 
     bool IsGrounded()
     {
-        
-        return Physics.Raycast(transform.position + new Vector3(0, 0.2f, 0), -transform.up, 0.3f);
+        return Physics.Raycast(
+            transform.position + new Vector3(0, 0.2f, 0),
+            -transform.up, 0.5f);        
     }
-
-
-
+    bool isHanging()
+    {
+        return ledgeGrabArea.hanging;
+    }
+    bool isGrabbing()
+    {
+        return grabObj.isGrabbing;
+    }
 }
 
