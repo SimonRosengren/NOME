@@ -68,9 +68,9 @@ public class FadeObjectsBetween : MonoBehaviour {
 
 
                     transObjects.Add(hits[i].transform.gameObject);
-                    ChangedObject cO = new ChangedObject(rend.material.shader, hits[i].transform.gameObject,rend.material.color.a);
+                    ChangedObject cO = new ChangedObject(rend.material.shader, hits[i].transform.gameObject, rend.material.color.a);
                     changedObj.Add(cO);
-                
+
 
                 }
                 hitslist.Add(hits[i].transform.gameObject);
