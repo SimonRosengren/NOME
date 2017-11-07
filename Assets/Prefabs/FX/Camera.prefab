@@ -27,10 +27,9 @@ GameObject:
   - component: {fileID: 114444479922232654}
   - component: {fileID: 114301868576111980}
   - component: {fileID: 114023466856896394}
-  - component: {fileID: 114187075590177084}
   - component: {fileID: 114194786731706852}
   - component: {fileID: 114352239715034962}
-  - component: {fileID: 114432673109634396}
+  - component: {fileID: 114838347659547882}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -45,7 +44,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1838054591284816}
   m_LocalRotation: {x: -0.06885774, y: -0.30220935, z: -0.024827126, w: 0.9504271}
-  m_LocalPosition: {x: 100.65, y: 1.83, z: 66.62}
+  m_LocalPosition: {x: 3.18, y: 1.23, z: -10.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -196,29 +195,13 @@ MonoBehaviour:
   settings:
     threshold: 0.9
     softKnee: 0.927
-    radius: 5.69
-    intensity: 0.7
+    radius: 5.95
+    intensity: 0.4
     highQuality: 1
     antiFlicker: 0
     dirtTexture: {fileID: 2800000, guid: a2960ffde020f27409e070d92fb2e00b, type: 3}
     dirtIntensity: 2.51
   m_Shader: {fileID: 4800000, guid: e45d4f28262b04d10a075856ab5fdb5e, type: 3}
---- !u!114 &114187075590177084
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1838054591284816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 559330cb062747c4d828e9209d3f484f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rail: {fileID: 0}
-  lookAt: {fileID: 0}
-  player: {fileID: 0}
-  smoothMove: 1
-  moveSpeed: 5
 --- !u!114 &114194786731706852
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -283,9 +266,9 @@ MonoBehaviour:
       saturation: 1.02
       vibrance: -0.24
       value: 1.19
-      contrast: 0.996
+      contrast: 0.997
       gain: 1.1
-      gamma: 1
+      gamma: 1.03
     channelMixer:
       currentChannel: 0
       channels:
@@ -424,22 +407,6 @@ MonoBehaviour:
     type: 3}
   _frameBlendingShader: {fileID: 4800000, guid: 83da3aecb8b462f498946f5198cbd58e,
     type: 3}
---- !u!114 &114432673109634396
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1838054591284816}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 559330cb062747c4d828e9209d3f484f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rail: {fileID: 0}
-  lookAt: {fileID: 0}
-  player: {fileID: 0}
-  smoothMove: 1
-  moveSpeed: 5
 --- !u!114 &114444479922232654
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -479,6 +446,21 @@ MonoBehaviour:
     type: 3}
   m_TextureBokehShader: {fileID: 4800000, guid: c961b8ed1f00f924d804ada5143bd0e8,
     type: 3}
+--- !u!114 &114838347659547882
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1838054591284816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 551c8f945f8d24440b2539875aac14ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  cameraOffset: {x: 0, y: 5, z: -10}
+  cameraSpeed: 10
+  lookLock: 0
 --- !u!124 &124654621119915174
 Behaviour:
   m_ObjectHideFlags: 1
