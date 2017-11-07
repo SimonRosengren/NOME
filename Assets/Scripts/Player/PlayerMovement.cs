@@ -30,8 +30,6 @@ public class PlayerMovement : MonoBehaviour
         animator = GetComponent<Animator>();
         bookHandler = GetComponent<BookHandler>();
         isDead = false;
-        jumpForce = 5;
-        maxMoveSpeed = 5;
         runSound.Play();
     }
 
@@ -44,11 +42,12 @@ public class PlayerMovement : MonoBehaviour
     void FixedUpdate()
     {
         Move();
+        Limitvelocity();
     }
 
     void Move()
     {
-        Limitvelocity();
+
         if (!isDead && !ledgeGrabArea.hanging)
         {
             playerRb.AddForce(velocityAxis.normalized * acceleration);
