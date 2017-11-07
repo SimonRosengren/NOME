@@ -7,27 +7,28 @@ public class GameLogic : MonoBehaviour {
     [SerializeField] Transform lastCheckpointPosition;
     [SerializeField] BookHandler bookHandler;
 
-    PlayerMovementForce player;
+    PlayerMovement player;
 
 	void Start ()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovementForce>();
+        player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
 
     }
 	
 
 	void Update ()
     {
-        if (Input.GetButtonDown("Grab") && player.inReachOfBook != 0)
-        {
-            if (!bookHandler.isActive)
-            {
-                bookHandler.ShowBook(player.inReachOfBook);
-            }
-            else
-                bookHandler.CloseBook();
+        //if (Input.GetButtonDown("Grab") && player.inReachOfBook != 0)
+        //{
+        //    Debug.Log("TRYING TO READ");
+        //    if (!bookHandler.isActive)
+        //    {
+        //        bookHandler.ShowBook(player.inReachOfBook);
+        //    }
+        //    else
+        //        bookHandler.CloseBook();
 
-        }
+        //}
         
 
     }

@@ -24,7 +24,7 @@ public class IceSpot : MonoBehaviour {
 	}
     void OnTriggerStay(Collider other)
     {
-        if (other.tag == ("Player") || other.tag == ("grabable") && other.material.name != "NoFriction (Instance)")
+        if (other.tag == ("Player") || other.tag == ("CleaningRobot") || other.tag == ("grabable") && other.material.name != "NoFriction (Instance)")
         {
             other.material = mat;
         }
@@ -32,7 +32,7 @@ public class IceSpot : MonoBehaviour {
     
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player" || other.tag == ("grabable"))
+        if (other.tag == "Player" || other.tag == ("CleaningRobot") || other.tag == ("grabable"))
         {
             other.material = null; //Can we make it go back to original?
         }

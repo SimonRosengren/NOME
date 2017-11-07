@@ -75,7 +75,7 @@ public class PlayerMovementForce : MonoBehaviour
 
 
 
-
+        /*Do I NEED THIS!!?=*/
         if (velocityAxis.magnitude > 0 && !pulling && !ledgegrabArea.hanging)
         {
             transform.rotation = Quaternion.LookRotation(velocityAxis);
