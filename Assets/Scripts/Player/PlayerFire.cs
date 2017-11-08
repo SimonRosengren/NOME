@@ -9,16 +9,13 @@ public class PlayerFire : MonoBehaviour {
     private GameObject newMatch;
     public bool matchLit = false;
     public Transform matchLocation;
-    private Transform firePosition;
     private float timer = 1;
 
     public Animator anim;
     
 	// Use this for initialization
-	void Start () {
-        
-        //matchLocation = transform.Find("RightHand");
-        firePosition = transform.Find("FirePos");
+	void Start ()
+    {        
 	}
 	
 	// Update is called once per frame
@@ -37,7 +34,6 @@ public class PlayerFire : MonoBehaviour {
                 timer = 1;
                 anim.SetTrigger("grabMatch");
                 //fireParticleSystem.Stop();
-
             }
             else if(!matchLit)
             {
@@ -46,7 +42,6 @@ public class PlayerFire : MonoBehaviour {
                 newMatch = Instantiate(match, matchLocation.position, Quaternion.identity) as GameObject;
                 newMatch.transform.parent = matchLocation;
 
-
                 /*The fire should be dealt with in another way. Get top of match for transform instead of new empty object*/
                 //fireParticleSystem = Instantiate(fireParticleSystem, firePosition.position, firePosition.rotation);
                 //ParticleSystem mPSystem = Instantiate(fireParticleSystem, firePosition.position, firePosition.rotation);
@@ -54,15 +49,14 @@ public class PlayerFire : MonoBehaviour {
                 timer = 1;
             }
             
-        }
-      
-		
+        }      		
 	}
+
     void OnTriggerEnter(Collider other)
     {
         if (matchLit)
         {
-            if (other.tag == "flammable" || other.tag == "ice" || other.tag == "Freezable")
+            if (other.tag == "Flammable" || other.tag == "Ice" || other.tag == "Freezable")
             {
                 other.SendMessageUpwards("SetFire");
             }
