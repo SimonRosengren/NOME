@@ -5,7 +5,7 @@ using UnityEngine;
 public class FlammableObject : MonoBehaviour {
     public bool onFire = false;
     private float burnTimer = 5;
-
+    [SerializeField] bool destoryable;
     public ParticleSystem fire;
 	// Use this for initialization
 	void Start () {
@@ -17,7 +17,9 @@ public class FlammableObject : MonoBehaviour {
     {
         if (onFire)
         {
-            burnTimer -= Time.deltaTime;
+
+            CheckifDestroyable();
+
             if (burnTimer <= 0)
             {
                 //Instantiate(Ash, transform.postition, Quaternion.identity)
@@ -38,5 +40,13 @@ public class FlammableObject : MonoBehaviour {
             onFire = true;
 
         }       
+    }
+
+    void CheckifDestroyable()
+    {
+        if (destoryable == true)
+        {
+            burnTimer -= Time.deltaTime;
+        }
     }
 }
