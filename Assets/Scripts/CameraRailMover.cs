@@ -32,7 +32,7 @@ public class CameraRailMover : MonoBehaviour
         {
             thisTransform.position = rail.ProjectPositionOnRail(player.position);
         }
-        thisTransform.LookAt(lookAt.position);
 
+        thisTransform.LookAt(lookAt.position);
 	}
 }

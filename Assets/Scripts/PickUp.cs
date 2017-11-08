@@ -7,13 +7,13 @@ public class PickUp : MonoBehaviour {
     public string name = "Name here";
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start ()
+    {		
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+    {		
 	}
 
     public string Collect()

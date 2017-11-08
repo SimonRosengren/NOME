@@ -6,12 +6,14 @@ public class Ice_Creation : MonoBehaviour {
 
     public GameObject ice;
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+    {
         if (Input.GetButtonDown("Fire1"))
         {
             CreateIce();
