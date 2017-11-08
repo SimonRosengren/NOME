@@ -7,11 +7,13 @@ public class projectileScript : MonoBehaviour {
     public float maxForce = 1;
     Rigidbody rb;
     public Vector3 target;
-	// Use this for initialization
-	void Start () {
 
+	// Use this for initialization
+	void Start ()
+    {
         rb = GetComponent<Rigidbody>();
     }
+
     void Awake()
     {
         //Vector3 dir = Vector3.Normalize(target - transform.position);
@@ -19,8 +21,8 @@ public class projectileScript : MonoBehaviour {
     }
 	
 	// Update is called once per frame
-	void Update () {
-        
+	void Update ()
+    {        
     }
 
 }

@@ -13,15 +13,14 @@ public class BookHandler : MonoBehaviour {
 
     public bool isActive;
      
-
 	// Use this for initialization
-	void Start () {
-		
+	void Start ()
+    {		
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+    {		
 	}
 
     /*This really should be using a database*/
