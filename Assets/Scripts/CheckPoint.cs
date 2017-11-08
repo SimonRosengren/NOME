@@ -12,19 +12,18 @@ public class CheckPoint : MonoBehaviour {
 
     [SerializeField] CustomAnalyticToolRecord analyticTool;
 
-    void Start () {
-		
+    void Start ()
+    {		
 	}
 	
 	void Update ()
-    {
-		
+    {		
 	}
 
     public void SetAsLastCheckpoint()
     {
         GameLogic gameLogic = gameHandler.transform.GetComponent<GameLogic>();
-        gameLogic.setNewCheckpoint(startPoint);
+        gameLogic.SetNewCheckpoint(startPoint);
         analyticTool.SaveCheckpointTime();
     }
 

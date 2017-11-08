@@ -28,17 +28,13 @@ public class CustomAnalyticsToolPresenter : MonoBehaviour {
     //Path to text file
     string posPath = @"CustomAnalyticsTool\Movement.txt";
 
-
-
     void Start () {
         parsedPositions = new List<Vector3>();
         playerPaths = new List<PlayerPath>();
         ReadInPositions();
         ParseToPositions();
-
     }
 	
-
 	void Update () {
         DrawLinesBetweenPoints();
     }
@@ -77,7 +73,6 @@ public class CustomAnalyticsToolPresenter : MonoBehaviour {
                 
             }
         }
-
     }
 
     void DrawLinesBetweenPoints()
