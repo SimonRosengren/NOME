@@ -13,6 +13,7 @@ public class Book : MonoBehaviour {
             other.GetComponent<PlayerMovement>().inReachOfBook = ID;
         }
     }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player")
@@ -20,5 +21,4 @@ public class Book : MonoBehaviour {
             other.GetComponent<PlayerMovement>().inReachOfBook = 0;
         }
     }
-
 }

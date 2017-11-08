@@ -32,13 +32,11 @@ public class objectShootherScript : MonoBehaviour
     void OnTriggerEnter(Collider collider)
     {
         if(collider.tag == "Player")
-        {
-            
+        {            
             isActive = true;
             anim.SetBool("isActive", true);
         }
     }
-
 
     void OnTriggerExit(Collider collider)
     {
@@ -49,16 +47,12 @@ public class objectShootherScript : MonoBehaviour
         }
     }
 
-
     // Update is called once per frame
     void Update()
     {
-
         if (isActive)
         {
-
             timer += Time.deltaTime;
-
 
             if (timer >= rateOfFire)
             {
@@ -81,8 +75,6 @@ public class objectShootherScript : MonoBehaviour
 
                     test.GetComponent<Rigidbody>().AddForce(dir * Random.Range(minForce, maxForce), ForceMode.VelocityChange);
                 }
-
-
             }
         }
     }
