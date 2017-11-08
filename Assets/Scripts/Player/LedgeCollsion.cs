@@ -44,6 +44,7 @@ public class LedgeCollsion : MonoBehaviour {
             Player.transform.parent = other.transform;
 
             playerRb.constraints = RigidbodyConstraints.FreezeAll;
+            playerAnimator.SetBool("isHanging", true);
             hanging = true;           
         }
     }

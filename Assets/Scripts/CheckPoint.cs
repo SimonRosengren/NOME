@@ -24,7 +24,7 @@ public class CheckPoint : MonoBehaviour {
     {
         GameLogic gameLogic = gameHandler.transform.GetComponent<GameLogic>();
         gameLogic.SetNewCheckpoint(startPoint);
-        analyticTool.SaveCheckpointTime();
+        //analyticTool.SaveCheckpointTime();
     }
 
     public Transform GetPos()

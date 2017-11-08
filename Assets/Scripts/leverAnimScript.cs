@@ -5,8 +5,9 @@ using UnityEngine;
 public class leverAnimScript : MonoBehaviour
 {
     public Animator animLever;
-    public Animator animLogKeeper;
+    public Animator animOther;
     public GameObject[] logKeeper;
+    public string otherAnimStateName;
 
     void Start()
     {
@@ -25,8 +26,8 @@ public class leverAnimScript : MonoBehaviour
     {
         foreach (GameObject g in logKeeper)
         {
-            animLogKeeper = g.GetComponent<Animator>();
-            animLogKeeper.Play("LogKeeper_Open");
+            animOther = g.GetComponent<Animator>();
+            animOther.Play(otherAnimStateName);
         }
     }
 }
