@@ -56,8 +56,9 @@ public class PlayerFire : MonoBehaviour {
     {
         if (matchLit)
         {
-            if (other.tag == "Flammable" || other.tag == "Ice" || other.tag == "Freezable")
+            if (other.tag == "Flammable" || other.tag == "ice" || other.tag == "Freezable")
             {
+
                 other.SendMessageUpwards("SetFire");
             }
         }  
