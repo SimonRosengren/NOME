@@ -11,6 +11,8 @@ public class PlayerFire : MonoBehaviour {
     public Transform matchLocation;
     private Transform firePosition;
     private float timer = 1;
+
+    public Animator anim;
     
 	// Use this for initialization
 	void Start () {
@@ -30,17 +32,20 @@ public class PlayerFire : MonoBehaviour {
         {
             if (matchLit)
             {
-                Destroy(newMatch);
+                Destroy(newMatch, 1);
                 matchLit = false;
                 timer = 1;
+                anim.SetTrigger("grabMatch");
                 //fireParticleSystem.Stop();
 
             }
             else if(!matchLit)
             {
+                anim.SetTrigger("grabMatch");
                 matchLit = true;    
                 newMatch = Instantiate(match, matchLocation.position, Quaternion.identity) as GameObject;
                 newMatch.transform.parent = matchLocation;
+
 
                 /*The fire should be dealt with in another way. Get top of match for transform instead of new empty object*/
                 //fireParticleSystem = Instantiate(fireParticleSystem, firePosition.position, firePosition.rotation);
