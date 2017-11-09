@@ -30,8 +30,6 @@ GameObject:
   - component: {fileID: 114515302587809646}
   - component: {fileID: 114593337973605556}
   - component: {fileID: 114506841042125754}
-  - component: {fileID: 114062091509163882}
-  - component: {fileID: 114013525846662348}
   m_Layer: 0
   m_Name: Camera Barn
   m_TagString: MainCamera
@@ -45,13 +43,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1777279459212432}
-  m_LocalRotation: {x: -0.081000015, y: -0.25423566, z: -0.026092907, w: 0.9633911}
-  m_LocalPosition: {x: 3.128, y: 1.707, z: -12.414}
+  m_LocalRotation: {x: -0.06885774, y: -0.30220935, z: -0.024827126, w: 0.9504271}
+  m_LocalPosition: {x: 3.18, y: 1.23, z: -10.25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -9.749001, y: -29.521002, z: -0.528}
+  m_LocalEulerAnglesHint: {x: -8.389, y: -35.255, z: -0.323}
 --- !u!20 &20181272668730608
 Camera:
   m_ObjectHideFlags: 1
@@ -105,7 +103,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 243192735819043568, guid: 4a1f461290c1aa04b9dabca0cdc7f49c,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 5f4296ff324c7494eba0e633239ca22b, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 8b74cbd96e0f317488e8eb61f941af61, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -183,32 +181,6 @@ Behaviour:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1777279459212432}
   m_Enabled: 1
---- !u!114 &114013525846662348
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1777279459212432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a9b3aaa5c733ed84a84b31d8590a6545, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Camera: {fileID: 1777279459212432}
-  Player: {fileID: 0}
---- !u!114 &114062091509163882
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1777279459212432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1eed1d9cbe64423499f1fefc0ce50417, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Resolution: 1
-  DefaultSpotCookie: {fileID: 0}
 --- !u!114 &114361209552367104
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -224,7 +196,7 @@ MonoBehaviour:
     threshold: 0.9
     softKnee: 0.927
     radius: 5.95
-    intensity: 0.13
+    intensity: 0.4
     highQuality: 1
     antiFlicker: 0
     dirtTexture: {fileID: 2800000, guid: a2960ffde020f27409e070d92fb2e00b, type: 3}
@@ -249,14 +221,14 @@ MonoBehaviour:
     apertureOrientation: 15
   focus:
     transform: {fileID: 0}
-    focusPlane: 3.149991
-    range: 7.6100025
-    nearPlane: -0.6550102
+    focusPlane: 3.149994
+    range: 41.770004
+    nearPlane: -17.735008
     nearFalloff: 50
-    farPlane: 6.9549923
-    farFalloff: 27.1
+    farPlane: 24.034996
+    farFalloff: 50
     nearBlurRadius: 12.9
-    farBlurRadius: 10.3
+    farBlurRadius: 8.8
   bokehTexture:
     texture: {fileID: 0}
     scale: 1
@@ -281,7 +253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Target: {fileID: 0}
-  cameraOffset: {x: 0, y: 3, z: -10}
+  cameraOffset: {x: 0, y: 5, z: -10}
   cameraSpeed: 10
   lookLock: 0
 --- !u!114 &114515302587809646
@@ -348,8 +320,8 @@ MonoBehaviour:
       saturation: 1.02
       vibrance: -0.24
       value: 1.19
-      contrast: 1
-      gain: 1.23
+      contrast: 0.997
+      gain: 1.1
       gamma: 1.03
     channelMixer:
       currentChannel: 0

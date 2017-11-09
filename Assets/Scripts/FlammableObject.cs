@@ -6,9 +6,6 @@ public class FlammableObject : MonoBehaviour {
 
     public bool onFire = false;
     private float burnTimer = 5;
-
-    [SerializeField] bool destoryable;
-
     public ParticleSystem fire;
 
 	void Start ()
@@ -19,9 +16,7 @@ public class FlammableObject : MonoBehaviour {
     {
         if (onFire)
         {
-
-            CheckifDestroyable();
-
+            burnTimer -= Time.deltaTime;
             if (burnTimer <= 0)
             {
                 //Instantiate(Ash, transform.postition, Quaternion.identity)
@@ -41,13 +36,5 @@ public class FlammableObject : MonoBehaviour {
         {
             onFire = true;
         }       
-    }
-
-    void CheckifDestroyable()
-    {
-        if (destoryable == true)
-        {
-            burnTimer -= Time.deltaTime;
-        }
     }
 }
