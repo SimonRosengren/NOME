@@ -6,18 +6,20 @@ public class CameraScriptFree : MonoBehaviour {
 
     public GameObject Target;
     public Vector3 cameraOffset = new Vector3(0,0,0);
-    public float cameraSpeed=10f;
+    public float cameraSpeed = 10f;
     public bool lookLock;
     private Camera camera;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         camera = GetComponent<Camera>();
         lookLock = false;
 	}
 	
 	// Update is called once per frame
-	void FixedUpdate () {
+	void FixedUpdate ()
+    {
 		if(camera != null && Target != null)
         {
             Transform target = Target.transform;
@@ -36,17 +38,13 @@ public class CameraScriptFree : MonoBehaviour {
 
             if (Input.GetKey(KeyCode.J) || Input.GetButton("CameraFocus"))
             {
-                camera.transform.position = Vector3.Lerp(camera.transform.position, target.position-target.forward + offset, cameraSpeed * 10 * Time.deltaTime);
-                
+                camera.transform.position = Vector3.Lerp(camera.transform.position, target.position-target.forward + offset, cameraSpeed * 10 * Time.deltaTime);                
             }
             else
             {
                 camera.transform.position = Vector3.Lerp(camera.transform.position, target.position + offset, cameraSpeed * Time.deltaTime);
             }
-
             camera.transform.LookAt(target.position);
         }
 	}
-
-
 }
