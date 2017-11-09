@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 
@@ -8,6 +9,8 @@ public class Menu : MonoBehaviour {
     public Canvas mainCanvas;
     private bool delayLoad = false;
     private Fading fading;
+
+    public string LevelToLoad;
 
     void Awake()
     {
@@ -28,9 +31,14 @@ public class Menu : MonoBehaviour {
 
 	public void LoadOn()
     {
-        Application.LoadLevel(1);        
+        SceneManager.LoadScene(LevelToLoad);        
     }
 
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
     public void DelayedLoad()
     {
         delayLoad = true;        
