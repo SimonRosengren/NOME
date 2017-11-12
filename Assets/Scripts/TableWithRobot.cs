@@ -8,13 +8,13 @@ public class TableWithRobot : MonoBehaviour {
 
     ChasingRobot robotHandler;
 
-	void Start () {
+	void Start ()
+    {
         robotHandler = robot.GetComponent<ChasingRobot>();
 	}
 	
-
-	void Update () {
-		
+	void Update ()
+    {		
 	}
 
     private void OnTriggerEnter(Collider other)
@@ -31,10 +31,10 @@ public class TableWithRobot : MonoBehaviour {
         {
             robotHandler.Deactivate();
         }
+
         if (other.tag == "CleaningRobot")
         {
-            robotHandler.isDead = true;
-            
+            robotHandler.isDead = true;           
         }
     }
 }

@@ -20,7 +20,6 @@ public class CameraRail : MonoBehaviour
 	
 	void Update ()
     {
-
         ///*ONLY FOR DEBUGGING*/
         //if (nodeCount > 1)
         //{
@@ -100,7 +99,5 @@ public class CameraRail : MonoBehaviour
             Vector3 fromV1 = segDirection * distanceFromV1;
             return v1 + fromV1;
         }
-
-
     }
 }

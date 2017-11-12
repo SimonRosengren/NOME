@@ -3,20 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class IceSlider : MonoBehaviour {
+
     private BoxCollider bc;
+
 	// Use this for initialization
-	void Start () {
-        bc = gameObject.GetComponent<BoxCollider>();
-		
+	void Start ()
+    {
+        bc = gameObject.GetComponent<BoxCollider>();		
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        
-		
+	void Update ()
+    {        		
 	}
 
-    void OntriggerStay(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (other.tag == "Freezable")
         {
