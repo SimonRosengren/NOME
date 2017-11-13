@@ -38,14 +38,14 @@ public class objectShootherScript : MonoBehaviour
         }
     }
 
-    void OnTriggerExit(Collider collider)
-    {
-        if (collider.tag == "Player")
-        {
-            isActive = false;
-            anim.SetBool("isActive", false);
-        }
-    }
+    //void OnTriggerExit(Collider collider)
+    //{
+    //    if (collider.tag == "Player")
+    //    {
+    //        isActive = false;
+    //        anim.SetBool("isActive", false);
+    //    }
+    //}
 
     // Update is called once per frame
     void Update()
