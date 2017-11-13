@@ -62,8 +62,15 @@ public class FadeObjectsBetween : MonoBehaviour
                 if (rend.material.shader != Shader.Find("Transparent/Diffuse"))
                 {
                     transObjects.Add(hits[i].transform.gameObject);
+                    Shader[] shaders = new Shader[rend.materials.Length];
+                    Color[] color = new Color[rend.materials.Length];
+                    for (int j = 0; j < rend.materials.Length; j++)
+                    {
+                        shaders[j] = rend.materials[j].shader;
+                        color[j] = rend.materials[j].color;
+                    }
 
-                    ChangedObject cO = new ChangedObject(rend.material.shader, hits[i].transform.gameObject, rend.material.color.a,rend.materials);
+                    ChangedObject cO = new ChangedObject(shaders, hits[i].transform.gameObject, color);
                     changedObj.Add(cO);
                 }
 
@@ -94,21 +101,24 @@ public class FadeObjectsBetween : MonoBehaviour
             for (int i = 0; i < results.Count; i++)
             {
                 Renderer rend = results[i].transform.GetComponent<Renderer>();
-                Color tempColor = rend.material.color;
-                
+                Color tempColor;
+
 
                 for (int c = 0; c < changedObj.Count; c++)
                 {
                     if (results[i] == changedObj[c].GO)
                     {
 
-                        for (int j = 0; j < changedObj[c].materials.Length; j++)
+                        for (int j = 0; j < changedObj[c].shader.Length; j++)
                         {
-                            rend.materials[j].shader = changedObj[c].materials[j].shader;
-                            tempColor.a = changedObj[c].materials[j].color.a;
-                            
+                            Debug.Log(changedObj[c].shader);
+                            rend.materials[j].shader = changedObj[c].shader[j];
+
+
+                            tempColor = changedObj[c].color[j];
 
                             rend.materials[j].color = tempColor;
+
 
                         }
                         changedObj.Remove(changedObj[c]);
@@ -116,7 +126,7 @@ public class FadeObjectsBetween : MonoBehaviour
                     }
                 }
 
-                
+
 
                 transObjects.Remove(results[i]);
             }
@@ -128,15 +138,15 @@ public class FadeObjectsBetween : MonoBehaviour
 
 class ChangedObject
 {
-    public Shader shader;
+    public Shader[] shader;
     public GameObject GO;
-    public float a;
-    public Material[] materials;
-    public ChangedObject(Shader shader, GameObject GO, float alpha,Material[] materials)
+
+    public Color[] color;
+    public ChangedObject(Shader[] shader, GameObject GO, Color[] color)
     {
         this.shader = shader;
         this.GO = GO;
-        this.a = alpha;
-        this.materials = materials;
+        this.color = color;
+        //this.materials = materials;
     }
 }
