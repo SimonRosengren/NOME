@@ -5,13 +5,13 @@ using UnityEngine;
 
 public class PlayerMovementForce : MonoBehaviour
 {
-    RaycastHit hitObj;
+    
     Rigidbody playerRb;
     AudioSource runSound;
     Vector3 hangingPos;
     Vector3 velocityAxis;
-    LedgeCollsion ledgegrabArea;
-    RaycastHit ObjectGrabbed;
+    LedgeCollsion ledgeGrabArea;
+    RaycastHit objectGrabbed;
     
     /*Movement vector*/
     float currentV;
@@ -46,7 +46,7 @@ public class PlayerMovementForce : MonoBehaviour
     {
         
         playerRb = GetComponent<Rigidbody>();
-        ledgegrabArea = GetComponentInChildren<LedgeCollsion>();
+        ledgeGrabArea = GetComponentInChildren<LedgeCollsion>();
         gameLogic = gameHandler.GetComponent<GameLogic>();
         runSound = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
@@ -76,17 +76,17 @@ public class PlayerMovementForce : MonoBehaviour
 
 
         /*Do I NEED THIS!!?=*/
-        if (velocityAxis.magnitude > 0 && !pulling && !ledgegrabArea.hanging)
+        if (velocityAxis.magnitude > 0 && !pulling && !ledgeGrabArea.hanging)
         {
             transform.rotation = Quaternion.LookRotation(velocityAxis);
             runSound.UnPause();
-
         }
         else
             runSound.Pause();
 
         if (IsGrounded() && Input.GetButtonDown("Jump") && !pulling)
         {
+            Debug.Log("jump");
             Vector3 newVel = playerRb.velocity;
             newVel.y = 0;
             playerRb.velocity = newVel;
@@ -104,12 +104,12 @@ public class PlayerMovementForce : MonoBehaviour
             TryLettingGo();
         }
         //Constant updates of animation floats.------------------------
-        Limitvelocity();
+        LimitVelocity();
 
         //------------------------------------------------------------
         if (isDead)
         {
-            handleDeath();
+            HandleDeath();
         }
 
     }
@@ -136,7 +136,7 @@ public class PlayerMovementForce : MonoBehaviour
         //Debug.Log(velocityAxis.magnitude);
         if (!isDead)
         {
-            if (!ledgegrabArea.hanging)
+            if (!ledgeGrabArea.hanging)
             {
                 playerRb.AddForce(velocityAxis.normalized * acceleration);
                 moveSpeed = playerRb.velocity.magnitude;
@@ -152,12 +152,11 @@ public class PlayerMovementForce : MonoBehaviour
                     animator.SetFloat("MoveSpeed", velocityAxis.magnitude);
                 }
 
-
                 else /*So we can jump while hanging. Will probably be switched to an animation*/
                 {
                     if (Input.GetButtonDown("Jump"))
                     {
-                        
+                        Debug.Log("jump");
                         playerRb.constraints = RigidbodyConstraints.None;
                         playerRb.constraints = RigidbodyConstraints.FreezeRotation;
                         Vector3 newVel = playerRb.velocity;
@@ -170,12 +169,11 @@ public class PlayerMovementForce : MonoBehaviour
                     }
                 }
             }
-
         }
-
-
+        LimitVelocity();
     }
-    void Limitvelocity()
+
+    void LimitVelocity()
     {
         Vector2 xzVel = new Vector2(playerRb.velocity.x, playerRb.velocity.z);
         if (xzVel.magnitude > maxspeed)
@@ -193,7 +191,6 @@ public class PlayerMovementForce : MonoBehaviour
     void Climb()
     {
 
-
     }
 
     bool IsGrounded()
@@ -204,16 +201,14 @@ public class PlayerMovementForce : MonoBehaviour
 
     void TryGrab()
     {
-        Ray ray = new Ray(transform.position + new Vector3(0, 0.1f, 0), transform.forward);
-        Physics.Raycast(ray, out hitObj, 1);
-        if (hitObj.transform.tag == "grabable")
+        Ray ray = new Ray(transform.position + new Vector3(0, 0.3f, 0), transform.forward);
+        Physics.Raycast(ray, out objectGrabbed, 1);
+        if (objectGrabbed.transform.tag == "Grabable")
         {
             animator.SetBool("grabbingObj", true);
-            pushableObject hitObjScript = hitObj.transform.GetComponent<pushableObject>();
-            hitObjScript.Grab(playerRb, hitObj.point);
+            pushableObject hitObjScript = objectGrabbed.transform.GetComponent<pushableObject>();
+            hitObjScript.Grab(playerRb, objectGrabbed.point);
             pulling = true;
-
-
         }
     }
 
@@ -223,8 +218,8 @@ public class PlayerMovementForce : MonoBehaviour
         {
             animator.SetIKPositionWeight(AvatarIKGoal.RightHand, 0.5f);
             animator.SetIKPositionWeight(AvatarIKGoal.LeftHand, 0.5f);
-            animator.SetIKPosition(AvatarIKGoal.RightHand, hitObj.transform.position);
-            animator.SetIKPosition(AvatarIKGoal.LeftHand, hitObj.transform.position);
+            animator.SetIKPosition(AvatarIKGoal.RightHand, objectGrabbed.transform.position);
+            animator.SetIKPosition(AvatarIKGoal.LeftHand, objectGrabbed.transform.position);
         }
     }
 
@@ -232,7 +227,7 @@ public class PlayerMovementForce : MonoBehaviour
     {
         if (pulling==true)
         {
-            pushableObject hitObjScript = ObjectGrabbed.transform.GetComponent<pushableObject>();
+            pushableObject hitObjScript = objectGrabbed.transform.GetComponent<pushableObject>();
             hitObjScript.LetGo();
             pulling = false;
         }
@@ -242,7 +237,8 @@ public class PlayerMovementForce : MonoBehaviour
         isDead = true;
         timeToRespawn = deathTimer;
     }
-    void handleDeath()
+
+    void HandleDeath()
     {
         timeToRespawn -= Time.deltaTime;
         deathImage.color = Color.Lerp(deathImage.color, Color.black, deathFadeSpeed * Time.deltaTime);

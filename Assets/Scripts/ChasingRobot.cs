@@ -21,8 +21,7 @@ public class ChasingRobot : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         nav = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
-        navPath = new NavMeshPath();
-        
+        navPath = new NavMeshPath();        
     }
 
 
@@ -31,8 +30,7 @@ public class ChasingRobot : MonoBehaviour {
         //if (!isDead)
         //{
         //    nav.enabled = true;
-        //    nav.CalculatePath(player.position, navPath);
-            
+        //    nav.CalculatePath(player.position, navPath);            
         //    int i = 1;
         //    while (i < navPath.corners.Length)
         //    {
@@ -66,9 +64,7 @@ public class ChasingRobot : MonoBehaviour {
         //    rb.AddForce(direction * moveSpeed * Time.deltaTime, ForceMode.Impulse);
         //    //rb.AddForce(Vector3.Normalize(player.position - transform.position) * moveSpeed * Time.deltaTime, ForceMode.Impulse);
         //    transform.rotation = Quaternion.LookRotation(rb.velocity);
-        //}
-        
-
+        //}        
     }
 
     public void SetToActive()

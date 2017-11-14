@@ -6,19 +6,19 @@ using UnityEngine.UI;
 public class PickUpHandler : MonoBehaviour {
 
     //Should probably not be public
-    public bool kitchenKey = false;
-    public bool paperclip = false;
-    public bool rope = false;
-    public GameObject inventory;
+    private bool kitchenKey = false;
+    private bool paperclip = false;
+    private bool rope = false;
+    private GameObject inventory;
 
 	// Use this for initialization
-	void Start () {
-		
+	void Start ()
+    {		
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+    {		
 	}
 
     private void OnTriggerEnter(Collider other)
@@ -31,7 +31,6 @@ public class PickUpHandler : MonoBehaviour {
         }
     }
 
-
     /*If this gets to big, we should consider a database*/
     void UpdateCollections(string collectedItem)
     {
@@ -41,16 +40,17 @@ public class PickUpHandler : MonoBehaviour {
                 kitchenKey = true;
                 inventory.transform.Find("Key").GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Images/key_found");
                 break;
+
             case "Paperclip":
                 paperclip = true;
                 inventory.transform.Find("Paperclip").GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Images/paperclip_found");
-
                 break;
+
             case "Rope":
                 rope = true;
                 inventory.transform.Find("Rope").GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Images/rope_found");
-
                 break;
+
             default:
                 break;
         }

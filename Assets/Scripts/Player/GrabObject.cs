@@ -11,15 +11,16 @@ public class GrabObject : MonoBehaviour {
     public bool isGrabbing;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+    {
         isGrabbing = false;
         playerRb = GetComponent<Rigidbody>();
         animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		
+	void Update ()
+    {		
 	}
 
     void OnAnimatorIK()
