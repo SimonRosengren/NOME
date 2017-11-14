@@ -27,6 +27,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float minDeathByForceMagnitude;
 
     public int inReachOfBook = 0;
+    public bool isReadingDialog = false;
 
 
     void Awake()

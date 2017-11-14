@@ -43,9 +43,10 @@ public class CameraScriptFree : MonoBehaviour
             offset = Quaternion.Euler(0, targetAngle, 0) * offset;
 
             //New Code
-            if (Physics.Raycast(target.transform.position, offset, out hit, distance + 0.5f) && hit.collider.tag == "wall")
+            if (Physics.Raycast(target.transform.position, offset, out hit, distance + 0.5f) && hit.collider.gameObject.tag == "wall")
             {
-                Debug.DrawLine(target.transform.position, hit.point, Color.red);
+                Debug.Log("hit");
+                //Debug.DrawLine(target.transform.position, hit.point, Color.red);
                 distanceOffset = distance - hit.distance + 0.5f;
                 distanceOffset = Mathf.Clamp(distanceOffset, 0, distance);
 
