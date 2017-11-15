@@ -40,6 +40,10 @@ public class pushableObject : MonoBehaviour {
     public void LetGo()
     {
         mRigidBody.constraints = RigidbodyConstraints.FreezeAll;
+        if (y == true)
+        {
+            mRigidBody.constraints &= ~(RigidbodyConstraints.FreezePositionY);
+        }
         Destroy(hj);
         //mRigidBody.freezeRotation = false;
     }
