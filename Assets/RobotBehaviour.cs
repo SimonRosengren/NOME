@@ -15,6 +15,7 @@ public class RobotBehaviour : MonoBehaviour {
 	void Update () {
         if (wet)
         {
+            GetComponent<FollowPath>().functional = false;
             Smoke();
             SpitOut();
         }	
