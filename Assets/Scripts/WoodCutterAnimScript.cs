@@ -84,7 +84,7 @@ public class WoodCutterAnimScript : MonoBehaviour
         float step = speed * Time.deltaTime;
         float step2 = startStopSpeed * Time.deltaTime;
 
-        if (walkFirst == true)
+        if (walkFirst && start)
         {
 
             if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
@@ -115,7 +115,7 @@ public class WoodCutterAnimScript : MonoBehaviour
             }
         }
 
-        else
+        if(start && !walkFirst)
         {
             anim.SetBool("isActive", true);
             anim.SetBool("StartCutting", true);

@@ -42,7 +42,7 @@ public class GrabObject : MonoBehaviour {
             if (!Physics.Raycast(ray, out grabbedObject, 1))
                 return;
 
-            if (grabbedObject.transform.tag == "Grabable")
+            if (grabbedObject.transform.tag == "grabable")
             {
                 animator.SetBool("grabbingObj", true);
                 pushableObject hitObjScript = grabbedObject.transform.GetComponent<pushableObject>();
