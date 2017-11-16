@@ -26,9 +26,9 @@ public class VacuumHoldLaunch : MonoBehaviour {
             holdOn = false;
             
             Launch();
-            Debug.Log(holdOn);
-            Debug.Log(gP.pullOn);
-            Debug.Log(stuckTimer);
+            //Debug.Log(holdOn);
+            //Debug.Log(gP.pullOn);
+            //Debug.Log(stuckTimer);
             stuckTimer = 3;        
         }
 
