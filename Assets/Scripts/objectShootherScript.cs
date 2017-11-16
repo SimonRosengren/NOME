@@ -5,7 +5,8 @@ using UnityEngine;
 public class objectShootherScript : MonoBehaviour
 {
 
-    [SerializeField] Transform player;
+    [SerializeField]
+    Transform player;
 
     public bool isActive = false;
     public bool targetPlayer;
@@ -15,7 +16,7 @@ public class objectShootherScript : MonoBehaviour
     public int minForce = 10;
     public int maxForce = 20;
     float timer = 2;
-    Vector3[] targets;
+    public Vector3[] targets;
     public Animator anim;
 
 
@@ -31,10 +32,10 @@ public class objectShootherScript : MonoBehaviour
 
     void OnTriggerEnter(Collider collider)
     {
-        if(collider.tag == "Player")
-        {            
-            isActive = true;
-            anim.SetBool("isActive", true);
+        if (collider.tag == "Player")
+        {
+            targetPlayer = true;
+            //anim.SetBool("isActive", true);
         }
     }
 
@@ -46,6 +47,16 @@ public class objectShootherScript : MonoBehaviour
     //        anim.SetBool("isActive", false);
     //    }
     //}
+
+    void ShootChuck()
+    {
+        GameObject test = Instantiate(shootObj, transform.position, Random.rotation);
+        Vector3 target = targets[(int)Random.Range(0, transform.childCount)];
+        Vector3 dir = Vector3.Normalize(target - transform.position);
+
+        test.GetComponent<Rigidbody>().AddForce(dir * Random.Range(minForce, maxForce), ForceMode.VelocityChange);
+        Debug.Log("hej");
+    }
 
     // Update is called once per frame
     void Update()
