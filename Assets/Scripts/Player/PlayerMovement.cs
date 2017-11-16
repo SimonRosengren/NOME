@@ -183,7 +183,7 @@ public class PlayerMovement : MonoBehaviour
     void HandleDeath()
     {
         timeToRespawn -= Time.deltaTime;
-        deathImage.color = Color.Lerp(deathImage.color, Color.black, 1f * Time.deltaTime);
+        deathImage.color = Color.Lerp(deathImage.color, Color.black, 10f * Time.deltaTime);
         if (timeToRespawn <= 0)
         {
             isDead = false;
