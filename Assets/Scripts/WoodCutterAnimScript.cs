@@ -73,8 +73,8 @@ public class WoodCutterAnimScript : MonoBehaviour
         GameObject test = Instantiate(shootObj, transform.position, transform.rotation);
         Vector3 dir = Vector3.Normalize(target - transform.position);
 
-        test.GetComponent<Rigidbody>().AddForce(dir * force, ForceMode.Impulse);
-
+        Rigidbody rb = test.GetComponent<Rigidbody>();/*.AddForce(dir * force, ForceMode.Impulse);*/
+        rb.velocity = dir * force;
     }
 
     void Animations()
