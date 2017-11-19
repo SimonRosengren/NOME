@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -12,14 +13,21 @@ public class PlayerMovement : MonoBehaviour
     RaycastHit grabbedObj;
     BookHandler bookHandler;
 
+
     bool isDead;
+    float timeToRespawn;
+    float deathTimer = 2f;
 
     [SerializeField] AudioSource runSound;
     [SerializeField] float acceleration;
     [SerializeField] float jumpForce;
     [SerializeField] float maxMoveSpeed;
+    [SerializeField] Image deathImage;
+    [SerializeField] GameLogic gameLogic;
+    [SerializeField] float minDeathByForceMagnitude;
 
     public int inReachOfBook = 0;
+    public bool isReadingDialog = false;
 
 
     void Awake()
@@ -37,6 +45,21 @@ public class PlayerMovement : MonoBehaviour
     {
         HandleInput();
         animator.SetBool("isGrounded", IsGrounded());
+        if (isDead)
+        {
+            HandleDeath();
+        }
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == "projectile")
+        {    
+            if (collision.rigidbody.velocity.magnitude > minDeathByForceMagnitude)
+            {
+                Die();
+            }
+        }
     }
 
     void FixedUpdate()
@@ -65,6 +88,18 @@ public class PlayerMovement : MonoBehaviour
         else
             runSound.Play();
 
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "CheckPoint")
+        {
+            other.transform.GetComponent<CheckPoint>().SetAsLastCheckpoint();
+        }
+        if (other.tag == "DeathTrigger")
+        {
+            Die();
+        }
     }
 
     void Jump()
@@ -138,6 +173,24 @@ public class PlayerMovement : MonoBehaviour
     bool isGrabbing()
     {
         return grabObj.isGrabbing;
+    }
+    void Die()
+    {
+        isDead = true;
+        timeToRespawn = deathTimer;
+    }
+
+    void HandleDeath()
+    {
+        timeToRespawn -= Time.deltaTime;
+        deathImage.color = Color.Lerp(deathImage.color, Color.black, 10f * Time.deltaTime);
+        if (timeToRespawn <= 0)
+        {
+            isDead = false;
+            transform.position = gameLogic.GetLastCheckPoint().position;
+            transform.rotation = gameLogic.GetLastCheckPoint().rotation;
+            deathImage.color = Color.clear;
+        }
     }
 }
 

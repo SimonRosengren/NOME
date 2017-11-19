@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class FollowPath : MonoBehaviour {
     public float movementSpeed;
+    public bool functional;
 	// Use this for initialization
 	void Start () {
+        functional = true;
         Path();
 	}
 	
@@ -16,7 +18,16 @@ public class FollowPath : MonoBehaviour {
 
     void Path()
     {
-        iTween.MoveTo(gameObject, iTween.Hash("path", iTweenPath.GetPath("RobotPath"), "speed",movementSpeed, "orientToPath", true, "delay", 0,"oncomplete","Path", "easetype", iTween.EaseType.linear));
+        iTween.MoveTo(gameObject, iTween.Hash("path", iTweenPath.GetPath("RobotPath"), "speed",movementSpeed, "orientToPath", true, "delay", 0,"oncomplete","Check", "easetype", iTween.EaseType.easeInOutQuad));
 
     }
+
+    void Check()
+    {
+        if (functional)
+        {
+            Path();
+        }
+    }
+
 }
