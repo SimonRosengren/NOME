@@ -28,7 +28,7 @@ public class WoodCutterAnimScript : MonoBehaviour
 
     [SerializeField]
     [Range(10f, 80f)]
-    private float angle = 10f;
+    private float angle = 30f;
 
 
     // Use this for initialization
