@@ -6,30 +6,24 @@ public class WoodCutterAnimScript : MonoBehaviour
 {
 
     Animator anim;
-    public bool start;
-    public float speed;
+    public bool startUp;
+    public float mainSpeed;
     public float startStopSpeed;
 
-    public bool walkFirst = false;
+    public bool walkToTarget = false;
+    public Transform endTransForm;
+
     public bool targetPlayer;
+    public Transform player;
+    public Transform idleTarget;
 
     public GameObject shootObj;
-    projectileScript projectile;
-    public int force = 60;
 
-    public Transform endTransForm;
-    public Transform idleTarget;
-    public Transform player;
-
-
-    Vector3 distance;
+    Vector3 distPlayerToIdle;
     Vector3 target;
+    public float speed = 1;
 
-
-    [SerializeField]
-    [Range(10f, 80f)]
-    private float angle = 30f;
-
+    private float angle = 10;
 
     // Use this for initialization
     void Start()
@@ -39,8 +33,6 @@ public class WoodCutterAnimScript : MonoBehaviour
 
 
     }
-
-
 
 
     private Vector3 BallisticVelocity(Vector3 destination, float angle)
@@ -58,20 +50,59 @@ public class WoodCutterAnimScript : MonoBehaviour
         return velocity * dir.normalized; // Return a normalized vector.
     }
 
-    private void FireCannonAtPoint(Vector3 point)
+    private void FireAtPoint(Vector3 point)
     {
         var velocity = BallisticVelocity(point, angle);
-       // Debug.Log("Firing at " + point + " velocity " + velocity);
+        // Debug.Log("Firing at " + point + " velocity " + velocity);
 
         GameObject test = Instantiate(shootObj, transform.position, transform.rotation);
         test.transform.position = transform.position;
         test.GetComponent<Rigidbody>().velocity = velocity;
     }
 
+    private void FireAt(Vector3 target, GameObject projectile)
+    {
+        Vector3 toTarget = target - transform.position;
+
+        // Set up the terms we need to solve the quadratic equations.
+        float gSquared = Physics.gravity.sqrMagnitude;
+        float b = speed * speed + Vector3.Dot(toTarget, Physics.gravity);
+        float discriminant = b * b - gSquared * toTarget.sqrMagnitude;
+
+        // Check whether the target is reachable at max speed or less.
+        if (discriminant < 0)
+        {
+            speed = speed * 2;
+            b = speed * speed + Vector3.Dot(toTarget, Physics.gravity);
+            discriminant = b * b - gSquared * toTarget.sqrMagnitude;
+            // Target is too far away to hit at this speed.
+            // Abort, or fire at max speed in its general direction?
+        }
+
+        float discRoot = Mathf.Sqrt(discriminant);
+
+        // Highest shot with the given max speed:
+        float T_max = Mathf.Sqrt((b + discRoot) * 2f / gSquared);
+
+        // Most direct shot with the given max speed:
+        float T_min = Mathf.Sqrt((b - discRoot) * 2f / gSquared);
+
+        // Lowest-speed arc available:
+        float T_lowEnergy = Mathf.Sqrt(Mathf.Sqrt(toTarget.sqrMagnitude * 4f / gSquared));
+
+        float T = T_min;// choose T_max, T_min, or some T in-between like T_lowEnergy
+
+        // Convert from time-to-hit to a launch velocity:
+        Vector3 velocity = toTarget / T - Physics.gravity * T / 2f;
+
+        // Apply the calculated velocity (do not use force, acceleration, or impulse modes)
+        projectile.GetComponent<Rigidbody>().AddForce(velocity, ForceMode.VelocityChange);
+    }
+
     void ShootChuck()
     {
-        distance = idleTarget.position - player.position;
-        if (distance.magnitude < 20)
+        distPlayerToIdle = idleTarget.position - player.position;
+        if (distPlayerToIdle.magnitude < 10)
         {
            
             target = player.transform.position;
@@ -83,11 +114,13 @@ public class WoodCutterAnimScript : MonoBehaviour
             Debug.Log("Target");
         }
 
-        FireCannonAtPoint(target);
-        //GameObject test = Instantiate(shootObj, transform.position, transform.rotation);
-        //Vector3 dir = Vector3.Normalize(target - transform.position);
+        //FireAtPoint(target);
+        GameObject projectile = Instantiate(shootObj, transform.position, transform.rotation);
+        FireAt(target, projectile);
+        //Vector3 dir = (target - transform.position).normalized;
 
-        //test.GetComponent<Rigidbody>().AddForce(dir * force, ForceMode.Impulse);
+        //test.GetComponent<Rigidbody>().AddForce(dir * force);
+      
 
     }
 
@@ -95,10 +128,10 @@ public class WoodCutterAnimScript : MonoBehaviour
     {
         Vector3 direction = endTransForm.position - this.transform.position;
         direction.y = 0;
-        float step = speed * Time.deltaTime;
+        float step = mainSpeed * Time.deltaTime;
         float step2 = startStopSpeed * Time.deltaTime;
 
-        if (walkFirst && start)
+        if (walkToTarget && startUp)
         {
 
             if (anim.GetCurrentAnimatorStateInfo(0).IsName("Idle"))
@@ -129,7 +162,7 @@ public class WoodCutterAnimScript : MonoBehaviour
             }
         }
 
-        if(start && !walkFirst)
+        if(startUp && !walkToTarget)
         {
             anim.SetBool("isActive", true);
             anim.SetBool("StartCutting", true);
@@ -149,4 +182,7 @@ public class WoodCutterAnimScript : MonoBehaviour
 
 
     }
+
+
+   
 }

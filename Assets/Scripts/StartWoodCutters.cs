@@ -19,7 +19,7 @@ public class StartWoodCutters : MonoBehaviour {
     {
         for (int i = 0; i < woodcutters.Length; i++)
         {
-            woodcutters[i].start = true;
+            woodcutters[i].startUp = true;
         }
     }
 }
