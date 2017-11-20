@@ -12,20 +12,27 @@ public class PlayerMovement : MonoBehaviour
     Animator animator;
     RaycastHit grabbedObj;
     BookHandler bookHandler;
-    Camera camera;
+    CameraScriptFree camera;
 
 
     bool isDead;
     float timeToRespawn;
     float deathTimer = 2f;
 
-    [SerializeField] AudioSource runSound;
-    [SerializeField] float acceleration;
-    [SerializeField] float jumpForce;
-    [SerializeField] float maxMoveSpeed;
-    [SerializeField] Image deathImage;
-    [SerializeField] GameLogic gameLogic;
-    [SerializeField] float minDeathByForceMagnitude;
+    [SerializeField]
+    AudioSource runSound;
+    [SerializeField]
+    float acceleration;
+    [SerializeField]
+    float jumpForce;
+    [SerializeField]
+    float maxMoveSpeed;
+    [SerializeField]
+    Image deathImage;
+    [SerializeField]
+    GameLogic gameLogic;
+    [SerializeField]
+    float minDeathByForceMagnitude;
 
     public int inReachOfBook = 0;
     public bool isReadingDialog = false;
@@ -38,15 +45,21 @@ public class PlayerMovement : MonoBehaviour
         grabObj = GetComponent<GrabObject>();
         animator = GetComponent<Animator>();
         bookHandler = GetComponent<BookHandler>();
-        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>() as Camera;
+        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>().GetComponent<CameraScriptFree>();
         isDead = false;
         runSound.Play();
     }
 
     void Update()
     {
+
         HandleInput();
+
         animator.SetBool("isGrounded", IsGrounded());
+
+    }
+    void LateUpdate()
+    {
         if (isDead)
         {
             HandleDeath();
@@ -56,7 +69,7 @@ public class PlayerMovement : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.tag == "projectile")
-        {    
+        {
             if (collision.rigidbody.velocity.magnitude > minDeathByForceMagnitude)
             {
                 Die();
@@ -134,7 +147,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Grab();
             ReadBook();
-        }      
+        }
     }
 
     void ReadBook()
@@ -166,7 +179,7 @@ public class PlayerMovement : MonoBehaviour
     {
         return Physics.Raycast(
             transform.position + new Vector3(0, 0.2f, 0),
-            -transform.up, 0.5f);        
+            -transform.up, 0.5f);
     }
     bool isHanging()
     {
@@ -193,18 +206,13 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = gameLogic.GetLastCheckPoint().rotation;
             deathImage.color = Color.clear;
             RefocusCamera();
+            transform.rotation = gameLogic.GetLastCheckPoint().rotation;
         }
     }
 
     void RefocusCamera()
     {
-        float cameraAngle = camera.transform.eulerAngles.y;
-        float targetAngle = transform.transform.eulerAngles.y;
-        targetAngle = Mathf.LerpAngle(cameraAngle, targetAngle, 20 * Time.deltaTime);
-        Vector3 offset = new Vector3(0, 1, -7);
-        offset = Quaternion.Euler(0, targetAngle, 0) * offset;
-
-        camera.transform.position = transform.position - transform.forward - Vector3.zero - offset;
+        camera.InstantFocusCamera();
     }
 }
 

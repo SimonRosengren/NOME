@@ -5,6 +5,9 @@ using UnityEngine;
 public class CameraScriptFree : MonoBehaviour
 {
 
+    Vector3 offset;
+    Transform target;
+
     public GameObject Target;
     public Vector3 cameraOffset = new Vector3(0, 0, 0);
     public float cameraSpeed = 10f;
@@ -28,8 +31,8 @@ public class CameraScriptFree : MonoBehaviour
     {
         if (camera != null && Target != null)
         {
-            Transform target = Target.transform;
-            Vector3 offset = cameraOffset;
+            target = Target.transform;
+            offset = cameraOffset;
 
             float cameraAngle = camera.transform.eulerAngles.y;
             float targetAngle = Target.transform.eulerAngles.y;
@@ -64,7 +67,6 @@ public class CameraScriptFree : MonoBehaviour
             {
                 //camera.transform.position = Vector3.Lerp(camera.transform.position, target.position - target.forward + offset, cameraSpeed * 10 * Time.deltaTime);
                 camera.transform.position = Vector3.Lerp(camera.transform.position, target.position - target.forward - newCameraPos + offset, cameraSpeed * 10 * Time.deltaTime);
-
             }
             else
             {
@@ -77,5 +79,10 @@ public class CameraScriptFree : MonoBehaviour
             camera.transform.LookAt(target.position);
             Debug.DrawLine(target.position, camera.transform.position, Color.blue);
         }
+    }
+
+    public void InstantFocusCamera()
+    {
+        camera.transform.position = target.position - target.forward * 10;
     }
 }
