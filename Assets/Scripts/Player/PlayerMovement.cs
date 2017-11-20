@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
     Animator animator;
     RaycastHit grabbedObj;
     BookHandler bookHandler;
+    Camera camera;
 
 
     bool isDead;
@@ -37,6 +38,7 @@ public class PlayerMovement : MonoBehaviour
         grabObj = GetComponent<GrabObject>();
         animator = GetComponent<Animator>();
         bookHandler = GetComponent<BookHandler>();
+        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>() as Camera;
         isDead = false;
         runSound.Play();
     }
@@ -190,7 +192,19 @@ public class PlayerMovement : MonoBehaviour
             transform.position = gameLogic.GetLastCheckPoint().position;
             transform.rotation = gameLogic.GetLastCheckPoint().rotation;
             deathImage.color = Color.clear;
+            RefocusCamera();
         }
+    }
+
+    void RefocusCamera()
+    {
+        float cameraAngle = camera.transform.eulerAngles.y;
+        float targetAngle = transform.transform.eulerAngles.y;
+        targetAngle = Mathf.LerpAngle(cameraAngle, targetAngle, 20 * Time.deltaTime);
+        Vector3 offset = new Vector3(0, 1, -7);
+        offset = Quaternion.Euler(0, targetAngle, 0) * offset;
+
+        camera.transform.position = transform.position - transform.forward - Vector3.zero - offset;
     }
 }
 
