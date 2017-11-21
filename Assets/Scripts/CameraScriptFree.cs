@@ -13,7 +13,7 @@ public class CameraScriptFree : MonoBehaviour
 
     private RaycastHit hit;
     private Vector3 newCameraPos;
-    float distance = 5.0f;
+    public float distance;
     float distanceOffset;
 
     // Use this for initialization
