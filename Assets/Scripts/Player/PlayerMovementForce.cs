@@ -12,6 +12,9 @@ public class PlayerMovementForce : MonoBehaviour
     Vector3 velocityAxis;
     LedgeCollsion ledgeGrabArea;
     RaycastHit objectGrabbed;
+
+    CapsuleCollider capCollider;
+    public LayerMask charMask;
     
     /*Movement vector*/
     float currentV;
@@ -51,6 +54,8 @@ public class PlayerMovementForce : MonoBehaviour
         runSound = GetComponent<AudioSource>();
         animator = GetComponent<Animator>();
         runSound.Play();
+
+        capCollider = GetComponent<CapsuleCollider>();
     }
 
     void FixedUpdate()
@@ -136,36 +141,40 @@ public class PlayerMovementForce : MonoBehaviour
         //Debug.Log(velocityAxis.magnitude);
         if (!isDead)
         {
-            if (!ledgeGrabArea.hanging)
+            if (UnstickWalls())
             {
-                playerRb.AddForce(velocityAxis.normalized * acceleration);
-                moveSpeed = playerRb.velocity.magnitude;
-                animator.SetFloat("MoveSpeed", velocityAxis.magnitude);
-            }
-            else /*So we can jump while hanging. Will probably be switched to an animation*/
-            {
-                if (!IsHanging)
+
+                if (!ledgeGrabArea.hanging)
                 {
-                    IsHanging = true;
                     playerRb.AddForce(velocityAxis.normalized * acceleration);
                     moveSpeed = playerRb.velocity.magnitude;
                     animator.SetFloat("MoveSpeed", velocityAxis.magnitude);
                 }
-
                 else /*So we can jump while hanging. Will probably be switched to an animation*/
                 {
-                    if (Input.GetButtonDown("Jump"))
+                    if (!IsHanging)
                     {
-                        Debug.Log("jump");
-                        playerRb.constraints = RigidbodyConstraints.None;
-                        playerRb.constraints = RigidbodyConstraints.FreezeRotation;
-                        Vector3 newVel = playerRb.velocity;
-                        newVel.y = 0;
-                        playerRb.velocity = newVel;
-                        playerRb.AddForce(Vector3.up * 1, ForceMode.Impulse);
+                        IsHanging = true;
+                        playerRb.AddForce(velocityAxis.normalized * acceleration);
+                        moveSpeed = playerRb.velocity.magnitude;
+                        animator.SetFloat("MoveSpeed", velocityAxis.magnitude);
+                    }
 
-                        animator.SetBool("IsHanging", false);
-                        IsHanging = false;
+                    else /*So we can jump while hanging. Will probably be switched to an animation*/
+                    {
+                        if (Input.GetButtonDown("Jump"))
+                        {
+                            Debug.Log("jump");
+                            playerRb.constraints = RigidbodyConstraints.None;
+                            playerRb.constraints = RigidbodyConstraints.FreezeRotation;
+                            Vector3 newVel = playerRb.velocity;
+                            newVel.y = 0;
+                            playerRb.velocity = newVel;
+                            playerRb.AddForce(Vector3.up * 1, ForceMode.Impulse);
+
+                            animator.SetBool("IsHanging", false);
+                            IsHanging = false;
+                        }
                     }
                 }
             }
@@ -248,6 +257,41 @@ public class PlayerMovementForce : MonoBehaviour
             transform.position = gameLogic.GetLastCheckPoint().position;
             transform.rotation = gameLogic.GetLastCheckPoint().rotation;
             deathImage.color = Color.clear;
+        }
+    }
+
+
+    bool UnstickWalls()
+    {
+        Vector3 capsuleCenter = transform.position + capCollider.center;
+        float capsuleHalfHeight = capCollider.height / 2f;       
+        float bottomPercent;
+        if (IsGrounded())
+            bottomPercent = 0.75f;
+        else
+            bottomPercent = 1f;
+        Vector3 capsuleTop = capsuleCenter + new Vector3(0f, capsuleHalfHeight - capCollider.radius, 0f);
+        Vector3 capsuleBottom = capsuleCenter - new Vector3(0f, (capsuleHalfHeight * bottomPercent) - capCollider.radius, 0f);
+        float forceDirectionMultiplier = 1.1f;
+        Vector3 normalizedWorldForce = transform.TransformDirection(velocityAxis.normalized);
+        Collider[] hits = Physics.OverlapCapsule(capsuleTop + (normalizedWorldForce * forceDirectionMultiplier), capsuleBottom + (normalizedWorldForce * forceDirectionMultiplier), capCollider.radius, charMask);
+        Debug.Log(capsuleTop + (normalizedWorldForce * forceDirectionMultiplier));
+
+
+        //Debug.Log(velocityAxis);
+        if (hits.Length == 0 || IsGrounded())
+        {
+            //playerRb.AddForce(velocityAxis.normalized * acceleration);
+            //moveSpeed = playerRb.velocity.magnitude;
+            //animator.SetFloat("MoveSpeed", velocityAxis.magnitude);
+            ////playerRb.AddRelativeForce(velocityAxis, ForceMode.Force);
+            return true;
+        }
+        else
+        {
+            Debug.Log(hits);
+            
+            return false;
         }
     }
 }
