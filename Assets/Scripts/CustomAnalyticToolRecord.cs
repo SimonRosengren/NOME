@@ -10,19 +10,22 @@ public class CustomAnalyticToolRecord : MonoBehaviour
     public float saveRate = 0.1f;
 
     //Player goes here if you want to track player movement
-    [SerializeField]
-    Transform objectToTrack;
+    [SerializeField] Transform objectToTrack;
 
     int sessionID;
 
     //Path to text file
-    string path = @"CustomAnalyticsTool\Movement.txt";
-    string checkPointPath = @"CustomAnalyticsTool\CheckpointTimes.txt";
+    public string movementPathName = "path";
+    public string checkpointPathName = "path";
+    string path;
+    string checkPointPath;
 
     float timer = 0;
 
     void Start()
     {
+        path = @"CustomAnalyticsTool\" + movementPathName + ".txt";
+        checkPointPath = @"CustomAnalyticsTool\" + checkpointPathName + ".txt";
         CreateSessionID();
     }
 
