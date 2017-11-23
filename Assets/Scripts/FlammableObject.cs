@@ -32,10 +32,9 @@ public class FlammableObject : MonoBehaviour {
 
     void SetFire()
     {
-        ParticleSystem test = Instantiate(fire, this.transform.position, this.transform.rotation);
+        ParticleSystem test = Instantiate(fire, transform.position, transform.rotation);
         test.Play();
-        test.transform.parent = this.transform;
-
+        test.transform.parent = transform;
         //PLAY ANIMATION
         if (!onFire)
         {

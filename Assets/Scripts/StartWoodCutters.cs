@@ -15,11 +15,17 @@ public class StartWoodCutters : MonoBehaviour {
 
 	}
 
-    void OnTriggerEnter(Collider collider)
+    IEnumerator OnTriggerEnter(Collider collider)
     {
         for (int i = 0; i < woodcutters.Length; i++)
         {
-            woodcutters[i].start = true;
+
+            woodcutters[i].startUp = true;
+            yield return new WaitForSeconds(3);
+
         }
     }
+
+   
+
 }

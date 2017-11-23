@@ -12,6 +12,9 @@ public class PlayerMovement : MonoBehaviour
     Animator animator;
     RaycastHit grabbedObj;
     BookHandler bookHandler;
+    Camera camera;
+
+    public GameObject cameraTarget;
 
 
     bool isDead;
@@ -37,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
         grabObj = GetComponent<GrabObject>();
         animator = GetComponent<Animator>();
         bookHandler = GetComponent<BookHandler>();
+        camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         isDead = false;
         runSound.Play();
     }
@@ -49,6 +53,7 @@ public class PlayerMovement : MonoBehaviour
         {
             HandleDeath();
         }
+        Debug.DrawLine(transform.position, ledgeGrabArea.transform.position, Color.red);
     }
 
     void OnCollisionEnter(Collision collision)
@@ -190,7 +195,14 @@ public class PlayerMovement : MonoBehaviour
             transform.position = gameLogic.GetLastCheckPoint().position;
             transform.rotation = gameLogic.GetLastCheckPoint().rotation;
             deathImage.color = Color.clear;
+            ResetCamera();
         }
+
+    }
+
+    void ResetCamera()
+    {
+        camera.transform.position = cameraTarget.transform.position;
     }
 }
 
