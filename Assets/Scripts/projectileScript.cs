@@ -16,6 +16,7 @@ public class projectileScript : MonoBehaviour {
 
     void Awake()
     {
+        Destroy(gameObject, 10);
         //Vector3 dir = Vector3.Normalize(target - transform.position);
         //rb.AddForce(dir * Random.RandomRange(10, maxForce), ForceMode.VelocityChange);
     }
