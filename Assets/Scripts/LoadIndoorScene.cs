@@ -8,10 +8,11 @@ public class LoadIndoorScene : MonoBehaviour {
     public Animator anim;
     public float fadeTimer = 1;
     public string scene = "Emils scene";
+    public bool isActive = true;
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.tag == "Player" && isActive)
         {
             StartCoroutine(FadeToScene());
         }

@@ -17,7 +17,8 @@ public class DialogeImporter : MonoBehaviour {
     public int currentLine;
     public int endAtLine;
 
-    bool isActive = false;
+
+    public bool isActive = false;
 
 	// Use this for initialization
 	void Start () {
