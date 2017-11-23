@@ -33,8 +33,10 @@ public class FlammableObject : MonoBehaviour {
     void SetFire()
     {
         ParticleSystem test = Instantiate(fire, transform.position, transform.rotation);
+
         test.Play();
         test.transform.parent = transform;
+        test.transform.rotation = Quaternion.Euler(-90, 0, 0);
         //PLAY ANIMATION
         if (!onFire)
         {
