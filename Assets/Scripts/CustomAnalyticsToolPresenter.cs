@@ -26,9 +26,11 @@ public class CustomAnalyticsToolPresenter : MonoBehaviour {
     List<PlayerPath> playerPaths;
 
     //Path to text file
-    string posPath = @"CustomAnalyticsTool\Movement.txt";
+    public string fileName = "filename";
+    string posPath;
 
     void Start () {
+        posPath = @"CustomAnalyticsTool\" + fileName + ".txt";
         parsedPositions = new List<Vector3>();
         playerPaths = new List<PlayerPath>();
         ReadInPositions();

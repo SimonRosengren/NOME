@@ -29,7 +29,7 @@ MonoBehaviour:
     m_Settings:
       excludeSkybox: 1
   antialiasing:
-    m_Enabled: 0
+    m_Enabled: 1
     m_Settings:
       method: 0
       fxaaSettings:
@@ -50,7 +50,7 @@ MonoBehaviour:
       ambientOnly: 0
       highPrecision: 0
   screenSpaceReflection:
-    m_Enabled: 1
+    m_Enabled: 0
     m_Settings:
       reflection:
         blendType: 0
@@ -71,8 +71,8 @@ MonoBehaviour:
   depthOfField:
     m_Enabled: 0
     m_Settings:
-      focusDistance: 2.44
-      aperture: 1
+      focusDistance: 2.47
+      aperture: 1.3
       focalLength: 50
       useCameraFov: 1
       kernelSize: 1
@@ -100,10 +100,10 @@ MonoBehaviour:
     m_Enabled: 1
     m_Settings:
       bloom:
-        intensity: 0.09
-        threshold: 1.16
-        softKnee: 0.489
-        radius: 2.04
+        intensity: 0.85
+        threshold: 1.04
+        softKnee: 0.181
+        radius: 2.12
         antiFlicker: 0
       lensDirt:
         texture: {fileID: 2800000, guid: a2960ffde020f27409e070d92fb2e00b, type: 3}
@@ -121,7 +121,7 @@ MonoBehaviour:
         neutralWhiteClip: 10
       basic:
         postExposure: 0.13
-        temperature: -26.4
+        temperature: -41
         tint: 0
         hueShift: 8
         saturation: 1.07
@@ -134,7 +134,7 @@ MonoBehaviour:
       colorWheels:
         mode: 1
         log:
-          slope: {r: 0.65955305, g: 0.72026664, b: 1, a: 0}
+          slope: {r: 0.828722, g: 0.88637024, b: 1, a: 0}
           power: {r: 1, g: 0.72549677, b: 0.8261998, a: 0}
           offset: {r: 0.92580044, g: 0.97720164, b: 1, a: 0}
         linear:
@@ -149,14 +149,14 @@ MonoBehaviour:
             - serializedVersion: 2
               time: 0
               value: 0
-              inSlope: 0.71250015
-              outSlope: 0.71250015
+              inSlope: 1.2787503
+              outSlope: 1.2787503
               tangentMode: 0
             - serializedVersion: 2
               time: 1
               value: 1
-              inSlope: 0.3043479
-              outSlope: 0.3043479
+              inSlope: -0
+              outSlope: -0
               tangentMode: 0
             m_PreInfinity: 2
             m_PostInfinity: 2
