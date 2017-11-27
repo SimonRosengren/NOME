@@ -264,33 +264,25 @@ public class PlayerMovementForce : MonoBehaviour
     bool UnstickWalls()
     {
         Vector3 capsuleCenter = transform.position + capCollider.center;
-        float capsuleHalfHeight = capCollider.height / 2f;       
-        float bottomPercent;
-        if (IsGrounded())
-            bottomPercent = 0.75f;
-        else
-            bottomPercent = 1f;
-        Vector3 capsuleTop = capsuleCenter + new Vector3(0f, capsuleHalfHeight - capCollider.radius, 0f);
-        Vector3 capsuleBottom = capsuleCenter - new Vector3(0f, (capsuleHalfHeight * bottomPercent) - capCollider.radius, 0f);
+        float capsuleHalfHeight = capCollider.height / 2f;
+        /* prob not needed */
+        //float bottomPercent;
+        //if (IsGrounded())
+        //    bottomPercent = 0.75f;
+        //else
+        //    bottomPercent = 1f;
+        Vector3 capsuleTop = capsuleCenter + new Vector3(0f, capsuleHalfHeight, 0f);
+        Vector3 capsuleBottom = capsuleCenter - new Vector3(0f, (capsuleHalfHeight), 0f);
         float forceDirectionMultiplier = 1.1f;
         Vector3 normalizedWorldForce = transform.TransformDirection(velocityAxis.normalized);
-        Collider[] hits = Physics.OverlapCapsule(capsuleTop + (normalizedWorldForce * forceDirectionMultiplier), capsuleBottom + (normalizedWorldForce * forceDirectionMultiplier), capCollider.radius, charMask);
-        Debug.Log(capsuleTop + (normalizedWorldForce * forceDirectionMultiplier));
+        Collider[] hits = Physics.OverlapCapsule(capsuleTop + (velocityAxis.normalized * forceDirectionMultiplier), capsuleBottom + (velocityAxis.normalized * forceDirectionMultiplier), capCollider.radius, charMask);
 
-
-        //Debug.Log(velocityAxis);
         if (hits.Length == 0 || IsGrounded())
-        {
-            //playerRb.AddForce(velocityAxis.normalized * acceleration);
-            //moveSpeed = playerRb.velocity.magnitude;
-            //animator.SetFloat("MoveSpeed", velocityAxis.magnitude);
-            ////playerRb.AddRelativeForce(velocityAxis, ForceMode.Force);
+        {          
             return true;
         }
         else
-        {
-            Debug.Log(hits);
-            
+        {          
             return false;
         }
     }
