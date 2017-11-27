@@ -78,15 +78,17 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
-    m_PVRFiltering: 0
+    m_PVRFilterTypeDirect: 0
+    m_PVRFilterTypeIndirect: 0
+    m_PVRFilterTypeAO: 0
     m_PVRFilteringMode: 1
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
     m_PVRFilteringGaussRadiusAO: 2
-    m_PVRFilteringAtrousColorSigma: 1
-    m_PVRFilteringAtrousNormalSigma: 1
-    m_PVRFilteringAtrousPositionSigma: 1
+    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
+    m_PVRFilteringAtrousPositionSigmaIndirect: 2
+    m_PVRFilteringAtrousPositionSigmaAO: 1
   m_LightingDataAsset: {fileID: 112000002, guid: 80ff3a39daedcef418a92975fd963374,
     type: 2}
   m_UseShadowmask: 1
@@ -250,8 +252,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 15542869}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 141.644, y: -350.51556, z: 128.07413}
+  m_LocalRotation: {x: 0.5263086, y: 0.44299766, z: 0.3753318, w: -0.62119114}
+  m_LocalPosition: {x: 153.57489, y: -252.54893, z: 117.28427}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5380,8 +5382,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 448245187}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 141.644, y: -353.71555, z: 128.07413}
+  m_LocalRotation: {x: 0.5263086, y: 0.44299766, z: 0.3753318, w: -0.62119114}
+  m_LocalPosition: {x: 171.38239, y: -69.387085, z: 218.04607}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -12083,8 +12085,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1287030716}
-  m_LocalRotation: {x: -0.02485564, y: -0.94833744, z: 0.07682628, w: -0.30681592}
-  m_LocalPosition: {x: 147.71, y: 35.610004, z: 265.38}
+  m_LocalRotation: {x: 0.5263086, y: 0.44299766, z: 0.3753318, w: -0.62119114}
+  m_LocalPosition: {x: 171.38239, y: -66.58708, z: 218.04607}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -16166,7 +16168,8 @@ MonoBehaviour:
   cameraOffset: {x: 0, y: 1.49, z: -5.11}
   cameraSpeed: 10
   lookLock: 0
-  distance: 5
+  controlCamera: 0
+  distance: 6
 --- !u!114 &1700501142
 MonoBehaviour:
   m_ObjectHideFlags: 0
