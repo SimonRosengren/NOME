@@ -85,7 +85,7 @@ public class VacuumHoldLaunch : MonoBehaviour {
         gP.target.transform.parent = null;
         gP.rbTarget.isKinematic = false;
         //gP.rbTarget.AddForce (FireAt(target), ForceMode.VelocityChange);
-        gP.rbTarget.velocity = FireAt2(target, 3.1f);
+        gP.rbTarget.velocity = FireAt2(target, 3.05f);
         suckTimerOn = true;
         Debug.Log(gP.rbTarget.velocity);            
     }
