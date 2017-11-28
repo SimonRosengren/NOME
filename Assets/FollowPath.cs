@@ -5,8 +5,10 @@ using UnityEngine;
 public class FollowPath : MonoBehaviour {
     public float movementSpeed;
     public bool functional;
-	// Use this for initialization
-	void Start () {
+
+    VacuumHoldLaunch vScript;
+    // Use this for initialization
+    void Start () {
         functional = true;
         Path();
 	}
@@ -27,6 +29,9 @@ public class FollowPath : MonoBehaviour {
         if (functional)
         {
             Path();
+            //GameObject vaccum = GameObject.Find("Stuck&LaunchPoint");
+            //vScript = vaccum.GetComponent<VacuumHoldLaunch>();
+            //vScript.Launch();
         }
     }
 
