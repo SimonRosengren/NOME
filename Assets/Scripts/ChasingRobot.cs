@@ -43,6 +43,10 @@ public class ChasingRobot : MonoBehaviour
         if (collision.transform.tag == "Player")
         {
             collision.transform.GetComponent<Rigidbody>().AddForce(-Vector3.forward * 40, ForceMode.Acceleration);
+            if (player.GetComponent<LedgeCollsion>().hanging == true)
+            {
+                player.GetComponent<LedgeCollsion>().hanging = false;
+            }
         }
     }
     public void SetToActive()
