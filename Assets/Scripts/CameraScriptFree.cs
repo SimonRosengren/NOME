@@ -47,7 +47,7 @@ public class CameraScriptFree : MonoBehaviour
         {
 
 
-            Debug.Log(cameraOffset);
+            //Debug.Log(cameraOffset);
             Transform target = Target.transform;
             offset = cameraOffset;
 
@@ -72,7 +72,7 @@ public class CameraScriptFree : MonoBehaviour
             if (Physics.Raycast(target.transform.position, offset, out hit, distance + 0.5f) && hit.collider.gameObject.tag == "wall")
             {
                 Debug.DrawLine(target.transform.position, hit.point, Color.yellow);
-                Debug.Log("hit");
+                //Debug.Log("hit");
                 distanceOffset = distance - hit.distance + 0.5f;
                 distanceOffset = Mathf.Clamp(distanceOffset, 0, distance);
 
@@ -107,7 +107,7 @@ public class CameraScriptFree : MonoBehaviour
             //    currentY = 0;
             //}
             camera.transform.LookAt(target.position);
-            Debug.Log(camera.transform.position - Target.transform.position);
+            //Debug.Log(camera.transform.position - Target.transform.position);
 
         }
     }
