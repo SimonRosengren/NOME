@@ -4,10 +4,19 @@ using UnityEngine;
 
 public class FirePlaceTrigger : MonoBehaviour {
 
-    ParticleSystem sprinkler;
-    Transform sprinklerTransform;
+    bool brickRemoved = false;
+    bool sprinklerOn = false;
+
+    [SerializeField]GameObject sprinkler;
+
+    [SerializeField]Transform sprinklerTransform;
+
+    [SerializeField]Transform smokeTransform;
 
     [SerializeField]RobotBehaviour robot;
+    [SerializeField]FlammableObject fire;
+
+    [SerializeField]ParticleSystem smoke;
 
 
 	void Start () {
@@ -15,13 +24,27 @@ public class FirePlaceTrigger : MonoBehaviour {
 	}
 
 	void Update () {
-		
+        ActivateSprinkler();
 	}
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "grabable")
+        {
+            brickRemoved = true;
+        }
+    }
 
     public void ActivateSprinkler()
     {
-        Instantiate(sprinkler, sprinklerTransform);
-        Invoke("DeactivateRobot", 2);
+        if (fire.onFire && brickRemoved && !sprinklerOn)
+        {
+            Instantiate(sprinkler, sprinklerTransform);
+            Instantiate(smoke, smokeTransform);
+            sprinklerOn = true;
+            Invoke("DeactivateRobot", 2);
+
+        }
     }
 
     public void DeactivateRobot()
