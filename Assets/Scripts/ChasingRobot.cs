@@ -34,7 +34,15 @@ public class ChasingRobot : MonoBehaviour
                                        player.position.z);
             this.transform.LookAt(targetPostition);
             Vector3 dir = Vector3.Normalize(player.position - transform.position);
+            dir.y = 0;
             rb.AddForce(dir * Time.deltaTime * moveSpeed, ForceMode.Impulse);
+        }
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == "Player")
+        {
+            collision.transform.GetComponent<Rigidbody>().AddForce(-Vector3.forward * 40, ForceMode.Acceleration);
         }
     }
     public void SetToActive()
