@@ -41,7 +41,7 @@ public class PickUpHandler : MonoBehaviour {
                 inventory.transform.Find("Key").GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Images/key_found");
                 break;
 
-            case "Paperclip":
+            case "VacuumKey":
                 paperclip = true;
                 inventory.transform.Find("Paperclip").GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Images/paperclip_found");
                 break;
