@@ -5,6 +5,7 @@ using UnityEngine;
 public class RobotBehaviour : MonoBehaviour {
 
     public bool wet;
+    public GameObject gravCircle;
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +18,7 @@ public class RobotBehaviour : MonoBehaviour {
         {
             GetComponent<FollowPath>().functional = false;
             Smoke();
+            Destroy(gravCircle);
             SpitOut();
         }	
 	}
