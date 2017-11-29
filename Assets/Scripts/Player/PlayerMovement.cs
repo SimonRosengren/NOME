@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody playerRb;
+    CapsuleCollider capCollider;
     Vector3 velocityAxis;
     LedgeCollsion ledgeGrabArea;
     GrabObject grabObj;
@@ -13,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
     RaycastHit grabbedObj;
     BookHandler bookHandler;
     Camera camera;
+    public LayerMask charMask;
 
     public GameObject cameraTarget;
 
@@ -40,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
         grabObj = GetComponent<GrabObject>();
         animator = GetComponent<Animator>();
         bookHandler = GetComponent<BookHandler>();
+        capCollider = GetComponent<CapsuleCollider>();
         camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         isDead = false;
         runSound.Play();
@@ -69,6 +72,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+
         Move();
         Limitvelocity();
     }
@@ -76,7 +80,7 @@ public class PlayerMovement : MonoBehaviour
     void Move()
     {
 
-        if (!isDead && !ledgeGrabArea.hanging)
+        if (!isDead && !ledgeGrabArea.hanging && UnstickWalls())
         {
             playerRb.AddForce(velocityAxis.normalized * acceleration);
             animator.SetFloat("MoveSpeed", velocityAxis.magnitude);
@@ -183,6 +187,33 @@ public class PlayerMovement : MonoBehaviour
     {
         isDead = true;
         timeToRespawn = deathTimer;
+    }
+
+    bool UnstickWalls()
+    {
+        
+        Vector3 capsuleCenter = transform.position + capCollider.center;
+        float capsuleHalfHeight = capCollider.height / 2f;
+        /* prob not needed */
+        //float bottomPercent;
+        //if (IsGrounded())
+        //    bottomPercent = 0.75f;
+        //else
+        //    bottomPercent = 1f;
+        Vector3 capsuleTop = capsuleCenter + new Vector3(0f, capsuleHalfHeight, 0f);
+        Vector3 capsuleBottom = capsuleCenter - new Vector3(0f, (capsuleHalfHeight), 0f);
+        float forceDirectionMultiplier = 1.1f;
+        Vector3 normalizedWorldForce = transform.TransformDirection(velocityAxis.normalized);
+        Collider[] hits = Physics.OverlapCapsule(capsuleTop + (velocityAxis.normalized * forceDirectionMultiplier), capsuleBottom + (velocityAxis.normalized * forceDirectionMultiplier), capCollider.radius, charMask);
+
+        if (hits.Length == 0 || IsGrounded())
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     void HandleDeath()

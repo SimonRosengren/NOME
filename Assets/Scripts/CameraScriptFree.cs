@@ -8,50 +8,76 @@ public class CameraScriptFree : MonoBehaviour
     public GameObject Target;
     public Vector3 cameraOffset = new Vector3(0, 0, 0);
     public float cameraSpeed = 10f;
+    float targetAngleH;
+    float targetAngleV;
     public bool lookLock;
+    public bool controlCamera;
     private Camera camera;
 
     private RaycastHit hit;
     private Vector3 newCameraPos;
-    public float distance;
+    private Vector3 offset;
+
     float distanceOffset;
 
+    public float distance;
+    private float currentX = 0.0f;
+    private float currentY = 0.0f;
+    private float resetCameraTimer;
+
+    Quaternion rotation;
     // Use this for initialization
     void Start()
     {
         camera = GetComponent<Camera>();
         lookLock = false;
+        controlCamera = false;
+        resetCameraTimer = 2;
+
     }
 
     // Update is called once per frame
+    private void Update()
+    {
+
+    }
     void FixedUpdate()
     {
         if (camera != null && Target != null)
         {
+
+
+            //Debug.Log(cameraOffset);
             Transform target = Target.transform;
-            Vector3 offset = cameraOffset;
+            offset = cameraOffset;
+
 
             float cameraAngle = camera.transform.eulerAngles.y;
-            float targetAngle = Target.transform.eulerAngles.y;
+            targetAngleH = Target.transform.eulerAngles.y;
+            //targetAngleV = Target.transform.eulerAngles.x;
 
             if (Input.GetAxisRaw("Vertical") < 0.2f)
             {
-                targetAngle = cameraAngle;
+                targetAngleH = cameraAngle;
             }
 
-            targetAngle = Mathf.LerpAngle(cameraAngle, targetAngle, cameraSpeed * Time.deltaTime);
-            offset = Quaternion.Euler(0, targetAngle, 0) * offset;
+            targetAngleH = Mathf.LerpAngle(cameraAngle, targetAngleH, cameraSpeed * Time.deltaTime);
+
+            targetAngleH += Input.GetAxis("RightJoyH") * Time.deltaTime * 700;
+            targetAngleV += Input.GetAxis("RightJoyV") * Time.deltaTime * 70;
+
+            offset = Quaternion.Euler(targetAngleV, targetAngleH, 0) * offset;
 
             //New Code
             if (Physics.Raycast(target.transform.position, offset, out hit, distance + 0.5f) && hit.collider.gameObject.tag == "wall")
             {
-                Debug.Log("hit");
-                //Debug.DrawLine(target.transform.position, hit.point, Color.red);
+                Debug.DrawLine(target.transform.position, hit.point, Color.yellow);
+                //Debug.Log("hit");
                 distanceOffset = distance - hit.distance + 0.5f;
                 distanceOffset = Mathf.Clamp(distanceOffset, 0, distance);
 
                 newCameraPos = new Vector3(0, 0, -distanceOffset);
-                newCameraPos = Quaternion.Euler(0, targetAngle, 0) * newCameraPos;
+                newCameraPos = Quaternion.Euler(targetAngleV, targetAngleH, 0) * newCameraPos;
             }
             else
             {
@@ -73,9 +99,16 @@ public class CameraScriptFree : MonoBehaviour
 
             }
 
-
+            //if (Input.GetAxis("RightJoyH") >0||Input.GetAxis("RightJoyV") >0)
+            //{
+            //    controlCamera = true;
+            //    resetCameraTimer = 2;
+            //    currentX = 0;
+            //    currentY = 0;
+            //}
             camera.transform.LookAt(target.position);
-            Debug.DrawLine(target.position, camera.transform.position, Color.blue);
+            //Debug.Log(camera.transform.position - Target.transform.position);
+
         }
     }
 }
