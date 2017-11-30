@@ -9,7 +9,7 @@ public class PickUpHandler : MonoBehaviour {
     private bool kitchenKey = false;
     private bool paperclip = false;
     private bool rope = false;
-    private GameObject inventory;
+    public GameObject inventory;
 
 	// Use this for initialization
 	void Start ()
@@ -36,14 +36,14 @@ public class PickUpHandler : MonoBehaviour {
     {
         switch (collectedItem)
         {
-            case "KitchenKey":
+            case "TableRobotKey":
                 kitchenKey = true;
-                inventory.transform.Find("Key").GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Images/key_found");
+                inventory.transform.Find("TableRobotKey").GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Images/inventory_key_active");
                 break;
 
             case "VacuumKey":
                 paperclip = true;
-                inventory.transform.Find("Paperclip").GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Images/paperclip_found");
+                inventory.transform.Find("VacuumKey").GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Images/inventory_key_active");
                 break;
 
             case "Rope":

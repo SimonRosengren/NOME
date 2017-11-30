@@ -19,7 +19,7 @@ public class InstantiatePickUp : MonoBehaviour {
 
     public void DropPickUp()
     {
-        Invoke("instatiatePickUp", 1);
+        Invoke("instatiatePickUp", 2);
 
     }
     public void instatiatePickUp()
