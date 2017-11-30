@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class VacuumHoldLaunch : MonoBehaviour {
+public class VacuumHoldLaunch : MonoBehaviour
+{
     GravitationalPull gP;
     public Vector3 launchV;
     public float launchF;
-    private float stuckTimer,suckTimer;
+    private float stuckTimer, suckTimer;
     bool holdOn = false;
     bool suckTimerOn;
     public bool canFire = false;
@@ -16,56 +17,57 @@ public class VacuumHoldLaunch : MonoBehaviour {
     Vector3 target;
     public float speed;
     // Use this for initialization
-    void Start ()
+    void Start()
     {
         anim = GetComponentInParent<Animator>();
         gP = GetComponentInParent<GravitationalPull>();
         stuckTimer = 3;
         suckTimer = 3;
         target = idleTarget.transform.position;
-	}
+    }
 
-	
-	// Update is called once per frame
-	void Update ()
-    {	
-        	
+
+    // Update is called once per frame
+    void Update()
+    {
+
         if (stuckTimer < 0 && canFire)
         {
-            anim.SetBool("ShootPlayer", false);
             holdOn = false;
             anim.SetBool("HoldingPlayer", false);
 
             anim.SetBool("ShootPlayer", true);
             Launch();
 
-            //Debug.Log(holdOn);
-            //Debug.Log(gP.pullOn);
-            //Debug.Log(stuckTimer);
-            stuckTimer = 3;        
+
+            stuckTimer = 3;
         }
 
         if (holdOn)
         {
+        anim.SetBool("ShootPlayer", false);
+            anim.SetBool("PlayerGrabbed", true);
+
             anim.SetBool("HoldingPlayer", true);
             gP.pullOn = false;
             stuckTimer -= Time.deltaTime;
             Hold();
         }
-        Sucking();       
+        Sucking();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (stuckTimer>0)
+        if (stuckTimer > 0)
         {
             holdOn = true;
+            anim.SetBool("PlayerGrabbed", true);
         }
-    }   
+    }
 
     private void Hold()
     {
-        if (gP.target.transform.position!=transform.position)
+        if (gP.target.transform.position != transform.position)
         {
             gP.target.transform.position = transform.position;
         }
@@ -82,7 +84,6 @@ public class VacuumHoldLaunch : MonoBehaviour {
 
         if (suckTimer < 0)
         {
-            anim.SetBool("PlayerGrabbed", true);
 
             gP.pullOn = true;
             suckTimer = 3;
@@ -92,15 +93,13 @@ public class VacuumHoldLaunch : MonoBehaviour {
 
     public void Launch()
     {
-       Debug.Log("lauch");
         gP.target.transform.parent = null;
         gP.rbTarget.isKinematic = false;
-        //gP.rbTarget.AddForce (FireAt(target), ForceMode.VelocityChange);
-        gP.rbTarget.velocity = FireAt2(target, 3.05f);
+        gP.rbTarget.velocity = FireAt2(target, speed);
         suckTimerOn = true;
         anim.SetBool("PlayerGrabbed", false);
 
-        Debug.Log(gP.rbTarget.velocity);            
+        // Debug.Log(gP.rbTarget.velocity);
     }
 
     private Vector3 FireAt(Vector3 target/*, GameObject projectile*/)
@@ -133,7 +132,7 @@ public class VacuumHoldLaunch : MonoBehaviour {
         // Lowest-speed arc available:
         float T_lowEnergy = Mathf.Sqrt(Mathf.Sqrt(toTarget.sqrMagnitude * 4f / gSquared));
 
-        float T = T_max;// choose T_max, T_min, or some T in-between like T_lowEnergy
+        float T = T_min;// choose T_max, T_min, or some T in-between like T_lowEnergy
 
         // Convert from time-to-hit to a launch velocity:
         Vector3 velocity = toTarget / T - Physics.gravity * T / 2f;
@@ -142,7 +141,7 @@ public class VacuumHoldLaunch : MonoBehaviour {
         // Apply the calculated velocity (do not use force, acceleration, or impulse modes)
     }
 
-    private Vector3 FireAt2(Vector3 target, float timeToTarget)   
+    private Vector3 FireAt2(Vector3 target, float timeToTarget)
     {
         // calculate vectors
         Vector3 origin = transform.position;
@@ -159,8 +158,8 @@ public class VacuumHoldLaunch : MonoBehaviour {
         // so xz = v0xz * t => v0xz = xz / t
         // and y = v0y * t - 1/2 * gravity * t * t => v0y * t = y + 1/2 * gravity * t * t => v0y = y / t + 1/2 * gravity * t
         float t = timeToTarget;
-        float v0y = y/ t + 0.5f * Physics.gravity.magnitude * t;
-        float v0xz = xz/t;
+        float v0y = y / t + 0.5f * Physics.gravity.magnitude * t;
+        float v0xz = xz / t;
 
         // create result vector for calculated starting speeds
         Vector3 result = toTargetXZ.normalized;        // get direction of xz but with magnitude 1
@@ -169,6 +168,7 @@ public class VacuumHoldLaunch : MonoBehaviour {
 
         return result;
     }
+
 
     void Activate()
     {
