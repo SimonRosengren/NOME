@@ -29,7 +29,7 @@ public class FirePlaceTrigger : MonoBehaviour {
 
     void OnTriggerExit(Collider other)
     {
-        if (other.tag == "grabable")
+        if (other.tag == "Grabable")
         {
             brickRemoved = true;
         }

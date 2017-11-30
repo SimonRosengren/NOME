@@ -67,9 +67,11 @@ public class PlayerMovement : MonoBehaviour
         {    
             if (collision.rigidbody.velocity.magnitude > minDeathByForceMagnitude)
             {
+
                 
                 Die();
-                DestroyImmediate(this);
+                
+                
             }
         }
     }
@@ -111,7 +113,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (other.tag == "DeathTrigger")
         {
-            Die();
+            Invoke("Die", 3);
         }
     }
 
