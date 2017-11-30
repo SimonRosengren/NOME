@@ -11,26 +11,34 @@ public class VacuumHoldLaunch : MonoBehaviour {
     bool suckTimerOn;
     public bool canFire = false;
 
+    public Animator anim;
     public Transform idleTarget;
     Vector3 target;
     public float speed;
     // Use this for initialization
     void Start ()
     {
+        anim = GetComponentInParent<Animator>();
         gP = GetComponentInParent<GravitationalPull>();
         stuckTimer = 3;
         suckTimer = 3;
         target = idleTarget.transform.position;
 	}
+
 	
 	// Update is called once per frame
 	void Update ()
-    {		
+    {	
+        	
         if (stuckTimer < 0 && canFire)
         {
+            anim.SetBool("ShootPlayer", false);
             holdOn = false;
-            
+            anim.SetBool("HoldingPlayer", false);
+
+            anim.SetBool("ShootPlayer", true);
             Launch();
+
             //Debug.Log(holdOn);
             //Debug.Log(gP.pullOn);
             //Debug.Log(stuckTimer);
@@ -39,6 +47,7 @@ public class VacuumHoldLaunch : MonoBehaviour {
 
         if (holdOn)
         {
+            anim.SetBool("HoldingPlayer", true);
             gP.pullOn = false;
             stuckTimer -= Time.deltaTime;
             Hold();
@@ -73,6 +82,8 @@ public class VacuumHoldLaunch : MonoBehaviour {
 
         if (suckTimer < 0)
         {
+            anim.SetBool("PlayerGrabbed", true);
+
             gP.pullOn = true;
             suckTimer = 3;
             suckTimerOn = false;
@@ -81,12 +92,14 @@ public class VacuumHoldLaunch : MonoBehaviour {
 
     public void Launch()
     {
-        Debug.Log("lauch");
+       Debug.Log("lauch");
         gP.target.transform.parent = null;
         gP.rbTarget.isKinematic = false;
         //gP.rbTarget.AddForce (FireAt(target), ForceMode.VelocityChange);
         gP.rbTarget.velocity = FireAt2(target, 3.05f);
         suckTimerOn = true;
+        anim.SetBool("PlayerGrabbed", false);
+
         Debug.Log(gP.rbTarget.velocity);            
     }
 
