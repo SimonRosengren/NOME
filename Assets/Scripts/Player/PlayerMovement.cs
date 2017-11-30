@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask charMask;
 
     public GameObject cameraTarget;
+    public GameObject ragdoll;
 
 
     bool isDead;
@@ -65,7 +66,7 @@ public class PlayerMovement : MonoBehaviour
         {    
             if (collision.rigidbody.velocity.magnitude > minDeathByForceMagnitude)
             {
-                Die();
+                Invoke("Die", 2);
             }
         }
     }
@@ -107,7 +108,7 @@ public class PlayerMovement : MonoBehaviour
         }
         if (other.tag == "DeathTrigger")
         {
-            Die();
+            Invoke("Die", 3);
         }
     }
 
@@ -187,6 +188,7 @@ public class PlayerMovement : MonoBehaviour
     {
         isDead = true;
         timeToRespawn = deathTimer;
+
     }
 
     bool UnstickWalls()
