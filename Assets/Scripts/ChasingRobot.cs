@@ -13,9 +13,12 @@ public class ChasingRobot : MonoBehaviour
     NavMeshPath navPath;
     Vector3 direction;
     public bool isDead = false;
+    InstantiatePickUp iPickUp;
 
     [SerializeField]
     float moveSpeed = 10f;
+
+    bool keyDropped = false;
 
 
     void Awake()
@@ -24,6 +27,7 @@ public class ChasingRobot : MonoBehaviour
         nav = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
         navPath = new NavMeshPath();
+        iPickUp = GetComponent<InstantiatePickUp>();
     }
     void FixedUpdate()
     {
@@ -37,16 +41,21 @@ public class ChasingRobot : MonoBehaviour
             dir.y = 0;
             rb.AddForce(dir * Time.deltaTime * moveSpeed, ForceMode.Impulse);
         }
+        if (isDead && !keyDropped)
+        {
+            keyDropped = true;
+            iPickUp.DropPickUp();
+        }
     }
     void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.tag == "Player")
         {
             collision.transform.GetComponent<Rigidbody>().AddForce(-Vector3.forward * 40, ForceMode.Acceleration);
-            if (player.GetComponent<LedgeCollsion>().hanging == true)
-            {
-                player.GetComponent<LedgeCollsion>().hanging = false;
-            }
+            //if (player.GetComponent<LedgeCollsion>().hanging == true)
+            //{
+            //    player.GetComponent<LedgeCollsion>().hanging = false;
+            //}
         }
     }
     public void SetToActive()
