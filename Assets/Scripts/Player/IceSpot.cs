@@ -9,9 +9,12 @@ public class IceSpot : MonoBehaviour {
     public SphereCollider sc;
     public Projector pr;
 
+    List<OriginMaterial> materials;
+
 	void Start ()
     {
-        mat = (PhysicMaterial)Resources.Load("PhysicMaterial/NoFriction");		
+        mat = (PhysicMaterial)Resources.Load("PhysicMaterial/NoFriction");
+        materials = new List<OriginMaterial>();
 	}
 	
 	void Update () 
@@ -28,7 +31,8 @@ public class IceSpot : MonoBehaviour {
         {
             if (other.tag == ("Player") || other.tag == ("CleaningRobot") || other.tag == ("Grabable"))
             {
-                other.material = mat;
+                materials.Add(new OriginMaterial(other.material, other.tag));
+                other.material = mat;             
             }
         }
     }
@@ -37,7 +41,15 @@ public class IceSpot : MonoBehaviour {
     {
         if (other.tag == "Player" || other.tag == ("CleaningRobot") || other.tag == ("Grabable"))
         {
-            other.material = null; //Can we make it go back to original?
+            for (int i = 0; i < materials.Count; i++)
+            {
+                if (materials[i].tag == other.tag)
+                {
+                    other.material = materials[i].mat;
+                    materials.RemoveAt(i);
+                    break;
+                }
+            }
         }
     }
 
@@ -54,5 +66,16 @@ public class IceSpot : MonoBehaviour {
         {
             Destroy(gameObject);
         }       
+    }
+}
+
+public class OriginMaterial
+{
+    public PhysicMaterial mat;
+    public string tag;
+    public OriginMaterial(PhysicMaterial mat, string tag)
+    {
+        this.mat = mat;
+        this.tag = tag;
     }
 }
