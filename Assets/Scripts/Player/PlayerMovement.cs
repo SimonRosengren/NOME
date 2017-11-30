@@ -191,21 +191,16 @@ public class PlayerMovement : MonoBehaviour
 
     bool UnstickWalls()
     {
-        
+        /* Gets the top and bottom of the player capsule collider */
         Vector3 capsuleCenter = transform.position + capCollider.center;
         float capsuleHalfHeight = capCollider.height / 2f;
-        /* prob not needed */
-        //float bottomPercent;
-        //if (IsGrounded())
-        //    bottomPercent = 0.75f;
-        //else
-        //    bottomPercent = 1f;
         Vector3 capsuleTop = capsuleCenter + new Vector3(0f, capsuleHalfHeight, 0f);
         Vector3 capsuleBottom = capsuleCenter - new Vector3(0f, (capsuleHalfHeight), 0f);
-        float forceDirectionMultiplier = 1.1f;
-        Vector3 normalizedWorldForce = transform.TransformDirection(velocityAxis.normalized);
-        Collider[] hits = Physics.OverlapCapsule(capsuleTop + (velocityAxis.normalized * forceDirectionMultiplier), capsuleBottom + (velocityAxis.normalized * forceDirectionMultiplier), capCollider.radius, charMask);
-
+        /*An offset for the projecting the wallcheck-collider */
+        float forceDirectionMultiplier = 0.1f;
+        /*Creates a capsule collider ahead of the player in the direction they are heading to check for objects that might cause collison */
+        Collider[] hits = Physics.OverlapCapsule(capsuleTop + (velocityAxis * forceDirectionMultiplier), capsuleBottom + (velocityAxis * forceDirectionMultiplier), capCollider.radius, charMask);
+        /*If the collider finds no objects ahead or if the player is walking on the groud then the player is allowed to move */    
         if (hits.Length == 0 || IsGrounded())
         {
             return true;
