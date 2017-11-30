@@ -118,6 +118,8 @@ GameObject:
   - component: {fileID: 114962661080996328}
   - component: {fileID: 114310732079199160}
   - component: {fileID: 114790925517896588}
+  - component: {fileID: 114434327185370306}
+  - component: {fileID: 114849026417593388}
   m_Layer: 2
   m_Name: Player1.2
   m_TagString: Player
@@ -732,9 +734,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1164902904215490}
-  m_LocalRotation: {x: -0, y: 0.99863327, z: -0, w: 0.052265324}
-  m_LocalPosition: {x: 150.6, y: 40.779, z: 253.2}
-  m_LocalScale: {x: 1.3016226, y: 1.3016223, z: 1.3016223}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -27.51, y: 9.01, z: 0.61}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4342246096700092}
   - {fileID: 4710006150518126}
@@ -750,7 +752,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1376744786142846}
-  m_LocalRotation: {x: 0.31369328, y: 0.6391339, z: -0.63708705, w: 0.2953382}
+  m_LocalRotation: {x: 0.31369326, y: 0.6391338, z: -0.637087, w: 0.29533818}
   m_LocalPosition: {x: 0.0515247, y: -0.018972583, z: -0.057321437}
   m_LocalScale: {x: 1.0000002, y: 1, z: 0.99999994}
   m_Children:
@@ -1100,6 +1102,43 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGrabbing: 0
+--- !u!114 &114434327185370306
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1164902904215490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb4fa562d67034868a9aafbe4b663012, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rootNode: {fileID: 0}
+  segments:
+  - firstTransform: {fileID: 4011845438612402}
+    lastTransform: {fileID: 4238042344081650}
+    thresholdAngleDifference: 30
+    bendingMultiplier: 0.6
+    maxAngleDifference: 90
+    maxBendingAngle: 40
+    responsiveness: 2.5
+  - firstTransform: {fileID: 4337619540585460}
+    lastTransform: {fileID: 4982485134166792}
+    thresholdAngleDifference: 0
+    bendingMultiplier: 0.7
+    maxAngleDifference: 30
+    maxBendingAngle: 80
+    responsiveness: 4
+  nonAffectedJoints:
+  - joint: {fileID: 4814408534500902}
+    effect: 0.3
+  - joint: {fileID: 4408914568201512}
+    effect: 0.3
+  headLookVector: {x: 0, y: 0, z: 1}
+  headUpVector: {x: 0, y: 1, z: 0}
+  target: {x: 0, y: 0, z: 0}
+  effect: 1
+  overrideAnimation: 0
 --- !u!114 &114590596332711424
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1128,6 +1167,18 @@ MonoBehaviour:
   bookImage: {fileID: 0}
   bookText: {fileID: 0}
   isActive: 0
+--- !u!114 &114849026417593388
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1164902904215490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed640ac0237f6504ca173d0ca3bfdc67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inventory: {fileID: 0}
 --- !u!114 &114962661080996328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1139,11 +1190,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef050fac49a3754499c09b7dd67336b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  charMask:
+    serializedVersion: 2
+    m_Bits: 0
   cameraTarget: {fileID: 1375246585447898}
   runSound: {fileID: 82725439062295300}
-  acceleration: 200
-  jumpForce: 4
-  maxMoveSpeed: 0.1
+  acceleration: 30
+  jumpForce: 7
+  maxMoveSpeed: 3
   deathImage: {fileID: 0}
   gameLogic: {fileID: 0}
   minDeathByForceMagnitude: 9
