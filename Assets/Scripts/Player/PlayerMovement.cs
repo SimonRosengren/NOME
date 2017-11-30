@@ -17,7 +17,6 @@ public class PlayerMovement : MonoBehaviour
     public LayerMask charMask;
 
     public GameObject cameraTarget;
-    public GameObject ragdoll;
 
 
     bool isDead;
@@ -188,7 +187,6 @@ public class PlayerMovement : MonoBehaviour
     {
         isDead = true;
         timeToRespawn = deathTimer;
-
     }
 
     bool UnstickWalls()
