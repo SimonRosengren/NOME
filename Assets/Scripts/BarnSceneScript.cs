@@ -24,7 +24,7 @@ public class BarnSceneScript : MonoBehaviour {
     private void OnTriggerEnter(Collider other)
     {
         /*The bucket is grabbable*/
-        if (other.tag == "grabable")
+        if (other.tag == "Grabable")
         {
             sceneLoader.isActive = true;
             cowAnimator.SetBool("isDead", true);
