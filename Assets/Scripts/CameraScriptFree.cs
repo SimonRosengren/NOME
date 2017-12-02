@@ -66,6 +66,16 @@ public class CameraScriptFree : MonoBehaviour
             targetAngleH += Input.GetAxis("RightJoyH") * Time.deltaTime * 700;
             targetAngleV += Input.GetAxis("RightJoyV") * Time.deltaTime * 70;
 
+            if (targetAngleV > 60)
+            {
+                targetAngleV = 60;
+            }
+
+            if (targetAngleV < -95)
+            {
+                targetAngleV = -95;
+            }
+
             offset = Quaternion.Euler(targetAngleV, targetAngleH, 0) * offset;
 
             //New Code
