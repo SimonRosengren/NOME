@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public GameObject ragD;
     Rigidbody playerRb;
     CapsuleCollider capCollider;
     Vector3 velocityAxis;
@@ -56,6 +57,7 @@ public class PlayerMovement : MonoBehaviour
         {
             HandleDeath();
         }
+
         Debug.DrawLine(transform.position, ledgeGrabArea.transform.position, Color.red);
     }
 
@@ -65,7 +67,11 @@ public class PlayerMovement : MonoBehaviour
         {    
             if (collision.rigidbody.velocity.magnitude > minDeathByForceMagnitude)
             {
-                Invoke("Die", 2);
+
+                
+                Die();
+                
+                
             }
         }
     }
@@ -140,7 +146,11 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("MainAction"))
         {
             Grab();
+            
+            Instantiate(ragD,transform.position,transform.localRotation);
+            
             ReadBook();
+            //Destroy(GameObject.FindGameObjectWithTag("Player"), 0);
         }      
     }
 
@@ -154,9 +164,13 @@ public class PlayerMovement : MonoBehaviour
             bookHandler.CloseBook();
     }
 
-    void Grab()
+    public void Grab()
     {
-        grabObj.Grab();
+        if (IsGrounded())
+        {
+            grabObj.Grab();
+
+        }
     }
 
     void Limitvelocity()
@@ -185,6 +199,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Die()
     {
+        
         isDead = true;
         timeToRespawn = deathTimer;
     }
