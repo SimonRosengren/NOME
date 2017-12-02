@@ -1240,6 +1240,20 @@ GameObject:
   m_PrefabParentObject: {fileID: 1434530836624228, guid: c0f989d57596a2b489ac49ae921b982c,
     type: 2}
   m_PrefabInternal: {fileID: 990910384}
+--- !u!114 &446546114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 446546110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5214b94abe94f8b498c2fe624cae6d74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 723385975}
+  panSpeed: 1
+  panTime: 5
 --- !u!1 &502416915 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100056, guid: 8eb781a4ef1cd8f49ba2e6f919e5419d, type: 3}
@@ -1583,7 +1597,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   anim: {fileID: 265582738}
   fadeTimer: 3
-  scene: Level00-Tutorial
+  scene: Outdoor bug test scene
   isActive: 1
 --- !u!65 &623409178
 BoxCollider:
@@ -1641,7 +1655,7 @@ GameObject:
   - component: {fileID: 723385976}
   m_Layer: 0
   m_Name: Bucket
-  m_TagString: grabable
+  m_TagString: Grabable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1675,6 +1689,9 @@ MonoBehaviour:
   x: 0
   z: 1
   y: 0
+  originalPosition: {x: 0, y: 0, z: 0}
+  maxConstraint: 0
+  maxMovement: 0
 --- !u!65 &723385978
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1728,20 +1745,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1434530836624228, guid: c0f989d57596a2b489ac49ae921b982c,
     type: 2}
   m_PrefabInternal: {fileID: 1419157584}
---- !u!114 &755035315
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 755035314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5214b94abe94f8b498c2fe624cae6d74, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 723385975}
-  panSpeed: 0.5
-  panTime: 5
 --- !u!1 &766411779
 GameObject:
   m_ObjectHideFlags: 0
@@ -3357,7 +3360,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -2010717395
+  randomSeed: 452244989
   InitialModule:
     serializedVersion: 3
     enabled: 1
