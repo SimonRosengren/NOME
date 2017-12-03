@@ -10,6 +10,8 @@ public class BarnSceneScript : MonoBehaviour {
     [SerializeField] GameObject leaveBarnTooEarlyTrigger;
     [SerializeField] GameObject cowThirstyTrigger;
 
+    [SerializeField] AudioSource cowBreaths;
+
 
     // Use this for initialization
     void Start () {
@@ -32,6 +34,7 @@ public class BarnSceneScript : MonoBehaviour {
             cowThirstyTrigger.GetComponent<DialogeImporter>().isActive = false;
             Destroy(leaveBarnTooEarlyTrigger);
             Destroy(cowThirstyTrigger);
+            cowBreaths.Stop();
 
         }
     }
