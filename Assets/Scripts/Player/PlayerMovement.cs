@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public GameObject ragD;
     Rigidbody playerRb;
     CapsuleCollider capCollider;
     Vector3 velocityAxis;
@@ -18,8 +19,12 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject cameraTarget;
 
+    SkinnedMeshRenderer[] skinnedMeshRenderers;
+    MeshRenderer[] meshRenderers;
 
-    bool isDead;
+
+    public bool isDead;
+    bool dying = false;
     float timeToRespawn;
     float deathTimer = 2f;
 
@@ -46,6 +51,8 @@ public class PlayerMovement : MonoBehaviour
         camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         isDead = false;
         runSound.Play();
+        meshRenderers = GetComponentsInChildren<MeshRenderer>();
+        skinnedMeshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
     }
 
     void Update()
@@ -56,7 +63,8 @@ public class PlayerMovement : MonoBehaviour
         {
             HandleDeath();
         }
-        Debug.DrawLine(transform.position, ledgeGrabArea.transform.position, Color.red);
+
+        //Debug.DrawLine(transform.position, ledgeGrabArea.transform.position, Color.red);
     }
 
     void OnCollisionEnter(Collision collision)
@@ -64,15 +72,14 @@ public class PlayerMovement : MonoBehaviour
         if (collision.transform.tag == "projectile")
         {    
             if (collision.rigidbody.velocity.magnitude > minDeathByForceMagnitude)
-            {
-                Die();
+            {                
+                Die();           
             }
         }
     }
 
     void FixedUpdate()
     {
-
         Move();
         Limitvelocity();
     }
@@ -140,7 +147,11 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("MainAction"))
         {
             Grab();
+            
+
+            
             ReadBook();
+            //Destroy(GameObject.FindGameObjectWithTag("Player"), 0);
         }      
     }
 
@@ -154,9 +165,13 @@ public class PlayerMovement : MonoBehaviour
             bookHandler.CloseBook();
     }
 
-    void Grab()
+    public void Grab()
     {
-        grabObj.Grab();
+        if (IsGrounded())
+        {
+            grabObj.Grab();
+
+        }
     }
 
     void Limitvelocity()
@@ -185,27 +200,42 @@ public class PlayerMovement : MonoBehaviour
     }
     void Die()
     {
+        if (!dying)
+        {
+            dying = true;
+            foreach (SkinnedMeshRenderer i in skinnedMeshRenderers)
+            {
+                i.enabled = false;
+            }
+            foreach (MeshRenderer item in meshRenderers)
+            {
+                item.enabled = false;
+            }
+            Instantiate(ragD, transform.position, transform.localRotation);
+
+
+            Invoke("SetUpDeathParameters", 3);
+        }
+    }
+    void SetUpDeathParameters()
+    {
+        dying = false;
         isDead = true;
         timeToRespawn = deathTimer;
     }
 
     bool UnstickWalls()
     {
-        
+        /* Gets the top and bottom of the player capsule collider */
         Vector3 capsuleCenter = transform.position + capCollider.center;
         float capsuleHalfHeight = capCollider.height / 2f;
-        /* prob not needed */
-        //float bottomPercent;
-        //if (IsGrounded())
-        //    bottomPercent = 0.75f;
-        //else
-        //    bottomPercent = 1f;
         Vector3 capsuleTop = capsuleCenter + new Vector3(0f, capsuleHalfHeight, 0f);
         Vector3 capsuleBottom = capsuleCenter - new Vector3(0f, (capsuleHalfHeight), 0f);
-        float forceDirectionMultiplier = 1.1f;
-        Vector3 normalizedWorldForce = transform.TransformDirection(velocityAxis.normalized);
-        Collider[] hits = Physics.OverlapCapsule(capsuleTop + (velocityAxis.normalized * forceDirectionMultiplier), capsuleBottom + (velocityAxis.normalized * forceDirectionMultiplier), capCollider.radius, charMask);
-
+        /*An offset for the projecting the wallcheck-collider */
+        float forceDirectionMultiplier = 0.1f;
+        /*Creates a capsule collider ahead of the player in the direction they are heading to check for objects that might cause collison */
+        Collider[] hits = Physics.OverlapCapsule(capsuleTop + (velocityAxis * forceDirectionMultiplier), capsuleBottom + (velocityAxis * forceDirectionMultiplier), capCollider.radius, charMask);
+        /*If the collider finds no objects ahead or if the player is walking on the groud then the player is allowed to move */    
         if (hits.Length == 0 || IsGrounded())
         {
             return true;
@@ -227,6 +257,14 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = gameLogic.GetLastCheckPoint().rotation;
             deathImage.color = Color.clear;
             ResetCamera();
+            foreach (SkinnedMeshRenderer i in skinnedMeshRenderers)
+            {
+                i.enabled = true;
+            }
+            foreach (MeshRenderer item in meshRenderers)
+            {
+                item.enabled = true;
+            }
         }
 
     }
