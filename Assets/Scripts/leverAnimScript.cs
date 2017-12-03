@@ -8,6 +8,8 @@ public class leverAnimScript : MonoBehaviour
     public Animator animOther;
     public GameObject[] logKeeper;
     public string otherAnimStateName;
+    public AudioSource audioS;
+    public AudioClip audioC;
 
     void Start()
     {
@@ -29,5 +31,9 @@ public class leverAnimScript : MonoBehaviour
             animOther = g.GetComponent<Animator>();
             animOther.Play(otherAnimStateName);
         }
+    }
+    void playLogKeeperSound()
+    {
+        audioS.PlayOneShot(audioC);
     }
 }
