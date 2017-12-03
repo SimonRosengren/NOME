@@ -10,6 +10,8 @@ public class FlammableObject : MonoBehaviour {
     [SerializeField] bool destoryable;
 
     public ParticleSystem fire;
+    public AudioSource audioS;
+    public AudioClip audioC;
 
 	void Start ()
     {		
@@ -40,6 +42,7 @@ public class FlammableObject : MonoBehaviour {
         //PLAY ANIMATION
         if (!onFire)
         {
+            audioS.PlayOneShot(audioC);
             onFire = true;
         }       
     }
