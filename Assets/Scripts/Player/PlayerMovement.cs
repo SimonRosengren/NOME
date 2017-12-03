@@ -211,7 +211,8 @@ public class PlayerMovement : MonoBehaviour
             {
                 item.enabled = false;
             }
-            Instantiate(ragD, transform.position, transform.localRotation);
+            GameObject ragdoll = Instantiate(ragD, transform.position, transform.localRotation);
+            Destroy(ragdoll, 6);
 
 
             Invoke("SetUpDeathParameters", 3);
