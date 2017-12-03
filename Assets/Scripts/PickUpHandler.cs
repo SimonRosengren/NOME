@@ -6,9 +6,10 @@ using UnityEngine.UI;
 public class PickUpHandler : MonoBehaviour {
 
     //Should probably not be public
-    private bool kitchenKey = false;
-    private bool paperclip = false;
-    private bool rope = false;
+    public bool kitchenKey = false;
+    public bool vacuumKey = false;
+    public bool tableKey = false;
+    public bool tvKey = false;
     public GameObject inventory;
 
 	// Use this for initialization
@@ -37,22 +38,22 @@ public class PickUpHandler : MonoBehaviour {
         switch (collectedItem)
         {
             case "TableRobotKey":
-                kitchenKey = true;
+                tableKey = true;
                 inventory.transform.Find("TableRobotKey").GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Images/inventory_key_active");
                 break;
 
             case "VacuumKey":
-                paperclip = true;
+                vacuumKey = true;
                 inventory.transform.Find("VacuumKey").GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Images/inventory_key_active");
                 break;
 
             case "TVKey":
-                rope = true;
+                tvKey = true;
                 inventory.transform.Find("TVKey").GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Images/inventory_key_active");
                 break;
 
             case "KitchenKey":
-                rope = true;
+                kitchenKey = true;
                 inventory.transform.Find("KitchenKey").GetComponentInChildren<Image>().sprite = Resources.Load<Sprite>("Images/inventory_key_active");
                 break;
 
