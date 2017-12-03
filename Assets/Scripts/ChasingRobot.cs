@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class ChasingRobot : MonoBehaviour {
+public class ChasingRobot : MonoBehaviour
+{
 
     Transform player;               // Reference to the player's position.
     NavMeshAgent nav;               // Reference to the nav mesh agent.
@@ -12,8 +13,12 @@ public class ChasingRobot : MonoBehaviour {
     NavMeshPath navPath;
     Vector3 direction;
     public bool isDead = false;
+    InstantiatePickUp iPickUp;
 
-    [SerializeField] float moveSpeed = 10f;
+    [SerializeField]
+    float moveSpeed = 10f;
+
+    bool keyDropped = false;
 
 
     void Awake()
@@ -21,52 +26,38 @@ public class ChasingRobot : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         nav = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
-        navPath = new NavMeshPath();        
-    }
-
-
-    void Update()
-    {
-        //if (!isDead)
-        //{
-        //    nav.enabled = true;
-        //    nav.CalculatePath(player.position, navPath);            
-        //    int i = 1;
-        //    while (i < navPath.corners.Length)
-        //    {
-        //        if (Vector3.Distance(transform.position, navPath.corners[i]) > 0.5f)
-        //        {
-        //            direction = navPath.corners[i] - transform.position;
-        //            break;
-        //        }
-        //        i++;
-        //    }
-        //}
-        //if (isDead)
-        //{
-        //    rb.constraints = RigidbodyConstraints.None;
-        //}
+        navPath = new NavMeshPath();
+        iPickUp = GetComponent<InstantiatePickUp>();
     }
     void FixedUpdate()
     {
         if (active && !isDead)
         {
+            Vector3 targetPostition = new Vector3(player.position.x,
+                                       this.transform.position.y,
+                                       player.position.z);
+            this.transform.LookAt(targetPostition);
             Vector3 dir = Vector3.Normalize(player.position - transform.position);
+            dir.y = 0;
             rb.AddForce(dir * Time.deltaTime * moveSpeed, ForceMode.Impulse);
-            
-            //transform.rotation = Quaternion.LookRotation(new Vector3(player.position.x, transform.position.y, player.position.z));
-            
         }
-
-        //if (!isDead)
-        //{
-        //    nav.enabled = false;
-        //    rb.AddForce(direction * moveSpeed * Time.deltaTime, ForceMode.Impulse);
-        //    //rb.AddForce(Vector3.Normalize(player.position - transform.position) * moveSpeed * Time.deltaTime, ForceMode.Impulse);
-        //    transform.rotation = Quaternion.LookRotation(rb.velocity);
-        //}        
+        if (isDead && !keyDropped)
+        {
+            keyDropped = true;
+            iPickUp.DropPickUp();
+        }
     }
-
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.tag == "Player")
+        {
+            collision.transform.GetComponent<Rigidbody>().AddForce(-Vector3.forward * 40, ForceMode.Acceleration);
+            //if (player.GetComponent<LedgeCollsion>().hanging == true)
+            //{
+            //    player.GetComponent<LedgeCollsion>().hanging = false;
+            //}
+        }
+    }
     public void SetToActive()
     {
         active = true;
