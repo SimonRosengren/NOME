@@ -54,7 +54,7 @@ public class FadeObjectsBetween : MonoBehaviour
 
         for (int i = 0; i < hits.Length; i++)
         {
-            if (hits[i].transform.GetComponent<Renderer>() != null)
+            if (hits[i].transform.GetComponent<Renderer>() != null && hits[i].transform.tag != "wall")
             {
                 Renderer rend = hits[i].transform.GetComponent<Renderer>();
 
