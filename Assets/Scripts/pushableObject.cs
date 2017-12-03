@@ -6,13 +6,18 @@ public class pushableObject : MonoBehaviour {
 
     HingeJoint hj;
     Rigidbody mRigidBody;
+    GameObject Player;
     public bool x, z, y;
+    public Vector3 originalPosition;
+    public bool maxConstraint;
+    public float maxMovement;
 
 	void Start ()
     {
         mRigidBody = GetComponent<Rigidbody>();
-        mRigidBody.constraints = RigidbodyConstraints.FreezeAll;        
-
+        Player = GameObject.FindGameObjectWithTag("Player");
+        mRigidBody.constraints = RigidbodyConstraints.FreezeAll;
+        originalPosition = transform.position;
         if (y == true)
         {
             mRigidBody.constraints &= ~(RigidbodyConstraints.FreezePositionY);
@@ -21,8 +26,48 @@ public class pushableObject : MonoBehaviour {
 
 	void Update ()
     {
-		
-	}
+        float stopX = originalPosition.x - transform.position.x;
+        float stopY = originalPosition.y - transform.position.y;
+        float stopZ = originalPosition.z - transform.position.z;
+
+        if (maxConstraint && x)
+        {
+            if (Mathf.Abs(stopX) > maxMovement)
+            {
+                Player.GetComponent<GrabObject>().Grab();
+                var heading = transform.position - originalPosition;
+                var distance = heading.magnitude;
+                var direction = heading / distance;
+                transform.position -= direction;
+            }
+
+        }
+        if (maxConstraint && y)
+        {
+            if (Mathf.Abs(stopY) > maxMovement)
+            {
+                Player.GetComponent<GrabObject>().Grab();
+                var heading = transform.position - originalPosition;
+                var distance = heading.magnitude;
+                var direction = heading / distance;
+                transform.position -= direction*Time.deltaTime;
+
+            }
+
+        }
+        if (maxConstraint && z)
+        {
+            if (Mathf.Abs(stopZ) > maxMovement)
+            {
+                Player.GetComponent<GrabObject>().Grab();
+                var heading = transform.position - originalPosition;
+                var distance = heading.magnitude;
+                var direction = heading / distance;
+                transform.position -= direction;
+            }
+
+        }
+    }
 
     /*Takes the players rigid body and point where ray cast hit the object as argument*/
     public void Grab(Rigidbody otherRb, Vector3 anchorPoint)
@@ -60,5 +105,7 @@ public class pushableObject : MonoBehaviour {
         {
             mRigidBody.constraints &= ~(RigidbodyConstraints.FreezePositionZ);
         }
-    }    
+    }
+    
+    
 }
