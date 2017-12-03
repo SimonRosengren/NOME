@@ -79,18 +79,18 @@ public class WoodCutterAnimScript : MonoBehaviour
     void ShootChuck()
     {
         distPlayerToIdle = idleTarget.position - player.position;
-        if (distPlayerToIdle.magnitude < 10)
+        if (distPlayerToIdle.magnitude < 3)
         {
-           
+
             target = player.transform.position;
             Debug.Log("playerTarget");
         }
         else
         {
-            target = idleTarget.transform.position;
             Debug.Log("Target");
         }
 
+        target = idleTarget.transform.position;
         //FireAtPoint(target);
         GameObject projectile = Instantiate(shootObj, transform.position, transform.rotation);
         FireAt(target, projectile);
