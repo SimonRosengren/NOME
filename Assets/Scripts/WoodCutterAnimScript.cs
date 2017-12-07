@@ -23,6 +23,12 @@ public class WoodCutterAnimScript : MonoBehaviour
     Vector3 target;
     public float speed = 1;
 
+    public AudioSource audioS;
+    public AudioClip walking;
+    public AudioClip saw;
+
+
+
     private float angle = 10;
 
     // Use this for initialization
@@ -78,19 +84,19 @@ public class WoodCutterAnimScript : MonoBehaviour
 
     void ShootChuck()
     {
-        distPlayerToIdle = idleTarget.position - player.position;
-        if (distPlayerToIdle.magnitude < 3)
+        distPlayerToIdle = this.transform.position - player.position;
+        if (distPlayerToIdle.magnitude < 10)
         {
 
             target = player.transform.position;
-            Debug.Log("playerTarget");
+           // Debug.Log("playerTarget");
         }
         else
         {
-            Debug.Log("Target");
+            //Debug.Log("Target");
         }
-
         target = idleTarget.transform.position;
+
         //FireAtPoint(target);
         GameObject projectile = Instantiate(shootObj, transform.position, transform.rotation);
         FireAt(target, projectile);
@@ -160,6 +166,14 @@ public class WoodCutterAnimScript : MonoBehaviour
 
     }
 
+    void playWalking()
+    {
+        audioS.PlayOneShot(walking);
+    }
 
+    void playSaw()
+    {
+        audioS.PlayOneShot(saw);
+    }
    
 }

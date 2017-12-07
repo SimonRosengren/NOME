@@ -8,7 +8,7 @@ public class RobotBehaviour : MonoBehaviour {
     public GameObject gravCircle;
     FollowPath pathFollower;
     Animator animator;
-    InstantiatePickUp pickup;
+    public InstantiatePickUp pickup;
     public ParticleSystem smoke;
     bool dead = false;
 
@@ -17,7 +17,6 @@ public class RobotBehaviour : MonoBehaviour {
         wet = false;
         animator = GetComponent<Animator>();
         pathFollower = GetComponent<FollowPath>();
-        pickup = GetComponent<InstantiatePickUp>();
 	}
 	
 	// Update is called once per frame
