@@ -7,6 +7,7 @@ public class IndoorSceneScript : MonoBehaviour {
     [SerializeField] LoadIndoorScene radioSceneTrigger;
     [SerializeField] PickUpHandler puHandler;
     [SerializeField] GameObject dialoge;
+    
 
     public Animator doorAnim;
     bool doorOpen = false; 
