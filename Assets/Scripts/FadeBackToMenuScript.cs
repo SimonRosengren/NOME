@@ -6,19 +6,24 @@ using UnityEngine.SceneManagement;
 public class FadeBackToMenuScript : MonoBehaviour {
 
     public Animator anim;
+    public int startFadeAfterSeconds = 0;
 
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            StartCoroutine(FadeToScene());
+            Invoke("StartFade", startFadeAfterSeconds);
         }
+    }
+    public void StartFade()
+    {
+        StartCoroutine(FadeToScene());
     }
 
     IEnumerator FadeToScene()
     {
         anim.SetBool("FadeOut", true);
-        yield return new WaitForSecondsRealtime(5);
-        SceneManager.LoadScene("Menu1.1", LoadSceneMode.Single);
+        yield return new WaitForSecondsRealtime(20);
+        SceneManager.LoadScene("MainMenu1.1", LoadSceneMode.Single);
     }
 }
