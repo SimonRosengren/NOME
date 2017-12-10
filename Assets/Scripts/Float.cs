@@ -15,14 +15,14 @@ public class Float : MonoBehaviour {
     private float forceFactor;
     private Vector3 actionPoint;
     private Vector3 upLift;
-    private Rigidbody rb;
+    public Rigidbody rb;
 
 	void Awake ()
     {
         rb = gameObject.GetComponent<Rigidbody>();
 	}
 	
-	void Update ()
+	void FixedUpdate()
     {
         //Gets the center of buoyancy and calculates force to apply dependant on objects height in water
         actionPoint = transform.position + transform.TransformDirection(buoyancyOffsetCenter);

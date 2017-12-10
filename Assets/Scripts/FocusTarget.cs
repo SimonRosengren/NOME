@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FocusTarget : MonoBehaviour {
-    
+public class FocusTarget : MonoBehaviour
+{
+
     public GameObject target;
     public float panSpeed;
     public float panTime;
+    public AudioSource aS;
+    public float fadeoutTimer;
 
-    CameraScriptFree camScript;          
+    CameraScriptFree camScript;
     bool cutsceneDone = false;
     bool inCutscene = false;
     float timer;
@@ -18,7 +21,7 @@ public class FocusTarget : MonoBehaviour {
         GameObject cam = GameObject.FindGameObjectWithTag("MainCamera");
         camScript = cam.GetComponent<CameraScriptFree>();
     }
-    void Update ()
+    void Update()
     {
         if (inCutscene)
         {
@@ -30,18 +33,45 @@ public class FocusTarget : MonoBehaviour {
                 camScript.cameraSpeed = 10f;
                 inCutscene = false;
                 cutsceneDone = true;
+                
             }
         }
-	}
+    }
 
+
+   
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player" && !cutsceneDone)
         {
+            
             camScript.cameraSpeed = panSpeed;
             camScript.Target = target;
             timer = panTime;
+            StartCoroutine(AudioFadeOut.FadeOut(aS, fadeoutTimer));
             inCutscene = true;
-        }        
+
+        }
     }
+
+    public static class AudioFadeOut
+    {
+
+        public static IEnumerator FadeOut(AudioSource audioSource, float FadeTime)
+        {
+            float startVolume = audioSource.volume;
+
+            while (audioSource.volume > 0)
+            {
+                audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
+
+                yield return null;
+            }
+
+            audioSource.Stop();
+            audioSource.volume = startVolume;
+        }
+
+    }
+
 }
