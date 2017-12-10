@@ -231,12 +231,12 @@ public class PlayerMovement : MonoBehaviour
         Vector3 capsuleCenter = transform.position + capCollider.center;
         float capsuleHalfHeight = capCollider.height / 2f;
         Vector3 capsuleTop = capsuleCenter + new Vector3(0f, capsuleHalfHeight, 0f);
-        Vector3 capsuleBottom = capsuleCenter - new Vector3(0f, (capsuleHalfHeight), 0f);
+        Vector3 capsuleBottom = capsuleCenter - new Vector3(0f, (capsuleHalfHeight), 0f) * 0.7f;
         /*An offset for the projecting the wallcheck-collider */
         float forceDirectionMultiplier = 0.1f;
         /*Creates a capsule collider ahead of the player in the direction they are heading to check for objects that might cause collison */
         Collider[] hits = Physics.OverlapCapsule(capsuleTop + (velocityAxis * forceDirectionMultiplier), capsuleBottom + (velocityAxis * forceDirectionMultiplier), capCollider.radius, charMask);
-        /*If the collider finds no objects ahead or if the player is walking on the groud then the player is allowed to move */    
+        /*If the collider finds no objects ahead or if the player is walking on the ground then the player is allowed to move */    
         if (hits.Length == 0 || IsGrounded())
         {
             return true;
