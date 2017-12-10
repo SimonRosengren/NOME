@@ -8,6 +8,8 @@ public class IndoorSceneScript : MonoBehaviour {
     [SerializeField] PickUpHandler puHandler;
     [SerializeField] GameObject dialoge;
 
+    public Animator doorAnim;
+    bool doorOpen = false; 
     void Start()
     {
 
@@ -15,9 +17,10 @@ public class IndoorSceneScript : MonoBehaviour {
 
     void Update()
     {
-        if (puHandler.kitchenKey && puHandler.tvKey && puHandler.vacuumKey && puHandler.tableKey)
+        if (/*puHandler.kitchenKey && puHandler.tvKey && puHandler.vacuumKey && */puHandler.tableKey && !doorOpen)
         {
-            radioSceneTrigger.isActive = true;
+            doorAnim.SetTrigger("allKeysTrig");
+            doorOpen = true;
             Destroy(dialoge);
         }
     }
