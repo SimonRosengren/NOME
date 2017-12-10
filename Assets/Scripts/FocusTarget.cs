@@ -9,6 +9,7 @@ public class FocusTarget : MonoBehaviour
     public float panSpeed;
     public float panTime;
     public AudioSource aS;
+    public float fadeoutTimer;
 
     CameraScriptFree camScript;
     bool cutsceneDone = false;
@@ -38,29 +39,39 @@ public class FocusTarget : MonoBehaviour
     }
 
 
-    public static IEnumerator FadeOutMusic(AudioSource audioSource, float FadeTime)
-    {
-        float startVolume = audioSource.volume;
-
-        while (audioSource.volume > 0)
-        {
-            audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
-
-            yield return null;
-        }
-
-        audioSource.Stop();
-        audioSource.volume = startVolume;
-    }
+   
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player" && !cutsceneDone)
         {
-            FadeOutMusic(aS, 0.5f);
+            
             camScript.cameraSpeed = panSpeed;
             camScript.Target = target;
             timer = panTime;
+            StartCoroutine(AudioFadeOut.FadeOut(aS, fadeoutTimer));
             inCutscene = true;
+
         }
     }
+
+    public static class AudioFadeOut
+    {
+
+        public static IEnumerator FadeOut(AudioSource audioSource, float FadeTime)
+        {
+            float startVolume = audioSource.volume;
+
+            while (audioSource.volume > 0)
+            {
+                audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
+
+                yield return null;
+            }
+
+            audioSource.Stop();
+            audioSource.volume = startVolume;
+        }
+
+    }
+
 }
