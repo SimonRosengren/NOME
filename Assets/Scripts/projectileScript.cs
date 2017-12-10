@@ -4,20 +4,26 @@ using UnityEngine;
 
 public class projectileScript : MonoBehaviour {
 
-    public float force = 1;
+    public float maxForce = 1;
     Rigidbody rb;
-	// Use this for initialization
-	void Start () {
+    public Vector3 target;
 
-	}
-    void Awake()
+	// Use this for initialization
+	void Start ()
     {
         rb = GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * force, ForceMode.VelocityChange);
+    }
+
+    void Awake()
+    {
+        Destroy(gameObject, 10);
+        //Vector3 dir = Vector3.Normalize(target - transform.position);
+        //rb.AddForce(dir * Random.RandomRange(10, maxForce), ForceMode.VelocityChange);
     }
 	
 	// Update is called once per frame
-	void Update () {
-        
+	void Update ()
+    {        
     }
+
 }

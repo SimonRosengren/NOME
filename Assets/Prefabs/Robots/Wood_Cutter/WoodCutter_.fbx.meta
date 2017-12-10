@@ -1,0 +1,1277 @@
+fileFormatVersion: 2
+guid: 8e2cf2c165412ce408af238dc2a6c236
+timeCreated: 1510565400
+licenseType: Free
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: arm_1
+    100002: arm_1 1
+    100004: arm_2
+    100006: arm_2 1
+    100008: arm_3
+    100010: arm_3 1
+    100012: arm_4
+    100014: arm_base
+    100016: arm_base_joint
+    100018: arm_baseplate
+    100020: Arm_CTRL
+    100022: arm_end
+    100024: Arm_grp
+    100026: arm_joint_1
+    100028: arm_joint_2
+    100030: arm_joint_3
+    100032: arm_joint_4
+    100034: base_rotation
+    100036: body_back_joint
+    100038: body_connect_joint
+    100040: body_connect_joint 1
+    100042: body_connect_joint1
+    100044: body_connect_joint2
+    100046: body_front_joint
+    100048: Body_Grp 1
+    100050: body_middle_joint
+    100052: body_root_joint
+    100054: body_undercarriage
+    100056: Bodyparts
+    100058: Bodyparts 1
+    100060: Bodyparts 2
+    100062: Bodyparts 3
+    100064: claw_
+    100066: claw_1_CTRL
+    100068: claw_2_CTRL
+    100070: claw_5
+    100072: claw_6
+    100074: claw_base
+    100076: claw_base_joint
+    100078: claw_joint_1
+    100080: claw_joint_2
+    100082: CTRL_Grp
+    100084: CTRL_Grp 1
+    100086: CTRL_Grp 2
+    100088: CTRL_Grp 3
+    100090: femur_joint
+    100092: femur_joint 1
+    100094: femur_joint 2
+    100096: femur_joint 3
+    100098: foot
+    100100: foot 1
+    100102: foot 2
+    100104: foot 3
+    100106: Foot_Grp
+    100108: Foot_Grp 1
+    100110: Foot_Grp 2
+    100112: Foot_Grp 3
+    100114: IK_Grp
+    100116: IK_Grp 1
+    100118: IK_Grp 2
+    100120: IK_Grp 3
+    100122: knee_joint
+    100124: knee_joint 1
+    100126: knee_joint 2
+    100128: knee_joint 3
+    100130: L_Front_Leg
+    100132: L_Front_Leg_Foot_CTRL
+    100134: L_Front_Leg_PoleVector_CTRL
+    100136: L_Hind_Leg
+    100138: L_Hind_Leg_Foot_CTRL
+    100140: L_Hind_Leg_PoleVector_CTRL
+    100142: l_lower_foot_joint
+    100144: l_lower_foot_joint 1
+    100146: l_lower_foot_joint 2
+    100148: l_lower_foot_joint 3
+    100150: L_Stabilizer_Grp
+    100152: L_Stabilizer_Grp 1
+    100154: L_Stabilizer_Grp 2
+    100156: L_Stabilizer_Grp 3
+    100158: L_Stabilizer_IK
+    100160: L_Stabilizer_IK 1
+    100162: L_Stabilizer_IK 2
+    100164: L_Stabilizer_IK 3
+    100166: l_tabletop
+    100168: l_toe_end_joint
+    100170: l_toe_end_joint 1
+    100172: l_toe_end_joint 2
+    100174: l_toe_end_joint 3
+    100176: l_toe_joint
+    100178: l_toe_joint 1
+    100180: l_toe_joint 2
+    100182: l_toe_joint 3
+    100184: l_upper_piston_lower_01
+    100186: l_upper_piston_lower_01 1
+    100188: l_upper_piston_lower_01 2
+    100190: l_upper_piston_lower_01 3
+    100192: l_upper_piston_lower_02
+    100194: l_upper_piston_lower_02 1
+    100196: l_upper_piston_lower_02 2
+    100198: l_upper_piston_lower_02 3
+    100200: l_upper_piston_upper_01
+    100202: l_upper_piston_upper_01 1
+    100204: l_upper_piston_upper_01 2
+    100206: l_upper_piston_upper_01 3
+    100208: l_upper_piston_upper_02
+    100210: l_upper_piston_upper_02 1
+    100212: l_upper_piston_upper_02 2
+    100214: l_upper_piston_upper_02 3
+    100216: leg
+    100218: leg 1
+    100220: leg 2
+    100222: leg 3
+    100224: Leg_Grp
+    100226: Leg_Grp 1
+    100228: Leg_Grp 2
+    100230: Leg_Grp 3
+    100232: leg_hip_ball
+    100234: leg_hip_ball 1
+    100236: leg_hip_ball 2
+    100238: leg_hip_ball 3
+    100240: Leg_IK
+    100242: Leg_IK 1
+    100244: Leg_IK 2
+    100246: Leg_IK 3
+    100248: leg_piston_geo
+    100250: leg_piston_geo 1
+    100252: leg_piston_geo 2
+    100254: leg_piston_geo 3
+    100256: leg_piston_geo 4
+    100258: Legs_Grp
+    100260: Low_Inn_Piston_Low_IK
+    100262: Low_Inn_Piston_Low_IK 1
+    100264: Low_Inn_Piston_Low_IK 2
+    100266: Low_Inn_Piston_Low_IK 3
+    100268: Low_Inn_Piston_Up_IK
+    100270: Low_Inn_Piston_Up_IK 1
+    100272: Low_Inn_Piston_Up_IK 2
+    100274: Low_Inn_Piston_Up_IK 3
+    100276: Low_Out_Piston_Low_IK
+    100278: Low_Out_Piston_Low_IK 1
+    100280: Low_Out_Piston_Low_IK 2
+    100282: Low_Out_Piston_Low_IK 3
+    100284: Low_Out_Piston_Up_IK
+    100286: Low_Out_Piston_Up_IK 1
+    100288: Low_Out_Piston_Up_IK 2
+    100290: Low_Out_Piston_Up_IK 3
+    100292: lower_inner_piston_lower_01
+    100294: lower_inner_piston_lower_01 1
+    100296: lower_inner_piston_lower_01 2
+    100298: lower_inner_piston_lower_01 3
+    100300: lower_inner_piston_lower_02
+    100302: lower_inner_piston_lower_02 1
+    100304: lower_inner_piston_lower_02 2
+    100306: lower_inner_piston_lower_02 3
+    100308: lower_inner_piston_upper_01
+    100310: lower_inner_piston_upper_01 1
+    100312: lower_inner_piston_upper_01 2
+    100314: lower_inner_piston_upper_01 3
+    100316: lower_inner_piston_upper_02
+    100318: lower_inner_piston_upper_02 1
+    100320: lower_inner_piston_upper_02 2
+    100322: lower_inner_piston_upper_02 3
+    100324: lower_outer_piston_lower_01
+    100326: lower_outer_piston_lower_01 1
+    100328: lower_outer_piston_lower_01 2
+    100330: lower_outer_piston_lower_01 3
+    100332: lower_outer_piston_lower_02
+    100334: lower_outer_piston_lower_02 1
+    100336: lower_outer_piston_lower_02 2
+    100338: lower_outer_piston_lower_02 3
+    100340: lower_outer_piston_upper_01
+    100342: lower_outer_piston_upper_01 1
+    100344: lower_outer_piston_upper_01 2
+    100346: lower_outer_piston_upper_01 3
+    100348: lower_outer_piston_upper_02
+    100350: lower_outer_piston_upper_02 1
+    100352: lower_outer_piston_upper_02 2
+    100354: lower_outer_piston_upper_02 3
+    100356: lower_piston_lower
+    100358: lower_piston_upper
+    100360: m_lower_foot_joint
+    100362: m_lower_foot_joint 1
+    100364: m_lower_foot_joint 2
+    100366: m_lower_foot_joint 3
+    100368: M_Stabilizer_Grp
+    100370: M_Stabilizer_Grp 1
+    100372: M_Stabilizer_Grp 2
+    100374: M_Stabilizer_Grp 3
+    100376: M_Stabilizer_IK
+    100378: M_Stabilizer_IK 1
+    100380: M_Stabilizer_IK 2
+    100382: M_Stabilizer_IK 3
+    100384: m_toe_end_joint
+    100386: m_toe_end_joint 1
+    100388: m_toe_end_joint 2
+    100390: m_toe_end_joint 3
+    100392: m_toe_joint
+    100394: m_toe_joint 1
+    100396: m_toe_joint 2
+    100398: m_toe_joint 3
+    100400: m_upper_piston_lower_01
+    100402: m_upper_piston_lower_01 1
+    100404: m_upper_piston_lower_01 2
+    100406: m_upper_piston_lower_01 3
+    100408: m_upper_piston_lower_02
+    100410: m_upper_piston_lower_02 1
+    100412: m_upper_piston_lower_02 2
+    100414: m_upper_piston_lower_02 3
+    100416: m_upper_piston_upper_01
+    100418: m_upper_piston_upper_01 1
+    100420: m_upper_piston_upper_01 2
+    100422: m_upper_piston_upper_01 3
+    100424: m_upper_piston_upper_02
+    100426: m_upper_piston_upper_02 1
+    100428: m_upper_piston_upper_02 2
+    100430: m_upper_piston_upper_02 3
+    100432: middle_piston_lower
+    100434: middle_piston_upper
+    100436: nurbsCircle10
+    100438: nurbsCircle10 1
+    100440: nurbsCircle8
+    100442: nurbsCircle8 1
+    100444: piston_geo
+    100446: piston_geo 1
+    100448: piston_geo 10
+    100450: piston_geo 11
+    100452: piston_geo 12
+    100454: piston_geo 13
+    100456: piston_geo 14
+    100458: piston_geo 15
+    100460: piston_geo 16
+    100462: piston_geo 17
+    100464: piston_geo 18
+    100466: piston_geo 19
+    100468: piston_geo 2
+    100470: piston_geo 20
+    100472: piston_geo 21
+    100474: piston_geo 22
+    100476: piston_geo 23
+    100478: piston_geo 24
+    100480: piston_geo 25
+    100482: piston_geo 26
+    100484: piston_geo 27
+    100486: piston_geo 28
+    100488: piston_geo 29
+    100490: piston_geo 3
+    100492: piston_geo 30
+    100494: piston_geo 31
+    100496: piston_geo 32
+    100498: piston_geo 33
+    100500: piston_geo 4
+    100502: piston_geo 5
+    100504: piston_geo 6
+    100506: piston_geo 7
+    100508: piston_geo 8
+    100510: piston_geo 9
+    100512: piston_high_1
+    100514: piston_high_1_1
+    100516: piston_high_2
+    100518: piston_high_2_1
+    100520: Piston_IK_Grp
+    100522: Piston_IK_Grp 1
+    100524: Piston_IK_Grp 2
+    100526: Piston_IK_Grp 3
+    100528: piston_low_1
+    100530: piston_low_1_1
+    100532: piston_low_2
+    100534: piston_low_2_1
+    100536: piston_middle_1
+    100538: piston_middle_1_1
+    100540: piston_middle_2
+    100542: piston_middle_2_1
+    100544: polySurface25
+    100546: R_Front_Leg
+    100548: R_Front_Leg_Foot_CTRL
+    100550: R_Front_Leg_PoleVector_CTRL
+    100552: R_Hind_Leg
+    100554: R_Hind_Leg_Foot_CTRL
+    100556: R_Hind_Leg_PoleVector_CTRL
+    100558: r_lower_foot_joint
+    100560: r_lower_foot_joint 1
+    100562: r_lower_foot_joint 2
+    100564: r_lower_foot_joint 3
+    100566: R_Stabilizer_Grp
+    100568: R_Stabilizer_Grp 1
+    100570: R_Stabilizer_Grp 2
+    100572: R_Stabilizer_Grp 3
+    100574: R_Stabilizer_IK
+    100576: R_Stabilizer_IK 1
+    100578: R_Stabilizer_IK 2
+    100580: R_Stabilizer_IK 3
+    100582: r_tabletop
+    100584: r_toe_end_joint
+    100586: r_toe_end_joint 1
+    100588: r_toe_end_joint 2
+    100590: r_toe_end_joint 3
+    100592: r_toe_joint
+    100594: r_toe_joint 1
+    100596: r_toe_joint 2
+    100598: r_toe_joint 3
+    100600: r_upper_piston_lower_01
+    100602: r_upper_piston_lower_01 1
+    100604: r_upper_piston_lower_01 2
+    100606: r_upper_piston_lower_01 3
+    100608: r_upper_piston_lower_02
+    100610: r_upper_piston_lower_02 1
+    100612: r_upper_piston_lower_02 2
+    100614: r_upper_piston_lower_02 3
+    100616: r_upper_piston_upper_01
+    100618: r_upper_piston_upper_01 1
+    100620: r_upper_piston_upper_01 2
+    100622: r_upper_piston_upper_01 3
+    100624: r_upper_piston_upper_02
+    100626: r_upper_piston_upper_02 1
+    100628: r_upper_piston_upper_02 2
+    100630: r_upper_piston_upper_02 3
+    100632: sawblade
+    100634: thigh_joint
+    100636: thigh_joint 1
+    100638: thigh_joint 2
+    100640: thigh_joint 3
+    100642: toe_geo
+    100644: toe_geo 1
+    100646: toe_geo 10
+    100648: toe_geo 11
+    100650: toe_geo 2
+    100652: toe_geo 3
+    100654: toe_geo 4
+    100656: toe_geo 5
+    100658: toe_geo 6
+    100660: toe_geo 7
+    100662: toe_geo 8
+    100664: toe_geo 9
+    100666: TreeLog1
+    100668: Up_L_Piston_Low_IK
+    100670: Up_L_Piston_Low_IK 1
+    100672: Up_L_Piston_Low_IK 2
+    100674: Up_L_Piston_Low_IK 3
+    100676: Up_L_Piston_Up_IK
+    100678: Up_L_Piston_Up_IK 1
+    100680: Up_L_Piston_Up_IK 2
+    100682: Up_L_Piston_Up_IK 3
+    100684: Up_M_Piston_LowIK
+    100686: Up_M_Piston_LowIK 1
+    100688: Up_M_Piston_LowIK 2
+    100690: Up_M_Piston_LowIK 3
+    100692: Up_M_Piston_Up_IK
+    100694: Up_M_Piston_Up_IK 1
+    100696: Up_M_Piston_Up_IK 2
+    100698: Up_M_Piston_Up_IK 3
+    100700: Up_R_Piston_Low_IK
+    100702: Up_R_Piston_Low_IK 1
+    100704: Up_R_Piston_Low_IK 2
+    100706: Up_R_Piston_Low_IK 3
+    100708: Up_R_Piston_Up_IK
+    100710: Up_R_Piston_Up_IK 1
+    100712: Up_R_Piston_Up_IK 2
+    100714: Up_R_Piston_Up_IK 3
+    100716: upper_foot_joint
+    100718: upper_foot_joint 1
+    100720: upper_foot_joint 2
+    100722: upper_foot_joint 3
+    100724: upper_piston_lower
+    100726: upper_piston_up
+    100728: //RootNode
+    400000: arm_1
+    400002: arm_1 1
+    400004: arm_2
+    400006: arm_2 1
+    400008: arm_3
+    400010: arm_3 1
+    400012: arm_4
+    400014: arm_base
+    400016: arm_base_joint
+    400018: arm_baseplate
+    400020: Arm_CTRL
+    400022: arm_end
+    400024: Arm_grp
+    400026: arm_joint_1
+    400028: arm_joint_2
+    400030: arm_joint_3
+    400032: arm_joint_4
+    400034: base_rotation
+    400036: body_back_joint
+    400038: body_connect_joint
+    400040: body_connect_joint 1
+    400042: body_connect_joint1
+    400044: body_connect_joint2
+    400046: body_front_joint
+    400048: Body_Grp 1
+    400050: body_middle_joint
+    400052: body_root_joint
+    400054: body_undercarriage
+    400056: Bodyparts
+    400058: Bodyparts 1
+    400060: Bodyparts 2
+    400062: Bodyparts 3
+    400064: claw_
+    400066: claw_1_CTRL
+    400068: claw_2_CTRL
+    400070: claw_5
+    400072: claw_6
+    400074: claw_base
+    400076: claw_base_joint
+    400078: claw_joint_1
+    400080: claw_joint_2
+    400082: CTRL_Grp
+    400084: CTRL_Grp 1
+    400086: CTRL_Grp 2
+    400088: CTRL_Grp 3
+    400090: femur_joint
+    400092: femur_joint 1
+    400094: femur_joint 2
+    400096: femur_joint 3
+    400098: foot
+    400100: foot 1
+    400102: foot 2
+    400104: foot 3
+    400106: Foot_Grp
+    400108: Foot_Grp 1
+    400110: Foot_Grp 2
+    400112: Foot_Grp 3
+    400114: IK_Grp
+    400116: IK_Grp 1
+    400118: IK_Grp 2
+    400120: IK_Grp 3
+    400122: knee_joint
+    400124: knee_joint 1
+    400126: knee_joint 2
+    400128: knee_joint 3
+    400130: L_Front_Leg
+    400132: L_Front_Leg_Foot_CTRL
+    400134: L_Front_Leg_PoleVector_CTRL
+    400136: L_Hind_Leg
+    400138: L_Hind_Leg_Foot_CTRL
+    400140: L_Hind_Leg_PoleVector_CTRL
+    400142: l_lower_foot_joint
+    400144: l_lower_foot_joint 1
+    400146: l_lower_foot_joint 2
+    400148: l_lower_foot_joint 3
+    400150: L_Stabilizer_Grp
+    400152: L_Stabilizer_Grp 1
+    400154: L_Stabilizer_Grp 2
+    400156: L_Stabilizer_Grp 3
+    400158: L_Stabilizer_IK
+    400160: L_Stabilizer_IK 1
+    400162: L_Stabilizer_IK 2
+    400164: L_Stabilizer_IK 3
+    400166: l_tabletop
+    400168: l_toe_end_joint
+    400170: l_toe_end_joint 1
+    400172: l_toe_end_joint 2
+    400174: l_toe_end_joint 3
+    400176: l_toe_joint
+    400178: l_toe_joint 1
+    400180: l_toe_joint 2
+    400182: l_toe_joint 3
+    400184: l_upper_piston_lower_01
+    400186: l_upper_piston_lower_01 1
+    400188: l_upper_piston_lower_01 2
+    400190: l_upper_piston_lower_01 3
+    400192: l_upper_piston_lower_02
+    400194: l_upper_piston_lower_02 1
+    400196: l_upper_piston_lower_02 2
+    400198: l_upper_piston_lower_02 3
+    400200: l_upper_piston_upper_01
+    400202: l_upper_piston_upper_01 1
+    400204: l_upper_piston_upper_01 2
+    400206: l_upper_piston_upper_01 3
+    400208: l_upper_piston_upper_02
+    400210: l_upper_piston_upper_02 1
+    400212: l_upper_piston_upper_02 2
+    400214: l_upper_piston_upper_02 3
+    400216: leg
+    400218: leg 1
+    400220: leg 2
+    400222: leg 3
+    400224: Leg_Grp
+    400226: Leg_Grp 1
+    400228: Leg_Grp 2
+    400230: Leg_Grp 3
+    400232: leg_hip_ball
+    400234: leg_hip_ball 1
+    400236: leg_hip_ball 2
+    400238: leg_hip_ball 3
+    400240: Leg_IK
+    400242: Leg_IK 1
+    400244: Leg_IK 2
+    400246: Leg_IK 3
+    400248: leg_piston_geo
+    400250: leg_piston_geo 1
+    400252: leg_piston_geo 2
+    400254: leg_piston_geo 3
+    400256: leg_piston_geo 4
+    400258: Legs_Grp
+    400260: Low_Inn_Piston_Low_IK
+    400262: Low_Inn_Piston_Low_IK 1
+    400264: Low_Inn_Piston_Low_IK 2
+    400266: Low_Inn_Piston_Low_IK 3
+    400268: Low_Inn_Piston_Up_IK
+    400270: Low_Inn_Piston_Up_IK 1
+    400272: Low_Inn_Piston_Up_IK 2
+    400274: Low_Inn_Piston_Up_IK 3
+    400276: Low_Out_Piston_Low_IK
+    400278: Low_Out_Piston_Low_IK 1
+    400280: Low_Out_Piston_Low_IK 2
+    400282: Low_Out_Piston_Low_IK 3
+    400284: Low_Out_Piston_Up_IK
+    400286: Low_Out_Piston_Up_IK 1
+    400288: Low_Out_Piston_Up_IK 2
+    400290: Low_Out_Piston_Up_IK 3
+    400292: lower_inner_piston_lower_01
+    400294: lower_inner_piston_lower_01 1
+    400296: lower_inner_piston_lower_01 2
+    400298: lower_inner_piston_lower_01 3
+    400300: lower_inner_piston_lower_02
+    400302: lower_inner_piston_lower_02 1
+    400304: lower_inner_piston_lower_02 2
+    400306: lower_inner_piston_lower_02 3
+    400308: lower_inner_piston_upper_01
+    400310: lower_inner_piston_upper_01 1
+    400312: lower_inner_piston_upper_01 2
+    400314: lower_inner_piston_upper_01 3
+    400316: lower_inner_piston_upper_02
+    400318: lower_inner_piston_upper_02 1
+    400320: lower_inner_piston_upper_02 2
+    400322: lower_inner_piston_upper_02 3
+    400324: lower_outer_piston_lower_01
+    400326: lower_outer_piston_lower_01 1
+    400328: lower_outer_piston_lower_01 2
+    400330: lower_outer_piston_lower_01 3
+    400332: lower_outer_piston_lower_02
+    400334: lower_outer_piston_lower_02 1
+    400336: lower_outer_piston_lower_02 2
+    400338: lower_outer_piston_lower_02 3
+    400340: lower_outer_piston_upper_01
+    400342: lower_outer_piston_upper_01 1
+    400344: lower_outer_piston_upper_01 2
+    400346: lower_outer_piston_upper_01 3
+    400348: lower_outer_piston_upper_02
+    400350: lower_outer_piston_upper_02 1
+    400352: lower_outer_piston_upper_02 2
+    400354: lower_outer_piston_upper_02 3
+    400356: lower_piston_lower
+    400358: lower_piston_upper
+    400360: m_lower_foot_joint
+    400362: m_lower_foot_joint 1
+    400364: m_lower_foot_joint 2
+    400366: m_lower_foot_joint 3
+    400368: M_Stabilizer_Grp
+    400370: M_Stabilizer_Grp 1
+    400372: M_Stabilizer_Grp 2
+    400374: M_Stabilizer_Grp 3
+    400376: M_Stabilizer_IK
+    400378: M_Stabilizer_IK 1
+    400380: M_Stabilizer_IK 2
+    400382: M_Stabilizer_IK 3
+    400384: m_toe_end_joint
+    400386: m_toe_end_joint 1
+    400388: m_toe_end_joint 2
+    400390: m_toe_end_joint 3
+    400392: m_toe_joint
+    400394: m_toe_joint 1
+    400396: m_toe_joint 2
+    400398: m_toe_joint 3
+    400400: m_upper_piston_lower_01
+    400402: m_upper_piston_lower_01 1
+    400404: m_upper_piston_lower_01 2
+    400406: m_upper_piston_lower_01 3
+    400408: m_upper_piston_lower_02
+    400410: m_upper_piston_lower_02 1
+    400412: m_upper_piston_lower_02 2
+    400414: m_upper_piston_lower_02 3
+    400416: m_upper_piston_upper_01
+    400418: m_upper_piston_upper_01 1
+    400420: m_upper_piston_upper_01 2
+    400422: m_upper_piston_upper_01 3
+    400424: m_upper_piston_upper_02
+    400426: m_upper_piston_upper_02 1
+    400428: m_upper_piston_upper_02 2
+    400430: m_upper_piston_upper_02 3
+    400432: middle_piston_lower
+    400434: middle_piston_upper
+    400436: nurbsCircle10
+    400438: nurbsCircle10 1
+    400440: nurbsCircle8
+    400442: nurbsCircle8 1
+    400444: piston_geo
+    400446: piston_geo 1
+    400448: piston_geo 10
+    400450: piston_geo 11
+    400452: piston_geo 12
+    400454: piston_geo 13
+    400456: piston_geo 14
+    400458: piston_geo 15
+    400460: piston_geo 16
+    400462: piston_geo 17
+    400464: piston_geo 18
+    400466: piston_geo 19
+    400468: piston_geo 2
+    400470: piston_geo 20
+    400472: piston_geo 21
+    400474: piston_geo 22
+    400476: piston_geo 23
+    400478: piston_geo 24
+    400480: piston_geo 25
+    400482: piston_geo 26
+    400484: piston_geo 27
+    400486: piston_geo 28
+    400488: piston_geo 29
+    400490: piston_geo 3
+    400492: piston_geo 30
+    400494: piston_geo 31
+    400496: piston_geo 32
+    400498: piston_geo 33
+    400500: piston_geo 4
+    400502: piston_geo 5
+    400504: piston_geo 6
+    400506: piston_geo 7
+    400508: piston_geo 8
+    400510: piston_geo 9
+    400512: piston_high_1
+    400514: piston_high_1_1
+    400516: piston_high_2
+    400518: piston_high_2_1
+    400520: Piston_IK_Grp
+    400522: Piston_IK_Grp 1
+    400524: Piston_IK_Grp 2
+    400526: Piston_IK_Grp 3
+    400528: piston_low_1
+    400530: piston_low_1_1
+    400532: piston_low_2
+    400534: piston_low_2_1
+    400536: piston_middle_1
+    400538: piston_middle_1_1
+    400540: piston_middle_2
+    400542: piston_middle_2_1
+    400544: polySurface25
+    400546: R_Front_Leg
+    400548: R_Front_Leg_Foot_CTRL
+    400550: R_Front_Leg_PoleVector_CTRL
+    400552: R_Hind_Leg
+    400554: R_Hind_Leg_Foot_CTRL
+    400556: R_Hind_Leg_PoleVector_CTRL
+    400558: r_lower_foot_joint
+    400560: r_lower_foot_joint 1
+    400562: r_lower_foot_joint 2
+    400564: r_lower_foot_joint 3
+    400566: R_Stabilizer_Grp
+    400568: R_Stabilizer_Grp 1
+    400570: R_Stabilizer_Grp 2
+    400572: R_Stabilizer_Grp 3
+    400574: R_Stabilizer_IK
+    400576: R_Stabilizer_IK 1
+    400578: R_Stabilizer_IK 2
+    400580: R_Stabilizer_IK 3
+    400582: r_tabletop
+    400584: r_toe_end_joint
+    400586: r_toe_end_joint 1
+    400588: r_toe_end_joint 2
+    400590: r_toe_end_joint 3
+    400592: r_toe_joint
+    400594: r_toe_joint 1
+    400596: r_toe_joint 2
+    400598: r_toe_joint 3
+    400600: r_upper_piston_lower_01
+    400602: r_upper_piston_lower_01 1
+    400604: r_upper_piston_lower_01 2
+    400606: r_upper_piston_lower_01 3
+    400608: r_upper_piston_lower_02
+    400610: r_upper_piston_lower_02 1
+    400612: r_upper_piston_lower_02 2
+    400614: r_upper_piston_lower_02 3
+    400616: r_upper_piston_upper_01
+    400618: r_upper_piston_upper_01 1
+    400620: r_upper_piston_upper_01 2
+    400622: r_upper_piston_upper_01 3
+    400624: r_upper_piston_upper_02
+    400626: r_upper_piston_upper_02 1
+    400628: r_upper_piston_upper_02 2
+    400630: r_upper_piston_upper_02 3
+    400632: sawblade
+    400634: thigh_joint
+    400636: thigh_joint 1
+    400638: thigh_joint 2
+    400640: thigh_joint 3
+    400642: toe_geo
+    400644: toe_geo 1
+    400646: toe_geo 10
+    400648: toe_geo 11
+    400650: toe_geo 2
+    400652: toe_geo 3
+    400654: toe_geo 4
+    400656: toe_geo 5
+    400658: toe_geo 6
+    400660: toe_geo 7
+    400662: toe_geo 8
+    400664: toe_geo 9
+    400666: TreeLog1
+    400668: Up_L_Piston_Low_IK
+    400670: Up_L_Piston_Low_IK 1
+    400672: Up_L_Piston_Low_IK 2
+    400674: Up_L_Piston_Low_IK 3
+    400676: Up_L_Piston_Up_IK
+    400678: Up_L_Piston_Up_IK 1
+    400680: Up_L_Piston_Up_IK 2
+    400682: Up_L_Piston_Up_IK 3
+    400684: Up_M_Piston_LowIK
+    400686: Up_M_Piston_LowIK 1
+    400688: Up_M_Piston_LowIK 2
+    400690: Up_M_Piston_LowIK 3
+    400692: Up_M_Piston_Up_IK
+    400694: Up_M_Piston_Up_IK 1
+    400696: Up_M_Piston_Up_IK 2
+    400698: Up_M_Piston_Up_IK 3
+    400700: Up_R_Piston_Low_IK
+    400702: Up_R_Piston_Low_IK 1
+    400704: Up_R_Piston_Low_IK 2
+    400706: Up_R_Piston_Low_IK 3
+    400708: Up_R_Piston_Up_IK
+    400710: Up_R_Piston_Up_IK 1
+    400712: Up_R_Piston_Up_IK 2
+    400714: Up_R_Piston_Up_IK 3
+    400716: upper_foot_joint
+    400718: upper_foot_joint 1
+    400720: upper_foot_joint 2
+    400722: upper_foot_joint 3
+    400724: upper_piston_lower
+    400726: upper_piston_up
+    400728: //RootNode
+    2300000: arm_1 1
+    2300002: arm_2 1
+    2300004: arm_3 1
+    2300006: arm_base
+    2300008: arm_baseplate
+    2300010: arm_end
+    2300012: body_undercarriage
+    2300014: claw_5
+    2300016: claw_6
+    2300018: claw_base
+    2300020: foot
+    2300022: foot 1
+    2300024: foot 2
+    2300026: foot 3
+    2300028: l_tabletop
+    2300030: leg
+    2300032: leg 1
+    2300034: leg 2
+    2300036: leg 3
+    2300038: leg_hip_ball
+    2300040: leg_hip_ball 1
+    2300042: leg_hip_ball 2
+    2300044: leg_hip_ball 3
+    2300046: leg_piston_geo
+    2300048: leg_piston_geo 1
+    2300050: leg_piston_geo 2
+    2300052: leg_piston_geo 3
+    2300054: leg_piston_geo 4
+    2300056: lower_piston_lower
+    2300058: lower_piston_upper
+    2300060: middle_piston_lower
+    2300062: middle_piston_upper
+    2300064: piston_geo
+    2300066: piston_geo 1
+    2300068: piston_geo 10
+    2300070: piston_geo 11
+    2300072: piston_geo 12
+    2300074: piston_geo 13
+    2300076: piston_geo 14
+    2300078: piston_geo 15
+    2300080: piston_geo 16
+    2300082: piston_geo 17
+    2300084: piston_geo 18
+    2300086: piston_geo 19
+    2300088: piston_geo 2
+    2300090: piston_geo 20
+    2300092: piston_geo 21
+    2300094: piston_geo 22
+    2300096: piston_geo 23
+    2300098: piston_geo 24
+    2300100: piston_geo 25
+    2300102: piston_geo 26
+    2300104: piston_geo 27
+    2300106: piston_geo 28
+    2300108: piston_geo 29
+    2300110: piston_geo 3
+    2300112: piston_geo 30
+    2300114: piston_geo 31
+    2300116: piston_geo 32
+    2300118: piston_geo 33
+    2300120: piston_geo 4
+    2300122: piston_geo 5
+    2300124: piston_geo 6
+    2300126: piston_geo 7
+    2300128: piston_geo 8
+    2300130: piston_geo 9
+    2300132: polySurface25
+    2300134: r_tabletop
+    2300136: sawblade
+    2300138: toe_geo
+    2300140: toe_geo 1
+    2300142: toe_geo 10
+    2300144: toe_geo 11
+    2300146: toe_geo 2
+    2300148: toe_geo 3
+    2300150: toe_geo 4
+    2300152: toe_geo 5
+    2300154: toe_geo 6
+    2300156: toe_geo 7
+    2300158: toe_geo 8
+    2300160: toe_geo 9
+    2300162: TreeLog1
+    2300164: upper_piston_lower
+    2300166: upper_piston_up
+    3300000: arm_1 1
+    3300002: arm_2 1
+    3300004: arm_3 1
+    3300006: arm_base
+    3300008: arm_baseplate
+    3300010: arm_end
+    3300012: body_undercarriage
+    3300014: claw_5
+    3300016: claw_6
+    3300018: claw_base
+    3300020: foot
+    3300022: foot 1
+    3300024: foot 2
+    3300026: foot 3
+    3300028: l_tabletop
+    3300030: leg
+    3300032: leg 1
+    3300034: leg 2
+    3300036: leg 3
+    3300038: leg_hip_ball
+    3300040: leg_hip_ball 1
+    3300042: leg_hip_ball 2
+    3300044: leg_hip_ball 3
+    3300046: leg_piston_geo
+    3300048: leg_piston_geo 1
+    3300050: leg_piston_geo 2
+    3300052: leg_piston_geo 3
+    3300054: leg_piston_geo 4
+    3300056: lower_piston_lower
+    3300058: lower_piston_upper
+    3300060: middle_piston_lower
+    3300062: middle_piston_upper
+    3300064: piston_geo
+    3300066: piston_geo 1
+    3300068: piston_geo 10
+    3300070: piston_geo 11
+    3300072: piston_geo 12
+    3300074: piston_geo 13
+    3300076: piston_geo 14
+    3300078: piston_geo 15
+    3300080: piston_geo 16
+    3300082: piston_geo 17
+    3300084: piston_geo 18
+    3300086: piston_geo 19
+    3300088: piston_geo 2
+    3300090: piston_geo 20
+    3300092: piston_geo 21
+    3300094: piston_geo 22
+    3300096: piston_geo 23
+    3300098: piston_geo 24
+    3300100: piston_geo 25
+    3300102: piston_geo 26
+    3300104: piston_geo 27
+    3300106: piston_geo 28
+    3300108: piston_geo 29
+    3300110: piston_geo 3
+    3300112: piston_geo 30
+    3300114: piston_geo 31
+    3300116: piston_geo 32
+    3300118: piston_geo 33
+    3300120: piston_geo 4
+    3300122: piston_geo 5
+    3300124: piston_geo 6
+    3300126: piston_geo 7
+    3300128: piston_geo 8
+    3300130: piston_geo 9
+    3300132: polySurface25
+    3300134: r_tabletop
+    3300136: sawblade
+    3300138: toe_geo
+    3300140: toe_geo 1
+    3300142: toe_geo 10
+    3300144: toe_geo 11
+    3300146: toe_geo 2
+    3300148: toe_geo 3
+    3300150: toe_geo 4
+    3300152: toe_geo 5
+    3300154: toe_geo 6
+    3300156: toe_geo 7
+    3300158: toe_geo 8
+    3300160: toe_geo 9
+    3300162: TreeLog1
+    3300164: upper_piston_lower
+    3300166: upper_piston_up
+    4300000: TreeLog1
+    4300002: piston_geo
+    4300004: piston_geo
+    4300006: piston_geo
+    4300008: piston_geo
+    4300010: toe_geo
+    4300012: toe_geo
+    4300014: toe_geo
+    4300016: leg_piston_geo
+    4300018: foot
+    4300020: piston_geo
+    4300022: leg_piston_geo
+    4300024: leg
+    4300026: piston_geo
+    4300028: piston_geo
+    4300030: piston_geo
+    4300032: leg_hip_ball
+    4300034: piston_geo
+    4300036: piston_geo
+    4300038: piston_geo
+    4300040: piston_geo
+    4300042: toe_geo
+    4300044: toe_geo
+    4300046: toe_geo
+    4300048: leg_piston_geo
+    4300050: foot
+    4300052: piston_geo
+    4300054: piston_geo
+    4300056: leg
+    4300058: piston_geo
+    4300060: piston_geo
+    4300062: piston_geo
+    4300064: leg_hip_ball
+    4300066: piston_geo
+    4300068: piston_geo
+    4300070: piston_geo
+    4300072: piston_geo
+    4300074: toe_geo
+    4300076: toe_geo
+    4300078: toe_geo
+    4300080: leg_piston_geo
+    4300082: foot
+    4300084: piston_geo
+    4300086: piston_geo
+    4300088: leg
+    4300090: polySurface25
+    4300092: piston_geo
+    4300094: piston_geo
+    4300096: leg_hip_ball
+    4300098: piston_geo
+    4300100: piston_geo
+    4300102: piston_geo
+    4300104: piston_geo
+    4300106: toe_geo
+    4300108: toe_geo
+    4300110: toe_geo
+    4300112: leg_piston_geo
+    4300114: foot
+    4300116: piston_geo
+    4300118: piston_geo
+    4300120: leg
+    4300122: piston_geo
+    4300124: piston_geo
+    4300126: piston_geo
+    4300128: leg_hip_ball
+    4300130: claw_5
+    4300132: claw_6
+    4300134: claw_base
+    4300136: arm_end
+    4300138: upper_piston_up
+    4300140: arm_3
+    4300142: middle_piston_upper
+    4300144: upper_piston_lower
+    4300146: arm_2
+    4300148: lower_piston_upper
+    4300150: middle_piston_lower
+    4300152: arm_1
+    4300154: lower_piston_lower
+    4300156: arm_base
+    4300158: body_undercarriage
+    4300160: l_tabletop
+    4300162: r_tabletop
+    4300164: arm_baseplate
+    4300166: sawblade
+    7400000: Start_Up_
+    7400002: Start_Walking_
+    7400004: Start_Cutting_
+    7400006: Cutting_loop_
+    7400008: Walking_Loop_
+    7400010: Stop_Walking_
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 1
+    motionNodeName: Body_Grp 1
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Start_Up_
+      takeName: Take 001
+      firstFrame: 10
+      lastFrame: 360
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Start_Walking_
+      takeName: Take 001
+      firstFrame: 700
+      lastFrame: 810
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Start_Cutting_
+      takeName: Take 001
+      firstFrame: 1230
+      lastFrame: 1530
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.9969232
+        functionName: ShootChuck
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: f913099714fd2ce4a8fb0b4c675901ed,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Cutting_loop_
+      takeName: Take 001
+      firstFrame: 1531
+      lastFrame: 1831
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0
+        functionName: ShootChuck
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: f913099714fd2ce4a8fb0b4c675901ed,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0
+        functionName: playSaw
+        data: 
+        objectReferenceParameter: {fileID: 11500000, guid: f913099714fd2ce4a8fb0b4c675901ed,
+          type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Walking_Loop_
+      takeName: Take 001
+      firstFrame: 810
+      lastFrame: 1002
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events:
+      - time: 0.56832695
+        functionName: playWalking
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.060025692
+        functionName: playWalking
+        data: 
+        objectReferenceParameter: {instanceID: 0}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Stop_Walking_
+      takeName: Take 001
+      firstFrame: 1002
+      lastFrame: 1060
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: Body_Grp 1
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
