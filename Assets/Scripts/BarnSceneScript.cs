@@ -11,6 +11,7 @@ public class BarnSceneScript : MonoBehaviour {
     [SerializeField] GameObject cowThirstyTrigger;
 
     [SerializeField] AudioSource cowBreaths;
+    public AudioSource aS;
 
 
     // Use this for initialization
@@ -35,7 +36,27 @@ public class BarnSceneScript : MonoBehaviour {
             Destroy(leaveBarnTooEarlyTrigger);
             Destroy(cowThirstyTrigger);
             cowBreaths.Stop();
-
+            StartCoroutine(AudioFadeOut.FadeOut(aS, 7));
         }
+    }
+
+    public static class AudioFadeOut
+    {
+
+        public static IEnumerator FadeOut(AudioSource audioSource, float FadeTime)
+        {
+            float startVolume = audioSource.volume;
+
+            while (audioSource.volume > 0)
+            {
+                audioSource.volume -= startVolume * Time.deltaTime / FadeTime;
+
+                yield return null;
+            }
+
+            audioSource.Stop();
+            audioSource.volume = startVolume;
+        }
+
     }
 }

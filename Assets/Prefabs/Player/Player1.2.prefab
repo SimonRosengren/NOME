@@ -752,7 +752,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1376744786142846}
-  m_LocalRotation: {x: 0.31369328, y: 0.6391339, z: -0.63708705, w: 0.2953382}
+  m_LocalRotation: {x: 0.31369326, y: 0.6391338, z: -0.637087, w: 0.29533818}
   m_LocalPosition: {x: 0.0515247, y: -0.018972583, z: -0.057321437}
   m_LocalScale: {x: 1.0000002, y: 1, z: 0.99999994}
   m_Children:
@@ -1178,6 +1178,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed640ac0237f6504ca173d0ca3bfdc67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  kitchenKey: 0
+  vacuumKey: 0
+  tableKey: 0
+  tvKey: 0
   inventory: {fileID: 0}
 --- !u!114 &114962661080996328
 MonoBehaviour:
@@ -1193,7 +1197,7 @@ MonoBehaviour:
   ragD: {fileID: 0}
   charMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   cameraTarget: {fileID: 1375246585447898}
   isDead: 0
   runSound: {fileID: 82725439062295300}
