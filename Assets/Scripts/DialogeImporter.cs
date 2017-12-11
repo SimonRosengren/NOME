@@ -17,7 +17,7 @@ public class DialogeImporter : MonoBehaviour {
     public int currentLine;
     public int endAtLine;
 
-
+    public bool book;
     public bool isActive = false;
 
 	// Use this for initialization
@@ -40,9 +40,20 @@ public class DialogeImporter : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" && !isActive)
+        if (other.tag == "Player" && !isActive && !book)
         {
             OpenBox();
+        }
+    }
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Player" && book)
+        {
+            if (Input.GetButtonDown("Y"))
+            {
+                OpenBox();
+
+            }
         }
     }
 
