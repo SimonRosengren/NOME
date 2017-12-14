@@ -24,8 +24,8 @@ public class CustomAnalyticToolRecord : MonoBehaviour
 
     void Start()
     {
-        path = @"CustomAnalyticsTool\" + movementPathName + ".txt";
-        checkPointPath = @"CustomAnalyticsTool\" + checkpointPathName + ".txt";
+        path = @"" + movementPathName + ".txt";
+        checkPointPath = @"" + checkpointPathName + ".txt";
         CreateSessionID();
     }
 
@@ -49,10 +49,10 @@ public class CustomAnalyticToolRecord : MonoBehaviour
 
         if (timer >= saveRate)
         {
-            using (System.IO.StreamWriter file =
-                new System.IO.StreamWriter(path, true))
+            using (StreamWriter writer = File.AppendText(path))
             {
-                file.WriteLine(objectToTrack.position + Vector3.up + "\n");
+                writer.WriteLine(objectToTrack.position + Vector3.up + "\n");
+                writer.Close();
             }
             timer = 0;
         }
@@ -60,9 +60,10 @@ public class CustomAnalyticToolRecord : MonoBehaviour
 
     public void SaveCheckpointTime()
     {
-        using (System.IO.StreamWriter file = new System.IO.StreamWriter(checkPointPath, true))
+        using (StreamWriter writer = File.AppendText(checkPointPath))
         {
-            file.WriteLine(Time.timeSinceLevelLoad + "\n");
+            writer.WriteLine(Time.timeSinceLevelLoad + "\n");
+            writer.Close();
         }
     }
     //This method creates the ID. For increased safety this should be done with a GUID Instead, 
@@ -70,13 +71,15 @@ public class CustomAnalyticToolRecord : MonoBehaviour
     void CreateSessionID()
     {
         sessionID = (int)Random.Range(0, 9999999);
-        using (System.IO.StreamWriter file = new System.IO.StreamWriter(path, true))
+        using (StreamWriter writer = File.AppendText(path))
         {
-            file.WriteLine("SESSION " + sessionID + "\n");
+            writer.WriteLine("SESSION " + sessionID + "\n");
+            writer.Close();
         }
-        using (System.IO.StreamWriter file = new System.IO.StreamWriter(checkPointPath, true))
+        using (StreamWriter writer = File.AppendText(checkPointPath))
         {
-            file.WriteLine("SESSION " + sessionID + "\n");
+            writer.WriteLine("SESSION " + sessionID + "\n");
+            writer.Close();
         }
     }
 }
