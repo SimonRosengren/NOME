@@ -4810,6 +4810,51 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dec8b55b264ca314e8f3a376439b395e, type: 3}
   m_IsPrefabParent: 0
+--- !u!1 &1283130405
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 1283130407}
+  - component: {fileID: 1283130406}
+  m_Layer: 0
+  m_Name: AnalyticTool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1283130406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1283130405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5e01203745c66140aa5f41d84f38293, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recordMovement: 1
+  saveRate: 0.1
+  objectToTrack: {fileID: 1460147613}
+  movementPathName: BarnMovement
+  checkpointPathName: BarnCheckpoints
+--- !u!4 &1283130407
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1283130405}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 58, y: -59.9375, z: -51}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 29
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1324912457
 GameObject:
   m_ObjectHideFlags: 0
@@ -5574,6 +5619,11 @@ MeshCollider:
 --- !u!1 &1460147612 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1164902904215490, guid: 00c8f68ffba827a4ab2477b387201634,
+    type: 2}
+  m_PrefabInternal: {fileID: 83373182}
+--- !u!4 &1460147613 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4530431190468210, guid: 00c8f68ffba827a4ab2477b387201634,
     type: 2}
   m_PrefabInternal: {fileID: 83373182}
 --- !u!1 &1464863802 stripped
