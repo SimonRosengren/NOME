@@ -11,6 +11,7 @@ public class openshelf : MonoBehaviour {
         open = false;
         shelf = GameObject.Find("Kitchen_Shelf").GetComponent<Animator>();
         
+        
 	}
 	
 	// Update is called once per frame
