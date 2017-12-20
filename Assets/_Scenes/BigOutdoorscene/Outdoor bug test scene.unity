@@ -78,17 +78,15 @@ LightmapSettings:
     m_PVRDirectSampleCount: 32
     m_PVRSampleCount: 500
     m_PVRBounces: 2
-    m_PVRFilterTypeDirect: 0
-    m_PVRFilterTypeIndirect: 0
-    m_PVRFilterTypeAO: 0
+    m_PVRFiltering: 0
     m_PVRFilteringMode: 1
     m_PVRCulling: 1
     m_PVRFilteringGaussRadiusDirect: 1
     m_PVRFilteringGaussRadiusIndirect: 5
     m_PVRFilteringGaussRadiusAO: 2
-    m_PVRFilteringAtrousPositionSigmaDirect: 0.5
-    m_PVRFilteringAtrousPositionSigmaIndirect: 2
-    m_PVRFilteringAtrousPositionSigmaAO: 1
+    m_PVRFilteringAtrousColorSigma: 1
+    m_PVRFilteringAtrousNormalSigma: 1
+    m_PVRFilteringAtrousPositionSigma: 1
   m_LightingDataAsset: {fileID: 112000002, guid: 80ff3a39daedcef418a92975fd963374,
     type: 2}
   m_UseShadowmask: 1
@@ -8189,7 +8187,6 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 509458432}
-
   m_LocalRotation: {x: 0.19035901, y: -0.8096271, z: -0.37596864, w: -0.40855235}
   m_LocalPosition: {x: 139.63028, y: 16.076904, z: 262.74155}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -9583,7 +9580,6 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 629860346}
-
   m_LocalRotation: {x: 0.08027572, y: -0.91650426, z: -0.31687218, w: -0.23058158}
   m_LocalPosition: {x: 143.35521, y: 22.998138, z: 270.6011}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -15984,7 +15980,6 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1213163846}
-
   m_LocalRotation: {x: 0.21072556, y: -0.7888811, z: -0.42720908, w: -0.3882703}
   m_LocalPosition: {x: 134.80194, y: -32.932007, z: 175.90947}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -18919,7 +18914,6 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1391219075}
-
   m_LocalRotation: {x: 0.2625078, y: -0.7323583, z: -0.3879536, w: -0.4941994}
   m_LocalPosition: {x: 139.58536, y: 17.266998, z: 258.348}
   m_LocalScale: {x: 1, y: 1, z: 1}
@@ -27127,7 +27121,6 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4530431190468210, guid: 00c8f68ffba827a4ab2477b387201634, type: 2}
       propertyPath: m_LocalPosition.x
-
       value: 153.17
       objectReference: {fileID: 0}
     - target: {fileID: 4530431190468210, guid: 00c8f68ffba827a4ab2477b387201634, type: 2}
@@ -27136,7 +27129,6 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4530431190468210, guid: 00c8f68ffba827a4ab2477b387201634, type: 2}
       propertyPath: m_LocalPosition.z
-
       value: 266.82
       objectReference: {fileID: 0}
     - target: {fileID: 4530431190468210, guid: 00c8f68ffba827a4ab2477b387201634, type: 2}
@@ -28000,7 +27992,6 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2015669503}
-  - component: {fileID: 2015669502}
   - component: {fileID: 2015669501}
   m_Layer: 0
   m_Name: AnalyticTool
@@ -28025,18 +28016,6 @@ MonoBehaviour:
   objectToTrack: {fileID: 2042038435}
   movementPathName: OutdoorMovement
   checkpointPathName: OutdoorCheckPoint
---- !u!114 &2015669502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2015669500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a07fb37a7282b604db87fb5b7de4b422, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fileName: OutdoorMovement
 --- !u!4 &2015669503
 Transform:
   m_ObjectHideFlags: 0
