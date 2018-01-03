@@ -42,7 +42,7 @@ public class FlammableObject : MonoBehaviour {
         //PLAY ANIMATION
         if (!onFire)
         {
-            audioS.PlayOneShot(audioC);
+            //audioS.PlayOneShot(audioC);
             onFire = true;
         }       
     }
