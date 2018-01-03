@@ -8,8 +8,8 @@ public class leverAnimScript : MonoBehaviour
     public Animator animOther;
     public GameObject[] logKeeper;
     public string otherAnimStateName;
-    public AudioSource audioS;
-    public AudioClip audioC;
+    public AudioSource audioS, audioLever, audioGenerator;
+    public AudioClip audioC, audioCLever, audioCGenerator;
 
     void Start()
     {
@@ -21,19 +21,33 @@ public class leverAnimScript : MonoBehaviour
         if (collider.tag == "Player")
         {
             animLever.Play("Lever_Pull_Animation");
+            audioLever.PlayOneShot(audioCLever);
         }
     }
 
     void OnTriggerExit(Collider collider)
+    {
+        Invoke("Playdelay", 1);
+        Invoke("WoodCutterDelay", 35);
+    }
+    void playLogKeeperSound()
+    {
+        audioS.PlayOneShot(audioC);
+    }
+
+    void Playdelay()
+    {
+        audioGenerator.PlayOneShot(audioCGenerator);
+
+    }
+
+    void WoodCutterDelay()
     {
         foreach (GameObject g in logKeeper)
         {
             animOther = g.GetComponent<Animator>();
             animOther.Play(otherAnimStateName);
         }
-    }
-    void playLogKeeperSound()
-    {
-        audioS.PlayOneShot(audioC);
+
     }
 }
