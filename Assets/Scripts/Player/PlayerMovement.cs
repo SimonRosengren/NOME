@@ -147,11 +147,12 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("MainAction"))
         {
             Grab();
-            
-
-            
             ReadBook();
             //Destroy(GameObject.FindGameObjectWithTag("Player"), 0);
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Die();
         }      
     }
 
