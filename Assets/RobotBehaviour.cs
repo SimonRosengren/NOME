@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 public class RobotBehaviour : MonoBehaviour {
 
     public bool wet;
     public GameObject gravCircle;
+    public GameObject launchZone;
     FollowPath pathFollower;
     Animator animator;
     public InstantiatePickUp pickup;
@@ -23,13 +25,16 @@ public class RobotBehaviour : MonoBehaviour {
 	void Update () {
         if (wet && !dead)
         {
+            WriteToLog("Robots wet-statement has been called");
             GetComponent<FollowPath>().functional = false;
             Smoke();
             animator.enabled = false;
             pathFollower.functional = false;
             Destroy(gravCircle);
+            Destroy(launchZone);
             Invoke("SpitOut", 5);
             dead = true;
+            WriteToLog("Robots isDead = " + dead);
         }	
 	}
 
@@ -40,7 +45,16 @@ public class RobotBehaviour : MonoBehaviour {
 
     void SpitOut()
     {
+        WriteToLog("SpitOut() has been invoked");
         pickup.DropPickUp();
     }
-
+    public void WriteToLog(string msg)
+    {
+        string path = @"" + "mOutPut" + ".txt";
+        using (StreamWriter writer = File.AppendText(path))
+        {
+            writer.WriteLine(msg + "\n");
+            writer.Close();
+        }
+    }
 }
