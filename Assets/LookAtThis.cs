@@ -16,6 +16,26 @@ public class LookAtThis : MonoBehaviour {
 	}
     private void OnTriggerEnter(Collider other)
     {
-        Player.GetComponent<HeadLookController>().target = lookat.position;
+        if (other.gameObject == Player)
+        {
+            Debug.Log("look");
+            if (Player.GetComponent<HeadLookController>().enabled == false)
+            {
+                Player.GetComponent<HeadLookController>().enabled = true;
+            }
+            
+            Player.GetComponent<HeadLookController>().target = lookat.position;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject == Player)
+        {
+            if (Player.GetComponent<HeadLookController>().enabled == true)
+            {
+                Player.GetComponent<HeadLookController>().enabled = false;
+            }
+        }
     }
 }
