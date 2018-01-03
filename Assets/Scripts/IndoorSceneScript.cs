@@ -17,7 +17,7 @@ public class IndoorSceneScript : MonoBehaviour {
 
     void Update()
     {
-        if (puHandler.kitchenKey && puHandler.tvKey && puHandler.vacuumKey && puHandler.tableKey && !doorOpen)
+        if (puHandler.kitchenKey && puHandler.tvKey &&/* puHandler.vacuumKey &&*/ puHandler.tableKey && !doorOpen)
         {
             doorAnim.SetTrigger("allKeysTrig");
             doorOpen = true;
