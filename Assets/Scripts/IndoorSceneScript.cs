@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IndoorSceneScript : MonoBehaviour {
 
-    [SerializeField] LoadIndoorScene radioSceneTrigger;
+
     [SerializeField] PickUpHandler puHandler;
     [SerializeField] GameObject dialoge;
 
