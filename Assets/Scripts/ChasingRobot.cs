@@ -14,7 +14,7 @@ public class ChasingRobot : MonoBehaviour
     Vector3 direction;
     public bool isDead = false;
     InstantiatePickUp iPickUp;
-
+    [SerializeField] GameObject shimmer;
     [SerializeField]
     float moveSpeed = 10f;
 
@@ -44,6 +44,7 @@ public class ChasingRobot : MonoBehaviour
         if (isDead && !keyDropped)
         {
             keyDropped = true;
+            Destroy(shimmer);
             iPickUp.DropPickUp();
         }
     }
