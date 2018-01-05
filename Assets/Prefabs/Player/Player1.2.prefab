@@ -120,6 +120,7 @@ GameObject:
   - component: {fileID: 114790925517896588}
   - component: {fileID: 114434327185370306}
   - component: {fileID: 114849026417593388}
+  - component: {fileID: 114019157157862926}
   m_Layer: 2
   m_Name: Player1.2
   m_TagString: Player
@@ -734,9 +735,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1164902904215490}
-  m_LocalRotation: {x: -0, y: 0.99999416, z: -0, w: -0.0034267197}
-  m_LocalPosition: {x: 155.1, y: 40.631, z: 262.7}
-  m_LocalScale: {x: 1.0174552, y: 1.0174549, z: 1.0174549}
+  m_LocalRotation: {x: -0, y: -0.6685316, z: -0, w: 0.74368376}
+  m_LocalPosition: {x: -0.81, y: 1.062, z: -11.78}
+  m_LocalScale: {x: 1.3371478, y: 1.3371474, z: 1.3371474}
   m_Children:
   - {fileID: 4342246096700092}
   - {fileID: 4710006150518126}
@@ -745,7 +746,7 @@ Transform:
   - {fileID: 4185660100798130}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -539.607, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -443.90802, z: 0}
 --- !u!4 &4591153984774040
 Transform:
   m_ObjectHideFlags: 1
@@ -767,7 +768,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1266555115295692}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.008, y: 0.422, z: -0.041}
+  m_LocalPosition: {x: 0.008, y: 0.974, z: -0.041}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 4530431190468210}
@@ -1063,6 +1064,19 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114019157157862926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1164902904215490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 666fba439df9ee240a0b469a301e9beb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hints_canvas: {fileID: 0}
+  hints_canvas_off: {fileID: 0}
 --- !u!114 &114116987896665834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1201,12 +1215,13 @@ MonoBehaviour:
   cameraTarget: {fileID: 1375246585447898}
   isDead: 0
   runSound: {fileID: 82725439062295300}
-  acceleration: 30
+  acceleration: 15
   jumpForce: 5
-  maxMoveSpeed: 3
+  maxMoveSpeed: 4
   deathImage: {fileID: 0}
   gameLogic: {fileID: 0}
   minDeathByForceMagnitude: 9
+  slowinAir: 0.93
   inReachOfBook: 0
   isReadingDialog: 0
 --- !u!136 &136355830157255836
@@ -1229,7 +1244,7 @@ SkinnedMeshRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1540772535013102}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 2
   m_ReceiveShadows: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
