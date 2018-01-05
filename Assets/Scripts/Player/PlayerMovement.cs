@@ -149,7 +149,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(IsGrounded()==false && Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0 && launched==false)
         {
-            Debug.Log("slow");
+            
             float slowX = playerRb.velocity.x * slowinAir;
             float slowZ= playerRb.velocity.z*slowinAir;
            
@@ -172,11 +172,15 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
             Jump();
 
-        if (Input.GetButtonDown("MainAction"))
+        if (Input.GetButton("MainAction"))
         {
             Grab();
-            ReadBook();
+            //ReadBook();
             //Destroy(GameObject.FindGameObjectWithTag("Player"), 0);
+        }
+        if (Input.GetButtonUp("MainAction"))
+        {
+            grabObj.LetGo();
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
