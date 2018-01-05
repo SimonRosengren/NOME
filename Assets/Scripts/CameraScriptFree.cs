@@ -14,7 +14,7 @@ public class CameraScriptFree : MonoBehaviour
     public bool controlCamera;
     private Camera camera;
 
-    private RaycastHit hit;
+    private RaycastHit[] hits;
     private Vector3 newCameraPos;
     private Vector3 offset;
 
@@ -71,30 +71,40 @@ public class CameraScriptFree : MonoBehaviour
                 targetAngleV = 60;
             }
 
-            if (targetAngleV < -95)
+            if (targetAngleV < -10)
             {
-                targetAngleV = -95;
+                targetAngleV = -10;
+                Debug.Log(targetAngleV);
             }
+
 
             offset = Quaternion.Euler(targetAngleV, targetAngleH, 0) * offset;
 
             //New Code
-            if (Physics.Raycast(target.transform.position, offset, out hit, distance + 0.5f) && hit.collider.gameObject.tag == "wall")
+            hits = Physics.RaycastAll(target.transform.position, offset, distance + 0.5f);
+            for (int i = 0; i < hits.Length; i++)
             {
-                Debug.DrawLine(target.transform.position, hit.point, Color.yellow);
-                //Debug.Log("hit");
-                distanceOffset = distance - hit.distance + 0.5f;
-                distanceOffset = Mathf.Clamp(distanceOffset, 0, distance);
+                if (hits[i].transform.tag == "wall")
+                {
+                    //Debug.DrawLine(target.transform.position, hits[i].point, Color.yellow);
+                    //Debug.Log("hit");
+                    distanceOffset = distance - hits[i].distance + 0.5f;
+                    distanceOffset = Mathf.Clamp(distanceOffset, 0, distance);
 
-                newCameraPos = new Vector3(0, 0, -distanceOffset);
-                newCameraPos = Quaternion.Euler(targetAngleV, targetAngleH, 0) * newCameraPos;
-            }
-            else
-            {
-                distanceOffset = 0.5f;
-                newCameraPos = Vector3.zero;
+                    newCameraPos = new Vector3(0, 0, -distanceOffset);
+                    newCameraPos = Quaternion.Euler(targetAngleV, targetAngleH, 0) * newCameraPos;
+                    break;
+                }
+                else
+                {
+                    distanceOffset = 0.5f;
+                    newCameraPos = Vector3.zero;
 
+                }
             }
+            //if (Physics.Raycast(target.transform.position, offset, out hit, distance + 0.5f) && hit.collider.gameObject.tag == "wall")
+            //{
+            //}
 
             if (Input.GetKey(KeyCode.J) || Input.GetButton("CameraFocus"))
             {

@@ -93,6 +93,11 @@ public class VacuumHoldLaunch : MonoBehaviour
 
     public void Launch()
     {
+        if(gP.target.GetComponent<PlayerMovement>().launched == false)
+        {
+            gP.target.GetComponent<PlayerMovement>().launched = true;
+        }
+
         gP.target.transform.parent = null;
         gP.rbTarget.isKinematic = false;
         gP.rbTarget.velocity = FireAt2(target, speed);

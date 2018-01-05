@@ -18,7 +18,7 @@ public class LookAtThis : MonoBehaviour {
     {
         if (other.gameObject == Player)
         {
-            Debug.Log("look");
+            
             if (Player.GetComponent<HeadLookController>().enabled == false)
             {
                 Player.GetComponent<HeadLookController>().enabled = true;
