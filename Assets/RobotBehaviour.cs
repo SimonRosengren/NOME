@@ -32,6 +32,7 @@ public class RobotBehaviour : MonoBehaviour {
             pathFollower.functional = false;
             Destroy(gravCircle);
             Destroy(launchZone);
+            Destroy(GameObject.Find("key_geo"));
             Invoke("SpitOut", 5);
             dead = true;
             WriteToLog("Robots isDead = " + dead);

@@ -71,10 +71,12 @@ public class CameraScriptFree : MonoBehaviour
                 targetAngleV = 60;
             }
 
-            if (targetAngleV < -95)
+            if (targetAngleV < -10)
             {
-                targetAngleV = -95;
+                targetAngleV = -10;
+                Debug.Log(targetAngleV);
             }
+
 
             offset = Quaternion.Euler(targetAngleV, targetAngleH, 0) * offset;
 

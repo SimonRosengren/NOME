@@ -27,6 +27,8 @@ public class PlayerMovement : MonoBehaviour
     bool dying = false;
     float timeToRespawn;
     float deathTimer = 2f;
+    float xspeed;
+    float zspeed;
 
     [SerializeField] AudioSource runSound;
     [SerializeField] float acceleration;
@@ -35,6 +37,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] Image deathImage;
     [SerializeField] GameLogic gameLogic;
     [SerializeField] float minDeathByForceMagnitude;
+    [SerializeField] float slowinAir;
+    public bool launched;
 
     public int inReachOfBook = 0;
     public bool isReadingDialog = false;
@@ -50,6 +54,7 @@ public class PlayerMovement : MonoBehaviour
         capCollider = GetComponent<CapsuleCollider>();
         camera = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<Camera>();
         isDead = false;
+        launched = false;
         runSound.Play();
         meshRenderers = GetComponentsInChildren<MeshRenderer>();
         skinnedMeshRenderers = GetComponentsInChildren<SkinnedMeshRenderer>();
@@ -82,6 +87,11 @@ public class PlayerMovement : MonoBehaviour
     {
         Move();
         Limitvelocity();
+        if (IsGrounded())
+        {
+            launched = false;
+        }
+        SlowInAir();
     }
 
     void Move()
@@ -133,10 +143,28 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void SlowInAir()
+    {
+        
+
+        if(IsGrounded()==false && Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0 && launched==false)
+        {
+            
+            float slowX = playerRb.velocity.x * slowinAir;
+            float slowZ= playerRb.velocity.z*slowinAir;
+           
+
+            Vector3 slow = new Vector3(slowX, playerRb.velocity.y, slowZ);
+            playerRb.velocity = slow;
+        }
+    }
+
+    
+
     void HandleInput()
     {
-        float xspeed = Input.GetAxisRaw("Horizontal");
-        float zspeed = Input.GetAxisRaw("Vertical");
+        xspeed = Input.GetAxisRaw("Horizontal");
+        zspeed = Input.GetAxisRaw("Vertical");
         velocityAxis = Quaternion.AngleAxis(
             Camera.main.transform.eulerAngles.y,
             Vector3.up) * new Vector3(xspeed, 0, zspeed);
@@ -144,11 +172,15 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
             Jump();
 
-        if (Input.GetButtonDown("MainAction"))
+        if (Input.GetButton("MainAction"))
         {
             Grab();
-            ReadBook();
+            //ReadBook();
             //Destroy(GameObject.FindGameObjectWithTag("Player"), 0);
+        }
+        if (Input.GetButtonUp("MainAction"))
+        {
+            grabObj.LetGo();
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
@@ -244,7 +276,15 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            return false;
+            for (int i = 0; i < hits.Length; i++)
+            {
+                if (hits[i].isTrigger == false)
+                {
+                    return false;
+
+                }
+            }
+            return true;
         }
     }
 

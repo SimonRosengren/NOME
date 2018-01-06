@@ -27,7 +27,7 @@ public class Inventory : MonoBehaviour {
         {
             timer -= Time.deltaTime;
         }
-        if (Input.GetKey(KeyCode.I) && timer <= 0)
+        if (Input.GetButtonDown("Y") && timer <= 0)
         {
             FadeIn();
             timer = 1;
