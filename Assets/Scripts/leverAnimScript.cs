@@ -28,7 +28,7 @@ public class leverAnimScript : MonoBehaviour
     void OnTriggerExit(Collider collider)
     {
         Invoke("Playdelay", 1);
-        Invoke("WoodCutterDelay", 35);
+        Invoke("WoodCutterDelay", 20);
     }
     void playLogKeeperSound()
     {

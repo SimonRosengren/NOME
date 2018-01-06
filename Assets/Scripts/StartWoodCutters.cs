@@ -21,7 +21,7 @@ public class StartWoodCutters : MonoBehaviour {
         {
 
             woodcutters[i].startUp = true;
-            yield return new WaitForSeconds(3);
+            yield return new WaitForSeconds(6);
 
         }
     }
