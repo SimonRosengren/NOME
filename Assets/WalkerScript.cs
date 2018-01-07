@@ -6,8 +6,9 @@ public class WalkerScript : MonoBehaviour
 {
 
 
-    public AudioSource walkerAudio;
-    public AudioSource walkerHorn;
+    public AudioSource walkerAS;
+    public AudioClip walkerSteps;
+    public AudioClip walkerHorn;
     Animator walkerAnim;
     public Transform target;
     public float walkSpeed;
@@ -25,13 +26,12 @@ public class WalkerScript : MonoBehaviour
 
     void PlayWalk()
     {
-        walkerAudio.Play();
+        walkerAS.PlayOneShot(walkerSteps);
     }
 
     void PlayHorn()
     {
-        walkerHorn.Play();
-
+        walkerAS.PlayOneShot(walkerHorn);
     }
 
     // Update is called once per frame
