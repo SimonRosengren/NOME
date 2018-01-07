@@ -124,22 +124,29 @@ public class WoodCutterAnimScript : MonoBehaviour
             }
 
 
-            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Start_Walking_") && direction.magnitude > 1)
-            {
-                transform.position = Vector3.MoveTowards(transform.position, endTransForm.position, step2);
+            //if (anim.GetCurrentAnimatorStateInfo(0).IsName("Start_Walking_") && direction.magnitude > 3)
+            //{
+            //    transform.position = Vector3.MoveTowards(transform.position, endTransForm.position, step2);
 
-            }
-            else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Walking_Loop_") && direction.magnitude > 1)
+            //}
+            else if (anim.GetCurrentAnimatorStateInfo(0).IsName("Walking_Loop_") && direction.magnitude > 2)
             {
                 transform.position = Vector3.MoveTowards(transform.position, endTransForm.position, step);
+
+            }
+            else if(direction.magnitude < 2)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, endTransForm.position, step);
+                anim.SetBool("isActive", false);
+                anim.SetBool("Start_Walking", false);
+                anim.SetBool("StopWalking", true);
+                anim.SetBool("StartCutting", true);
 
             }
 
             else if (direction.magnitude < 1)
             {
-                anim.SetBool("isActive", false);
-                anim.SetBool("Start_Walking", false);
-                anim.SetBool("StopWalking", true);
+                
                 anim.SetBool("StartCutting", true);
 
             }
@@ -169,6 +176,7 @@ public class WoodCutterAnimScript : MonoBehaviour
     void playWalking()
     {
         audioS.PlayOneShot(walking);
+       
     }
 
     void playSaw()

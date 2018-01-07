@@ -45,6 +45,7 @@ public class DialogeImporter : MonoBehaviour {
             OpenBox();
         }
     }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.tag == "Player" && book)
@@ -57,6 +58,13 @@ public class DialogeImporter : MonoBehaviour {
         }
     }
 
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player" && isActive && !book)
+        {
+            CloseBox();
+        }
+    }
 
     void Update()
     {
