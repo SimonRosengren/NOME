@@ -30,14 +30,22 @@ public class PlayerMovement : MonoBehaviour
     float xspeed;
     float zspeed;
 
-    [SerializeField] AudioSource runSound;
-    [SerializeField] float acceleration;
-    [SerializeField] float jumpForce;
-    [SerializeField] float maxMoveSpeed;
-    [SerializeField] Image deathImage;
-    [SerializeField] GameLogic gameLogic;
-    [SerializeField] float minDeathByForceMagnitude;
-    [SerializeField] float slowinAir;
+    [SerializeField]
+    AudioSource runSound;
+    [SerializeField]
+    float acceleration;
+    [SerializeField]
+    float jumpForce;
+    [SerializeField]
+    float maxMoveSpeed;
+    [SerializeField]
+    Image deathImage;
+    [SerializeField]
+    GameLogic gameLogic;
+    [SerializeField]
+    float minDeathByForceMagnitude;
+    [SerializeField]
+    float slowinAir;
     public bool launched;
 
     public int inReachOfBook = 0;
@@ -75,10 +83,10 @@ public class PlayerMovement : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         if (collision.transform.tag == "projectile")
-        {    
+        {
             if (collision.rigidbody.velocity.magnitude > minDeathByForceMagnitude)
-            {                
-                Die();           
+            {
+                Die();
             }
         }
     }
@@ -100,19 +108,33 @@ public class PlayerMovement : MonoBehaviour
         if (!isDead && !ledgeGrabArea.hanging && UnstickWalls())
         {
             playerRb.AddForce(velocityAxis.normalized * acceleration);
-            animator.SetFloat("MoveSpeed", velocityAxis.magnitude);
+            // animator.SetFloat("MoveSpeed", velocityAxis.magnitude);
+            //Debug.Log(velocityAxis.magnitude);
         }
-        if (velocityAxis.magnitude > 0 && !isGrabbing() && !isHanging())
+        if (velocityAxis.magnitude > 0f && !isGrabbing() && !isHanging())
         {
             transform.rotation = Quaternion.LookRotation(velocityAxis);
+            animator.SetBool("Running", true);
         }
 
-        if (velocityAxis.magnitude > 0 && IsGrounded())
+        else if(velocityAxis.magnitude > 0f && isGrabbing() && !isHanging())
+        {
+            animator.SetBool("Running", true);
+
+        }
+
+        else if(velocityAxis.magnitude <= 0f && IsGrounded())
+        {
+            animator.SetBool("Running", false);
+        }
+
+        if (velocityAxis.magnitude > 0f && IsGrounded())
         {
             runSound.UnPause();
         }
         else
             runSound.Play();
+
 
     }
 
@@ -145,21 +167,21 @@ public class PlayerMovement : MonoBehaviour
 
     void SlowInAir()
     {
-        
 
-        if(IsGrounded()==false && Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0 && launched==false)
+
+        if (IsGrounded() == false && Input.GetAxisRaw("Horizontal") == 0 && Input.GetAxisRaw("Vertical") == 0 && launched == false)
         {
-            Debug.Log("slow");
+
             float slowX = playerRb.velocity.x * slowinAir;
-            float slowZ= playerRb.velocity.z*slowinAir;
-           
+            float slowZ = playerRb.velocity.z * slowinAir;
+
 
             Vector3 slow = new Vector3(slowX, playerRb.velocity.y, slowZ);
             playerRb.velocity = slow;
         }
     }
 
-    
+
 
     void HandleInput()
     {
@@ -172,16 +194,20 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButtonDown("Jump"))
             Jump();
 
-        if (Input.GetButtonDown("MainAction"))
+        if (Input.GetButton("MainAction"))
         {
             Grab();
-            ReadBook();
+            //ReadBook();
             //Destroy(GameObject.FindGameObjectWithTag("Player"), 0);
+        }
+        if (Input.GetButtonUp("MainAction"))
+        {
+            grabObj.LetGo();
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
             Die();
-        }      
+        }
     }
 
     void ReadBook()
@@ -217,7 +243,7 @@ public class PlayerMovement : MonoBehaviour
     {
         return Physics.Raycast(
             transform.position + new Vector3(0, 0.2f, 0),
-            -transform.up, 0.5f);        
+            -transform.up, 0.5f);
     }
     bool isHanging()
     {
@@ -265,7 +291,7 @@ public class PlayerMovement : MonoBehaviour
         float forceDirectionMultiplier = 0.1f;
         /*Creates a capsule collider ahead of the player in the direction they are heading to check for objects that might cause collison */
         Collider[] hits = Physics.OverlapCapsule(capsuleTop + (velocityAxis * forceDirectionMultiplier), capsuleBottom + (velocityAxis * forceDirectionMultiplier), capCollider.radius, charMask);
-        /*If the collider finds no objects ahead or if the player is walking on the ground then the player is allowed to move */    
+        /*If the collider finds no objects ahead or if the player is walking on the ground then the player is allowed to move */
         if (hits.Length == 0 || IsGrounded())
         {
             return true;

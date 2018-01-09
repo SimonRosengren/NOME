@@ -10,6 +10,7 @@ public class VacuumHoldLaunch : MonoBehaviour
     private float stuckTimer, suckTimer;
     bool holdOn = false;
     bool suckTimerOn;
+    bool hasthrown;
     public bool canFire = false;
 
     public Animator anim;
@@ -54,11 +55,17 @@ public class VacuumHoldLaunch : MonoBehaviour
             Hold();
         }
         Sucking();
+
+        if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>().launched==false && hasthrown)
+        {
+            GetComponent<Collider>().enabled = true;
+            hasthrown = false;
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (stuckTimer > 0)
+        if (stuckTimer > 0 && other.gameObject== GameObject.FindGameObjectWithTag("Player"))
         {
             holdOn = true;
             anim.SetBool("PlayerGrabbed", true);
@@ -88,6 +95,7 @@ public class VacuumHoldLaunch : MonoBehaviour
             gP.pullOn = true;
             suckTimer = 3;
             suckTimerOn = false;
+            
         }
     }
 
@@ -97,14 +105,15 @@ public class VacuumHoldLaunch : MonoBehaviour
         {
             gP.target.GetComponent<PlayerMovement>().launched = true;
         }
-
+        GetComponent<Collider>().enabled = false;
+        hasthrown = true;
         gP.target.transform.parent = null;
         gP.rbTarget.isKinematic = false;
         gP.rbTarget.velocity = FireAt2(target, speed);
         suckTimerOn = true;
         anim.SetBool("PlayerGrabbed", false);
 
-        // Debug.Log(gP.rbTarget.velocity);
+        Debug.Log("launch");
     }
 
     private Vector3 FireAt(Vector3 target/*, GameObject projectile*/)

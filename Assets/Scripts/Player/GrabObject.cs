@@ -34,6 +34,17 @@ public class GrabObject : MonoBehaviour {
         }
     }
 
+    public void LetGo()
+    {
+        if (isGrabbing)
+        {
+            pushableObject hitObjScript = grabbedObject.transform.GetComponent<pushableObject>();
+            hitObjScript.LetGo();
+            isGrabbing = false;
+            Debug.Log("let go");
+        }
+    }
+
     public void Grab()
     {
         if (!isGrabbing)
@@ -48,13 +59,14 @@ public class GrabObject : MonoBehaviour {
                 pushableObject hitObjScript = grabbedObject.transform.GetComponent<pushableObject>();
                 hitObjScript.Grab(playerRb, grabbedObject.point);
                 isGrabbing = true;
+                Debug.Log("grab");
             }
         }
-        else
-        {
-            pushableObject hitObjScript = grabbedObject.transform.GetComponent<pushableObject>();
-            hitObjScript.LetGo();
-            isGrabbing = false;
-        }
+        //else
+        //{
+        //    pushableObject hitObjScript = grabbedObject.transform.GetComponent<pushableObject>();
+        //    hitObjScript.LetGo();
+        //    isGrabbing = false;
+        //}
     }
 }
